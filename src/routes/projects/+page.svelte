@@ -5,9 +5,9 @@
 </script>
 
 <div class="flex flex-row justify-center items-center w-full">
-    <div class="p-14 space-y-5 max-w-7xl">
+    <div class="p-14 space-y-5 max-w-7xl w-7xl">
 
-        <h1 class="font-mono text-6xl text-slate-200">Projects</h1>
+        <h1 class="w-full font-mono text-6xl text-slate-200">Projects</h1>
 
         <p class="text-slate-400">
         Visit  
@@ -15,7 +15,7 @@
             <Fa class="w-[1em] h-[1em] align-middle" icon={faGithub}/>
             <span>GitHub</span>
         </a> 
-        to view my publicly sourced projects.
+        to view my publicly available source code.
         </p>
         
 

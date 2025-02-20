@@ -2,31 +2,45 @@
     "projects" : 
     [
         {
-            "name": "project 0",
+            "name": "Fractal Renderer",
+            "desc": "Fractal renderer written in C++ using the 'chaos game' algorithm.",
+            "tags": [ "C++", "SFML"],
+            "time": 1735942477000,
+            "img": "frac.webp"
+        },
+        {
+            "name": "Gaiawalker",
+            "desc": "3D Fighter Game created completely with self-made assets and code. Won the 2023 DPCDSB Game-Making Competition.",
+            "tags": [ "Unity", "Blender", "C#", "win"],
+            "time": 1735942477000,
+            "img": "gaia.webp"
+        },
+        {
+            "name": "Project 0",
             "desc": "this is a template project",
-            "tags": [ "C++", "Java", "JS", "Py", "yadayada"],
-            "time": 1735942477,
+            "tags": [ "C++", "Java", "JS", "Py", "frontend"],
+            "time": 1735942477000,
             "img": "test this ..."
         },
         {
-            "name": "project 1",
+            "name": "Project 1",
             "desc": "i spent approximately 12 seconds working on this project",
-            "tags": [ "C++", "yadayada"],
-            "time": 1735902477,
+            "tags": [ "C++", "backend"],
+            "time": 1735902477000,
             "img": "test this ..."
         },
         {
-            "name": "project 2",
+            "name": "Project 2",
             "desc": "this project is not complete yet 💔",
             "tags": [ "C++", "yadayada"],
-            "time": 1735982477,
+            "time": 1735982477000,
             "img": "test this ..."
         },
         {
-            "name": "project 3",
+            "name": "Project 3",
             "desc": "js and py 💔",
             "tags": [ "JS", "Py", "yadayada"],
-            "time": 1735742477,
+            "time": 1735742477000,
             "img": "test this ..."
         }
     ]

@@ -1,13 +1,26 @@
 <script>
-    let { id, name, desc, tags, img, time} = $props();
-    let date = new Date(time);
-    let month = ((date.getMonth() + 1) % 12);
-    let year = date.getFullYear();
+    let { id, name, desc, tags, img, time, addedTags, addTag} = $props();
 
-    if (month < 4) month = "Winter";
-    else if (month < 8) month = "Spring";
-    else "Fall";
+    function getDateInfo(timestamp)
+    {
+        let date = new Date(timestamp);
+        let month = (date.getMonth() + 1) % 12;
+        if (month < 4) month = "Winter";
+        else if (month < 8) month = "Spring";
+        else month = "Fall";
+        return [month, date.getFullYear()];
+    }
 
+    let dateInfo = $derived(getDateInfo(time));
+
+
+    import { flip } from 'svelte/animate';
+
+    import Fa from 'svelte-fa'
+    import { faXmark, faPlus, faMedal, faTrophy } from '@fortawesome/free-solid-svg-icons';
+
+    import cx from "clsx";
+    let mappedTags = $derived(tags.map(tag => [tag, true]));
 
     // NOTE: selected should be a callback to set the
     // currently selected project with a callback in the parent
@@ -21,15 +34,115 @@
         // Print count and up
         console.log(`Trigger ${count} (${type})`);
     });
+
 </script>
 
+<style>
+    @layer utilities {
+    .border-special {
+        --s: 20px; /* Corner size */
+        --t: 2px;  /* Border thickness */
+        --g: 20px; /* Gap between border and image */
+        padding: calc(var(--g) + var(--t));
+        outline-width: var(--t);
+        outline-style: solid;
+        outline-offset: calc(-1 * var(--t));
+        -webkit-mask: 
+            conic-gradient(at var(--s) var(--s), #0000 75%, #000 0)
+            0 0 / calc(100% - var(--s)) calc(100% - var(--s)),
+            conic-gradient(#000 0 0) content-box;
+        mask: 
+            conic-gradient(at var(--s) var(--s), #0000 75%, #000 0)
+            0 0 / calc(100% - var(--s)) calc(100% - var(--s)),
+            conic-gradient(#000 0 0) content-box;
+        transition: all 0.4s ease;
+    }
+
+    .border-special:group-hover {
+        outline-offset: calc(-1 * var(--g));
+    }
+}
+</style>
+
 <!-- Full-width projects on mobile, otherwise, 2 in each ... grid should restrict this -->
-<button class="p-5 w-full h-full text-left text-red-50 bg-slate-900"> 
-<div class="flex justify-end w-full text-3xl">
-    <h3>{name}</h3>
+<div role="button" class="grid h-64 bg-none shadow-sm cursor-pointer group"> 
+    <div class='col-span-1 col-start-1 row-span-1 row-start-1 transition-all border-special outline-slate-300/0 group-hover:outline-slate-200/80'>
+    </div>
+    <div class={cx(
+        'col-start-1 row-start-1 col-span-1 row-span-1',
+        'shadow-lg shadow-black group-hover:shadow-black group-hover:shadow-2xl',
+        "grid overflow-hidden will-change-transform transition-all duration-300 ease-[cubic-bezier(0.16, 1, 0.3, 1)] bg-slate-900/20 bg-clip-content group-hover:m-3")}>
+        {#if img.found}
+            <img class={cx(
+                'w-full h-full object-cover opacity-80',
+                'col-start-1 row-start-1 col-span-1 row-span-1',
+                'duration-400 ease-[cubic-bezier(0.16, 1, 0.3, 1)] group-hover:scale-120 group-hover:blur-sm group-hover:saturate-0 group-hover:brightness-[0.4]',
+                )} alt="" src={img.img}/>
+        {:else}
+            <div
+            style="background-image: url({img.img});"
+            class={cx(
+                'w-full h-full bg-[length:130px_130px]',
+                'col-start-1 row-start-1 col-span-1 row-span-1 opacity-[0.12]',
+                )}>
+                  <div class="absolute inset-0 bg-zinc-600/80"></div> <!-- Tint overlay -->
+                </div>
+        {/if}
+
+
+
+        <div class="flex z-10 flex-col col-span-1 col-start-1 row-span-1 row-start-1 w-full h-full">
+
+            <div class={cx(
+                'flex justify-end p-3 w-full backdrop-saturate-40',
+                (img.found) && 'bg-zinc-950/90',
+                (!img.found) && 'bg-zinc-950/80 backdrop-saturate-100 backdrop-blur-none'
+                )}>
+                <div class="flex flex-col">
+                    <p class="text-xs text-slate-200/70">
+                    {dateInfo[0]}
+                    </p>
+                    <p class="font-bold tracking-wide">
+                    {dateInfo[1]}
+                    </p>
+                </div>
+                <h3 class="flex-grow px-3 py-1 text-3xl text-right duration-300 group-hover:font-bold">{name}</h3>
+            </div>
+
+            <p class="p-3 px-6 delay-0 duration-150 group-hover:delay-200 align-bottom flex-grow group-hover:duration-400 -translate-x-1 group-hover:translate-x-0 ease-[cubic-bezier(0.16, 1, 0.3, 1)] opacity-0 group-hover:opacity-100">{desc}</p>
+
+
+            <div class="flex gap-2 p-3 h-14">
+            {#each mappedTags as tag, index (tag)}
+                <button
+                    animate:flip={{duration: 400, easing: expoOut, delay: 150}}
+                    onclick={() => {addTag(tag);}}
+                    class={cx(
+                        'h-full px-3 rounded-md border-1',
+                        'bg-zinc-950 text-slate-300 border-zinc-600',
+                        'group/tag cursor-pointer transition-all',
+                        'text-sm',
+                        'ease-[cubic-bezier(0.68, -0.6, 0.32, 1.6)] hover:border-2 hover:border-green-700 hover:bg-green-950/70 hover:text-slate-900/0',
+                        )}>
+                        <div class="grid grid-cols-1 grid-rows-1">
+                            {#if tag[0] === "win"}
+                            <Fa class="col-span-1 col-start-1 row-span-1 row-start-1 text-amber-500 group-hover/tag:text-transparent" icon={faTrophy}/>
+                            {:else}
+                            <p class="col-span-1 col-start-1 row-span-1 row-start-1">{tag[0]}</p>
+                            {/if}
+                        
+                            <Fa icon={faPlus} class={cx(
+                            'w-full h-full',
+                            (tag[0] != "win") && 'translate-y-[2px]',
+                            'duration-100 ease-out',
+                            'col-span-1 col-start-1 row-span-1 row-start-1',
+                            'ease-out transition-all duration-10 scale-0',
+                            'group-hover/tag:text-green-500 group-hover/tag:scale-100')} />
+
+                        </div>
+                    </button>
+            {/each}
+            </div>
+        </div>
+    </div>
 </div>
-<p>desc {desc}</p>
-<p>tags {tags}</p>
-<p>img {img}</p>
-<p>{year} {time}</p>
-</button>
