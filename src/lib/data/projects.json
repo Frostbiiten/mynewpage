@@ -1,0 +1,33 @@
+{
+    "projects" : 
+    [
+        {
+            "name": "project 0",
+            "desc": "this is a template project",
+            "tags": [ "C++", "Java", "JS", "Py", "yadayada"],
+            "time": 1735942477,
+            "img": "test this ..."
+        },
+        {
+            "name": "project 1",
+            "desc": "i spent approximately 12 seconds working on this project",
+            "tags": [ "C++", "yadayada"],
+            "time": 1735902477,
+            "img": "test this ..."
+        },
+        {
+            "name": "project 2",
+            "desc": "this project is not complete yet 💔",
+            "tags": [ "C++", "yadayada"],
+            "time": 1735982477,
+            "img": "test this ..."
+        },
+        {
+            "name": "project 3",
+            "desc": "js and py 💔",
+            "tags": [ "JS", "Py", "yadayada"],
+            "time": 1735742477,
+            "img": "test this ..."
+        }
+    ]
+}
