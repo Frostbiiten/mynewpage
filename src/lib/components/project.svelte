@@ -4,23 +4,22 @@
     function getDateInfo(timestamp)
     {
         let date = new Date(timestamp);
-        let month = (date.getMonth() + 1) % 12;
-        if (month < 4) month = "Winter";
-        else if (month < 8) month = "Spring";
-        else month = "Fall";
+        let month = date.toLocaleString('default', {month: 'long' });
         return [month, date.getFullYear()];
     }
 
     let dateInfo = $derived(getDateInfo(time));
+    let clickableTags = $derived(tags.map(tag => addedTags.some(added => (tag === added))))
+
 
 
     import { flip } from 'svelte/animate';
 
     import Fa from 'svelte-fa'
-    import { faXmark, faPlus, faMedal, faTrophy } from '@fortawesome/free-solid-svg-icons';
+    import { faXmark, faPlus, faCircle, faMedal, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
     import cx from "clsx";
-    let mappedTags = $derived(tags.map(tag => [tag, true]));
+    //let mappedTags = $derived(tags.map(tag => [tag, true]));
 
     // NOTE: selected should be a callback to set the
     // currently selected project with a callback in the parent
@@ -28,12 +27,6 @@
     // to print when these values are updated ..
     $inspect(name, desc, tags, img);
 
-    // however, we can also do ... (idk if this works with multiple runes)
-    $inspect(name).with((type, count) =>
-    {
-        // Print count and up
-        console.log(`Trigger ${count} (${type})`);
-    });
 
 </script>
 
@@ -113,31 +106,32 @@
 
 
             <div class="flex gap-2 p-3 h-14">
-            {#each mappedTags as tag, index (tag)}
+            {#each tags as tag, index (tag)}
                 <button
                     animate:flip={{duration: 400, easing: expoOut, delay: 150}}
+                    disabled={clickableTags[index]}
                     onclick={() => {addTag(tag);}}
                     class={cx(
-                        'h-full px-3 rounded-md border-1',
+                        'h-full text-sm px-3 rounded-md border-1',
                         'bg-zinc-950 text-slate-300 border-zinc-600',
-                        'group/tag cursor-pointer transition-all',
-                        'text-sm',
-                        'ease-[cubic-bezier(0.68, -0.6, 0.32, 1.6)] hover:border-2 hover:border-green-700 hover:bg-green-950/70 hover:text-slate-900/0',
+                        'group/tag transition-all',
+                        !clickableTags[index]&& 'cursor-pointer hover:border-green-700 hover:bg-green-950/70 hover:text-slate-900/0',
+                        clickableTags[index] && 'cursor-default hover:text-stone-500 ',
+                        'ease-[cubic-bezier(0.68, -0.6, 0.32, 1.6)] hover:border-2 ',
                         )}>
                         <div class="grid grid-cols-1 grid-rows-1">
-                            {#if tag[0] === "win"}
+                            {#if tag === "win"}
                             <Fa class="col-span-1 col-start-1 row-span-1 row-start-1 text-amber-500 group-hover/tag:text-transparent" icon={faTrophy}/>
                             {:else}
-                            <p class="col-span-1 col-start-1 row-span-1 row-start-1">{tag[0]}</p>
+                            <p class="col-span-1 col-start-1 row-span-1 row-start-1">{tag}</p>
                             {/if}
                         
                             <Fa icon={faPlus} class={cx(
                             'w-full h-full',
-                            (tag[0] != "win") && 'translate-y-[2px]',
-                            'duration-100 ease-out',
+                            (tag != "win") && 'translate-y-[2px]',
+                            'duration-100 ease-out transition-all scale-0',
                             'col-span-1 col-start-1 row-span-1 row-start-1',
-                            'ease-out transition-all duration-10 scale-0',
-                            'group-hover/tag:text-green-500 group-hover/tag:scale-100')} />
+                            !clickableTags[index] && 'group-hover/tag:text-green-500 group-hover/tag:scale-100')} />
 
                         </div>
                     </button>

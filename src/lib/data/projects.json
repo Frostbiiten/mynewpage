@@ -5,43 +5,100 @@
             "name": "Fractal Renderer",
             "desc": "Fractal renderer written in C++ using the 'chaos game' algorithm.",
             "tags": [ "C++", "SFML"],
-            "time": 1735942477000,
+            "time": 1641686401000,
             "img": "frac.webp"
         },
         {
             "name": "Gaiawalker",
             "desc": "3D Fighter Game created completely with self-made assets and code. Won the 2023 DPCDSB Game-Making Competition.",
-            "tags": [ "Unity", "Blender", "C#", "win"],
-            "time": 1735942477000,
+            "tags": [ "C#", "Unity", "Blender", "Game", "win"],
+            "time": 1682130180000,
             "img": "gaia.webp"
         },
         {
-            "name": "Project 0",
-            "desc": "this is a template project",
-            "tags": [ "C++", "Java", "JS", "Py", "frontend"],
-            "time": 1735942477000,
-            "img": "test this ..."
+            "name": "Rouge",
+            "desc": "No description provided.",
+            "tags": [
+                "Java",
+                "Game"
+            ],
+            "time": 1673433498000,
+            "img": "rouge.webp"
         },
         {
-            "name": "Project 1",
-            "desc": "i spent approximately 12 seconds working on this project",
-            "tags": [ "C++", "backend"],
-            "time": 1735902477000,
-            "img": "test this ..."
+            "name": "FFF",
+            "desc": "Fire-Fighter (Fighter)",
+            "tags": [
+                "C#",
+                "Unity",
+                "Game"
+            ],
+            "time": 1688911200000,
+            "img": "fff.webp"
         },
         {
-            "name": "Project 2",
-            "desc": "this project is not complete yet 💔",
-            "tags": [ "C++", "yadayada"],
-            "time": 1735982477000,
-            "img": "test this ..."
+            "name": "Aero",
+            "desc": "python project",
+            "tags": [
+                "Python",
+                "Game"
+            ],
+            "time": 1642136850000,
+            "img": "aero.webp"
         },
         {
-            "name": "Project 3",
-            "desc": "js and py 💔",
-            "tags": [ "JS", "Py", "yadayada"],
-            "time": 1735742477000,
-            "img": "test this ..."
+            "name": "'Beyond' Engine",
+            "desc": "Sonic Engine",
+            "tags": [
+                "C#", "Unity", "Game"
+            ],
+            "time": 1557257844000,
+            "img": "beyond.webp"
+        },
+        {
+            "name": "SuppressThePress",
+            "desc": "Ludum Dare 50",
+            "tags": [
+                "C#", "Unity", "Game"
+            ],
+            "time": 1649046270000,
+            "img": "stp.webp"
+        },
+        {
+            "name": "customInt",
+            "desc": "Custom integer class",
+            "tags": [
+                "C++"
+            ],
+            "time": 1637041073000,
+            "img": "customint.webp"
+        },
+        {
+            "name": "CivilAIzation",
+            "desc": "Hack The 6ix 2023 winner",
+            "tags": [
+                "C#", "Unity", "Game", "win"
+            ],
+            "time": 1692457860000,
+            "img": "civilaization.webp"
+        },
+        {
+            "name": "Storymation",
+            "desc": "Hack The North winner",
+            "tags": [
+                "React", "Js", "win"
+            ],
+            "time": 1694884800000,
+            "img": "storymation.webp"
+        },
+        {
+            "name": "ReConstruct",
+            "desc": "3D FPS created with self-made assets and code. Won the 2022 DPCDSB Game-Making Competition.",
+            "tags": [
+                "C#", "Unity", "Game", "win"
+            ],
+            "time": 1654056900000,
+            "img": "reconstruct.webp"
         }
     ]
 }
