@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Unity WebGL Build</title>
+  <style>
+    /* Make the HTML body and canvas fill the iframe */
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Prevent scrollbars if you want the game to fill */
+      background: #231F20;
+    }
+
+    /* The canvas should fill its containing element */
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      display: block; /* Remove any inline gaps */
+      background: #231F20;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="unity-canvas" tabindex="-1"></canvas>
+
+  <script src="Build/Build.loader.js"></script>
+  <script>
+    // Optional: For mobile-specific adjustments
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+    }
+
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      dataUrl: "Build/Build.data.br",
+      frameworkUrl: "Build/Build.framework.js.br",
+      codeUrl: "Build/Build.wasm.br",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "Frostbiiten",
+      productName: "SuppressThePress",
+      productVersion: "1.1",
+      // Turn this on if you want Unity's WebGL to automatically adapt
+      // to changes in the canvas size.
+      matchWebGLToCanvasSize: true,
+    });
+  </script>
+</body>
+</html>

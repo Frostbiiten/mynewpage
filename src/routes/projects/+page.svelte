@@ -4,12 +4,13 @@
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
 </script>
 
-<div class="flex flex-row justify-center items-center w-full">
+<div
+class="flex flex-row justify-center items-center w-full">
     <div class="p-14 space-y-5 max-w-7xl w-7xl">
 
-        <h1 class="w-full font-mono text-6xl text-slate-200">Projects</h1>
+        <h1 class="pl-4 w-full font-mono text-6xl text-slate-200">Projects</h1>
 
-        <p class="text-slate-400">
+        <p class="pl-4 text-slate-400">
         Visit  
         <a class="inline-flex ease-out gap-x-1 items-center transition-all duration-150 translate-y-[0.1em] hover:-translate-y-0 text-slate-200 hover:text-sky-500" target="_blank" rel="noopener noreferrer" href="https://github.com/Frostbiiten">
             <Fa class="w-[1em] h-[1em] align-middle" icon={faGithub}/>

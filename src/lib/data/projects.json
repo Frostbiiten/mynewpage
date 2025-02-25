@@ -13,7 +13,8 @@
             "desc": "3D Fighter Game created completely with self-made assets and code. Won the 2023 DPCDSB Game-Making Competition.",
             "tags": [ "C#", "Unity", "Blender", "Game", "win"],
             "time": 1682130180000,
-            "img": "gaia.webp"
+            "img": "gaia.webp",
+            "galleryCount": [6, 3]
         },
         {
             "name": "Rouge",
@@ -34,7 +35,8 @@
                 "Game"
             ],
             "time": 1688911200000,
-            "img": "fff.webp"
+            "img": "fff.webp",
+            "embed": "fff"
         },
         {
             "name": "Aero",
@@ -62,7 +64,8 @@
                 "C#", "Unity", "Game"
             ],
             "time": 1649046270000,
-            "img": "stp.webp"
+            "img": "stp.webp",
+            "embed": "stp"
         },
         {
             "name": "customInt",

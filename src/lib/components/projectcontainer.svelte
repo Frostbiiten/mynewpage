@@ -91,9 +91,9 @@
 <div class="px-4 space-y-3">
 
     <div
-    transition:scale
     class="flex flex-row gap-3">
-        <div class="flex flex-row justify-center items-center basis-full lg:basis-1/2">
+        <!-- perhaps add lg:basis-1/2 too? -->
+        <div class="flex flex-row flex-shrink justify-center items-center pb-3 basis-full">
         <Search bind:value={searchText}/>
         </div>
         <div
@@ -105,7 +105,7 @@
                 out:scale={{start: 0.0, duration: 200, easing: backIn}}
                 onclick={() => { removeTag(index)}}
                 class={cx(
-                    'group cursor-pointer px-4 h-10 rounded-md border-0 transition-all  bg-green-900/20 inset-shadow-teal-400/40 inset-shadow-xs text-green-500',
+                    'group min-w-max cursor-pointer w-min px-4 h-10 rounded-md border-0 transition-all  bg-green-900/20 inset-shadow-teal-400/40 inset-shadow-xs text-green-500',
                     'border-rose-900 ease-[cubic-bezier(0.68, -0.6, 0.32, 1.6)] hover:border-2 hover:bg-slate-900/20 hover:inset-shadow-transparent hover:text-slate-900/20',
                     'scale-100 duration-300',
                     )}>
