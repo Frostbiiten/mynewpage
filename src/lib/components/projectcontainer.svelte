@@ -1,6 +1,8 @@
 <script>
     // project data
     import project_data from "$lib/data/projects.json"
+    let pj_test = $state()
+    pj_test = project_data
     import ProjectPane from "$lib/components/project.svelte"
     import Search from "./search.svelte";
     import cx from "clsx";
@@ -105,19 +107,19 @@
                 out:scale={{start: 0.0, duration: 200, easing: backIn}}
                 onclick={() => { removeTag(index)}}
                 class={cx(
-                    'group min-w-max cursor-pointer w-min px-4 h-10 rounded-md border-0 transition-all  bg-green-900/20 inset-shadow-teal-400/40 inset-shadow-xs text-green-500',
+                    'group min-w-max cursor-pointer w-min px-4 h-10 rounded-md border-0 transition-all  bg-blue-900/20 inset-shadow-blue-400/40 inset-shadow-xs text-blue-400',
                     'border-rose-900 ease-[cubic-bezier(0.68, -0.6, 0.32, 1.6)] hover:border-2 hover:bg-slate-900/20 hover:inset-shadow-transparent hover:text-slate-900/20',
                     'scale-100 duration-300',
                     )}>
                     <div class="grid grid-cols-1 grid-rows-1">
-                        {#if tag === "win"}
-                        <Fa class="col-span-1 col-start-1 row-span-1 row-start-1 text-amber-500 group-hover:text-transparent" icon={faTrophy}/>
+                        {#if tag.toLowerCase().includes("won")}
+                        <Fa class="col-span-1 col-start-1 row-span-1 row-start-1 text-sky-500 group-hover:text-transparent" icon={faTrophy}/>
                         {:else}
                         <p class="col-span-1 col-start-1 row-span-1 row-start-1">{tag}</p>
                         {/if}
                     
                         <Fa icon={faXmark} class={cx(
-                        (tag != "win") && 'translate-y-1',
+                        (!tag.toLowerCase().includes("won")) && 'translate-y-1',
                         'w-full h-full',
                         'duration-100 ease-out',
                         'col-span-1 col-start-1 row-span-1 row-start-1',
@@ -131,7 +133,7 @@
     </div>
 
     <div class="grid grid-cols-1 gap-3 w-full h-full lg:grid-cols-2">
-    {#each project_data.projects.filter(inSearch).sort(sorter) as project, index (project.name)}
+    {#each pj_test.projects.filter(inSearch).sort(sorter) as project, index (project.name)}
         <div
         animate:flip={{duration: 400, easing: expoOut}}
         in:fly={{y:40}}

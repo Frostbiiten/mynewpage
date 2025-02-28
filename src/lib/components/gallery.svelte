@@ -26,9 +26,12 @@
       type:  'video'
     });
   }
+
+  import cx from 'clsx';
   
   // Main carousel API
-  let emblaApi;
+  let emblaApi = $state();
+
   // Thumbnail carousel API
   let thumbsApi;
   
@@ -43,7 +46,9 @@
     containScroll: 'keepSnaps',
     dragFree: true,
   };
-  
+
+  let currentSlide = $state()
+
   // Video playback control
   function handleSlideChange() {
     if (!emblaApi) return;
@@ -55,7 +60,8 @@
     });
     
     // Optionally autoplay the current video
-    const currentSlide = emblaApi.selectedScrollSnap();
+    // const
+    currentSlide = emblaApi.selectedScrollSnap();
     const currentMedia = mediaItems[currentSlide];
     
     if (currentMedia && currentMedia.type === 'video') {
@@ -161,21 +167,29 @@
     //<h3 class="pt-5 w-full font-mono text-3xl font-black text-slate-500">Gallery</h3>
 </script>
 
-<div class="flex flex-col px-3 pb-4 mt-6 rounded-lg">
+<div class="flex flex-col px-3 pb-4 rounded-lg">
 
 
 {#if mediaItems.length > 0}
+
+
+
+
   <!-- Main Carousel -->
   <div class="relative mx-auto w-full max-w-screen">
     <div 
-      class="flex overflow-hidden flex-col bg-gradient-to-b rounded-2xl"
+      class="flex overflow-hidden flex-col bg-gradient-to-b rounded-2xl embla"
       use:emblaCarouselSvelte={{options: mainOptions}}
       onemblaInit={onMainInit}
     >
-      <div class="flex items-center">
+      <div class="flex items-start">
         {#each mediaItems as item, index}
           <div class="flex-[0_0_100%] min-w-0 relative video-slide-{index}">
-            <div class="flex justify-center p-3 w-full">
+            <div class={cx(
+                "flex justify-center p-3 w-full",
+                (emblaApi && emblaApi.selectedScrollSnap() === index) && 'scale-0',
+                (!emblaApi || emblaApi.selectedScrollSnap() === index) && 'scale-100',
+                )}>
               {#if item.type === 'image'}
                 <img 
                   src={item.src} 
@@ -207,7 +221,6 @@
     
     <!-- Navigation Buttons -->
   </div>
-
   <div class="flex flex-row">
 
     <button 
@@ -226,7 +239,7 @@
     <div class="flex p-1 space-x-2">
       {#each mediaItems as item, index}
         <button 
-          class="flex-[0_0_20%] min-w-0 transition-opacity duration-300 cursor-pointer p-1"
+          class="flex-[0_0_20%] min-w-0 transition-opacity duration-300 cursor-pointer p-1 rounded-md"
           onclick={() => onThumbClick(index)}
         >
           <div class="flex relative justify-center items-center aspect-video">
@@ -234,16 +247,20 @@
               <img 
                 src={item.src} 
                 alt={`Thumbnail ${item.alt}`} 
-                class="object-contain max-w-full max-h-full rounded-lg border-2 transition-all duration-200 border-zinc-800 hover:border-zinc-400"
-                class:border-blue-500={emblaApi && emblaApi.selectedScrollSnap() === index}
-                class:border-gray-200={!emblaApi || emblaApi.selectedScrollSnap() !== index}
+                class={cx(
+                  "object-contain max-w-full max-h-full rounded-lg border-2 transition-all duration-200",
+                  (!emblaApi || currentSlide !== index) && 'border-zinc-800/80 hover:border-zinc-400',
+                  (emblaApi && currentSlide === index) && 'border-zinc-800/0 hover:border-zinc-400/0'
+                  )}
                 onerror={(e) => handleMediaError(e, index)}
               />
             {:else if item.type === 'video'}
               <div 
-                class="flex relative justify-center items-center w-full h-full rounded-lg border-2 bg-gray-100/10 hover:border-blue-400"
-                class:border-blue-500={emblaApi && emblaApi.selectedScrollSnap() === index}
-                class:border-gray-200={!emblaApi || emblaApi.selectedScrollSnap() !== index}
+                class={cx(
+                  "flex relative justify-center items-center w-full h-full rounded-lg border-2 bg-gray-800/10",
+                  (!emblaApi || currentSlide !== index) && 'border-zinc-600/80 hover:border-zinc-400',
+                  (emblaApi && currentSlide === index) && 'border-zinc-800/0 hover:border-zinc-400/0'
+                  )}
               >
                 <Fa icon={faPlayCircle} class="text-3xl"/>
               </div>

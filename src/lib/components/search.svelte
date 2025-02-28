@@ -8,15 +8,21 @@
     import cx from 'clsx';
 </script>
 
-<!-- Full-width projects on mobile, otherwise, 2 in each ... grid should restrict this -->
-<div class={cx(
-    "duration-200 ease-out transition-all bg-transparent rounded-lg border-2 border-slate-700 w-full",
+<style>
+  .parent:has(.child:focus) {
+    border-color: rgb(148 163 184 / 0.7);
+  }
+</style>
+
+
+<div class={cx('parent', 
+    'duration-200 ease-out transition-all bg-transparent rounded-lg border-2 border-slate-700 w-full',
     focused && 'border-slate-400/70'
     )}> 
 
     <div class="flex relative justify-end items-center w-full">
     <input
-        class="p-2 pl-12 w-full h-full bg-transparent outline-hidden!"
+        class="child p-2 pl-12 w-full h-full bg-transparent placeholder:text-slate-600 outline-hidden!"
         type="text"
         placeholder="Search for a project or tag"
         onfocus={()=>{focused=true;}}
@@ -24,8 +30,9 @@
         bind:value
     >
     <Fa icon={faMagnifyingGlass} class={cx(
-        "absolute ease-out transition-all duration-100 left-3 top-1/2 w-5 h-5 transform -translate-y-1/2 text-slate-400",
-        focused && 'scale-110 text-slate-100')} />
+        "absolute ease-out transition-all duration-100 left-3 top-1/2 w-5 h-5 transform -translate-y-1/2 ",
+        focused && 'text-blue-100/80',
+        !focused && 'text-blue-300/60')} />
     </div>
 
 </div>

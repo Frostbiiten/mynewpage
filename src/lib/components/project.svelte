@@ -34,8 +34,8 @@
 <style>
     @layer utilities {
     .border-special {
-        --s: 20px; /* Corner size */
-        --t: 2px;  /* Border thickness */
+        --s: 22px; /* Corner size */
+        --t: 3px;  /* Border thickness */
         --g: 20px; /* Gap between border and image */
         padding: calc(var(--g) + var(--t));
         outline-width: var(--t);
@@ -62,13 +62,13 @@
 <a
     tabindex={id}
     href={`/projects/${name}`}
-    class="grid h-64 bg-none shadow-sm cursor-pointer group"> 
-    <div class='col-span-1 col-start-1 row-span-1 row-start-1 transition-all border-special outline-slate-300/0 group-hover:outline-slate-200/80'>
+    class="grid h-64 overflow-clip bg-none rounded-md shadow-sm cursor-pointer group"> 
+    <div class='col-span-1 col-start-1 row-span-1 row-start-1 rounded-lg transition-all border-special outline-slate-300/0 group-hover:outline-blue-600/40'>
     </div>
     <div class={cx(
         'col-start-1 row-start-1 col-span-1 row-span-1',
         'shadow-lg shadow-black group-hover:shadow-black group-hover:shadow-2xl',
-        "grid overflow-hidden will-change-transform transition-all duration-300 ease-[cubic-bezier(0.16, 1, 0.3, 1)] bg-slate-900/20 bg-clip-content group-hover:m-3")}>
+        "grid overflow-clip rounded-sm will-change-transform transition-all duration-300 ease-[cubic-bezier(0.16, 1, 0.3, 1)] bg-slate-900/20 bg-clip-content group-hover:m-3")}>
         {#if img.found}
             <img class={cx(
                 'w-full absolute h-full object-cover opacity-80',
@@ -103,29 +103,29 @@
                     {dateInfo[1]}
                     </p>
                 </div>
-                <h3 class="flex-grow px-3 py-1 text-3xl text-right duration-300 group-hover:font-bold">{name}</h3>
+                <h3 class="flex-grow px-3 py-1 text-2xl text-right duration-300 lg:text-3xl group-hover:font-bold">{name}</h3>
             </div>
 
             <p class="p-3 px-6 delay-0 duration-150 group-hover:delay-200 align-bottom group-hover:duration-400 -translate-x-1 group-hover:translate-x-0 ease-[cubic-bezier(0.16, 1, 0.3, 1)] opacity-0 group-hover:opacity-100">{desc}</p>
 
 
             <div class="flex flex-col flex-grow justify-end">
-            <div class="flex gap-2 p-3 h-14">
+            <div class="flex gap-2 p-3 h-12 lg:h-14">
             {#each tags as tag, index (tag)}
                 <button
                     animate:flip={{duration: 400, easing: expoOut, delay: 150}}
                     disabled={clickableTags[index]}
                     onclick={(e) => {e.stopPropagation(); e.preventDefault(); addTag(tag);}}
                     class={cx(
-                        'h-full text-sm px-3 rounded-md border-1',
-                        'bg-zinc-950 text-slate-300 border-zinc-600',
+                        'h-full text-[0.6rem] px-2 lg:text-sm lg:px-3 rounded-md border-1',
+                        'bg-zinc-950/90 text-slate-300 border-zinc-600/0',
                         'group/tag transition-all',
                         !clickableTags[index]&& 'cursor-pointer hover:border-green-700 hover:bg-green-950/70 hover:text-slate-900/0',
                         clickableTags[index] && 'cursor-default hover:text-stone-500 ',
                         'ease-[cubic-bezier(0.68, -0.6, 0.32, 1.6)] hover:border-2 ',
                         )}>
                         <div class="grid grid-cols-1 grid-rows-1">
-                            {#if tag === "win"}
+                            {#if tag.toLowerCase().includes("won")}
                             <Fa class="col-span-1 col-start-1 row-span-1 row-start-1 text-amber-500 group-hover/tag:text-transparent" icon={faTrophy}/>
                             {:else}
                             <p class="col-span-1 col-start-1 row-span-1 row-start-1">{tag}</p>
@@ -133,7 +133,7 @@
                         
                             <Fa icon={faPlus} class={cx(
                             'w-full h-full',
-                            (tag != "win") && 'translate-y-[2px]',
+                            (!tag.toLowerCase().includes("won")) && 'translate-y-[2px]',
                             'duration-100 ease-out transition-all scale-0',
                             'col-span-1 col-start-1 row-span-1 row-start-1',
                             !clickableTags[index] && 'group-hover/tag:text-green-500 group-hover/tag:scale-100')} />

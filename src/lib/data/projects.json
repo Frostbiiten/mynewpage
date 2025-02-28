@@ -6,14 +6,16 @@
             "desc": "Fractal renderer written in C++ using the 'chaos game' algorithm.",
             "tags": [ "C++", "SFML"],
             "time": 1641686401000,
+            "src:": "https://github.com/Frostbiiten/Chaos-Game",
             "img": "frac.webp"
         },
         {
             "name": "Gaiawalker",
             "desc": "3D Fighter Game created completely with self-made assets and code. Won the 2023 DPCDSB Game-Making Competition.",
-            "tags": [ "C#", "Unity", "Blender", "Game", "win"],
+            "tags": [ "C#", "Unity", "Blender", "Game", "Won DPCDSB 2023 Game-Making Competition"],
             "time": 1682130180000,
             "img": "gaia.webp",
+            "src": "https://github.com/Frostbiiten/Gaiawalker",
             "galleryCount": [6, 3]
         },
         {
@@ -24,6 +26,7 @@
                 "Game"
             ],
             "time": 1673433498000,
+            "src": "https://github.com/Frostbiiten/Rouge",
             "img": "rouge.webp"
         },
         {
@@ -36,6 +39,7 @@
             ],
             "time": 1688911200000,
             "img": "fff.webp",
+            "src": "https://github.com/Frostbiiten/fff",
             "embed": "fff"
         },
         {
@@ -46,15 +50,17 @@
                 "Game"
             ],
             "time": 1642136850000,
+            "src": "https://github.com/Frostbiiten/Aero",
             "img": "aero.webp"
         },
         {
-            "name": "'Beyond' Engine",
+            "name": "Beyond Engine",
             "desc": "Sonic Engine",
             "tags": [
                 "C#", "Unity", "Game"
             ],
             "time": 1557257844000,
+            "src": "https://github.com/Frostbiiten/Beyond",
             "img": "beyond.webp"
         },
         {
@@ -64,12 +70,14 @@
                 "C#", "Unity", "Game"
             ],
             "time": 1649046270000,
+            "src": "https://github.com/Frostbiiten/SuppressThePress",
             "img": "stp.webp",
             "embed": "stp"
         },
         {
             "name": "customInt",
             "desc": "Custom integer class",
+            "src": "https://github.com/Frostbiiten/customInt",
             "tags": [
                 "C++"
             ],
@@ -80,27 +88,30 @@
             "name": "CivilAIzation",
             "desc": "Hack The 6ix 2023 winner",
             "tags": [
-                "C#", "Unity", "Game", "win"
+                "C#", "Unity", "Game", "Won Hack The 6ix 2023"
             ],
             "time": 1692457860000,
+            "src": "https://github.com/Frostbiiten/civilaization",
             "img": "civilaization.webp"
         },
         {
             "name": "Storymation",
             "desc": "Hack The North winner",
             "tags": [
-                "React", "Js", "win"
+                "React", "Js", "won HTN 2023"
             ],
             "time": 1694884800000,
+            "src": "https://github.com/willi-li-am/storymation",
             "img": "storymation.webp"
         },
         {
             "name": "ReConstruct",
             "desc": "3D FPS created with self-made assets and code. Won the 2022 DPCDSB Game-Making Competition.",
             "tags": [
-                "C#", "Unity", "Game", "win"
+                "C#", "Unity", "Game", "Won DPCDSB 2023 Game-Making Competition"
             ],
             "time": 1654056900000,
+            "src": "https://github.com/Frostbiiten/ReConstruct2",
             "img": "reconstruct.webp"
         }
     ]
