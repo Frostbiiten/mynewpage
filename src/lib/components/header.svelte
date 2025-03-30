@@ -3,6 +3,13 @@
     import cx from 'clsx';
     import Fa from 'svelte-fa';
     import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
+
+    const images = import.meta.glob('/src/lib/assets/gallery/*.{jpg,png,webp}', {
+        eager: true,
+        import: 'default',
+    });
+
+    const imageList = Object.values(images);
     /*
 
         <p class="font-mono text-4xl text-left scale-y-50 w-7xl text-slate-800/80">
@@ -28,6 +35,11 @@
             class={cx('transition-all duration-200',
                 page.url.pathname.startsWith('/projects') && 'text-slate-300 font-bold'
                 )}>Projects</a>
+            <a
+            href="/creative"
+            class={cx('transition-all duration-200',
+                page.url.pathname.startsWith('/creative') && 'text-slate-300 font-bold'
+                )}>Creative</a>
         </div>
 
         <div class="flex-none pt-3 max-w-7xl h-10 text-3xl overflow-clip bg-gradient-to-r scale-y-50 select-none via-blue-800/30 to-violet-800/0 grow from-blue-600/40 text-slate-950">

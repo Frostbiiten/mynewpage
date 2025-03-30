@@ -15,12 +15,10 @@
     */
 </script>
 
-<div class="flex flex-col justify-center items-center px-8 mt-14 mb-20" style="view-transition-name: footer;">
-    <div class="flex flex-col gap-6 items-stretch w-full max-w-7xl">
-        <div class="flex-none max-w-7xl h-[0.2rem] text-3xl overflow-cli bg-blue-400/50">
-        </div>
-        <div class="flex flex-row gap-6 items-center text-xl select-none text-blue-400/60">
-            <p>{new Date().getFullYear()} © Edem Hoggar</p>
+<div class="flex flex-col justify-center items-center px-12 mt-14 mb-14" style="view-transition-name: footer;">
+    <div class="flex flex-col gap-6 justify-center items-stretch w-full max-w-7xl h-20 rounded-lg border-2 bg-slate-900/0 border-slate-900/50">
+        <div class="flex flex-row gap-6 items-center px-8 select-none text-md text-blue-200/60">
+            <p>{new Date().getFullYear()} © <span class="text-slate-500">Edem Hoggar</span></p>
             <a
             target="_blank" rel="noopener noreferrer"
             href="https://github.com/Frostbiiten"

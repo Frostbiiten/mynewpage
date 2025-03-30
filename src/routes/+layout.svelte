@@ -3,8 +3,17 @@
     import "../app.css";
 
     import { onNavigate } from '$app/navigation';
-  import Header from "$lib/components/header.svelte";
-  import Footer from "$lib/components/footer.svelte";
+	import Header from "$lib/components/header.svelte";
+	import Footer from "$lib/components/footer.svelte";
+	import { onMount } from 'svelte';
+	import Loader from "$lib/components/loader.svelte";
+
+	// import { RenderScan } from "svelte-render-scan";
+	// We can add this afterwards ...
+	// <RenderScan/>
+
+    let imgroot;
+    let doneLoading = $state(false)
 
     onNavigate((navigation) => {
         if (!document.startViewTransition) return;
@@ -17,7 +26,40 @@
         });
     });
 
-    // we can add header/footer beside the slot to appear on every page...
+  	onMount(() => {
+		// visited previously
+		const visited = sessionStorage.getItem('visitedHome');
+
+		if (!visited) 
+		{
+			doneLoading = false;
+			sessionStorage.setItem('visitedHome', 'true');
+
+			// load all necessary
+			Promise.all(Array.from(imgroot.querySelectorAll('img')).map(img => {
+				if (img.complete)
+					return Promise.resolve(img.naturalHeight !== 0);
+				return new Promise(resolve => {
+					img.addEventListener('load', () => resolve(true));
+					img.addEventListener('error', () => resolve(false));
+				});
+				})).then(results => {
+					if (results.every(res => res)) console.log('preloaded images');
+					else console.log('partially completed image preloading');
+
+				// "continue" regardless
+				setTimeout(() => {doneLoading = true}, 4000);
+			});
+
+			// break load if it's taking too long
+			const loadBreak = setTimeout(() => {doneLoading = true}, 10000);
+		}
+		else
+		{
+			console.log("done");
+			doneLoading = true;
+		}
+  });
 </script>
 
 <style>
@@ -59,10 +101,9 @@
 </style>
 
 <Header/>
-<div class="min-h-screen">
-<slot />
+<div class="min-h-screen" bind:this="{imgroot}">
+<slot/>
 </div>
-
 <div class="h-20"></div>
-
 <Footer/>
+<Loader done={doneLoading}/>

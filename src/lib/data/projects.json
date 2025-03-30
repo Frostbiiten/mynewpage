@@ -61,7 +61,8 @@
             ],
             "time": 1557257844000,
             "src": "https://github.com/Frostbiiten/Beyond",
-            "img": "beyond.webp"
+            "img": "beyond.webp",
+            "galleryCount": [7, 6]
         },
         {
             "name": "SuppressThePress",
