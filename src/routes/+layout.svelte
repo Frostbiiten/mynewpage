@@ -7,6 +7,7 @@
 	import Footer from "$lib/components/footer.svelte";
 	import { onMount } from 'svelte';
 	import Loader from "$lib/components/loader.svelte";
+	let { children } = $props();
 
 	// import { RenderScan } from "svelte-render-scan";
 	// We can add this afterwards ...
@@ -100,10 +101,12 @@
 }
 </style>
 
-<Header/>
-<div class="min-h-screen" bind:this="{imgroot}">
-<slot/>
+<div class="flex flex-col min-h-screen">
+
+	<Header/>
+	<div class="flex-1" bind:this="{imgroot}">
+	{@render children()}
+	</div>
+	<Footer/>
 </div>
-<div class="h-20"></div>
-<Footer/>
 <Loader done={doneLoading}/>
