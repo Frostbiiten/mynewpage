@@ -254,8 +254,8 @@
             world
           </text>
         </svg>
-        <div class="origin-top-left -ml-[4vw] scale-80" style="filter: url(#sketch); ">
-          <p class="text-[4vw] text-amber-600 mix-blend-difference font-[Arial] text-center align-middle load-anim" style="transform-origin: 50% 35%;">*</p>
+        <div class="origin-top-left -ml-[4vw] scale-80">
+          <p class="text-[4vw] text-blue-600 mix-blend-difference font-[Arial] text-center align-middle load-anim" style="transform-origin: 50% 35%;">*</p>
         </div>
       </div>
     </div>

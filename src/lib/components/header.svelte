@@ -36,6 +36,11 @@
                 page.url.pathname.startsWith('/projects') && 'text-slate-300 font-bold'
                 )}>Projects</a>
             <a
+            href="/blog"
+            class={cx('transition-all duration-200',
+                page.url.pathname.startsWith('/blog') && 'text-slate-300 font-bold'
+                )}>Blog</a>
+            <a
             href="/creative"
             class={cx('transition-all duration-200',
                 page.url.pathname.startsWith('/creative') && 'text-slate-300 font-bold'
