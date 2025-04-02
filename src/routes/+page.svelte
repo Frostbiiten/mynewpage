@@ -131,12 +131,16 @@
 
   let characterhover = $state(false);
   import talkSoundFile from '$lib/sound/talk.mp3'; 
+  import talkSoundFile2 from '$lib/sound/boop.mp3'; 
   let talkSound;
+  let talkSound2;
 
   function figureTalk()
   {
     talkSound.currentTime = 0;
     talkSound.play();
+    talkSound2.currentTime = 0;
+    talkSound2.play();
     characterhover = true;
   }
   function figureTalkEnd()
@@ -165,7 +169,10 @@
     browser = true;
 
     talkSound = new Audio(talkSoundFile);
-    talkSound.volume = 0.02;
+    talkSound.volume = 0.04;
+
+    talkSound2 = new Audio(talkSoundFile2);
+    talkSound2.volume = 0.04;
     
     // Mobile
     isMobile = typeof navigator !== 'undefined' && /Mobi|Android/i.test(navigator.userAgent);
@@ -311,15 +318,7 @@
 
   <div class="flex absolute z-0 justify-center -mt-10 w-full overflow-clip select-none h-250">
     <div class="relative h-250 w-7xl">
-      <div 
-        class="absolute left-0 opacity-50 h-40 w-40 bg-[radial-gradient(#e5e7eb_2.5px,transparent_1px)] [background-size:24px_24px]"
-        style="transform: translate3d({smoothX * -3 - 35}px, {smoothY * -3 + 5}px, 0);">
-      </div>
 
-      <div 
-        class="absolute right-0 bottom-0 opacity-40 h-40 w-40 bg-[radial-gradient(#e5e7eb_2px,transparent_3px)] [background-size:18px_18px]"
-        style="transform: translate3d({smoothX * -3 + 25}px, {smoothY * -3 - 295}px, 0);">
-      </div>
 
       <div 
         class="absolute left-0 opacity-10 h-50 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:48px_48px]"
@@ -386,7 +385,7 @@
   </div>
 
 <div class="flex flex-col gap-7 justify-center items-center px-8 w-full">
-    <div class="z-2 img relative max-w-7xl w-full h-[40rem] rounded-xl select-none border-2 border-blue-700/40 overflow-clip grain">
+    <div class="z-2 img relative max-w-7xl w-full h-[40rem] rounded-xl select-none border-2 border-slate-800/40 overflow-clip grain">
       <div class="absolute top-0 left-0 p-12 w-full h-full">
 
         <div
@@ -395,7 +394,7 @@
             !characterhover && "brightness-100",
             characterhover && "brightness-10"
             )}
-          style="transform: translate3d({smoothX * 10}px, {smoothY * -5 - 570}px, 0) scale({1 + dist01 * 0.01});"
+          style="transform: translate3d({smoothX * 10}px, {smoothY * -5 - 610}px, 0) scale({1 + dist01 * 0.01});"
         >
           <div class="absolute top-0 left-[-100%] w-[300%] h-screen bg-black"></div>
           <img
@@ -694,24 +693,31 @@
           style="transform: translate3d({smoothX * -55 * 0.4}px, {smoothY * -13 * 0.6}px, 0) scale({0.2 + 1.2 * (1 - dist01 * 0.03)});"
           class="absolute z-[15] origin-bottom-right inset-0 h-full w-full bg-transparent bg-[linear-gradient(to_right,rgba(128,128,128,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.07)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
-        <div class={cx("relative z-[30] select-none transition-all duration-200", !characterhover && "opacity-100", characterhover && "opacity-0")}>
-          <h1 class="z-40 font-mono text-7xl font-bold">Edem</h1>
-          <h2 class="z-40 px-1 text-xl transition-all tracking-[0.3em] text-slate-500">Hoggar</h2>
+        <div class={cx("font-mono relative z-[30] select-none transition-all duration-200", !characterhover && "opacity-100", characterhover && "opacity-0")}>
+          <h1 class="z-40 text-8xl font-bold">Edem</h1>
+          <h2 class="z-40  px-1 text-2xl transition-all tracking-[0.3em] text-slate-500">Hoggar</h2>
           <div>
 
-          <h3 class="z-40 px-1 mt-16 text-2xl transition-all text-zinc-300">Computer Science</h3>
-          <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noopener noreferrer"
-            class="flex z-40 flex-row gap-2 items-center px-1 w-56 text-sm text-sky-600 transition-all group-hover:text-sky-500 group">
-          <span class="duration-200 transition-color group-hover:text-sky-500">@ University of Waterloo</span> <Fa class="duration-200 scale-90 group-hover:scale-100" icon={faSquareArrowUpRight}></Fa>
-          </a>
+          <div class="h-5"></div>
 
-          <div class="py-3 tracking-wider leading-9 font-mono px-4 mt-6 w-124 text-blue-100 rounded-sm bg-zinc-950/[0.0] h-60">
-          <p>I'm a Canadian student interested in computer science and mathematics. In my free time, you can find me developing or playing games, working on art, or solving challenging puzzles. Check out my contacts below if you would like to reach me!</p>
+
+          <div class="py-3 tracking-[0.02em] leading-10 font-mono  px-4 mt-6 w-130 text-slate-300 rounded-sm bg-zinc-950/[0.0] h-60">
+          <p class="flex flex-row flex-wrap items-center">
+            Studying <strong class="pl-2"> CS</strong>
+            <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noopener noreferrer"
+              class="flex z-40 flex-row gap-2 items-center px-1 pl-3 w-56 font-bold text-sky-600 transition-all group-hover:text-sky-500 group">
+              <span class="tracking-widest duration-200 text-nowrap transition-color group-hover:text-sky-500">@ University of Waterloo</span> <Fa class="duration-200 scale-90 group-hover:scale-100" icon={faSquareArrowUpRight}></Fa>
+            </a>
+
+            Pursuing Summer 2025 Software Development roles.
+            Check out my contacts below for any inquiries.
+          </p>
+
           </div>
           </div>
         </div>
 
-        <div class={cx("flex absolute bottom-0 left-0 z-40 duration-200 gap-6 items-end p-12 px-16 w-full text-2xl text-sky-400/80", !characterhover && "opacity-100", characterhover && "opacity-0")}>
+        <div class={cx("flex absolute bottom-0 left-0 z-40 duration-200 gap-4 items-end p-10 px-16 w-full text-lg text-gray-500", !characterhover && "opacity-100", characterhover && "opacity-0")}>
           <a
           href="https://github.com/Frostbiiten" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-sky-100">
           <Fa icon={faGithub}/>
@@ -770,7 +776,7 @@
           class="
             object-cover w-full h-full origin-top-left
             transition-[transform, opacity]
-            scale-130 translate-x-[-5%] group-hover:translate-x-0 group-focus:translate-x-0 opacity-10 group-hover:opacity-100 group-focus:opacity-100
+            scale-145 translate-x-[-5%] group-hover:translate-x-0 group-focus:translate-x-0 opacity-10 group-hover:opacity-100 group-focus:opacity-100
             duration-500 ease-[cubic-bezier(0.45,0,0,1)]"
           src={blogImg}/>
         <div class="

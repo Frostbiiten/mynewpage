@@ -44,7 +44,7 @@
             <div class="py-1 pl-4 space-y-4 h-min">
              <div class="space-y-1">
                 <p class="px-1 text-sm text-slate-500"> {dateInfo[0]} {dateInfo[1]} </p>
-                <h1 class="h-full font-mono text-5xl lg:text-6xl">{data.slug}</h1>
+                <h1 style="view-transition-name: project-title" class="h-full font-mono text-5xl lg:text-6xl">{data.slug}</h1>
              </div>
 
                 <div

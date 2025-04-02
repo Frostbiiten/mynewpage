@@ -19,7 +19,10 @@
     import { faXmark, faPlus, faCircle, faMedal, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
     import cx from "clsx";
-  import { stopPropagation } from 'svelte/legacy';
+    import { stopPropagation } from 'svelte/legacy';
+    import { fade } from 'svelte/transition';
+    let dimensionsLoaded = $state(false);
+
     //let mappedTags = $derived(tags.map(tag => [tag, true]));
 
     // NOTE: selected should be a callback to set the
@@ -28,6 +31,12 @@
     // to print when these values are updated ..
     $inspect(name, desc, tags, img);
 
+    function onImageDimensionsLoaded(event) {
+        console.log("hello")
+        if (event.target.naturalWidth > 0 && event.target.naturalHeight > 0) {
+            dimensionsLoaded = true;
+        }
+    }
 
 </script>
 
@@ -55,6 +64,25 @@
     .border-special:group-hover {
         outline-offset: calc(-1 * var(--g));
     }
+
+    @keyframes placeholder-shimmer {
+        0% { background-position:  100%; }
+        100% { background-position: -100%; }
+    }
+
+    .load-placeholder {
+        animation: 3s cubic-bezier(.15,.50,.85,.50) infinite placeholder-shimmer;
+        background-image: linear-gradient(
+        to right,
+        rgba(150,180,255, 0) 0%,
+        rgba(140,180,255, 0.008) 25%,
+        rgba(40,80,255, 0.125) 50%,
+        rgba(140,180,255, 0.008) 75%,
+        rgba(150,180,255, 0) 100%
+        );
+        background-size: 200%;
+        height: 100%; width: 100%;
+    }
 }
 </style>
 
@@ -63,18 +91,23 @@
     tabindex={id}
     href={`/projects/${name}`}
     class="grid h-64 overflow-clip bg-none rounded-md shadow-sm cursor-pointer group"> 
-    <div class='col-span-1 col-start-1 row-span-1 row-start-1 rounded-lg transition-all border-special outline-slate-300/0 group-hover:outline-blue-600/40'>
-    </div>
+    <div class='col-span-1 col-start-1 row-span-1 row-start-1 rounded-lg transition-all border-special outline-slate-300/0 group-hover:outline-blue-600/40'></div>
     <div class={cx(
         'col-start-1 row-start-1 col-span-1 row-span-1',
-        'shadow-lg shadow-black group-hover:shadow-black group-hover:shadow-2xl',
-        "grid overflow-clip rounded-sm will-change-transform transition-all duration-300 ease-[cubic-bezier(0.16, 1, 0.3, 1)] bg-slate-900/20 bg-clip-content group-hover:m-3")}>
+        "transition-all duration-800 ease-[cubic-bezier(0.12,1.8,0.0,1.0)] grid overflow-clip rounded-sm will-change-transform bg-slate-900/20 bg-clip-content group-hover:m-3")}>
         {#if img.found}
-            <img class={cx(
-                'w-full absolute h-full object-cover opacity-80',
-                'col-start-1 row-start-1 col-span-1 row-span-1',
-                'duration-400 ease-[cubic-bezier(0.16, 1, 0.3, 1)] group-hover:scale-120 group-hover:blur-sm group-hover:saturate-0 group-hover:brightness-[0.4]',
+            <img
+            onload={onImageDimensionsLoaded} 
+            onloadstart={onImageDimensionsLoaded}
+            onresize={onImageDimensionsLoaded}
+            class={cx(
+                'w-full absolute h-full object-cover',
+                dimensionsLoaded && "opacity-80",
+                !dimensionsLoaded && "opacity-0 blur-xs",
+                'col-start-1 row-start-1 col-span-1 row-span-1 opacity-0',
+                'ease-[cubic-bezier(0.06, 1, 0.3, 1)] duration-400 group-hover:scale-120 group-hover:blur-sm group-hover:saturate-0 group-hover:brightness-[0.4]',
                 )} alt="" src={img.img}/>
+            <div class={cx("hidden absolute w-full h-full opacity-0 load-placeholder group-hover:block group-hover:opacity-100", !dimensionsLoaded && "opacity-100 block")}></div>
         {:else}
             <div
             style="background-image: url({img.img});"
@@ -84,6 +117,7 @@
                 )}>
                   <div class="absolute inset-0 bg-zinc-600/80"></div> <!-- Tint overlay -->
                 </div>
+            <div class="hidden absolute w-full h-full opacity-0 load-placeholder group-hover:block group-hover:opacity-100"></div>
         {/if}
 
 

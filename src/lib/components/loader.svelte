@@ -2,18 +2,19 @@
     let { done } = $props();
     let baseFrequency2 = $state(0.05);
     let scale2 = $state(0.5);
+    let selfOverride = $state(false)
 
-    import shinji from "$lib/img/shinji.webp"
+    import { browser } from "$app/environment";
     import { fade, fly, scale } from "svelte/transition";
 
     $effect(() => {
         const interval = setInterval(() => {
-        baseFrequency2 = 0.2 + Math.random() * 0.01;
-        scale2 = 0.4 + Math.random() * 0.5;
-    }, 400);
+          baseFrequency2 = 0.2 + Math.random() * 0.01;
+          scale2 = 0.4 + Math.random() * 0.5;
+      }, 400);
 
-    return () => clearInterval(interval);
-  });
+      return () => clearInterval(interval);
+    });
 
   function bgGone(node, { duration = 200, easing = x => { return x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2; } }) {
     return {
@@ -29,19 +30,6 @@
 
 
 <style>
-  .grain::after {
-    content: "";
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/9a/512x512_Dissolve_Noise_Texture.png");
-    height: 600%;
-    width: 600%;
-    position: absolute;
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: 10;
-    animation: animateGrain 10s steps(10) infinite;
-    mix-blend-mode: soft-light;
-  }
-
 
   @keyframes animateGrain {
     0%, 100% { transform: scale(1.1) translate(0, 0) }
@@ -276,10 +264,6 @@
         yChannelSelector="G" />
     </filter>
   </svg>
-
-  <div class="absolute top-0 right-0 origin-top-right select-none shinji">
-    <img src={shinji} class="top-0 right-0 opacity-0 scale-65" style="filter: brightness(0.14) url(#sketch);" alt="shinji-kun" />
-  </div>
 
   </div>
 </div>
