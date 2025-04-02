@@ -31,10 +31,10 @@
             gallery: Object.values(import.meta.glob('$lib/img/creative/images/sketches/*', {
                 eager: true
             })).map((module) => module.default),
-            contrast: "155",
+            contrast: "1.55",
             additionalImageClasses: "saturate-0",
-            objectPosition: "50%_50%",
-            hoverObjectPosition: "35%_50%"
+            objectPosition: "35% 50%",
+            hoverObjectPosition: "55% 50%"
         },
         {
             name: "digital*",
@@ -42,9 +42,9 @@
             gallery: Object.values(import.meta.glob('$lib/img/creative/images/digital/*', {
                 eager: true
             })).map((module) => module.default),
-            contrast: "105",
-            objectPosition: "65%_50%",
-            hoverObjectPosition: "45%_50%"
+            contrast: "1.05",
+            objectPosition: "45% 50%",
+            hoverObjectPosition: "65% 50%"
         },
         {
             name: "photos",
@@ -52,9 +52,9 @@
             gallery: Object.values(import.meta.glob('$lib/img/creative/images/photos/*', {
                 eager: true
             })).map((module) => module.default),
-            contrast: "135",
-            objectPosition: "60%_50%",
-            hoverObjectPosition: "90%_50%"
+            contrast: "1.35",
+            objectPosition: "60% 50%",
+            hoverObjectPosition: "75% 50%"
         },
         {
             name: "misc.",
@@ -64,10 +64,10 @@
                 eager: true
             })).map((module) => module.default),
             secondaryImage: misc2,
-            contrast: "155",
+            contrast: "1.55",
             additionalImageClasses: "scale-110",
-            objectPosition: "50%_50%",
-            hoverObjectPosition: "35%_50%"
+            objectPosition: "50% 50%",
+            hoverObjectPosition: "40% 50%"
         }
     ]
 
@@ -145,20 +145,21 @@
 
             {#each visibleCategories as cat, i (cat.name)}
             <button 
-                class="flex z-2 group rounded-lg group-hover:w-[30%] relative justify-start items-end overflow-clip cursor-pointer duration-80 border-zinc-600 grow group"
+                class="flex z-2 group rounded-lg group-hover:w-[30%] relative justify-start items-end overflow-clip cursor-pointer duration-80 border-zinc-600 grow"
+                style="--pos: {cat.objectPosition ?? '50% 50%'}; --hover-pos: {cat.hoverObjectPosition ?? '35% 50%'}; --contr: {cat.contrast ?? '1.55'}"
                 onclick={() => setCategory(cat.name)}
                 out:scaleX={{ duration: 400, delay: (1+i) * 100 }}
                 in:scaleX={{ duration: 400, delay: (1+i) * 100 }}
                 >
                 <img 
-                    class="object-cover rounded-lg contrast-{cat.contrast ?? 155} {cat.additionalImageClasses ?? ""} pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-500 object-[{cat.objectPosition ?? '50%_50%'}] group-hover:object-[{cat.hoverObjectPosition ?? '35%_50%'}] absolute top-0 left-0 h-full" 
+                    class={cx("object-cover rounded-lg contrast-[var(--contr)] pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-500 absolute top-0 left-0 h-full object-[var(--pos)] group-hover:object-[var(--hover-pos)]", cat.additionalImageClasses ?? '')}
                     alt={cat.name} 
                     src={cat.image}
                 />
                 
                 {#if cat.secondaryImage}
                     <img 
-                    class="object-cover rounded-lg contrast-{cat.contrast ?? 155} pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-500 object-[{cat.objectPosition ?? '50%_50%'}] group-hover:object-[{cat.hoverObjectPosition ?? '35%_50%'}] absolute top-0 left-0 h-full opacity-0 group-hover:opacity-100" 
+                    class="object-cover rounded-lg contrast-[var(--contr)] pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-500 absolute top-0 left-0 h-full opacity-0 group-hover:opacity-100 object-[var(--pos)] group-hover:object-[var(--hover-pos)]" 
                     alt={cat.name} 
                     src={cat.secondaryImage}
                     />
