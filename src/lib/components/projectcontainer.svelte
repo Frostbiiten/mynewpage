@@ -14,9 +14,12 @@
     import { circOut, expoInOut, expoOut, quadOut, backIn } from "svelte/easing";
     import { flip } from "svelte/animate";
     import { scale, fly, fade } from "svelte/transition";
+  import { onMount } from "svelte";
 
     let searchText = $state('');
     let tags = $state([]);
+    let projectsMount = $state(false);
+    setTimeout(() => projectsMount = true, 200);
 
     function addTag(tag)
     {
@@ -47,6 +50,7 @@
 
     function inSearch(project)
     {
+        if (!projectsMount) return false;
         let searchFiltered = searchText.toLowerCase();
         return searchFiltered.split(" ").some(str => wordFilter(project, str));
     }
@@ -90,7 +94,7 @@
 
 </script>
 
-<div class="px-4 space-y-3">
+<div class="space-y-3">
 
     <div
     class="flex flex-row gap-3">
@@ -136,7 +140,7 @@
     {#each pj_test.projects.filter(inSearch).sort(sorter) as project, index (project.name)}
         <div
         animate:flip={{duration: 400, easing: expoOut}}
-        in:fly={{y:40}}
+        in:fly={{y:40, delay: index * 20, duration: 500 + index * 30}}
         out:fade={{duration:90}}
         >
             <ProjectPane {...project} img={getImage(project.img)} id={index} addedTags={tags} addTag={addTag} />

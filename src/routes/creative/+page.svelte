@@ -44,7 +44,7 @@
             })).map((module) => module.default),
             contrast: "1.05",
             objectPosition: "45% 50%",
-            hoverObjectPosition: "65% 50%"
+            hoverObjectPosition: "35% 50%"
         },
         {
             name: "photos",
@@ -53,7 +53,8 @@
                 eager: true
             })).map((module) => module.default),
             contrast: "1.35",
-            objectPosition: "60% 50%",
+            objectPosition: "65% 50%",
+            additionalImageClasses: "brightness-110",
             hoverObjectPosition: "75% 50%"
         },
         {
@@ -65,7 +66,7 @@
             })).map((module) => module.default),
             secondaryImage: misc2,
             contrast: "1.55",
-            additionalImageClasses: "scale-110",
+            additionalImageClasses: "scale-120",
             objectPosition: "50% 50%",
             hoverObjectPosition: "40% 50%"
         }
@@ -82,12 +83,14 @@
     }
 
     let visibleCategories = $derived(!category ? categories : categories.filter(cat => cat.name === category));
+    let loadedImg = $state(Object.fromEntries(categories.map(cat => [cat.name, false])));
 
     let currentImages = $state([]);
 
     let [minColWidth, maxColWidth, gap] = [320, 450, 10]
 
     import { cubicOut, expoInOut, expoOut } from 'svelte/easing';
+  import { load } from "../projects/[slug]/+page";
 
     function scaleX(node, { delay = 0, duration = 400, easing = expoOut }) {
         return {
@@ -128,8 +131,8 @@
 <style>
 </style>
 
-<div class="flex flex-row justify-center -mt-4 -mb-8 w-full grow">
-    <div class="mx-7 space-y-5 max-w-7xl min-h-full grow w-7xl">
+<div class="flex flex-row justify-center -mt-4 -mb-8 w-full overflow-clip grow">
+    <div class="px-8 space-y-5 max-w-7xl min-h-full grow w-7xl">
         <div class={cx("flex transition-all items-stretch w-full h-full justify-stretch duration-300", visibleCategories.length != 1 && "gap-2", visibleCategories.length == 1 && "gap-0")}>
             {#if !category}
             <div class="bg-[#d9d9d9] rounded-lg overflow-clip w-56 min-w-56"
@@ -139,22 +142,24 @@
                 <div class="pt-4 pl-5 space-y-2 h-1/2">
                     <h1 class="w-full leading-8 font-mono text-[225%] text-gray-950">creative works</h1>
                 </div>
-                <img src={me} alt="me" class="object-cover h-1/2"/>
+                <img src={me} alt="me" class="hidden object-[47%_0%] object-cover h-1/2"/>
+                <p class="hidden content-end p-6 pb-6 h-1/2 text-gray-900">the things i've done</p>
             </div>
             {/if}
 
             {#each visibleCategories as cat, i (cat.name)}
             <button 
-                class="flex z-2 group rounded-lg group-hover:w-[30%] relative justify-start items-end overflow-clip cursor-pointer duration-80 border-zinc-600 grow"
+                class="flex bg-slate-800 z-2 group rounded-lg group-hover:w-[30%] relative justify-start items-end overflow-clip cursor-pointer duration-80 border-zinc-600 grow"
                 style="--pos: {cat.objectPosition ?? '50% 50%'}; --hover-pos: {cat.hoverObjectPosition ?? '35% 50%'}; --contr: {cat.contrast ?? '1.55'}"
                 onclick={() => setCategory(cat.name)}
                 out:scaleX={{ duration: 400, delay: (1+i) * 100 }}
                 in:scaleX={{ duration: 400, delay: (1+i) * 100 }}
                 >
                 <img 
-                    class={cx("object-cover rounded-lg contrast-[var(--contr)] pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-500 absolute top-0 left-0 h-full object-[var(--pos)] group-hover:object-[var(--hover-pos)]", cat.additionalImageClasses ?? '')}
+                    class={cx("object-cover opacity-0 rounded-lg contrast-[var(--contr)] pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-700 absolute top-0 left-0 h-full object-[var(--pos)] group-hover:object-[var(--hover-pos)]", cat.additionalImageClasses ?? '', loadedImg[cat.name] && "opacity-100")}
                     alt={cat.name} 
                     src={cat.image}
+                    onload={() => {loadedImg[cat.name] = true}}
                 />
                 
                 {#if cat.secondaryImage}
@@ -165,8 +170,8 @@
                     />
                 {/if}
                 
-                <div class="absolute top-0 left-0 w-full h-full mix-blend-soft-light bg-blue-600/40"></div>
-                <div class={cx("absolute transition-colors mix-blend-hard-light duration-100 from-zinc-950/80 top-0 left-0 w-full h-full bg-gradient-to-t to-60%", visibleCategories.length != 1 && "group-hover:from-[rgb(160,190,255)]", visibleCategories.length == 1 && "group-hover:from-rose-400/30")}></div>
+                <div class="hidden top-0 left-0 w-full h-full opacity-90 mix-blend-soft-light bg-gray-600/40"></div>
+                <div class={cx("absolute transition-colors mix-blend-hard-light duration-100 from-gray-950/80 top-0 left-0 w-full h-full bg-gradient-to-t to-60%", visibleCategories.length != 1 && "group-hover:from-[rgb(160,190,255)]", visibleCategories.length == 1 && "group-hover:from-rose-400/30")}></div>
                 
 
                 {#if visibleCategories.length == 1}

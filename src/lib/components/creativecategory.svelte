@@ -1,4 +1,3 @@
-<!-- CreativeWorksItem.svelte -->
 <script>
   // Correctly using $props and initializing state variables
   const props = $props();
@@ -12,11 +11,15 @@
   let hoverObjectPosition = $state(props.hoverObjectPosition ?? '35% 50%');
   let contrast = $state(props.contrast ?? '155');
   let additionalImageClasses = $state(props.additionalImageClasses ?? '');
+
+  let loaded = false;
+
+  import cx from "clsx";
   
 </script>
 
   <img 
-    class="object-cover contrast-{contrast} {additionalImageClasses} pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-500 object-[{objectPosition}] group-hover:object-[{hoverObjectPosition}] absolute top-0 left-0 h-full" 
+    class={cx("object-cover transition-opacity duration-500 opacity-0 contrast-{contrast} {additionalImageClasses} pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-500 object-[{objectPosition}] group-hover:object-[{hoverObjectPosition}] absolute top-0 left-0 h-full", loaded && "opacity-100")}
     alt={name} 
     src={image}
   />

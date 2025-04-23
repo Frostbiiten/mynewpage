@@ -37,14 +37,41 @@
     import Gallery from '$lib/components/gallery.svelte';
 </script>
 
+<style>
+    @keyframes text-reveal {
+        0% {
+            opacity: 0;
+            transform: translateX(1.5rem) scaleX(1);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0) scaleX(1);
+        }
+    }
+
+    .animate-text-reveal {
+        transform-origin: left;
+        animation: text-reveal 1.2s cubic-bezier(1, 0, 0, 1) 20s forwards;
+    }
+</style>
+
 <div class="flex flex-col justify-center items-center w-full">
-    <div class="px-4 space-y-4 max-w-screen w-7xl">
+    <div class="px-4 -mt-5 space-y-4 max-w-screen w-7xl">
         <div class="flex flex-row gap-2">
 
             <div class="py-1 pl-4 space-y-4 h-min">
              <div class="space-y-1">
                 <p class="px-1 text-sm text-slate-500"> {dateInfo[0]} {dateInfo[1]} </p>
-                <h1 style="view-transition-name: project-title" class="h-full font-mono text-5xl lg:text-6xl">{data.slug}</h1>
+                <h1 style="view-transition-name: project-title" class="h-full font-mono text-6xl lg:text-7xl">
+                    {#each Array.from(data.slug) as char, index}
+                        <span
+                        class="inline-block animate-text-reveal"
+                        style="animation-delay: {index * 0.03 - 0.6}s; animation-fill-mode: backwards;"
+                        >
+                        {@html char === ' ' ? '&nbsp;' : char}
+                        </span>
+                    {/each}
+                </h1>
              </div>
 
                 <div

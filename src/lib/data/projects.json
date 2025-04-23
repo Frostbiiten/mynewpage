@@ -7,7 +7,8 @@
             "tags": [ "C++", "SFML"],
             "time": 1641686401000,
             "src:": "https://github.com/Frostbiiten/Chaos-Game",
-            "img": "frac.webp"
+            "img": "frac.webp",
+            "galleryCount": [3, 2]
         },
         {
             "name": "Gaiawalker",
@@ -51,7 +52,8 @@
             ],
             "time": 1642136850000,
             "src": "https://github.com/Frostbiiten/Aero",
-            "img": "aero.webp"
+            "img": "aero.webp",
+            "galleryCount": [2, 2]
         },
         {
             "name": "Beyond Engine",
