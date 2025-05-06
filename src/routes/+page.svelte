@@ -766,10 +766,13 @@
           </div>
 
         </div>
-        <!-- this probably isn't clipping properly because the scale (see grain class above...)-->
-        <div class="absolute top-0 left-0 w-full h-full overflow-clip bg-clip-padding rounded-xl border-red-400 z-9999 grain">
 
-        </div>
+          <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-lg mix-blend-soft-light">
+            <div class="overflow-hidden relative w-full h-full rounded-xl scale-140">
+              <div class="absolute top-0 left-0 w-full h-full z-9999 grain">
+              </div>
+            </div>
+          </div>
       </div>
 
       <div class="z-2 flex bg-zinc-950 relative duration-200 transition-[border-color] flex-row w-full max-w-7xl h-72 overflow-clip rounded-xl border-2 select-none border-blue-950/50 hover:border-blue-700/40">

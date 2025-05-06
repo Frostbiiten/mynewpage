@@ -80,7 +80,7 @@
 			doneLoading = true;
 		}
   });
-  let scroll = $state(0)
+  let scroll = $state(null)
 </script>
 
 <style>

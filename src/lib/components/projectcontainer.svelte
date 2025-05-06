@@ -14,7 +14,7 @@
     import { circOut, expoInOut, expoOut, quadOut, backIn } from "svelte/easing";
     import { flip } from "svelte/animate";
     import { scale, fly, fade } from "svelte/transition";
-  import { onMount } from "svelte";
+    import { onMount } from "svelte";
 
     let searchText = $state('');
     let tags = $state([]);
@@ -97,7 +97,7 @@
 <div class="space-y-3">
 
     <div
-    class="flex flex-row gap-3">
+    class="flex flex-row gap-3 bg-zinc-950/95">
         <!-- perhaps add lg:basis-1/2 too? -->
         <div class="flex flex-row flex-shrink justify-center items-center pb-3 basis-full">
         <Search bind:value={searchText}/>

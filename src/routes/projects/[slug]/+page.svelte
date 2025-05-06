@@ -9,7 +9,8 @@
 
     import project_data_raw from "$lib/data/projects.json"
     let project_data = $state(project_data_raw.projects.find(el => el.name === data.slug))
-    $inspect(project_data)
+    //$inspect(project_data)
+
 
     function getDateInfo(timestamp)
     {
