@@ -1,524 +1,160 @@
 {
-    "collections" : 
-    [
-        {
-            "name": "The Bends",
-            "artist": "Radiohead",
-            "released": "March 13, 1995",
-            "img": "the_bends.png",
-            "tracklist": [
-                {
-                    "name": "Planet Telex",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "The Bends",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "High and Dry",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Fake Plastic Trees",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Bones",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "(Nice Dream)",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Just",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "My Iron Lung",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Bulletproof... I Wish I Was",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Black Star",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Sulk",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Street Spirit (Fade Out)",
-                    "fav": true,
-                    "hotspots": [0]
-                }
-            ]
-        },
-        {
-            "name": "OK Computer",
-            "artist": "Radiohead",
-            "released": "May 21, 1997",
-            "img": "ok_computer.png",
-            "tracklist": [
-                {
-                    "name": "Airbag",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Paranoid Android",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Subterranean Homesick Alien",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Exit Music (for a Film)",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Let Down",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Karma Police",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Fitter Happier",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Electioneering",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Climbing Up the Walls",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "No Surprises",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Lucky",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "The Tourist",
-                    "fav": true,
-                    "hotspots": [0]
-                }
-            ]
-        },
-        {
-            "name": "Kid A",
-            "artist": "Radiohead",
-            "released": "October 2, 2000",
-            "img": "kid_a.png",
-            "tracklist": [
-                {
-                    "name": "Everything In Its Right Place",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Kid A",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "The National Anthem",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "How to Dissapear Completely",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Treefingers",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Optimistic",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "In Limbo",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Idioteque",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Morning Bell",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Motion Picture Soundtrack",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Untitled",
-                    "fav": true,
-                    "hotspots": [0]
-                }
-            ]
-        },
-        {
-            "name": "Amnesiac",
-            "artist": "Radiohead",
-            "released": "May 30, 2001",
-            "img": "amnesiac.png",
-            "tracklist": [
-                {
-                    "name": "Packt Like Sardines In a Crushd Tin Box",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Pyramid Song",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Pulk/Pull Revolving Doors",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "You and Whose Army?",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "I Might Be Wrong",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Knives Out",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Morning Bell/Amnesiac",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Dollars and Cents",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Hunting Bears",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Like Spinning Plates",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Life in a Glasshouse",
-                    "fav": true,
-                    "hotspots": [0]
-                }
-            ]
-        },
-        {
-            "name": "Hail To the Thief",
-            "artist": "Radiohead",
-            "released": "June 9, 2003",
-            "img": "hail_to_the_thief.png",
-            "tracklist": [
-                {
-                    "name": "2 + 2 = 5",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Sit Down. Stand Up",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Sail To The Moon",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Backdrifts",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Go To Sleep",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Where I End and You Begin",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "We Suck Young Blood",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "The Gloaming",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "There, There",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "I Will",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "A Punch Up at a Wedding",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Myxomatosis",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Scatterbrain",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "A Wolf At the Door",
-                    "fav": true,
-                    "hotspots": [0]
-                }
-            ]
-        },
-        {
-            "name": "In Rainbows",
-            "artist": "Radiohead",
-            "released": "October 10, 2007",
-            "img": "in_rainbows.png",
-            "tracklist": [
-                {
-                    "name": "15 Step",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Bodysnatchers",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Nude",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Weird Fishes / Arpeggi",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "All I Need",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Faust Arp",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Reckoner",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "House Of Cards",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Jigsaw Falling Into Place",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Videotape",
-                    "fav": true,
-                    "hotspots": [0]
-                }
-            ]
-        },
-        {
-            "name": "Sentinel And Enterprise",
-            "artist": "The Wicked Farleys",
-            "released": "April 14, 1998",
-            "img": "sentinel_and_enterprise.jpg",
-            "tracklist": [
-                {
-                    "name": "That's Fine",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "My Office",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Even Numbers",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Feel the Mores",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Route 2",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "23 Red Devils",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Props",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Not Up",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Electricity Before Wire",
-                    "fav": true,
-                    "hotspots": [0]
-                }
-            ]
-        },
-        {
-            "name": "Panchiko",
-            "artist": "Ginkgo",
-            "released": "April 4, 2025",
-            "img": "ginkgo.png",
-            "tracklist": [
-                {
-                    "name": "Florida",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Ginkgo",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Shandy in the Graveyard",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Shelled and Cooked",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Lifestyle Trainers",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Chapel of Salt",
-                    "fav": true,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Vineger",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Mac's Omlette",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Subtitles",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Formula",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Rise and Fall",
-                    "fav": false,
-                    "hotspots": [0]
-                },
-                {
-                    "name": "Innocent",
-                    "fav": true,
-                    "hotspots": [0]
-                }
-            ]
-        }
-    ]
+  "collections": [
+    {
+      "name": "The Bends",
+      "artist": "Radiohead",
+      "released": "March 13, 1995",
+      "img": "the_bends.png",
+      "tracklist": [
+        { "name": "Planet Telex",                 "fav": true,  "length": 259, "hotspots": [0], "link": "g0az4OkM02Y" },
+        { "name": "The Bends",                    "fav": true,  "length": 246, "hotspots": [0], "link": "K8z8hLvjb_U" },
+        { "name": "High and Dry",                 "fav": false, "length": 257, "hotspots": [0], "link": "7qFfFVSerQo" },
+        { "name": "Fake Plastic Trees",           "fav": true,  "length": 290, "hotspots": [0], "link": "n5h0qHwNrHk" },
+        { "name": "Bones",                        "fav": false, "length": 189, "hotspots": [0], "link": "3ZKxungSg9U" },
+        { "name": "(Nice Dream)",                 "fav": false, "length": 233, "hotspots": [0], "link": "jIjTFt6XmFM" },
+        { "name": "Just",                         "fav": true,  "length": 234, "hotspots": [0], "link": "oIFLtNYI3Ls" },
+        { "name": "My Iron Lung",                 "fav": true,  "length": 276, "hotspots": [0], "link": "eHK67LiMI8k" },
+        { "name": "Bulletproof... I Wish I Was",  "fav": true,  "length": 208, "hotspots": [0], "link": "WqU2fyqQGI4" },
+        { "name": "Black Star",                   "fav": true,  "length": 247, "hotspots": [0], "link": "d7lbzUUXj0k" },
+        { "name": "Sulk",                         "fav": false, "length": 222, "hotspots": [0], "link": "-SLb6BdCHlE" },
+        { "name": "Street Spirit (Fade Out)",     "fav": true,  "length": 253, "hotspots": [0], "link": "LCJblaUkkfc" }
+      ]
+    },
+    {
+      "name": "OK Computer",
+      "artist": "Radiohead",
+      "released": "May 21, 1997",
+      "img": "ok_computer.png",
+      "tracklist": [
+        { "name": "Airbag",                       "fav": true,  "length": 287, "hotspots": [0], "link": "jNY_wLukVW0" },
+        { "name": "Paranoid Android",             "fav": true,  "length": 387, "hotspots": [0], "link": "Lt8AfIeJOxw" },
+        { "name": "Subterranean Homesick Alien",  "fav": true,  "length": 267, "hotspots": [0], "link": "_fTWmUlTEqE" },
+        { "name": "Exit Music (for a Film)",      "fav": false, "length": 267, "hotspots": [0], "link": "Bf01riuiJWA" },
+        { "name": "Let Down",                     "fav": true,  "length": 299, "hotspots": [0], "link": "EgkI1zI61bQ" },
+        { "name": "Karma Police",                 "fav": true,  "length": 264, "hotspots": [0], "link": "4IJI6soiQhI" },
+        { "name": "Fitter Happier",               "fav": true,  "length": 117, "hotspots": [0], "link": "O4SzvsMFaek" },
+        { "name": "Electioneering",               "fav": true,  "length": 230, "hotspots": [0], "link": "3DtgWrFTtQk" },
+        { "name": "Climbing Up the Walls",        "fav": true,  "length": 285, "hotspots": [0], "link": "XX4EpkR-Sp4" },
+        { "name": "No Surprises",                 "fav": true,  "length": 229, "hotspots": [0], "link": "LBt60dfwEBY" },
+        { "name": "Lucky",                        "fav": true,  "length": 258, "hotspots": [0], "link": "yuZYQvvLXVY" },
+        { "name": "The Tourist",                  "fav": true,  "length": 326, "hotspots": [0], "link": "HkgzObf8uVU" }
+      ]
+    },
+    {
+      "name": "Kid A",
+      "artist": "Radiohead",
+      "released": "October 2, 2000",
+      "img": "kid_a.png",
+      "tracklist": [
+        { "name": "Everything In Its Right Place", "fav": true,  "length": 251, "hotspots": [0], "link": "NUnXxh5U25Y" },
+        { "name": "Kid A",                         "fav": true,  "length": 284, "hotspots": [0], "link": "MXNbfU0Ww_E" },
+        { "name": "The National Anthem",           "fav": true,  "length": 351, "hotspots": [0], "link": "NfQD1QiQ9o4" },
+        { "name": "How to Dissapear Completely",   "fav": true,  "length": 356, "hotspots": [0], "link": "6W6HhdqA95w" },
+        { "name": "Treefingers",                   "fav": true,  "length": 222, "hotspots": [0], "link": "L7p47zYKJoM" },
+        { "name": "Optimistic",                    "fav": true,  "length": 315, "hotspots": [0], "link": "1On-ZHfTWOo" },
+        { "name": "In Limbo",                      "fav": true,  "length": 211, "hotspots": [0], "link": "Q6-sTkVdAqQ" },
+        { "name": "Idioteque",                     "fav": true,  "length": 309, "hotspots": [0], "link": "q-Nymir3q34" },
+        { "name": "Morning Bell",                  "fav": true,  "length": 275, "hotspots": [0], "link": "XTT6k3Q4JnQ" },
+        { "name": "Motion Picture Soundtrack",     "fav": true,  "length": 200, "hotspots": [0], "link": "EcSvMFm2ABE" },
+        { "name": "Untitled",                      "fav": true,  "length": 52,  "hotspots": [0], "link": "L_PvBLtvZto" }
+      ]
+    },
+    {
+      "name": "Amnesiac",
+      "artist": "Radiohead",
+      "released": "May 30, 2001",
+      "img": "amnesiac.png",
+      "tracklist": [
+        { "name": "Packt Like Sardines In a Crushd Tin Box", "fav": false, "length": 240, "hotspots": [0], "link": "LwE4LNP8zsI" },
+        { "name": "Pyramid Song",                            "fav": true,  "length": 288, "hotspots": [0], "link": "3M_Gg1xAHE4" },
+        { "name": "Pulk/Pull Revolving Doors",               "fav": false, "length": 247, "hotspots": [0], "link": "-fuhLeD594A" },
+        { "name": "You and Whose Army?",                     "fav": true,  "length": 191, "hotspots": [0], "link": "QQnc-hM80UQ" },
+        { "name": "I Might Be Wrong",                        "fav": true,  "length": 293, "hotspots": [0], "link": "vOa--Dhu11M" },
+        { "name": "Knives Out",                              "fav": true,  "length": 254, "hotspots": [0], "link": "2Lpw3yMCWro" },
+        { "name": "Morning Bell/Amnesiac",                   "fav": false, "length": 194, "hotspots": [0], "link": "OFeg3X8kTss" },
+        { "name": "Dollars and Cents",                       "fav": true,  "length": 291, "hotspots": [0], "link": "eNiQ32s1dmI" },
+        { "name": "Hunting Bears",                           "fav": true,  "length": 121, "hotspots": [0], "link": "6AM0q_u7XNc" },
+        { "name": "Like Spinning Plates",                    "fav": true,  "length": 237, "hotspots": [0], "link": "-UAElLsVOQI" },
+        { "name": "Life in a Glasshouse",                    "fav": true,  "length": 276, "hotspots": [0], "link": "Hdmo3gRQGnU" }
+      ]
+    },
+    {
+      "name": "Hail To the Thief",
+      "artist": "Radiohead",
+      "released": "June 9, 2003",
+      "img": "hail_to_the_thief.png",
+      "tracklist": [
+        { "name": "2 + 2 = 5",                "fav": true,  "length": 199, "hotspots": [0], "link": "2w6kHS_IRrE" },
+        { "name": "Sit Down. Stand Up",       "fav": true,  "length": 259, "hotspots": [0], "link": "CVf_HGoY-1E" },
+        { "name": "Sail To The Moon",         "fav": true,  "length": 258, "hotspots": [0], "link": "INvrv9ppxvQ" },
+        { "name": "Backdrifts",               "fav": true,  "length": 322, "hotspots": [0], "link": "X0r4_QKYKsc" },
+        { "name": "Go To Sleep",              "fav": true,  "length": 201, "hotspots": [0], "link": "6qn5SfmkbKE" },
+        { "name": "Where I End and You Begin","fav": true,  "length": 269, "hotspots": [0], "link": "Gp5b-q1GE-c" },
+        { "name": "We Suck Young Blood",      "fav": false, "length": 296, "hotspots": [0], "link": "SHSoLdrdnV4" },
+        { "name": "The Gloaming",             "fav": false, "length": 212, "hotspots": [0], "link": "yQMdPwXVVlw" },
+        { "name": "There, There",             "fav": true,  "length": 323, "hotspots": [0], "link": "7AQSLozK7aA" },
+        { "name": "I Will",                   "fav": true,  "length": 119, "hotspots": [0], "link": "zBe6pJ4THnc" },
+        { "name": "A Punch Up at a Wedding",  "fav": true,  "length": 297, "hotspots": [0], "link": "2DWP6a25iJI" },
+        { "name": "Myxomatosis",              "fav": true,  "length": 232, "hotspots": [0], "link": "0h65VcadjhI" },
+        { "name": "Scatterbrain",             "fav": true,  "length": 201, "hotspots": [0], "link": "r7mN9BLr4jU" },
+        { "name": "A Wolf At the Door",       "fav": true,  "length": 201, "hotspots": [0], "link": "6isz01iv8Ls" }
+      ]
+    },
+    {
+      "name": "In Rainbows",
+      "artist": "Radiohead",
+      "released": "October 10, 2007",
+      "img": "in_rainbows.png",
+      "tracklist": [
+        { "name": "15 Step",                     "fav": true,  "length": 237, "hotspots": [0], "link": "bgsmr7t8zGE" },
+        { "name": "Bodysnatchers",              "fav": true,  "length": 242, "hotspots": [0], "link": "nIQxhSvSRnQ" },
+        { "name": "Nude",                       "fav": true,  "length": 255, "hotspots": [0], "link": "BbWBRnDK_AE" },
+        { "name": "Weird Fishes / Arpeggi",     "fav": true,  "length": 318, "hotspots": [0], "link": "LUjGtyYEi90" },
+        { "name": "All I Need",                 "fav": true,  "length": 228, "hotspots": [0], "link": "FM7ALFsOH4g" },
+        { "name": "Faust Arp",                  "fav": true,  "length": 129, "hotspots": [0], "link": "PRc0iMRoIoc" },
+        { "name": "Reckoner",                   "fav": false, "length": 290, "hotspots": [0], "link": "_uofQD-N6UI" },
+        { "name": "House Of Cards",             "fav": false, "length": 328, "hotspots": [0], "link": "8nTFjVm9sTQ" },
+        { "name": "Jigsaw Falling Into Place",  "fav": true,  "length": 248, "hotspots": [0], "link": "GoLJJRIWCLU" },
+        { "name": "Videotape",                  "fav": true,  "length": 279, "hotspots": [0], "link": "WF83_PR2EsA" }
+      ]
+    },
+    {
+      "name": "Sentinel And Enterprise",
+      "artist": "The Wicked Farleys",
+      "released": "April 14, 1998",
+      "img": "sentinel_and_enterprise.jpg",
+      "tracklist": [
+        { "name": "That's Fine",              "fav": false, "length": 181, "hotspots": [0], "link": "BhK-5N-REj4" },
+        { "name": "My Office",               "fav": true,  "length": 270, "hotspots": [0], "link": "OEX_Xg6osPI" },
+        { "name": "Even Numbers",            "fav": true,  "length": 244, "hotspots": [0], "link": "VWpGaMC89mc" },
+        { "name": "Feel the Mores",          "fav": false, "length": 313, "hotspots": [0], "link": "GyMk3p-zgWk" },
+        { "name": "Route 2",                 "fav": false, "length": 182, "hotspots": [0], "link": "o4QHzfvvyVs" },
+        { "name": "23 Red Devils",           "fav": true,  "length": 345, "hotspots": [0], "link": "I-hckMV9w7c" },
+        { "name": "Props",                   "fav": false, "length": 159, "hotspots": [0], "link": "bt8Rpmx_1TE" },
+        { "name": "Not Up",                  "fav": false, "length": 357, "hotspots": [0], "link": "VBr81ENT5GM" },
+        { "name": "Electricity Before Wire", "fav": true,  "length": 284, "hotspots": [0], "link": "bLwh9YdwKH4" }
+      ]
+    },
+    {
+      "name": "Ginkgo",
+      "artist": "Panchiko",
+      "released": "April 4, 2025",
+      "img": "ginkgo.png",
+      "tracklist": [
+        { "name": "Florida",                "fav": false, "length": 251, "hotspots": [0], "link": "kERq3qpSyi4" },
+        { "name": "Ginkgo",                 "fav": true,  "length": 157, "hotspots": [0], "link": "WjXuoee2a0Q" },
+        { "name": "Shandy in the Graveyard","fav": false, "length": 177, "hotspots": [0], "link": "yXHQYKk-0EA" },
+        { "name": "Honeycomb",              "fav": true,  "length": 194, "hotspots": [0], "link": "PZQqdA62kOQ" },
+        { "name": "Shelled and Cooked",     "fav": true,  "length": 133, "hotspots": [0], "link": "" },
+        { "name": "Lifestyle Trainers",     "fav": true,  "length": 187, "hotspots": [0], "link": "Midv94k4SJw" },
+        { "name": "Chapel of Salt",         "fav": true,  "length": 188, "hotspots": [0], "link": "UPz1clAQcNI" },
+        { "name": "Vineger",                "fav": false, "length": 135, "hotspots": [0], "link": "" },
+        { "name": "Mac's Omlette",          "fav": false, "length": 238, "hotspots": [0], "link": "DMNRdtQ0K7o" },
+        { "name": "Subtitles",              "fav": false, "length": 167, "hotspots": [0], "link": "" },
+        { "name": "Formula",                "fav": false, "length": 163, "hotspots": [0], "link": "" },
+        { "name": "Rise and Fall",          "fav": false, "length": 199, "hotspots": [0], "link": "" },
+        { "name": "Innocent",               "fav": true,  "length": 164, "hotspots": [0], "link": "" }
+      ]
+    }
+  ]
 }

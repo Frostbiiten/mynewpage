@@ -1,12 +1,14 @@
 <script>
     import Projectcontainer from "$lib/components/projectcontainer.svelte";
     import Fa from 'svelte-fa'
-    import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
+    import { faPause, faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
     import { fly, fade } from "svelte/transition";
     import bg from "$lib/img/tengyart-eZT2tMvG8QQ-unsplash.jpg"
     import cx from "clsx";
     import { onMount } from 'svelte';
+
+    import { faPlay, faForwardStep, faBackwardStep } from "@fortawesome/free-solid-svg-icons";
 
 
     let distortfreq = $state(0.01);
@@ -41,13 +43,13 @@
 
     function closestToCenter() {
         const containerRect = scrollContainer.getBoundingClientRect();
-        const containerCenter = containerRect.left + containerRect.width / 2;
+        const containerCenter = containerRect.top + containerRect.height / 2;
 
         let closest = { index: 0, distance: Infinity };
 
         Object.values(collectionElements).forEach((el, i) => {
             const rect = el.getBoundingClientRect();
-            const elCenter = rect.left + rect.width / 2;
+            const elCenter = rect.top + rect.height / 2;
             const distance = Math.abs(containerCenter - elCenter);
             if (distance < closest.distance) {
                 closest = { index: i, distance };
@@ -56,9 +58,16 @@
 
         if (closest.index !== currentCollection) {
             currentCollection = closest.index;
-            console.log(`Snap to index [${currentCollection}]`);
         }
     }
+
+
+    let playingCollection = $state(null);
+    let playingSong = $state(null);
+    let currentVideoId = $state(null);
+    let playerReady = $state(false);
+    let currentTime = $state(0);
+    let playerState = $state(null)
 
     let player;
     onMount(() => {
@@ -89,14 +98,54 @@
                 playlist: '09EsZXrKEP4',
                 },
                 events: {
-                onReady: () => {
-                    console.log('ready to play');
-                    player.mute();
-                }
+                    onReady: () => {
+                        console.log('ready to play');
+                        playerReady = true;
+                        player.mute();
+                        
+                        setInterval(() => {
+                            if (playerReady && playerState === YT.PlayerState.PLAYING) {
+                                currentTime = player.getCurrentTime();
+                            }
+                        }, 250);
+                    },
+                    onStateChange: (event) =>
+                    {
+                        playerState = event.data;
+
+                        switch (event.data) {
+                            case YT.PlayerState.UNSTARTED:  // -1
+                                console.log('Unstarted');
+                                break;
+                            case YT.PlayerState.ENDED:      // 0
+                                console.log('Ended');
+                                break;
+                            case YT.PlayerState.PLAYING:    // 1
+                                console.log('Playing');
+                                break;
+                            case YT.PlayerState.PAUSED:     // 2
+                                console.log('Paused');
+                                break;
+                            case YT.PlayerState.BUFFERING:  // 3
+                                console.log('Buffering');
+                                break;
+                            case YT.PlayerState.CUED:       // 5
+                                console.log('Video cued');
+                                break;
+                        }
+                    }
                 }
             });
         };
+
     });
+
+    function playNewSong() {
+        currentVideoId = music_data.collections[playingCollection].tracklist[playingSong].link;
+        console.log(currentVideoId);
+        player?.loadVideoById(currentVideoId);
+        play();
+    }
 
     function play() {
         player?.unMute();
@@ -111,53 +160,80 @@
         player?.seekTo(seconds, true);
     }
 
+
+
+    let currentScrollAnimation = null;
+
     function scrollToElement(el, options = {}) {
         const {
             container = el.parentElement,
             duration = 600,
-            easing = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
+            easing = t => (--t) * t * t + 1, // easeOutCubic
             offset = 0
         } = options;
 
-        const originalSnap = container.style.scrollSnapType;
+        if (!el || !container) return;
+
+        // Cancel any previous animation
+        if (currentScrollAnimation?.cancel) {
+            currentScrollAnimation.cancel();
+        }
+
         container.style.scrollSnapType = 'none';
 
-        const startTime = performance.now();
-        const start = container.scrollLeft;
+        let targetScrollTop = calcTargetScrollTop();
+        let animationFrameId = null;
 
-        let targetScrollLeft = calcTargetScrollLeft();
-
-        // Observe for live resizing
         const resizeObserver = new ResizeObserver(() => {
-            targetScrollLeft = calcTargetScrollLeft(); // update target dynamically
+            targetScrollTop = calcTargetScrollTop();
         });
 
         resizeObserver.observe(container);
         resizeObserver.observe(el);
 
-        function calcTargetScrollLeft() {
-            const containerRect = container.getBoundingClientRect();
-            const elRect = el.getBoundingClientRect();
-            const relativeOffset = elRect.left - containerRect.left;
-            const scrollOffset = relativeOffset + container.scrollLeft;
-
-            return scrollOffset + offset - (container.clientWidth / 2) + (el.clientWidth / 2);
+        function getUntransformedRect(el) {
+            const prevTransform = el.style.transform;
+            el.style.transform = 'none';
+            const rect = el.getBoundingClientRect();
+            el.style.transform = prevTransform;
+            return rect;
         }
+
+        function calcTargetScrollTop() {
+            const containerRect = getUntransformedRect(container);
+            const elRect = getUntransformedRect(el);
+            const relativeOffset = elRect.top - containerRect.top;
+            const scrollOffset = relativeOffset + container.scrollTop;
+
+            return scrollOffset + offset - (container.clientHeight / 2) + (el.clientHeight / 2);
+        }
+
+        const startTime = performance.now();
 
         function animateScroll(currentTime) {
             const elapsed = currentTime - startTime;
             const t = Math.min(1, elapsed / duration);
-            container.scrollLeft = start + (targetScrollLeft - start) * easing(t);
+            const currentScrollTop = container.scrollTop; // Dynamic starting point
+
+            container.scrollTop = currentScrollTop + (targetScrollTop - currentScrollTop) * easing(t);
 
             if (t < 1) {
-            requestAnimationFrame(animateScroll);
+            animationFrameId = requestAnimationFrame(animateScroll);
             } else {
             resizeObserver.disconnect();
-            container.style.scrollSnapType = originalSnap || '';
+            container.style.scrollSnapType = 'y mandatory';
             }
         }
 
-        requestAnimationFrame(animateScroll);
+        animationFrameId = requestAnimationFrame(animateScroll);
+
+        // Save this animation so it can be cancelled
+        currentScrollAnimation = {
+            cancel() {
+            cancelAnimationFrame(animationFrameId);
+            resizeObserver.disconnect();
+            }
+        };
     }
 
     function animatePerspective() {
@@ -165,16 +241,16 @@
         const children = Object.values(collectionElements);
 
         const containerRect = container.getBoundingClientRect();
-        const containerCenterX = containerRect.left + containerRect.width / 2;
+        const containerCenterY = containerRect.top + containerRect.height / 2;
 
         children.forEach(child => {
             const childRect = child.getBoundingClientRect();
-            const childCenterX = childRect.left + childRect.width / 2;
+            const childCenterY = childRect.top + childRect.height / 2;
 
-            const dx = (childCenterX - containerCenterX) / (containerRect.width / 2);
-            const translateY = (1-Math.cos(dx * Math.PI / 2)) * containerRect.width * 0.1;
+            const dx = (childCenterY - containerCenterY) / (containerRect.height / -2);
+            const translateX = (1-Math.cos(dx * Math.PI / 2)) * containerRect.height * -0.05;
 
-            child.style.transform = `translateY(${translateY}px) rotate(${dx*20}deg)`;
+            child.style.transform = `translateX(${translateX}px) rotate(${dx*-12}deg)`;
         });
     }
     
@@ -267,7 +343,7 @@
     }
 
     .track-mask {
-        --fade-gradient: linear-gradient(to right,
+        --fade-gradient: linear-gradient(to bottom,
             rgba(0, 0, 0, 0.0) 5%,
             rgba(0, 0, 0, 0.2) 30%,
             rgba(0, 0, 0, 0.9) 46%,
@@ -288,22 +364,6 @@
 
 </style>
 
-<svg width="0" height="0" class="absolute">
-    <filter id="figsketch">
-        <feTurbulence 
-        type="turbulence" 
-        baseFrequency={distortfreq}
-        numOctaves="1" 
-        result="noise" />
-        <feDisplacementMap 
-        in="SourceGraphic" 
-        in2="noise" 
-        scale={distortscale}
-        xChannelSelector="" 
-        yChannelSelector="R" />
-    </filter>
-</svg> 
-
 {#snippet section(text)}
     <div class="flex flex-col p-6 w-full h-1/4 overflow-clip bg-blue-900 grow">
         <h1 class="pl-3 -mb-6 text-[1.4rem] opacity-70">video</h1>
@@ -322,47 +382,71 @@ class="flex flex-row justify-center items-center w-full">
             </h1>
         </div>
 
-        <div class="p-0 -mt-4 w-full h-[calc(100vh-12rem)] flex items-end ">
-            <div class="flex flex-col justify-end rounded-xl border-2 border-slate-700 bg-gray-900/10 w-50">
-                <div class="flex hidden flex-col-reverse">
-                    <div style="scrollbar-color: rgb(200, 200, 230, 0.4) transparent; " class="flex overflow-y-auto overflow-x-visible flex-col gap-4 py-6 pr-6 pb-2 pl-5 leading-tight whitespace-normal max-h-200 text-slate-300">
-                        {#if currentCollection !== null}
+        <div class="p-0 -mt-4 w-full h-[calc(100vh-12rem)] flex items-start translate-x-[-15rem]">
+            <div class="flex flex-row justify-start rounded-2xl border-2 border-slate-700 bg-gray-900/20 h-50">
 
-                            {#each music_data.collections[currentCollection].tracklist as song, index (song)}
-                                <p>
+                <div class="relative h-[calc(30vh+30rem)] w-50 self-center track-mask">
+                    <div bind:this={scrollContainer}
+                        style="scrollbar-width: none; scroll-snap-type: y mandatory;"
+                        class="flex overflow-y-scroll flex-col gap-5 items-start p-3 h-full overflow-x-clip">
+                        <div class="min-h-[calc(30vh)]"></div>
+                            {#each music_data.collections as collection, index (collection)}
+                            <button
+                                style="scroll-snap-align: center;"
+                                class={cx("cursor-pointer w-full h-full aspect-square ")}
+                                bind:this={collectionElements[collection.name]} onclick={() => {
+                                    //collectionElements[collection.name].scrollIntoView({"behavior": "smooth", "inline": "center", "block": "end"})
+                                    scrollToElement(collectionElements[collection.name], { duration: 600})
+                                }}>
+                                <img class={cx(
+                                    "rounded-lg scale-85 transition-[scale] duration-500 ease-[cubic-bezier(0.25,0,0,1)]",
+                                    (index == currentCollection) && "opacity-100 scale-90",
+                                    (index != currentCollection) && "opacity-70 saturate-40"
+                                )} src={getImage(collection.img).img} alt={collection.name}>
+                            </button>
+                            {/each}
+                        <div class="min-h-[calc(30vh)] w-full"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="flex flex-col pl-10">
+                {#if currentCollection !== null}
+                    <h2 class="text-7xl font-bold text-sky-100">
+                        {music_data.collections[currentCollection].name}
+                    </h2>
+                    <p class="ml-1 text-slate-400">
+                        {music_data.collections[currentCollection].artist} <span class="text-slate-500">• {music_data.collections[currentCollection].released}</span>
+                    </p>
+                {/if}
+                <div style="scrollbar-color: rgb(200, 200, 230, 0.4) transparent; " class="flex overflow-y-auto overflow-x-visible flex-col gap-2 pt-4 pr-6 pb-2 leading-tight whitespace-normal w-120 max-h-200">
+                    {#if currentCollection !== null}
+
+                        {#each music_data.collections[currentCollection].tracklist as song, index (song)}
+                            <button
+                            onclick={() => {
+                                playingSong = index;
+                                playingCollection = currentCollection;
+                                playNewSong();
+                            }}
+                            class={cx("flex relative items-center flex-row gap-2 pl-3 py-[0.35rem] cursor-pointer")}>
+                                <div class={cx("absolute origin-left scale-x-0 left-0 top-0 w-full h-full bg-gradient-to-r ease-[cubic-bezier(0,1,0,1)] rounded-md from-blue-950/40 via-50% via-blue-900/15 to-indigo-500/0 opacity-0 duration-400", (playingSong == index) && "scale-x-100 opacity-100")}></div>
+
+                                <p class={cx("text-sm text-gray-500", (playingSong == index) && "text-slate-200")}>
+                                    {`${Math.floor(song.length / 60)}:${String(song.length % 60).padStart(2, '0')}` }
+                                </p>
+
+                                <p class={cx("transition-all duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index) && "text-gray-300", (playingSong == index) && "text-blue-400 text-lg")}>
                                     {song.name}
                                 </p>
-                            {/each}
-                        {/if}
-                    </div>
-                </div>
-
-                <div class="relative w-[calc(30vw+30rem)] h-50 self-center track-mask">
-                    <div bind:this={scrollContainer}
-                        style="scrollbar-width: none; scroll-snap-type: x mandatory;"
-                        class="flex overflow-x-scroll gap-8 items-end p-3 h-full overflow-y-clip">
-                        <div class="min-w-[calc(30vw)]"></div>
-                        {#each music_data.collections as collection, index (collection)}
-                        <button
-                            style="scroll-snap-align: center;"
-                            class={cx(
-                                "min-h-[83%]  cursor-pointer aspect-square duration-500 transition-[min-height] ease-[cubic-bezier(0.25,0,0,1)]",
-                                (index == currentCollection) && "min-h-[100%] opacity-100 ",
-                                (index != currentCollection) && "opacity-80 saturate-50"
-                            )}
-                            bind:this={collectionElements[collection.name]} onclick={() => {
-                                //collectionElements[collection.name].scrollIntoView({"behavior": "smooth", "inline": "center", "block": "end"})
-                                scrollToElement(collectionElements[collection.name], { duration: 500})
-                            }}>
-                            <img class="rounded-lg" src={getImage(collection.img).img} alt={collection.name}>
-                        </button>
+                            </button>
                         {/each}
-                        <div class="min-w-[calc(30vw)] h-full"></div>
-                    </div>
-                    <div class="absolute top-0 left-[calc(50%-15rem)] w-60 h-full bg-gradient-to-r pointer-events-none via-zinc-950 from-zinc-950 hidden"></div>
-                    <div class="hidden absolute top-0 right-0 h-full bg-gradient-to-l pointer-events-none w-30 from-zinc-950"></div>
+                    {/if}
                 </div>
             </div>
+
 
             <div class="flex hidden relative flex-col items-stretch w-full h-full rounded-xl">
 
@@ -426,5 +510,70 @@ class="flex flex-row justify-center items-center w-full">
             </div>
         </div>
 
+    </div>
+</div>
+
+<div class="flex fixed bottom-10 z-10 justify-center px-20 w-full h-25">
+    <div class="flex flex-col gap-4 justify-center items-center px-5 w-full max-w-7xl h-full rounded-lg border-2 bg-zinc-900 border-zinc-800">
+
+        <div class="flex gap-4 justify-center items-center">
+            <Fa icon={faBackwardStep} class="w-full h-full text-center align-middle"></Fa>
+            <button class={cx(
+                "w-10 h-10",
+                (playerReady == false || playerState === YT.PlayerState.BUFFERING) && "cursor-not-allowed",
+                (playerReady && (playerState === YT.PlayerState.PAUSED || playerState === YT.PlayerState.UNSTARTED || playerState === YT.PlayerState.PLAYING || playerState === YT.PlayerState.CUED)) && "cursor-pointer",
+                )}
+                onclick={() => {
+                    if (playerState === YT.PlayerState.PAUSED)
+                    {
+                        play();
+                    }
+                    else if (playerState === YT.PlayerState.PLAYING)
+                    {
+                        pause();
+                    }
+                }}
+            >
+            {#if playerReady}
+                {#if playerState === YT.PlayerState.PAUSED || playerState === YT.PlayerState.UNSTARTED || playerState === YT.PlayerState.ENDED || playerState === YT.PlayerState.CUED}
+                    <Fa icon={faPlay} class="w-full h-full text-xl text-center align-middle"></Fa>
+                {:else if playerState === YT.PlayerState.PLAYING }
+                    <Fa icon={faPause} class="w-full h-full text-xl text-center align-middle"></Fa>
+                {:else if playerState === YT.PlayerState.BUFFERING}
+                    <p class="text-6xl font-[Arial] animate-spin origin-[50%_27.45%]" style="animation-duration: 2000ms">*</p>
+                {:else}
+                {/if}
+            {:else}
+                <p class="text-6xl font-[Arial] animate-spin origin-[50%_27.45%]" style="animation-duration: 2000ms">*</p>
+            {/if}
+            </button>
+            <Fa icon={faForwardStep} class="w-full h-full text-center align-middle"></Fa>
+        </div>
+        <div class="flex gap-5 items-center w-full text-gray-300">
+            {#if playerReady}
+                <p class="w-10">{Math.floor(currentTime / 60)}:{String(Math.floor(currentTime) % 60).padStart(2, '0')}</p>
+                <div class="flex items-center w-full h-2 rounded-sm bg-zinc-800">
+                    <input type="range"
+                        min="0"
+                        max={music_data.collections[playingCollection]?.tracklist[playingSong].length}
+                        step="any"
+                        oninput={(event) => {
+                            player.seekTo(event.target.value);
+                        }}
+                        bind:value={currentTime}
+                        class="w-full"
+                    />
+                    <div class="h-full hidden rounded-sm ease-[cubic-bezier(0.5,0.5,0.5,0.5)] transition-all duration-250 bg-slate-200" style={`width: ${100 * currentTime / music_data.collections[playingCollection]?.tracklist[playingSong].length}%`}>
+                    </div>
+                </div>
+                {#if playerReady && music_data.collections[playingCollection]?.tracklist[playingSong]}
+                    <p>{Math.floor(music_data.collections[playingCollection].tracklist[playingSong].length/60)}:{String(music_data.collections[playingCollection].tracklist[playingSong].length % 60).padStart(2, '0')}</p>
+                {:else}
+                    <p>0:00</p>
+                {/if}
+            {:else}
+                <div class="w-full h-2 rounded-sm bg-zinc-800"></div>
+            {/if}
+        </div>
     </div>
 </div>
