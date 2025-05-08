@@ -1,7 +1,7 @@
 <script>
     import Projectcontainer from "$lib/components/projectcontainer.svelte";
     import Fa from 'svelte-fa'
-    import { faPause, faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
+    import { faCircle, faPause, faPlug, faPlus, faSquareArrowUpRight, faStar } from "@fortawesome/free-solid-svg-icons";
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
     import { fly, fade } from "svelte/transition";
     import bg from "$lib/img/tengyart-eZT2tMvG8QQ-unsplash.jpg"
@@ -70,6 +70,13 @@
     let playerState = $state(null)
 
     let player;
+
+    function trackPerspective()
+    {
+		animatePerspective();
+		requestAnimationFrame(trackPerspective);
+    }
+
     onMount(() => {
         if (typeof window === 'undefined') return;
 
@@ -77,9 +84,13 @@
         scrollContainer.addEventListener('scroll', () => {
             requestAnimationFrame(() => {
                 closestToCenter();
-                animatePerspective();
+                //animatePerspective();
             });
         });
+
+        closestToCenter();
+        //animatePerspective();
+        trackPerspective();
 
 
         const script = document.createElement('script');
@@ -119,6 +130,8 @@
                                 break;
                             case YT.PlayerState.ENDED:      // 0
                                 console.log('Ended');
+                                // continue to next
+                                playNext();
                                 break;
                             case YT.PlayerState.PLAYING:    // 1
                                 console.log('Playing');
@@ -147,6 +160,48 @@
         play();
     }
 
+    function playNext()
+    {
+        let songCount = 0;
+        if (music_data.collections[playingCollection]) { songCount = music_data.collections[playingCollection].tracklist.length; }
+        if (playingSong + 1 < songCount)
+        {
+            playingSong++;
+            currentTime = 0;
+            playNewSong();
+        }
+        else
+        {
+            if (playingCollection + 1 < music_data.collections.length)
+            {
+                playingCollection++;
+                playingSong = 0;
+                currentTime = 0;
+                playNewSong();
+            }
+        }
+    }
+
+    function playPrev()
+    {
+        if (playingSong === 0)
+        {
+            if (playingCollection > 0)
+            {
+                playingCollection = 0;
+                playingSong = music_data.collections[0].tracklist.length - 1;
+                currentTime = 0;
+                playNewSong();
+            }
+        }
+        else
+        {
+            playingSong--;
+            currentTime = 0;
+            playNewSong();
+        }
+    }
+
     function play() {
         player?.unMute();
         player?.playVideo();
@@ -163,6 +218,15 @@
 
 
     let currentScrollAnimation = null;
+
+
+    function getUntransformedRect(el) {
+        const prevTransform = el.style.transform;
+        el.style.transform = 'none';
+        const rect = el.getBoundingClientRect();
+        el.style.transform = prevTransform;
+        return rect;
+    }
 
     function scrollToElement(el, options = {}) {
         const {
@@ -190,14 +254,6 @@
 
         resizeObserver.observe(container);
         resizeObserver.observe(el);
-
-        function getUntransformedRect(el) {
-            const prevTransform = el.style.transform;
-            el.style.transform = 'none';
-            const rect = el.getBoundingClientRect();
-            el.style.transform = prevTransform;
-            return rect;
-        }
 
         function calcTargetScrollTop() {
             const containerRect = getUntransformedRect(container);
@@ -244,13 +300,16 @@
         const containerCenterY = containerRect.top + containerRect.height / 2;
 
         children.forEach(child => {
-            const childRect = child.getBoundingClientRect();
+            const childRect = getUntransformedRect(child);
             const childCenterY = childRect.top + childRect.height / 2;
 
             const dx = (childCenterY - containerCenterY) / (containerRect.height / -2);
-            const translateX = (1-Math.cos(dx * Math.PI / 2)) * containerRect.height * -0.05;
+            //const translateX = (1-Math.cos(dx * Math.PI / 2)) * containerRect.height * 0.05;
+            const translateY = Math.sign(dx) * (Math.pow(Math.abs(dx), 3)) * containerRect.height * 0.1;
 
-            child.style.transform = `translateX(${translateX}px) rotate(${dx*-12}deg)`;
+            //child.style.transform = `translateX(${translateX}px) rotate(${Math.sign(dx) * Math.pow(Math.abs(dx), 1.3)*14}deg)`;
+            child.style.transform = `perspective(20rem) translateY(${translateY}px) rotateX(${Math.max(Math.min(Math.sign(dx) * Math.pow(Math.abs(dx), 4) * 40, 100), -100)}deg) scaleY(${Math.max(1 - Math.pow(Math.abs(dx), 1.2) * 0.5, 0)}) scaleX(${Math.max(1 - Math.pow(Math.abs(dx), 1.5) * 0.2, 0)})`;
+            child.style.opacity = `${1 - dx * dx * 0.5}`
         });
     }
     
@@ -382,14 +441,14 @@ class="flex flex-row justify-center items-center w-full">
             </h1>
         </div>
 
-        <div class="p-0 -mt-4 w-full h-[calc(100vh-12rem)] flex items-start translate-x-[-15rem]">
+        <div class="p-0 w-full h-[calc(100vh+6rem)] flex items-start translate-x-[-15rem]">
             <div class="flex flex-row justify-start rounded-2xl border-2 border-slate-700 bg-gray-900/20 h-50">
 
                 <div class="relative h-[calc(30vh+30rem)] w-50 self-center track-mask">
                     <div bind:this={scrollContainer}
                         style="scrollbar-width: none; scroll-snap-type: y mandatory;"
                         class="flex overflow-y-scroll flex-col gap-5 items-start p-3 h-full overflow-x-clip">
-                        <div class="min-h-[calc(30vh)]"></div>
+                        <div class="min-h-[calc(30vh)] "></div>
                             {#each music_data.collections as collection, index (collection)}
                             <button
                                 style="scroll-snap-align: center;"
@@ -412,16 +471,18 @@ class="flex flex-row justify-center items-center w-full">
             </div>
 
 
-            <div class="flex flex-col pl-10">
+            <div class="flex flex-col pl-5">
                 {#if currentCollection !== null}
-                    <h2 class="text-7xl font-bold text-sky-100">
+                    <h2 class="pb-1 ml-5 text-7xl font-bold text-sky-100">
                         {music_data.collections[currentCollection].name}
                     </h2>
-                    <p class="ml-1 text-slate-400">
+                    <p class="ml-6 text-slate-400">
                         {music_data.collections[currentCollection].artist} <span class="text-slate-500">• {music_data.collections[currentCollection].released}</span>
                     </p>
                 {/if}
-                <div style="scrollbar-color: rgb(200, 200, 230, 0.4) transparent; " class="flex overflow-y-auto overflow-x-visible flex-col gap-2 pt-4 pr-6 pb-2 leading-tight whitespace-normal w-120 max-h-200">
+                <div class="w-[120%] ml-4 mt-3 h-1 bg-gradient-to-r from-blue-900/0 via-blue-950/70 via-7% to-blue-900/0 opacity-100 "></div>
+                <div class="flex overflow-y-auto overflow-x-visible flex-col gap-3 pt-3 pr-6 pb-2 pl-4 leading-tight whitespace-normal w-120 max-h-200">
+
                     {#if currentCollection !== null}
 
                         {#each music_data.collections[currentCollection].tracklist as song, index (song)}
@@ -431,14 +492,20 @@ class="flex flex-row justify-center items-center w-full">
                                 playingCollection = currentCollection;
                                 playNewSong();
                             }}
-                            class={cx("flex relative items-center flex-row gap-2 pl-3 py-[0.35rem] cursor-pointer")}>
-                                <div class={cx("absolute origin-left scale-x-0 left-0 top-0 w-full h-full bg-gradient-to-r ease-[cubic-bezier(0,1,0,1)] rounded-md from-blue-950/40 via-50% via-blue-900/15 to-indigo-500/0 opacity-0 duration-400", (playingSong == index) && "scale-x-100 opacity-100")}></div>
+                            class={cx("flex relative pl-2 items-center flex-row gap-3 py-[0.35rem] cursor-pointer")}>
+                                <div class={cx("absolute origin-left scale-x-0 left-0 top-0 w-full h-full bg-gradient-to-r ease-[cubic-bezier(0,1,0,1)] rounded-md from-blue-950/40 via-50% via-blue-900/15 to-indigo-500/0 opacity-0 duration-400", (playingSong == index && playingCollection == currentCollection) && "scale-x-100 opacity-100")}></div>
 
-                                <p class={cx("text-sm text-gray-500", (playingSong == index) && "text-slate-200")}>
+                                <div class={cx("flex justify-center items-center w-4 h-full text-sm text-blue-600")}>
+                                    {#if song.fav}
+                                    <p class={cx("h-2 text-2xl -translate-y-[0.75rem]", (playingSong == index && playingCollection == currentCollection) && "text-blue-500")}>+</p>
+                                    {/if}
+                                </div>
+
+                                <p class={cx("text-sm text-gray-500", (playingSong == index && playingCollection == currentCollection) && "text-slate-200")}>
                                     {`${Math.floor(song.length / 60)}:${String(song.length % 60).padStart(2, '0')}` }
                                 </p>
 
-                                <p class={cx("transition-all duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index) && "text-gray-300", (playingSong == index) && "text-blue-400 text-lg")}>
+                                <p class={cx("transition-all duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-300", (playingSong == index && playingCollection == currentCollection) && "text-blue-400 text-lg")}>
                                     {song.name}
                                 </p>
                             </button>
@@ -513,13 +580,15 @@ class="flex flex-row justify-center items-center w-full">
     </div>
 </div>
 
-<div class="flex fixed bottom-10 z-10 justify-center px-20 w-full h-25">
-    <div class="flex flex-col gap-4 justify-center items-center px-5 w-full max-w-7xl h-full rounded-lg border-2 bg-zinc-900 border-zinc-800">
+<div class="flex sticky bottom-10 z-10 justify-center px-20 w-full h-25">
+    <div class="flex flex-col gap-4 justify-center items-center px-5 w-full max-w-6xl h-full rounded-lg border-2 bg-zinc-900 border-zinc-800">
 
         <div class="flex gap-4 justify-center items-center">
-            <Fa icon={faBackwardStep} class="w-full h-full text-center align-middle"></Fa>
+            <button class="w-6 h-8 text-xl cursor-pointer" onclick={playPrev}>
+                <Fa icon={faBackwardStep} class="w-full h-full text-center align-middle"></Fa>
+            </button>
             <button class={cx(
-                "w-10 h-10",
+                "w-6 h-8 ",
                 (playerReady == false || playerState === YT.PlayerState.BUFFERING) && "cursor-not-allowed",
                 (playerReady && (playerState === YT.PlayerState.PAUSED || playerState === YT.PlayerState.UNSTARTED || playerState === YT.PlayerState.PLAYING || playerState === YT.PlayerState.CUED)) && "cursor-pointer",
                 )}
@@ -540,20 +609,24 @@ class="flex flex-row justify-center items-center w-full">
                 {:else if playerState === YT.PlayerState.PLAYING }
                     <Fa icon={faPause} class="w-full h-full text-xl text-center align-middle"></Fa>
                 {:else if playerState === YT.PlayerState.BUFFERING}
-                    <p class="text-6xl font-[Arial] animate-spin origin-[50%_27.45%]" style="animation-duration: 2000ms">*</p>
+                    <p class="text-5xl h-full font-[Arial] animate-spin origin-[50%_39.45%]" style="animation-duration: 2000ms">*</p>
                 {:else}
+                    <p class="text-5xl h-full font-[Arial] animate-spin origin-[50%_39.45%]" style="animation-duration: 2000ms">*</p>
                 {/if}
             {:else}
-                <p class="text-6xl font-[Arial] animate-spin origin-[50%_27.45%]" style="animation-duration: 2000ms">*</p>
+                <p class="text-5xl h-full font-[Arial] animate-spin origin-[50%_39.45%]" style="animation-duration: 2000ms">*</p>
             {/if}
             </button>
-            <Fa icon={faForwardStep} class="w-full h-full text-center align-middle"></Fa>
+            <button class="w-6 h-8 text-xl cursor-pointer" onclick={playNext}>
+                <Fa icon={faForwardStep} class="w-full h-full text-center align-middle"></Fa>
+            </button>
         </div>
         <div class="flex gap-5 items-center w-full text-gray-300">
             {#if playerReady}
                 <p class="w-10">{Math.floor(currentTime / 60)}:{String(Math.floor(currentTime) % 60).padStart(2, '0')}</p>
-                <div class="flex items-center w-full h-2 rounded-sm bg-zinc-800">
-                    <input type="range"
+                <div class="flex relative items-center w-full h-2 rounded-sm bg-zinc-800">
+                    <input
+                        type="range"
                         min="0"
                         max={music_data.collections[playingCollection]?.tracklist[playingSong].length}
                         step="any"
@@ -561,9 +634,9 @@ class="flex flex-row justify-center items-center w-full">
                             player.seekTo(event.target.value);
                         }}
                         bind:value={currentTime}
-                        class="w-full"
+                        class="w-full opacity-0 cursor-pointer"
                     />
-                    <div class="h-full hidden rounded-sm ease-[cubic-bezier(0.5,0.5,0.5,0.5)] transition-all duration-250 bg-slate-200" style={`width: ${100 * currentTime / music_data.collections[playingCollection]?.tracklist[playingSong].length}%`}>
+                    <div class="h-full absolute left-0 rounded-sm ease-[cubic-bezier(0.5,0.5,0.5,0.5)] transition-all duration-50 bg-slate-200" style={`width: ${100 * currentTime / music_data.collections[playingCollection]?.tracklist[playingSong].length}%`}>
                     </div>
                 </div>
                 {#if playerReady && music_data.collections[playingCollection]?.tracklist[playingSong]}

@@ -816,7 +816,7 @@
             src={blogImg}/>
           <div class="
             absolute top-0 left-0 w-full h-full mix-blend-hard-light z-[2] transition-colors duration-400 
-            bg-[linear-gradient(10deg,_#09080F_-106%,_#182D97_95.51%)]
+            bg-[linear-gradient(10deg,_#09080F_-106%,_rgba(24,45,151,0.5)_95.51%)]
             ">
           </div>
           <h4 class="absolute transition-[font-size, color] font-mono text-indigo-400/50 group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Blog</h4>

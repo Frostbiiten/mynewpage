@@ -6,18 +6,24 @@
       "released": "March 13, 1995",
       "img": "the_bends.png",
       "tracklist": [
-        { "name": "Planet Telex",                 "fav": true,  "length": 259, "hotspots": [0], "link": "g0az4OkM02Y" },
+        { "name": "Planet Telex",                 "fav": true,  "length": 259, "link": "g0az4OkM02Y", "hotspots": [{
+            "time": 24,
+            "note": {
+                "text": "this is some test text",
+                "img": "img.webp"
+            }
+        }]},
         { "name": "The Bends",                    "fav": true,  "length": 246, "hotspots": [0], "link": "K8z8hLvjb_U" },
-        { "name": "High and Dry",                 "fav": false, "length": 257, "hotspots": [0], "link": "7qFfFVSerQo" },
-        { "name": "Fake Plastic Trees",           "fav": true,  "length": 290, "hotspots": [0], "link": "n5h0qHwNrHk" },
+        { "name": "High and Dry",                 "fav": false, "length": 257, "hotspots": [0], "link": "7fv84nPfTH0" },
+        { "name": "Fake Plastic Trees",           "fav": true,  "length": 290, "hotspots": [0], "link": "6gDhsUWCHrg" },
         { "name": "Bones",                        "fav": false, "length": 189, "hotspots": [0], "link": "3ZKxungSg9U" },
         { "name": "(Nice Dream)",                 "fav": false, "length": 233, "hotspots": [0], "link": "jIjTFt6XmFM" },
-        { "name": "Just",                         "fav": true,  "length": 234, "hotspots": [0], "link": "oIFLtNYI3Ls" },
+        { "name": "Just",                         "fav": true,  "length": 234, "hotspots": [0], "link": "Qnk4jiWamm4" },
         { "name": "My Iron Lung",                 "fav": true,  "length": 276, "hotspots": [0], "link": "eHK67LiMI8k" },
-        { "name": "Bulletproof... I Wish I Was",  "fav": true,  "length": 208, "hotspots": [0], "link": "WqU2fyqQGI4" },
+        { "name": "Bulletproof... I Wish I Was",  "fav": true,  "length": 208, "hotspots": [0], "link": "KkCgUI_g2oo" },
         { "name": "Black Star",                   "fav": true,  "length": 247, "hotspots": [0], "link": "d7lbzUUXj0k" },
         { "name": "Sulk",                         "fav": false, "length": 222, "hotspots": [0], "link": "-SLb6BdCHlE" },
-        { "name": "Street Spirit (Fade Out)",     "fav": true,  "length": 253, "hotspots": [0], "link": "LCJblaUkkfc" }
+        { "name": "Street Spirit (Fade Out)",     "fav": true,  "length": 253, "hotspots": [0], "link": "2y6kop0VTXY" }
       ]
     },
     {
@@ -142,18 +148,18 @@
       "img": "ginkgo.png",
       "tracklist": [
         { "name": "Florida",                "fav": false, "length": 251, "hotspots": [0], "link": "kERq3qpSyi4" },
-        { "name": "Ginkgo",                 "fav": true,  "length": 157, "hotspots": [0], "link": "WjXuoee2a0Q" },
-        { "name": "Shandy in the Graveyard","fav": false, "length": 177, "hotspots": [0], "link": "yXHQYKk-0EA" },
-        { "name": "Honeycomb",              "fav": true,  "length": 194, "hotspots": [0], "link": "PZQqdA62kOQ" },
-        { "name": "Shelled and Cooked",     "fav": true,  "length": 133, "hotspots": [0], "link": "" },
-        { "name": "Lifestyle Trainers",     "fav": true,  "length": 187, "hotspots": [0], "link": "Midv94k4SJw" },
-        { "name": "Chapel of Salt",         "fav": true,  "length": 188, "hotspots": [0], "link": "UPz1clAQcNI" },
-        { "name": "Vineger",                "fav": false, "length": 135, "hotspots": [0], "link": "" },
-        { "name": "Mac's Omlette",          "fav": false, "length": 238, "hotspots": [0], "link": "DMNRdtQ0K7o" },
-        { "name": "Subtitles",              "fav": false, "length": 167, "hotspots": [0], "link": "" },
-        { "name": "Formula",                "fav": false, "length": 163, "hotspots": [0], "link": "" },
-        { "name": "Rise and Fall",          "fav": false, "length": 199, "hotspots": [0], "link": "" },
-        { "name": "Innocent",               "fav": true,  "length": 164, "hotspots": [0], "link": "" }
+        { "name": "Ginkgo",                 "fav": true,  "length": 157, "hotspots": [0], "link": "GA_Qq6PBeho" },
+        { "name": "Shandy in the Graveyard","fav": false, "length": 177, "hotspots": [0], "link": "Mpvu5nN18xo" },
+        { "name": "Honeycomb",              "fav": true,  "length": 194, "hotspots": [0], "link": "GZ0dsmeKV8U" },
+        { "name": "Shelled and Cooked",     "fav": true,  "length": 133, "hotspots": [0], "link": "jFxkD4OZg3M" },
+        { "name": "Lifestyle Trainers",     "fav": true,  "length": 187, "hotspots": [0], "link": "kt2VSiEr4IQ" },
+        { "name": "Chapel of Salt",         "fav": true,  "length": 188, "hotspots": [0], "link": "rEB1JkxTFRU" },
+        { "name": "Vinegar",                "fav": false, "length": 135, "hotspots": [0], "link": "dPWQJBAySpc" },
+        { "name": "Mac's Omlette",          "fav": false, "length": 238, "hotspots": [0], "link": "5BVKdFkEP3s" },
+        { "name": "Subtitles",              "fav": false, "length": 167, "hotspots": [0], "link": "j5RNWwWdwpk" },
+        { "name": "Formula",                "fav": false, "length": 163, "hotspots": [0], "link": "FhqzMPi8G5A" },
+        { "name": "Rise and Fall",          "fav": false, "length": 199, "hotspots": [0], "link": "fq7yv60Gi-Y" },
+        { "name": "Innocent",               "fav": true,  "length": 164, "hotspots": [0], "link": "PcYijKQm61s" }
       ]
     }
   ]
