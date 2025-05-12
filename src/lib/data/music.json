@@ -6,24 +6,203 @@
       "released": "March 13, 1995",
       "img": "the_bends.png",
       "tracklist": [
-        { "name": "Planet Telex",                 "fav": true,  "length": 259, "link": "g0az4OkM02Y", "hotspots": [{
-            "time": 24,
-            "note": {
-                "text": "this is some test text",
-                "img": "img.webp"
-            }
-        }]},
-        { "name": "The Bends",                    "fav": true,  "length": 246, "hotspots": [0], "link": "K8z8hLvjb_U" },
-        { "name": "High and Dry",                 "fav": false, "length": 257, "hotspots": [0], "link": "7fv84nPfTH0" },
-        { "name": "Fake Plastic Trees",           "fav": true,  "length": 290, "hotspots": [0], "link": "6gDhsUWCHrg" },
-        { "name": "Bones",                        "fav": false, "length": 189, "hotspots": [0], "link": "3ZKxungSg9U" },
-        { "name": "(Nice Dream)",                 "fav": false, "length": 233, "hotspots": [0], "link": "jIjTFt6XmFM" },
-        { "name": "Just",                         "fav": true,  "length": 234, "hotspots": [0], "link": "Qnk4jiWamm4" },
-        { "name": "My Iron Lung",                 "fav": true,  "length": 276, "hotspots": [0], "link": "eHK67LiMI8k" },
-        { "name": "Bulletproof... I Wish I Was",  "fav": true,  "length": 208, "hotspots": [0], "link": "KkCgUI_g2oo" },
-        { "name": "Black Star",                   "fav": true,  "length": 247, "hotspots": [0], "link": "d7lbzUUXj0k" },
-        { "name": "Sulk",                         "fav": false, "length": 222, "hotspots": [0], "link": "-SLb6BdCHlE" },
-        { "name": "Street Spirit (Fade Out)",     "fav": true,  "length": 253, "hotspots": [0], "link": "2y6kop0VTXY" }
+        { "name": "Planet Telex",                 "fav": true,  "length": 259, "link": "g0az4OkM02Y",
+        "hotspots": [
+          {
+            "time": 5,
+            "text": "Jonny uses a wonderful tremolo guitar at the [Coachella '04](https://youtu.be/HTIC34OwkoA?t=34) rather than the keyboard synth used during numerous other [live performances](https://youtu.be/sVpQ9B2-riw?t=329).",
+            "media": [
+              {
+                "img": "coachella04_01.webp",
+                "link": "https://youtu.be/HTIC34OwkoA?t=34"
+              }
+            ]
+          },
+          {
+            "time": 29,
+            "text": "I think Colin did a great job with the bass throughout!",
+            "media": []
+          },
+          {
+            "time": 100,
+            "text": "Really cool alternate riff used during [Belfort '97](https://youtu.be/fIGuEnIT2ro?t=2943). Reminds me of the doppler effect you may hear passing by sirens. Really wish this was on the studio version.",
+            "media": [
+              {
+                "img": "belfort97_01.webp",
+                "link": "https://youtu.be/fIGuEnIT2ro?t=2943"
+              }
+            ]
+          }
+        ]},
+        { "name": "The Bends",                    "fav": true,  "length": 246, "link": "K8z8hLvjb_U",
+        "hotspots": [
+          {
+            "time": 0,
+            "text": "\"This is the bends and it will continue to be so.\" -Thom Yorke Live at [Chicago Metro '96](https://youtu.be/jBwGywTTU30?t=3542)\n Contrary to popular belief, 'The Bends' was not intentionally written about Creep, but I still think it's surprisingly poetic.",
+            "media": [
+              {
+                "img": "chicago96_01.webp",
+                "link": "https://youtu.be/jBwGywTTU30?t=3542"
+              }
+            ]
+          },
+          {
+            "time": 12,
+            "text": "You should check out Jonny's alternate riffs (and guitar *string bends*) live on [Jools Holland '95](https://youtu.be/wsPySuZu6SU). I think this is hands-down the best live performance of this song, just wish it was in higher quality.",
+            "media": [
+              {
+                "img": "jh95_01.webp",
+                "link": "https://youtu.be/wsPySuZu6SU"
+              }
+            ]
+          },
+          {
+            "time": 65,
+            "text": "I think I prefer the alternate riff played in performances such as [Chicago Metro '96](https://youtu.be/jBwGywTTU30?t=3600), [Barcelona '97](https://youtu.be/7z9wu4b9d2Q?t=58), [San Francisco '98](https://youtu.be/W35G3rVOfwY?t=2750) or notably, [Glastonbury '97](https://youtu.be/ATvonKDt6jQ?t=911) (quite wonderful). Perhaps it's because I've listened to the studio riff too many times. I'm not sure.",
+            "media": [
+              {
+                "img": "chicago96_02.webp",
+                "link": "https://youtu.be/jBwGywTTU30?t=3600"
+              },
+              {
+                "img": "barcelona97_01.webp",
+                "link": "https://youtu.be/7z9wu4b9d2Q?t=58"
+              },
+              {
+                "img": "sf98_01.webp",
+                "link": "https://youtu.be/W35G3rVOfwY?t=2750"
+              },
+              {
+                "img": "glastonbury97_01.webp",
+                "link": "https://youtu.be/ATvonKDt6jQ?t=911"
+              }
+            ]
+          },
+          {
+            "time": 144,
+            "text": "Earlier lyrics from the [Chicago Metro '93](https://youtu.be/3hf1XOAdSf8?t=937) feature 'brought in the submarines, the tanks and the whole marines'. Thom's acoustic guitar here is another interesting difference which I think sounds kind of cool.",
+            "media": [
+              {
+                "img": "pablo_01.webp",
+                "link": "https://youtu.be/3hf1XOAdSf8?t=937"
+              }
+            ]
+          },
+          {
+            "time": 148,
+            "text": "I like the different stressing of *'to blow me away'* at [Pinkpop '96](https://youtu.be/sVpQ9B2-riw?t=2241)",
+            "media": [
+              {
+                "img": "pinkpop96_01.webp",
+                "link": "https://youtu.be/sVpQ9B2-riw?si=xpUKdO_AYBWEZEkL&t=2241"
+              }
+            ]
+          },
+          {
+            "time": 165,
+            "link": "https://youtu.be/3VIIxdwC_PY?t=189",
+            "media": [
+              {
+                "img": "black_01.webp",
+                "text": "Check out the ['95 Black Sessions](https://youtu.be/3VIIxdwC_PY?t=189) recording... Thom holds this note for quite a while. I really love the screams he does here for buildup too."
+              }
+            ]
+          },
+          {
+            "time": 175,
+            "text": "Check out Jonny's extra sounds here at [Astoria '94](https://youtu.be/RjQZd8p-eBM?t=1254)",
+            "media": [
+              {
+                "img": "astoria94_01.webp",
+                "link": "https://youtu.be/RjQZd8p-eBM?t=1254"
+              }
+            ]
+          },
+          {
+            "time": 180,
+            "text": "So many different riffs from different live performances here. Check out [Barcelona '97](https://youtu.be/7z9wu4b9d2Q?t=58)",
+            "media": [
+              {
+                "img": "barcelona97_01.webp",
+                "link": "https://youtu.be/7z9wu4b9d2Q?t=58"
+              }
+            ]
+          },
+          {
+            "time": 240,
+            "text": "I've been trying to find the full live performance of The Bends at [Rock am Ring '94](https://youtu.be/lslIyogYkMY)... If you can find it please dm me 😭",
+            "media": [
+              {
+                "link": "https://youtu.be/lslIyogYkMY",
+                "img": "rockamring94_01.webp"
+              }
+            ]
+          }
+        ]},
+        { "name": "High and Dry",                 "fav": false, "length": 257, "link": "7fv84nPfTH0", "hotspots": [
+          {
+            "time": 0,
+            "text": "I'll be honest, I kinda hate this song 😭",
+            "media": []
+          },
+          {
+            "time": 45,
+            "text": "That being said, I think the [Chicago '96](https://youtu.be/jBwGywTTU30?t=2517) performance sounds pretty cool, especially here. Thank you Jonny. I wish the coin guitar sounds were in the studio version.",
+            "media": [
+              {
+                "img": "chicago96_03.webp",
+                "link": "https://youtu.be/jBwGywTTU30?t=2517"
+              }
+            ]
+          },
+          {
+            "time": 69,
+            "text": "Check out [2 Meter Sessions '95](https://youtu.be/EhiJ1OU5NJc?t=69) or [Jools Holland '95](https://youtu.be/9KgZQ9R6-SM?t=74) for a different-sounding chorus.",
+            "media": [
+              {
+                "img": "2meter95_01.webp",
+                "link": "https://youtu.be/EhiJ1OU5NJc?t=69"
+              },
+              {
+                "img": "jh95_02.webp",
+                "link": "https://youtu.be/9KgZQ9R6-SM?t=74"
+              }
+            ]
+          },
+          {
+            "time": 110,
+            "text": "Another shoutout to [Chicago '96](https://youtu.be/jBwGywTTU30?t=2582), which sounds really nice here.",
+            "media": []
+          },
+          {
+            "time": 170,
+            "text": "In some performances, Thom sings along at this part. Perhaps a bit goofy but I find it fun. There's also an alternate riff on [Jay Leno '96](https://youtu.be/mt-AGIB43Hk?t=174)",
+            "media": [
+              {
+                "img": "maggioroma95_01.webp",
+                "link": "https://youtu.be/bCGqeY72zVE?t=184"
+              },
+              {
+                "img": "pinkpop96_01.webp",
+                "link": "https://youtu.be/5uLTP-EtdLQ?t=166"
+              },
+              {
+                "img": "jayleno96_01.webp",
+                "link": "https://youtu.be/mt-AGIB43Hk?t=174"
+              }
+            ]
+          }
+
+        ]  },
+        { "name": "Fake Plastic Trees",           "fav": true,  "length": 290, "link": "6gDhsUWCHrg", "hotspots": [0]  },
+        { "name": "Bones",                        "fav": false, "length": 189, "link": "3ZKxungSg9U", "hotspots": [0]  },
+        { "name": "(Nice Dream)",                 "fav": false, "length": 233, "link": "jIjTFt6XmFM", "hotspots": [0]  },
+        { "name": "Just",                         "fav": true,  "length": 234, "link": "Qnk4jiWamm4", "hotspots": [0]  },
+        { "name": "My Iron Lung",                 "fav": true,  "length": 276, "link": "eHK67LiMI8k", "hotspots": [0]  },
+        { "name": "Bulletproof... I Wish I Was",  "fav": true,  "length": 208, "link": "KkCgUI_g2oo", "hotspots": [0]  },
+        { "name": "Black Star",                   "fav": true,  "length": 247, "link": "d7lbzUUXj0k", "hotspots": [0]  },
+        { "name": "Sulk",                         "fav": false, "length": 222, "link": "-SLb6BdCHlE", "hotspots": [0]  },
+        { "name": "Street Spirit (Fade Out)",     "fav": true,  "length": 253, "link": "2y6kop0VTXY", "hotspots": [0]  }
       ]
     },
     {

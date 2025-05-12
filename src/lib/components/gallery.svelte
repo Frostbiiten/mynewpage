@@ -2,9 +2,8 @@
   import emblaCarouselSvelte from 'embla-carousel-svelte';
   import { onMount } from 'svelte';
   
-
-    import Fa from 'svelte-fa'
-    import { faArrowLeft, faArrowRight, faCirclePlay, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+  import Fa from 'svelte-fa'
+  import { faArrowLeft, faArrowRight, faCirclePlay, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
   let {project, imgCount, vidCount }= $props();
   
