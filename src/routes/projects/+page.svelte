@@ -1,4 +1,9 @@
 <script>
+    import p_data from "$lib/data/projects.json"
+    import { base } from "$app/paths";
+
+    export const entries = p_data.projects.map(p => `${base}/projects/${p.name}`);
+
     import Projectcontainer from "$lib/components/projectcontainer.svelte";
     import Fa from 'svelte-fa'
     import { faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
