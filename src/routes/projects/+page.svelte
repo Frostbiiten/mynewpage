@@ -12,7 +12,6 @@
     import { browser } from "$app/environment";
     import gooseSign from "$lib/img/goose_sign.png"
     import floor from "$lib/img/projects/null.png"
-    import textbg from "$lib/img/projectsbgold.jpg"
 
     let figureWidth = $state(0);
     let figureHeight = $state(0);
