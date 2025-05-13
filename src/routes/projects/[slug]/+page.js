@@ -1,6 +1,6 @@
 export const load = ({ params }) => {
     return {
-        slug: params.slug
+        slug: decodeURIComponent(params.slug)
     }
 }
 
