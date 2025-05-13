@@ -10,13 +10,10 @@ const config = {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
-			fallback: 'index.html'
+			fallback: null
 		}),
 		paths: {
-			base: ''
-		},
-		prerender: {
-			entries: []
+			base: '/mynewpage'
 		}
 	},
 	preprocess: vitePreprocess()
