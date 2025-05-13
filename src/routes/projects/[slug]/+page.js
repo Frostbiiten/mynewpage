@@ -7,6 +7,6 @@ export const load = ({ params }) => {
 import p_data from "$lib/data/projects.json"
 export const entries = async () => {
   return p_data.projects.map(p =>
-    `/projects/${encodeURIComponent(p.name)}`
-  );
+    ({"slug": `${encodeURIComponent(p.name)}`})
+  )
 };
