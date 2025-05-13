@@ -11,6 +11,8 @@
     let project_data = $state(project_data_raw.projects.find(el => el.name === data.slug))
     //$inspect(project_data)
 
+    import { base } from '$app/paths';
+
 
     function getDateInfo(timestamp)
     {
