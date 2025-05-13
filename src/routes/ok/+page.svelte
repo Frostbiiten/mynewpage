@@ -11,6 +11,7 @@
     import { faPlay, faForwardStep, faBackwardStep } from "@fortawesome/free-solid-svg-icons";
     import sittingSketch from "$lib/img/figure/sittingSketch.png"
 
+    let currentMenu = $state("main");
     let figureWidth = $state(0);
     let figureHeight = $state(0);
 
@@ -436,27 +437,25 @@
             return closest;
         }
 
-        currentDialogue = getPrev(music_data.collections[playingCollection]?.tracklist[playingSong].hotspots, time);
-        const nextDialogue = getNext(music_data.collections[playingCollection]?.tracklist[playingSong].hotspots, time);
+        const current = getPrev(music_data.collections[playingCollection]?.tracklist[playingSong].hotspots, time);
+        const next = getNext(music_data.collections[playingCollection]?.tracklist[playingSong].hotspots, time);
 
-        if (nextDialogue !== null)
+        const timeUntilNext = next === null ? Infinity : next.time - time;
+        const timeSinceCurrent = current === null ? -Infinity : time - current.time;
+
+        if (timeUntilNext <= 1.5 && timeUntilNext > 0)
         {
-            const diff = nextDialogue.time - time;
-            const diff2 = time - currentDialogue.time;
-            if (characterhover === true)
-            {
-                if (diff < 2 && diff > 0)
-                {
-                    characterhover = false;
-                }
-            }
-            else
-            {
-                if (diff2 < 2 && diff2 > 0)
-                {
-                    characterhover = true;
-                }
-            }
+            characterhover = false;
+        }
+        else if (timeSinceCurrent >= 0)
+        {
+            characterhover = true;
+        }
+
+        currentDialogue = current;
+        if (current === null)
+        {
+            characterhover = false;
         }
     }
 
@@ -668,6 +667,24 @@
         color: #3b82f6; /* Tailwind's text-blue-500 */
     }
 
+    @keyframes blockanim {
+        0% { width: 100%; transform: translateX(0); }
+        100% { width: 0%; transform: translateX(-100%); }
+    }
+
+    .block-anim {
+        animation: blockanim 2.2s cubic-bezier(0,1,0,1) both;
+    }
+
+    @keyframes sectionanim {
+        0% { transform: translateX(20rem); }
+        100% { transform: translateX(0rem); }
+    }
+
+    .section-anim {
+        animation: sectionanim 2.2s cubic-bezier(0,1,0,1) both;
+    }
+
 </style>
 
 <svg width="0" height="0" class="absolute">
@@ -704,7 +721,10 @@ class="flex flex-row justify-center items-center w-full">
             </h1>
         </div>
 
-        <div class="p-0 -mt-4 w-[calc(100%+14rem)]  h-[calc(100vh+6rem)] flex items-start translate-x-[-14rem]">
+        <div class={cx("p-0 -mt-4 w-[calc(100%+14rem)]  flex items-start translate-x-[-14rem] ease-out transition-all duration-300",
+        (currentMenu === "music") && "translate-y-0 opacity-100 h-[calc(100vh+6rem)] ",
+        (currentMenu !== "music") && "translate-y-30 opacity-0 h-0")}
+        >
             <div class="flex flex-row justify-start rounded-2xl border-2 border-slate-700 bg-gray-900/20 h-50">
 
                 <div class="relative h-[calc(30vh+30rem)] w-50 self-center track-mask">
@@ -770,7 +790,7 @@ class="flex flex-row justify-center items-center w-full">
 
                     <div bind:this={tracklistScrollbox}
                         style={`scrollbar-color: rgba(200, 200, 230, 0.4) transparent; --sw: ${scrollbarWidth}px`}
-                        class={cx("flex overflow-y-auto overflow-x-visible flex-col gap-2 pr-6 pb-2 pt-3 pl-3 leading-tight whitespace-normal duration-400 ease-[cubic-bezier(0.12,0.639,0.34,1)] max-h-[calc(100vh-31.25rem)] rounded-bl-xl border-slate-900 border-2 border-r-0 border-t-0 w-160", widenTracklist && "w-[calc(40rem+var(--sw))]" )}>
+                        class={cx("flex overflow-y-auto overflow-x-visible flex-col gap-2 pr-6 pb-2 pt-3 pl-3 leading-tight whitespace-normal duration-400 ease-[cubic-bezier(0.12,0.639,0.34,1)] min-h-110 max-h-[calc(100vh-31.25rem)] rounded-bl-xl border-slate-900 border-2 border-r-0 border-t-0 w-160", widenTracklist && "w-[calc(40rem+var(--sw))]" )}>
 
                         {#if currentCollection !== null}
 
@@ -785,10 +805,10 @@ class="flex flex-row justify-center items-center w-full">
                                     <div class={cx("absolute group-hover:scale-x-100 group-hover:opacity-90 transition-all origin-left scale-x-0 -left-1 top-0 w-full h-full bg-gradient-to-r ease-[cubic-bezier(0,1,0,1)] rounded-md from-blue-950/40 via-50% via-blue-900/15 to-indigo-500/0 opacity-0 duration-1000", (playingSong == index && playingCollection == currentCollection) && "scale-x-100 opacity-100")}></div>
 
                                     <p class={cx("transition-all duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-600", (playingSong == index && playingCollection == currentCollection) && "text-slate-500")}>
-                                        {index}
+                                        {String(index).padStart(2, '0')}
                                     </p>
 
-                                    <p class={cx("transition-all overflow-ellipsis text-nowrap text-left grow duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-300", (playingSong == index && playingCollection == currentCollection) && "text-blue-200 text-lg")}>
+                                    <p class={cx("transition-all overflow-ellipsis overflow-hidden max-w-110 text-nowrap text-left grow duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-300", (playingSong == index && playingCollection == currentCollection) && "text-blue-200 text-lg")}>
                                         {song.name}
                                     </p>
 
@@ -806,7 +826,7 @@ class="flex flex-row justify-center items-center w-full">
                         {/if}
                     </div>
 
-                    <div class="overflow-clip relative rounded-br-xl border-r-2 border-b-2 border-slate-900 bg-slate-900/10 grow max-h-[calc(100vh-31rem)]">
+                    <div class="overflow-clip relative rounded-br-xl border-r-2 border-b-2 border-slate-900 bg-slate-900/10 grow max-h-[calc(100vh-31rem)] min-h-110">
                         <div class="absolute right-0 top-80 w-full h-80 bg-gradient-to-t from-slate-900/15 to-slate-900/10">
                         </div>
                         <img src={sittingSketch} class="hidden absolute right-5 top-15 w-50 -scale-x-100" style="filter: url(#figsketch)" >
@@ -877,7 +897,7 @@ class="flex flex-row justify-center items-center w-full">
                                     !characterhover && "opacity-0 ease-in delay-0",
                                 )}>
                                     {#if currentDialogue !== null}
-                                    {#if currentDialogue.media.length > 0}
+                                    {#if currentDialogue?.media?.length > 0}
                                         <div class="flex relative z-0 gap-1 mx-auto w-full h-40">
                                             <button
                                                 onclick={() => {
@@ -941,87 +961,96 @@ class="flex flex-row justify-center items-center w-full">
                 </div>
             </div>
 
+            <div id="yt-player" class="w-full h-[360px] hidden"></div>
+        </div>
 
-            <div class="flex hidden relative flex-col items-stretch w-full h-full rounded-xl">
-
-                <div class="w-full h-full bg-red-400">
-
-                </div>
-
-                <div id="yt-player" class="w-full h-[360px] hidden"></div>
-
-                <div class="flex gap-4 mt-4">
-                <button onclick={play}>Play</button>
-                <button onclick={pause}>Pause</button>
-                <button onclick={() => seekTo(60)}>Seek to 1:00</button>
-                </div>
-
-                <div class="hidden">
-                <div
-                    class="absolute inset-0 bg-center bg-cover brightness-95"
-                    style="background-image: url({bg}); z-index: 0;">
-                </div>
-
-                <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-2xl mix-blend-soft-light">
-                    <div class="overflow-hidden relative w-full h-full rounded-xl scale-140">
-                        <div class="absolute top-0 left-0 w-[110%] h-[110%] opacity-50 z-9999 grain">
-                        </div>
-                    </div>
-                </div>
-
-                {#snippet section(text, extra)}
-                <button
-                    onclick={()=> {currentSection = text;}}
-                    class={cx(
-                        "flex relative flex-col justify-center items-start w-full h-1/4 cursor-pointer group grow hover:mix-blend-darken",
-                            (currentSection == text) && "z-50 mix-blend-darken"
-                    )}>
-                    <div
-                        class={cx(
-                            "absolute h-full transition-all  bg-zinc-950 ease-[cubic-bezier(0,1,0,1)]",
-                            (currentSection != text) && "w-0 duration-200 group-hover:w-full",
-                            (currentSection == text) && "w-full scale-y-700 duration-[0.3s] ease-[cubic-bezier(0,0.5,0.5,1)]"
-                            )}>
-                        </div>
-                    <h1
-                        class={cx(
-                            "z-10 ml-10 text-7xl group-hover:scale-x-[3] font-mono origin-left duration-100 ease-[cubic-bezier(0.282,1.281,0.769,1.073)]",
-                            (currentSection == text) && "scale-y-800 duration-[0.09s] ease-[cubic-bezier(0,0.5,0.5,1)] scale-x-[3]",
-                            (currentSection != "" && currentSection != text) && "hidden",
-                            currentSection && extra
-                        )}
-                        >{text}
-                    </h1>
-                </button>
-                {/snippet}
-
-                    {@render section("music", "mt-80")}
-                    {@render section("games", "")}
-                    {@render section("edits", "")}
-                    {@render section("anime", "mb-80")}
-                </div>
-
+        <div class={cx("p-0 -mt-4 w-full bg-zinc-950/50 rounded-md pointer-events-none flex items-start ease-out transition-all duration-300",
+        (currentMenu === "edits" || currentMenu === "games" || currentMenu === "anime") && "translate-y-0 opacity-100 h-[calc(100vh-15rem)] ",
+        (currentMenu !== "edits" && currentMenu !== "games" && currentMenu !== "anime") && "translate-y-30 opacity-0 h-0")}
+        >
+            <div class="rounded-md select-none text-slate-200">
+                <p class="font-mono -mt-25 px-9 text-[20rem] font-bold">WIP</p>
+                <p class="px-9 -mt-25">Check in later...</p>
             </div>
         </div>
+
+        {#if currentMenu === "main"}
+        <div
+            class={cx("p-0 -mt-4 w-full h-[calc(100vh-12rem)] flex items-start transition-[opacity,scale] origin-left duration-700 delay-300 ease-[cubic-bezier(0.115,0.813,0,1)]", (currentSection !== "") && "opacity-0")}>
+            <div class="flex relative flex-col items-stretch w-full h-full overflow-clip rounded-xl">
+                    <div
+                        class="absolute inset-0 bg-center bg-cover brightness-95"
+                        style="background-image: url({bg}); z-index: 0;">
+                    </div>
+
+                    <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-2xl mix-blend-soft-light">
+                        <div class="overflow-hidden relative w-full h-full rounded-xl scale-140">
+                            <div class="absolute top-0 left-0 w-[110%] h-[110%] opacity-50 z-9999 grain">
+                            </div>
+                        </div>
+                    </div>
+
+                    {#snippet section(text, extra, delay)}
+                    <button
+                        onclick={()=> {
+                            if (currentSection === "")
+                            {
+                                currentSection = text;
+                                setTimeout(() => {
+                                    currentMenu = text;
+                                }, 1000);
+                            }
+                        }}
+                        class={cx(
+                            "flex relative flex-col justify-center items-start w-full h-1/4 cursor-pointer group grow hover:mix-blend-darken",
+                                (currentSection == text) && "z-50 mix-blend-darken"
+                        )}>
+                        <div
+                            class={cx(
+                                "absolute h-full transition-all  bg-zinc-950 ease-[cubic-bezier(0,1,0,1)]",
+                                (currentSection != text) && "w-0 duration-200 group-hover:w-full",
+                                (currentSection == text) && "w-full scale-y-700 duration-[0.3s] ease-[cubic-bezier(0,0.5,0.5,1)]"
+                                )}>
+                            </div>
+
+
+                        <h1
+                            style={`animation-delay: ${delay}ms`}
+                            class={cx(
+                                "z-10 section-anim ml-10 text-7xl group-hover:scale-x-[3] font-mono origin-left duration-100 ease-[cubic-bezier(0.282,1.281,0.769,1.073)]",
+                                (currentSection == text) && "scale-y-800 duration-[0.09s] ease-[cubic-bezier(0,0.5,0.5,1)] scale-x-[3]",
+                                (currentSection != "" && currentSection != text) && "hidden",
+                                currentSection && extra
+                            )}
+                            >{text}
+                        </h1>
+
+                        <div style={`animation-delay: ${delay}ms`} class={cx("absolute bg-zinc-950 h-full block-anim z-11")}>
+                            </div>
+                    </button>
+                    {/snippet}
+
+                    {@render section("music", "mt-80", 500)}
+                    {@render section("games", "", 600)}
+                    {@render section("edits", "", 700)}
+                    {@render section("anime", "mb-80", 800)}
+            </div>
+        </div>
+        {/if}
 
     </div>
 </div>
 
-                        <div class="absolute top-5 right-5 w-20 h-20 bg-red-400"
-                            onfocus={figureTalk} ontouchstart={figureTalk} onmouseover={figureTalk}
-                            onblur={figureTalkEnd} ontouchend={figureTalkEnd} onmouseleave={figureTalkEnd}
-                            aria-label="Figure"
-                        ></div>
-
+{#if currentMenu === "music"}
 <div class="flex sticky bottom-10 z-10 justify-center mb-5 w-full h-25">
     <div class="px-8 space-y-5 w-screen max-w-7xl">
         <div class="flex relative flex-col gap-4 justify-center items-center px-5 w-full h-full rounded-lg border-2 bg-zinc-900 border-zinc-800">
 
             <div class="flex gap-4 justify-center items-center w-full">
-                <div class="flex gap-3 p-2 w-full text-zinc-500 basis-4/5 text-nowrap">
+                <div class="flex gap-3 py-2 w-full text-zinc-500 basis-4/5 text-nowrap">
                     {#if playerReady && playingCollection !== null && playingSong != null}
                         Now playing:
-                        <div class="w-full font-mono now-playing-mask">
+                        <div class="w-full font-mono max-w-100 now-playing-mask">
                             <p class="playing-slide">{music_data.collections[playingCollection]?.tracklist[playingSong].name} on <span class="italic">{music_data.collections[playingCollection]?.name}</span></p>
                         </div>
                     {/if}
@@ -1069,7 +1098,11 @@ class="flex flex-row justify-center items-center w-full">
                 </div>
             </div>
             <div class="flex gap-5 items-center w-full text-gray-300">
-                    <p class="w-10">{Math.floor(currentTime / 60)}:{String(Math.floor(currentTime) % 60).padStart(2, '0')}</p>
+                    {#if isNaN(Math.floor((currentTime) / 60))}
+                        <p class="w-10">00:00</p>
+                    {:else}
+                        <p class="w-10">{Math.floor((currentTime) / 60)}:{String(Math.floor(currentTime) % 60).padStart(2, '0')}</p>
+                    {/if}
                     <div class="flex relative items-center w-full h-2 rounded-sm bg-zinc-800">
                         <input
                             type="range"
@@ -1082,7 +1115,16 @@ class="flex flex-row justify-center items-center w-full">
                             bind:value={currentTime}
                             class="w-full opacity-0 cursor-pointer"
                         />
-                        <div class="h-full pointer-events-none absolute left-0 rounded-sm ease-[cubic-bezier(0.5,0.5,0.5,0.5)] transition-all duration-50 bg-slate-200" style={`width: ${100 * currentTime / music_data.collections[playingCollection]?.tracklist[playingSong].length}%`}>
+                        <div class="h-full pointer-events-none absolute left-0 rounded-sm ease-[cubic-bezier(0.5,0.5,0.5,0.5)] transition-all duration-50 bg-slate-200" style={`width: ${100 * Math.max(Math.min(currentTime / music_data.collections[playingCollection]?.tracklist[playingSong].length, 1), 0)}%`}>
+                        </div>
+                        <div class="absolute w-full h-full pointer-events-none">
+                            <div class="relative w-full h-full">
+                            {#each music_data.collections[playingCollection]?.tracklist[playingSong].hotspots as spot}
+                                <div class="absolute w-1 h-2 bg-zinc-950/20" style={`left: ${100 * spot.time / music_data.collections[playingCollection]?.tracklist[playingSong].length}%;`}>
+
+                                </div>
+                            {/each}
+                            </div>
                         </div>
                     </div>
                     {#if playerReady && music_data.collections[playingCollection]?.tracklist[playingSong]}
@@ -1100,3 +1142,4 @@ class="flex flex-row justify-center items-center w-full">
         </div>
     </div>
 </div>
+{/if}

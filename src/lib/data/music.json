@@ -4,7 +4,7 @@
       "name": "The Bends",
       "artist": "Radiohead",
       "released": "March 13, 1995",
-      "img": "the_bends.png",
+      "img": "the_bends.webp",
       "tracklist": [
         { "name": "Planet Telex",                 "fav": true,  "length": 259, "link": "g0az4OkM02Y",
         "hotspots": [
@@ -38,7 +38,7 @@
         "hotspots": [
           {
             "time": 0,
-            "text": "\"This is the bends and it will continue to be so.\" -Thom Yorke Live at [Chicago Metro '96](https://youtu.be/jBwGywTTU30?t=3542)\n Contrary to popular belief, 'The Bends' was not intentionally written about Creep, but I still think it's surprisingly poetic.",
+            "text": "[Chicago Metro '96](https://youtu.be/jBwGywTTU30?t=3542) <br> Contrary to popular belief, 'The Bends' was not intentionally written about Creep, but I still think it's surprisingly poetic.",
             "media": [
               {
                 "img": "chicago96_01.webp",
@@ -192,63 +192,735 @@
               }
             ]
           }
-
         ]  },
-        { "name": "Fake Plastic Trees",           "fav": true,  "length": 290, "link": "6gDhsUWCHrg", "hotspots": [0]  },
-        { "name": "Bones",                        "fav": false, "length": 189, "link": "3ZKxungSg9U", "hotspots": [0]  },
-        { "name": "(Nice Dream)",                 "fav": false, "length": 233, "link": "jIjTFt6XmFM", "hotspots": [0]  },
-        { "name": "Just",                         "fav": true,  "length": 234, "link": "Qnk4jiWamm4", "hotspots": [0]  },
-        { "name": "My Iron Lung",                 "fav": true,  "length": 276, "link": "eHK67LiMI8k", "hotspots": [0]  },
-        { "name": "Bulletproof... I Wish I Was",  "fav": true,  "length": 208, "link": "KkCgUI_g2oo", "hotspots": [0]  },
-        { "name": "Black Star",                   "fav": true,  "length": 247, "link": "d7lbzUUXj0k", "hotspots": [0]  },
-        { "name": "Sulk",                         "fav": false, "length": 222, "link": "-SLb6BdCHlE", "hotspots": [0]  },
-        { "name": "Street Spirit (Fade Out)",     "fav": true,  "length": 253, "link": "2y6kop0VTXY", "hotspots": [0]  }
+        { "name": "Fake Plastic Trees",           "fav": true,  "length": 290, "link": "6gDhsUWCHrg", "hotspots": [
+          {
+            "time": 3,
+            "text": "It took longer for me to like this song than I would like to admit... ",
+            "media": []
+          },
+          {
+            "time": 30,
+            "text": "Earlier versions, including live at [The Astoria '94](https://youtu.be/RjQZd8p-eBM?t=2200) have different instrumental introductions.",
+            "media": [
+              {
+                "img": "astoria94_01.webp",
+                "link": "https://youtu.be/RjQZd8p-eBM?t=220"
+              }
+            ]
+          },
+          {
+            "time": 52,
+            "text": "Jonny makes a lotta nice sounds here on some live performances",
+            "media": [
+              {
+                "img": "mtv95_01.webp",
+                "link": "https://youtu.be/7baJY6rnSvc?&t=61"
+              }
+            ]
+          },
+          {
+            "time": 93,
+            "text": "Thom holds the higher note in performances like [Belfort '97](https://youtu.be/fIGuEnIT2ro?t=2255) or [Glastonbury '03](https://youtu.be/2Vo4WutBoq4?t=2477), which I think sounds absolutely majestic.",
+            "media": [
+              {
+                "img": "belfort97_01.webp",
+                "link": "https://youtu.be/fIGuEnIT2ro?t=2255"
+              },
+              {
+                "img": "glastonbury03_01.webp",
+                "link": "https://youtu.be/2Vo4WutBoq4?t=2477"
+              }
+            ]
+          },
+          {
+            "time": 190,
+            "text": "I think payoff in [Belfort '97](https://youtu.be/fIGuEnIT2ro?t=2351) sounds incredible here.",
+            "media": []
+          }
+        ]  },
+        { "name": "Bones",                        "fav": false, "length": 189, "link": "3ZKxungSg9U", "hotspots": [
+          {
+            "time": 0,
+            "text": "I think I liked this the first 3 times I listened to it."
+          }
+        ]  },
+        { "name": "(Nice Dream)",                 "fav": false, "length": 233, "link": "jIjTFt6XmFM", "hotspots": [
+          {
+            "time": 0,
+            "text": "Unfortunately this never grew on me..."
+          }
+        ]  },
+        { "name": "Just",                         "fav": true,  "length": 234, "link": "Qnk4jiWamm4", "hotspots": [
+          {
+            "time": 0,
+            "text": "I didn't like this at first, but it's alright. You should check out [this](https://youtu.be/eJddqw8U20c) hilarious playback performance"
+          }
+        ]  },
+        { "name": "My Iron Lung",                 "fav": true,  "length": 276, "link": "eHK67LiMI8k", "hotspots": [
+          {
+            "time": 0,
+            "text": "I will always love My Iron Lung ❤️"
+          },
+          {
+            "time": 10,
+            "text": "Notably, the studio version is identical to their [Astoria '94](https://youtu.be/RjQZd8p-eBM?t=1342) performance, except with replaced vocals. I think both sound great.",
+            "media": [
+              {
+                "img": "astoria94_01.webp",
+                "link": "https://youtu.be/RjQZd8p-eBM?t=134"
+              }
+            ]
+          },
+          {
+            "time": 115,
+            "text": "Colin does an amazing job with the bass here, even [slapping](https://youtu.be/-46u9fQaFOU?t=106) in the choruses. I wish it was turned up a bit in studio.",
+            "media": [
+              {
+                "img": "colin01.webp",
+                "link": "https://youtu.be/-46u9fQaFOU?t=106"
+              }
+            ]
+          },
+          {
+            "time": 180,
+            "text": "Their performance at [Nulle Part Ailleurs '95](https://youtu.be/ywY_eJCQ-xc?t=186) is also shockingly great, there are some extra sounds here.",
+            "media": [
+              {
+                "img": "npa95_01.webp",
+                "link": "https://youtu.be/ywY_eJCQ-xc?t=186"
+              }
+            ]
+          },
+          {
+            "time": 240,
+            "text": "For what it's worth, their [2 Meter Sessions](https://youtu.be/sdtKjByGGHM) would be my third favourite. Unfortunately, many other live performances have been recorded with poor quality.",
+            "media": [
+              {
+                "img": "2meter95_01.webp",
+                "link": "https://youtu.be/sdtKjByGGHM"
+              }
+            ]
+          }
+        ]  },
+        { "name": "Bulletproof... I Wish I Was",  "fav": true,  "length": 208, "link": "KkCgUI_g2oo", "hotspots": [
+          {
+            "time": 0,
+            "text": "Great song and one of my favourite vocal performances from Thom. The acoustic version is pretty cool too."
+          }
+        ]  },
+        { "name": "Black Star",                   "fav": true,  "length": 247, "link": "d7lbzUUXj0k", "hotspots": [
+          {
+            "time": 0,
+            "text": "I prefer the intro at [Chicago Metro '96](https://youtu.be/5ihwFCY74As) rather than the studio fade-in.",
+            "media": [
+              {
+                "img": "chicago96_03.webp",
+                "link": "https://youtu.be/5ihwFCY74As"
+              }
+            ]
+          },
+          {
+            "time": 53,
+            "text": "The [Astoria '94](https://youtu.be/RjQZd8p-eBM?&t=620) has slightly different chorus harmonies in addition to starting suddenly rather than fading in.",
+            "media": [
+              {
+                "img": "astoria94_01.webp",
+                "link": "https://youtu.be/RjQZd8p-eBM?&t=620"
+              }
+            ]
+          },
+          {
+            "time": 147,
+            "text": "I CANNOT get over this bridge... The bass really does it for me.",
+            "media": []
+          }
+        ]  },
+        { "name": "Sulk",                         "fav": false, "length": 222, "link": "-SLb6BdCHlE", "hotspots": [
+          {
+            "time": 0,
+            "text": "Maybe I don't hate this song as much as High and Dry, but it evokes no reaction from me so I just don't listen."
+          }
+        ]  },
+        { "name": "Street Spirit (Fade Out)",     "fav": true,  "length": 253, "link": "2y6kop0VTXY", "hotspots": [
+          {
+            "time": 0,
+            "text": "I like."
+          }
+        ]  }
+      ]
+    },
+    {
+      "name": "The Bends B-Sides",
+      "artist": "Radiohead",
+      "released": "-",
+      "img": "the_bends_bsides.webp",
+      "tracklist": [
+        { "name": "Maquilodora",                "fav": true,  "length": 207, "link": "paAvvE6vWXs", "hotspots": [
+          {
+            "time": 0,
+            "text": "Honestly, just listen to the [Astoria '94](https://youtu.be/RjQZd8p-eBM?t=1780). It is WAY better.",
+            "media":[
+              {
+                "img": "astoria94_01.webp",
+                "link": "https://youtu.be/RjQZd8p-eBM?t=1780"
+              }
+            ]
+          }]
+        },
+        { "name": "Killer Cars",                     "fav": true,  "length": 183, "link": "l-0vee1lU9w", "hotspots": [] },
+        { "name": "India Rubber",                    "fav": true,  "length": 206, "link": "zB92UBjr9UE", "hotspots": [] },
+        { "name": "How Can You Be Sure?",            "fav": true,  "length": 262, "link": "IOax8WSeEGM", "hotspots": [] },
+        { "name": "The Trickster",                   "fav": true,  "length": 282, "link": "L_lwC9xZBXQ", "hotspots": [] },
+        { "name": "Lewis (Mistreated)",              "fav": true,  "length": 200, "link": "LBc-xZXhDek", "hotspots": [] },
+        { "name": "Punchdrunk Lovesick Singalong",   "fav": true,  "length": 281, "link": "EGRWqkzEqew", "hotspots": [] },
+        { "name": "Permanent Daylight",              "fav": true,  "length": 169, "link": "nfncG0G7SrM", "hotspots": [] },
+        { "name": "You Never Wash Up After Yourself","fav": true,  "length": 104, "link": "4Dau2NFQ1-w", "hotspots": [] },
+        { "name": "Talk Show Host",                  "fav": true,  "length": 281, "link": "Xgaj5suTCgk", "hotspots": [] },
+        { "name": "Banana Co",                       "fav": true,  "length": 141, "link": "vCbhXjtOK6E", "hotspots": [] },
+        { "name": "Bishop's Robes",                  "fav": true,  "length": 205, "link": "u-JTjzZtn7Y", "hotspots": [] }
       ]
     },
     {
       "name": "OK Computer",
       "artist": "Radiohead",
       "released": "May 21, 1997",
-      "img": "ok_computer.png",
+      "img": "ok_computer.webp",
       "tracklist": [
-        { "name": "Airbag",                       "fav": true,  "length": 287, "hotspots": [0], "link": "jNY_wLukVW0" },
-        { "name": "Paranoid Android",             "fav": true,  "length": 387, "hotspots": [0], "link": "Lt8AfIeJOxw" },
-        { "name": "Subterranean Homesick Alien",  "fav": true,  "length": 267, "hotspots": [0], "link": "_fTWmUlTEqE" },
-        { "name": "Exit Music (for a Film)",      "fav": false, "length": 267, "hotspots": [0], "link": "Bf01riuiJWA" },
-        { "name": "Let Down",                     "fav": true,  "length": 299, "hotspots": [0], "link": "EgkI1zI61bQ" },
-        { "name": "Karma Police",                 "fav": true,  "length": 264, "hotspots": [0], "link": "4IJI6soiQhI" },
-        { "name": "Fitter Happier",               "fav": true,  "length": 117, "hotspots": [0], "link": "O4SzvsMFaek" },
-        { "name": "Electioneering",               "fav": true,  "length": 230, "hotspots": [0], "link": "3DtgWrFTtQk" },
-        { "name": "Climbing Up the Walls",        "fav": true,  "length": 285, "hotspots": [0], "link": "XX4EpkR-Sp4" },
-        { "name": "No Surprises",                 "fav": true,  "length": 229, "hotspots": [0], "link": "LBt60dfwEBY" },
-        { "name": "Lucky",                        "fav": true,  "length": 258, "hotspots": [0], "link": "yuZYQvvLXVY" },
-        { "name": "The Tourist",                  "fav": true,  "length": 326, "hotspots": [0], "link": "HkgzObf8uVU" }
+        { "name": "Airbag",                       "fav": true,  "length": 287, "link": "jNY_wLukVW0", "hotspots": [
+          {
+            "time": 0,
+            "text": "Check out the opening on an [early airbag](https://youtu.be/6Z-0mcY2TME). Fits nicely between The Bends and OK Computer."
+          },
+          {
+            "time": 86,
+            "text": "I really love Jonny's guitar wizardry, everything sounds great live too! Check out [Glastonbury '97](https://youtu.be/mQ6wTt8eIfw?t=108)",
+            "media": [
+              {
+                "img": "glastonbury97_01.webp",
+                "link": "https://youtu.be/mQ6wTt8eIfw?t=108"
+              }
+            ]
+          },
+          {
+            "time": 137,
+            "text": "It's really interesting to listen to all the different instrumentals at this part. One of my favourites is at [Jools Holland '97](https://youtu.be/BAbprjVHbYA?t=208)",
+            "media": [
+              {
+                "img": "jh97_01.webp",
+                "link": "https://youtu.be/BAbprjVHbYA?t=208"
+              }
+            ]
+          },
+          {
+            "time": 245,
+            "text": "The screech Thom does at the [10Spot](https://youtu.be/kmsB1FF34BY?t=240) is really wonderful. I think this is my favourite live version.",
+            "media": [
+              {
+                "img": "jh97_01.webp",
+                "link": "https://youtu.be/BAbprjVHbYA?t=208"
+              }
+            ]
+          }
+        ] },
+        { "name": "Paranoid Android",             "fav": true,  "length": 387, "link": "Lt8AfIeJOxw", "hotspots": [
+          {
+            "time": 0,
+            "text": "I know this comes off as generic, but this is my favourite radiohead song.",
+            "media": []
+          },
+          {
+            "time": 184,
+            "text": "Really great call and response here",
+            "media": []
+          },
+          {
+            "time": 351,
+            "text": "I really would have loved if the screeches present in [Jools Holland '97](https://youtu.be/NzPtr_n-m8A?t=348) were on studio. Either way, I think that performance is by far the best live version of this song.",
+            "media": [
+              {
+                "img": "jh97_02.webp",
+                "link": "https://youtu.be/NzPtr_n-m8A?t=348"
+              }
+            ]
+          }
+        ] },
+        { "name": "Subterranean Homesick Alien",  "fav": true,  "length": 267, "link": "_fTWmUlTEqE", "hotspots": [
+          {
+            "time": 0,
+            "text": "One of my favourite openings of all time",
+            "media": []
+          },
+          {
+            "time": 20,
+            "text": "I was shocked when I first found out this was performed live. I think the [10spot](https://youtu.be/byN3JDPoJRo) performance is their best.",
+            "media": [
+              {
+                "img": "10spot97_01.webp",
+                "link": "https://youtu.be/byN3JDPoJRo"
+              }
+            ]
+          }
+        ] },
+        { "name": "Exit Music (for a Film)",      "fav": false, "length": 267, "link": "Bf01riuiJWA", "hotspots": [
+          {
+            "time": 0,
+            "text": "Unfortunately, this song never clicked for me... 😭",
+            "media": []
+          }
+        ] },
+        { "name": "Let Down",                     "fav": true,  "length": 299, "link": "EgkI1zI61bQ", "hotspots": [0] },
+        { "name": "Karma Police",                 "fav": true,  "length": 264, "link": "4IJI6soiQhI", "hotspots": [
+          {
+            "time": 0,
+            "text": "Great song! Check out the early intro/outro from [OK Outtakes](https://youtu.be/1D7GqtnjkSY). I think both versions sound amazing.",
+            "media": [
+              {
+                "img": "ok.webp",
+                "link": "https://youtu.be/byN3JDPoJRo"
+              }
+            ]
+          }
+        ] },
+        { "name": "Fitter Happier",               "fav": true,  "length": 117, "link": "O4SzvsMFaek", "hotspots": [{
+          "time": 0,
+          "text": "I'm dead serious when I say I'd listen to this over Exit Music. Good interlude."
+        }] },
+        { "name": "Electioneering",               "fav": true,  "length": 230, "link": "3DtgWrFTtQk", "hotspots": [{
+          "time": 33,
+          "text": "I actually prefer the [Chicago Metro '96](https://youtu.be/jBwGywTTU30?t=564) version with Ed's vocals. Album version is alright though.",
+          "media": []
+        }] },
+        { "name": "Climbing Up the Walls",        "fav": true,  "length": 285, "link": "XX4EpkR-Sp4", "hotspots": [{
+          "time": 0,
+          "text": "Underrated in my opinion. Check out the [BBC live](https://youtu.be/y6KYb03zJHM) version, which has a remarkable intro.",
+          "media": []
+        },
+        {
+          "time": 20,
+          "text": "Check out the [live debut](https://youtu.be/AJozUVc1lyg?)! Aside from the earlier lyrics, it's cool to see Thom's percussion and whatever wizardry Jonny is doing.",
+          "media": []
+        },
+        {
+          "time": 235,
+          "text": "During some live performances, Thom screams into his guitar during this part.",
+          "media": []
+        }
+        
+        ] },
+        { "name": "No Surprises",                 "fav": true,  "length": 229, "link": "LBt60dfwEBY", "hotspots": [{}] },
+        { "name": "Lucky",                        "fav": true,  "length": 258, "link": "yuZYQvvLXVY", "hotspots": [
+        {
+          "time": 0,
+          "text": "This song has grown on me a ton. I think either [Nulle Part Ailleurs '97](https://youtu.be/EEtbPDOYkjg) or [this](https://youtu.be/eu5LGa028Wk) is my favourite live performance of the song.",
+          "media": [
+            {
+              "img": "npa97_01.webp",
+              "link": "https://youtu.be/EEtbPDOYkjg"
+            }
+          ]
+        },
+        {
+          "time": 116,
+          "text": "I really love the mellotron (?) or synth used here. I think it sounds great at [Glastonbury '03](https://youtu.be/SCOSb2_QPdk?t=141) but I ultimately prefer the studio version.",
+          "media": [
+            {
+              "img": "glastonbury03_01.webp",
+              "link": "https://youtu.be/SCOSb2_QPdk?t=141"
+            }
+          ]
+        },
+        {
+          "time": 225,
+          "text": "Thom and Ed's vocals really sound incredible here in [Jools Holland '01](https://youtu.be/_HCqrA9rxeY?t=217), I wish this was in studio.",
+          "media": [
+            {
+              "img": "jh95_03.webp",
+              "link": "https://youtu.be/_HCqrA9rxeY?t=217"
+            }
+          ]
+        }
+        ] },
+        { "name": "The Tourist",                  "fav": true,  "length": 326, "link": "HkgzObf8uVU", "hotspots": [{
+          "time": 0,
+          "text": "This took ages to grow on me. Honestly, check out the [10Spot](https://youtu.be/KSHXD93akOE) version, great stuff."
+        }] }
       ]
     },
+    {
+      "name": "OK Computer B-sides",
+      "artist": "Radiohead",
+      "released": "-",
+      "img": "ok_computer_bsides.webp",
+      "tracklist": [
+        { "name": "Polyethylene",                "fav": true,  "length": 262, "link": "xJyYM2oKbxk", "hotspots": [
+          {
+            "time": 0,
+            "text": "The microplastics song. Check out the great live performance at [New York '98](https://youtu.be/Md71N_9Vi_w?t=5290).",
+            "media":[
+              {
+                "img": "rcmh98.webp",
+                "link": "https://youtu.be/Md71N_9Vi_w?t=5290"
+              }
+            ]
+          }]
+        },
+        { "name": "Man of War",                      "fav": true,  "length": 269, "link": "d6UBb4f4imY", "hotspots": [
+          {
+            "time": 0,
+            "text": "Glad they finally released this. I really dig the [Kid A Theory](https://youtu.be/asjYgAMjfUU) version, wish the studio version was more like it.",
+            "media":
+            [
+              {
+                "img": "kidatheory.webp.webp",
+                "link": "https://youtu.be/asjYgAMjfUU"
+              },
+              {
+                "img": "mow01.webp",
+                "link": "https://youtu.be/LuITCjtfpqM"
+              }
+            ]
+          }]
+        },
+        { "name": "Palo Alto",                       "fav": true,  "length": 231, "link": "mrYTsLgCidQ", "hotspots": [
+          {
+            "time": 0,
+            "text": "This song was initially called OK Computer. I find it quite relevant in my life."
+          },
+          {
+            "time": 28,
+            "text": "did they predict short form content 😂😂😂"
+          },
+          {
+            "time": 35,
+            "text": "You can hear this in the [Meeting People Is Easy](https://youtu.be/1pdjNfjjuLM) documentary. I would like to make an edit with this one day.",
+            "media":[
+              {
+                "img": "paloalto.webp",
+                "link": "https://youtu.be/1pdjNfjjuLM"
+              }
+            ]
+          },
+          {
+            "time": 48,
+            "text": "I initially found the heavily processed guitars offputting, but now I figure it's supposed to be offputting. Look at the lyrics."
+          }
+        ] },
+        { "name": "Lift",                            "fav": true,  "length": 246, "link": "CsETfqZNJ0M", "hotspots": [
+          {
+            "time": 0,
+            "text": "Check out the intro on the [OK Outtakes](https://youtu.be/XU-dNS6lKXo) version. Honestly, I might prefer this version more.",
+            "media": [
+              {
+                "img": "ok.webp",
+                "link": "https://youtu.be/XU-dNS6lKXo"
+              }
+            ]
+          },
+          {
+            "time": 95,
+            "text": "[Chicago '96](https://youtu.be/jBwGywTTU30?t=2735) and [Pinkpop '96](https://youtu.be/sVpQ9B2-riw?t=1861) are really great too! I wish the studio version was mixed more similarly to these.",
+            "media": [
+              {
+                "img": "chicago96_04.webp",
+                "link": "https://youtu.be/jBwGywTTU30?t=2735"
+              },
+              {
+                "img": "pinkpop96_01.webp",
+                "link": "https://youtu.be/sVpQ9B2-riw?t=1861"
+              }
+            ]
+          }
+        ] }
+      ]
+    },
+
     {
       "name": "Kid A",
       "artist": "Radiohead",
       "released": "October 2, 2000",
-      "img": "kid_a.png",
+      "img": "kid_a.webp",
       "tracklist": [
-        { "name": "Everything In Its Right Place", "fav": true,  "length": 251, "hotspots": [0], "link": "NUnXxh5U25Y" },
-        { "name": "Kid A",                         "fav": true,  "length": 284, "hotspots": [0], "link": "MXNbfU0Ww_E" },
-        { "name": "The National Anthem",           "fav": true,  "length": 351, "hotspots": [0], "link": "NfQD1QiQ9o4" },
-        { "name": "How to Dissapear Completely",   "fav": true,  "length": 356, "hotspots": [0], "link": "6W6HhdqA95w" },
-        { "name": "Treefingers",                   "fav": true,  "length": 222, "hotspots": [0], "link": "L7p47zYKJoM" },
-        { "name": "Optimistic",                    "fav": true,  "length": 315, "hotspots": [0], "link": "1On-ZHfTWOo" },
-        { "name": "In Limbo",                      "fav": true,  "length": 211, "hotspots": [0], "link": "Q6-sTkVdAqQ" },
-        { "name": "Idioteque",                     "fav": true,  "length": 309, "hotspots": [0], "link": "q-Nymir3q34" },
-        { "name": "Morning Bell",                  "fav": true,  "length": 275, "hotspots": [0], "link": "XTT6k3Q4JnQ" },
-        { "name": "Motion Picture Soundtrack",     "fav": true,  "length": 200, "hotspots": [0], "link": "EcSvMFm2ABE" },
-        { "name": "Untitled",                      "fav": true,  "length": 52,  "hotspots": [0], "link": "L_PvBLtvZto" }
+        { "name": "Everything In Its Right Place", "fav": true,  "length": 251, "link": "NUnXxh5U25Y", "hotspots": [
+          {
+            "time": 0,
+            "text": "Kid A is my favourite album. It didn't click until I listened to it after several days of no sleep, while fading in and out of dreaming. The experience was otherworldly and nothing has matched it yet."
+          },
+          {
+            "time": 30,
+            "text": "Many of the live versions are nice, I don't really like any one in particular more than the others, but [Jools Holland '01](https://youtu.be/_GFxGBz49qU) has been growing on me. Anyway, studio clears.",
+            "media": [
+              {
+                "img": "jh01_01.webp",
+                "link": "https://youtu.be/_GFxGBz49qU"
+              },
+              {
+                "img": "glastonbury03_01.webp",
+                "link": "https://youtu.be/QJoB4gOpUIA"
+              },
+              {
+                "img": "canal01_01.webp",
+                "link": "https://youtu.be/3Y5hrM_qQAI?t=3969"
+              }
+            ]
+          },
+          {
+            "time": 60,
+            "text": "Please do check out this [edit](https://youtu.be/GxazaEiu41M). It's really good.",
+            "media": [
+              {
+                "img": "eiirp.webp",
+                "link": "https://youtu.be/GxazaEiu41M"
+              }
+            ]
+          }
+        ] },
+        { "name": "Kid A",                         "fav": true,  "length": 284, "link": "MXNbfU0Ww_E", "hotspots": [{
+          "time": 0,
+          "text": "one of my favourite songs of all time. it is difficult to describe how this felt when it clicked for me, but it really changed me."
+        },
+        {
+          "time": 30,
+          "text": "Do check out the early live version at [Berlin '01](https://youtu.be/tZhnUWCDuo4). I think it sounds cool except the harmonica at the end which I feel doesn't mesh too well with the album.",
+          "media":[
+            {
+              "img": "berlin01_01.webp",
+              "link": "https://youtu.be/tZhnUWCDuo4"
+            }
+          ]
+        },
+        {
+          "time": 60,
+          "text": "[KID A MNESIA Exhibition](https://youtu.be/UNPEU0JXRoM) features a pretty cool instrumental.",
+          "media":
+          [
+            {
+              "img": "kida01.webp",
+              "link": "https://youtu.be/UNPEU0JXRoM"
+            }
+          ]
+        }
+        
+        ] },
+        { "name": "The National Anthem",           "fav": true,  "length": 351, "link": "NfQD1QiQ9o4", "hotspots": [
+          {
+            "time": 0,
+            "text": "Great song with a killer bassline."
+          },
+          {
+            "time": 30,
+            "text": "Jonny uses an Ondes Martenot at [Jools Holland '01](https://youtu.be/ZVnaLsZBJiw?t=35), which sounds wonderful. I'm a big fan of him using this instrument, especially later in their discography.",
+            "media":
+            [
+              {
+                "img": "jh01_01.webp",
+                "link": "https://youtu.be/ZVnaLsZBJiw?t=35"
+              }
+            ]
+          },
+          {
+            "time": 115,
+            "text": "I feel like they always perform well at [Nulle Part Ailleurs](https://youtu.be/3Y5hrM_qQAI?t=2129). Awful well in France for an Enlish band.",
+            "media":[
+              {
+                "img": "npa01_01.webp",
+                "link": "https://youtu.be/3Y5hrM_qQAI?t=2129"
+              }
+            ]
+          },
+          {
+            "time": 164,
+            "text": "Even the live versions with more guitar-centric instrumentation still sound amazing.",
+            "media":[
+              {
+                "img": "meldown01_01.webp",
+                "link": "https://youtu.be/VJVPTO3Yyno?t=284"
+              },
+              {
+                "img": "berlin01_01.webp",
+                "link": "https://youtu.be/MkDXuY-nTNs"
+              },
+              {
+                "img": "leeds09_01.webp",
+                "link": "https://youtu.be/hTzRliW3iFs"
+              }
+            ]
+          }
+        ] },
+        { "name": "How to Dissapear Completely",   "fav": true,  "length": 356, "link": "6W6HhdqA95w", "hotspots": [
+        {
+          "time": 0,
+          "text": "It lingers. I think the tense strings embody that feeling excellently."
+        },
+        {
+          "time": 134,
+          "text": "I love the Ondes Martenot here, done especially well at [Bonaroo '06](https://youtu.be/DhhWWGEzRL0?&t=190) I consider it the same \"voice\" as the one in Where I End and You Begin.",
+          "media": [
+            {
+              "img": "bonnaroo06_01.webp",
+              "link": " https://youtu.be/DhhWWGEzRL0?&t=190"
+            }
+          ]
+        },
+        {
+          "time": 150,
+          "text": "Check out the amazing performance at [Nulle part Ailleurs '01](https://youtu.be/3Y5hrM_qQAI?t=1486).",
+          "media": [
+            {
+              "img": "npa01_01.webp",
+              "link": "https://youtu.be/3Y5hrM_qQAI?t=1486"
+            }
+          ]
+        },
+        {
+          "time": 280,
+          "text": "This part is especially cathartic. If you enjoy the strings, you may want to check out [How to Disappear into Strings](https://youtu.be/1ACmCuuIaMQ?).",
+          "media": [
+            {
+              "img": "strings.webp",
+              "link": "https://youtu.be/1ACmCuuIaMQ?"
+            }
+          ]
+        }
+        ] },
+        { "name": "Treefingers",                   "fav": true,  "length": 222, "link": "L7p47zYKJoM", "hotspots": [{
+          "time": 0,
+          "text": "Alright interlude. I find it really calming."
+        },
+        {
+          "time": 60,
+          "text": "If you enjoy this, you may want to check out the [Extended Version](https://youtu.be/5T-ztaDz750)"
+        }
+        ] },
+        { "name": "Optimistic",                    "fav": true,  "length": 315, "link": "1On-ZHfTWOo", "hotspots": [{
+          "time": 0,
+          "text": "It took me a while to understand this track's place on Kid A. The payoff is really nice."
+        },
+        {
+          "time": 30,
+          "text": "Obligatory check out the live [From the Basement](https://youtu.be/jQCJKWEFyG4) performance.",
+          "media":[
+            {
+              "img": "optimistic01.webp",
+              "link": "https://youtu.be/jQCJKWEFyG4"
+            }
+          ]
+        },
+        {
+          "time": 60,
+          "text": "The performance at Scott Walker's [Meltdown](https://youtu.be/VJVPTO3Yyno) is really nice too. I wish a higher quality recording was available.",
+          "media":[
+            {
+              "img": "meldown01_01.webp",
+              "link": "https://youtu.be/VJVPTO3Yyno"
+            }
+          ]
+        },
+        {
+          "time": 250,
+          "text": "I really enjoy the performance at [BBC Studios](https://youtu.be/Sp_FvbSO1D4?t=243) at this part, however I understand the studio version's restraint.",
+          "media":[
+            {
+              "img": "optimistic02.webp",
+              "link": "https://youtu.be/Sp_FvbSO1D4?t=243"
+            }
+          ]
+        }
+        ] },
+        { "name": "In Limbo",                      "fav": true,  "length": 211, "link": "Q6-sTkVdAqQ", "hotspots": [{
+          "time": 0,
+          "text": "The title describes exactly it feels."
+        }] },
+        { "name": "Idioteque",                     "fav": true,  "length": 309, "link": "q-Nymir3q34", "hotspots": [
+        {
+          "time": 20,
+          "text": "Check out [Mild und Leise](https://youtu.be/0kyuoAsZ_ns?t=43), which was sampled for this. It's a really interesting work from 1973.",
+          "media":[
+            {
+              "img": "idiosample.webp",
+              "link": "https://youtu.be/0kyuoAsZ_ns?t=43"
+            }
+          ]
+        },
+        {
+          "time": 60,
+          "text": "This [rehearsal](https://youtu.be/1GBqFknWDzw?t=49) has superior lyrics :]"
+        },
+        {
+          "time": 110,
+          "text": "did radiohead [predict](https://www.reddit.com/r/radioheadcirclejerk/comments/i19oj8/remember_when_thom_predicted_the_movie_ice_age/) the ice age movie?"
+        },
+        {
+          "time": 180,
+          "text": "This part sounds absolutely insane at [Nulle Part Ailleurs](https://youtu.be/Z9Zh1MrgBvQ?t=177). Apparently Jonny's synth got sabotaged and Thom chipped his tooth on the mic. This is by far my favourite live version but I wonder how it would have sound if not for these mishaps.",
+          "media":[
+            {
+              "img": "idioteque02.webp",
+              "link": "https://youtu.be/Z9Zh1MrgBvQ?t=177"
+            }
+          ]
+        },
+        {
+          "time": 220,
+          "text": "A few other nice live performances includes a different [Nulle Part Ailleurs](https://youtu.be/3Y5hrM_qQAI?t=3729) session and [Jools Holland '01](https://youtu.be/0MmpUIdGcyU)",
+          "media":[
+            {
+              "img": "idioteque03.webp",
+              "link": "https://youtu.be/3Y5hrM_qQAI?t=3729"
+            },
+            {
+              "img": "idioteque01.webp",
+              "link": "https://youtu.be/0MmpUIdGcyU"
+            }
+          ]
+        }
+        ] },
+        { "name": "Morning Bell",                  "fav": true,  "length": 275, "link": "XTT6k3Q4JnQ", "hotspots": [
+        {
+          "time": 0,
+          "text": "The superior Morning Bell (sorry, Amnesiac)"
+        },
+        {
+          "time": 124,
+          "text": "This part sounds amazing at [Nulle Part Ailleurs](https://youtu.be/0OI9qnrXBPg?t=121). I'm surprised they managed to do it with guitars.",
+          "media":[{
+            "img": "idioteque02.webp",
+            "link": "https://youtu.be/0OI9qnrXBPg?t=121"
+          }]
+        },
+        {
+          "time": 210,
+          "text": "[Jools Holland '01](https://youtu.be/O2S6J4SHZV0?t=217) sounds really nice here",
+          "media":[{
+            "img": "morning.webp",
+            "link": "https://youtu.be/0OI9qnrXBPg?t=121"
+          }]
+        }
+        ] },
+        { "name": "Motion Picture Soundtrack",     "fav": true,  "length": 200, "link": "EcSvMFm2ABE", "hotspots": [{
+          "time": 0,
+          "text": "Incredible closer."
+        },
+        {
+          "time": 30,
+          "text": "This song was written quite a while before Kid A. You can find an earlier version [here](https://youtu.be/BY9DWD6CRDQ). The third verse is really nice."
+        },
+        {
+          "time": 60,
+          "text": "Check out the the [Minidisc](https://youtu.be/Vapo21HsyaI) version if you want more. This one feels like something off The Bends."
+        }
+        ] },
+        { "name": "Untitled",                      "fav": true,  "length": 52, "link": "L_PvBLtvZto", "hotspots": [{
+          "time": 0,
+          "text": "This plays after a few seconds of silence on the CD version."
+        }] }
       ]
     },
     {
       "name": "Amnesiac",
       "artist": "Radiohead",
       "released": "May 30, 2001",
-      "img": "amnesiac.png",
+      "img": "amnesiac.webp",
       "tracklist": [
         { "name": "Packt Like Sardines In a Crushd Tin Box", "fav": false, "length": 240, "hotspots": [0], "link": "LwE4LNP8zsI" },
         { "name": "Pyramid Song",                            "fav": true,  "length": 288, "hotspots": [0], "link": "3M_Gg1xAHE4" },
@@ -267,7 +939,7 @@
       "name": "Hail To the Thief",
       "artist": "Radiohead",
       "released": "June 9, 2003",
-      "img": "hail_to_the_thief.png",
+      "img": "hail_to_the_thief.webp",
       "tracklist": [
         { "name": "2 + 2 = 5",                "fav": true,  "length": 199, "hotspots": [0], "link": "2w6kHS_IRrE" },
         { "name": "Sit Down. Stand Up",       "fav": true,  "length": 259, "hotspots": [0], "link": "CVf_HGoY-1E" },
@@ -289,7 +961,7 @@
       "name": "In Rainbows",
       "artist": "Radiohead",
       "released": "October 10, 2007",
-      "img": "in_rainbows.png",
+      "img": "in_rainbows.webp",
       "tracklist": [
         { "name": "15 Step",                     "fav": true,  "length": 237, "hotspots": [0], "link": "bgsmr7t8zGE" },
         { "name": "Bodysnatchers",              "fav": true,  "length": 242, "hotspots": [0], "link": "nIQxhSvSRnQ" },
@@ -297,7 +969,7 @@
         { "name": "Weird Fishes / Arpeggi",     "fav": true,  "length": 318, "hotspots": [0], "link": "LUjGtyYEi90" },
         { "name": "All I Need",                 "fav": true,  "length": 228, "hotspots": [0], "link": "FM7ALFsOH4g" },
         { "name": "Faust Arp",                  "fav": true,  "length": 129, "hotspots": [0], "link": "PRc0iMRoIoc" },
-        { "name": "Reckoner",                   "fav": false, "length": 290, "hotspots": [0], "link": "_uofQD-N6UI" },
+        { "name": "Reckoner",                   "fav": true,  "length": 290, "hotspots": [0], "link": "_uofQD-N6UI" },
         { "name": "House Of Cards",             "fav": false, "length": 328, "hotspots": [0], "link": "8nTFjVm9sTQ" },
         { "name": "Jigsaw Falling Into Place",  "fav": true,  "length": 248, "hotspots": [0], "link": "GoLJJRIWCLU" },
         { "name": "Videotape",                  "fav": true,  "length": 279, "hotspots": [0], "link": "WF83_PR2EsA" }
@@ -324,21 +996,137 @@
       "name": "Ginkgo",
       "artist": "Panchiko",
       "released": "April 4, 2025",
-      "img": "ginkgo.png",
+      "img": "ginkgo.webp",
       "tracklist": [
-        { "name": "Florida",                "fav": false, "length": 251, "hotspots": [0], "link": "kERq3qpSyi4" },
-        { "name": "Ginkgo",                 "fav": true,  "length": 157, "hotspots": [0], "link": "GA_Qq6PBeho" },
-        { "name": "Shandy in the Graveyard","fav": false, "length": 177, "hotspots": [0], "link": "Mpvu5nN18xo" },
-        { "name": "Honeycomb",              "fav": true,  "length": 194, "hotspots": [0], "link": "GZ0dsmeKV8U" },
-        { "name": "Shelled and Cooked",     "fav": true,  "length": 133, "hotspots": [0], "link": "jFxkD4OZg3M" },
-        { "name": "Lifestyle Trainers",     "fav": true,  "length": 187, "hotspots": [0], "link": "kt2VSiEr4IQ" },
-        { "name": "Chapel of Salt",         "fav": true,  "length": 188, "hotspots": [0], "link": "rEB1JkxTFRU" },
-        { "name": "Vinegar",                "fav": false, "length": 135, "hotspots": [0], "link": "dPWQJBAySpc" },
-        { "name": "Mac's Omlette",          "fav": false, "length": 238, "hotspots": [0], "link": "5BVKdFkEP3s" },
-        { "name": "Subtitles",              "fav": false, "length": 167, "hotspots": [0], "link": "j5RNWwWdwpk" },
-        { "name": "Formula",                "fav": false, "length": 163, "hotspots": [0], "link": "FhqzMPi8G5A" },
-        { "name": "Rise and Fall",          "fav": false, "length": 199, "hotspots": [0], "link": "fq7yv60Gi-Y" },
-        { "name": "Innocent",               "fav": true,  "length": 164, "hotspots": [0], "link": "PcYijKQm61s" }
+        { "name": "Florida",                "fav": false, "length": 251, "link": "kERq3qpSyi4", "hotspots": [0] },
+        { "name": "Ginkgo",                 "fav": true,  "length": 157, "link": "GA_Qq6PBeho", "hotspots": [0] },
+        { "name": "Shandy in the Graveyard","fav": false, "length": 177, "link": "Mpvu5nN18xo", "hotspots": [0] },
+        { "name": "Honeycomb",              "fav": true,  "length": 194, "link": "GZ0dsmeKV8U", "hotspots": [0] },
+        { "name": "Shelled and Cooked",     "fav": true,  "length": 133, "link": "jFxkD4OZg3M", "hotspots": [0] },
+        { "name": "Lifestyle Trainers",     "fav": true,  "length": 187, "link": "kt2VSiEr4IQ", "hotspots": [0] },
+        { "name": "Chapel of Salt",         "fav": true,  "length": 188, "link": "rEB1JkxTFRU", "hotspots": [0] },
+        { "name": "Vinegar",                "fav": false, "length": 135, "link": "dPWQJBAySpc", "hotspots": [0] },
+        { "name": "Mac's Omlette",          "fav": false, "length": 238, "link": "5BVKdFkEP3s", "hotspots": [0] },
+        { "name": "Subtitles",              "fav": false, "length": 167, "link": "j5RNWwWdwpk", "hotspots": [0] },
+        { "name": "Formula",                "fav": false, "length": 163, "link": "FhqzMPi8G5A", "hotspots": [0] },
+        { "name": "Rise and Fall",          "fav": false, "length": 199, "link": "fq7yv60Gi-Y", "hotspots": [0] },
+        { "name": "Innocent",               "fav": true,  "length": 164, "link": "PcYijKQm61s", "hotspots": [0] }
+      ]
+    },
+    {
+      "name": "Ants From Up There",
+      "artist": "Black Country, New Road",
+      "released": "February 4, 2022",
+      "img": "ants.webp",
+      "tracklist": [
+        { "name": "Intro",                                   "fav": true,  "length": 54,  "link": "82sr_3XDde0", "hotspots": [0] },
+        { "name": "Chaos Space Marine",                      "fav": false, "length": 216, "link": "c31Zu_Xw6Yo", "hotspots": [0] },
+        { "name": "Concorde",                                "fav": true,  "length": 363, "link": "RmxkgsMfAKU", "hotspots": [0] },
+        { "name": "Bread Song",                              "fav": true,  "length": 381, "link": "wV0A0hKDdhw", "hotspots": [0] },
+        { "name": "Good Will Hunting",                       "fav": true,  "length": 297, "link": "rmVyYbuEbKY", "hotspots": [0] },
+        { "name": "Haldern",                                 "fav": true,  "length": 305, "link": "rKcNnIFIsCA", "hotspots": [0] },
+        { "name": "Mark's Theme",                            "fav": true,  "length": 167, "link": "63N7GiaVCSs", "hotspots": [0] },
+        { "name": "The Place Where He Inserted the Blade",   "fav": true,  "length": 433, "link": "_3IyAVYdsck", "hotspots": [0] },
+        { "name": "Snow Globes",                             "fav": false, "length": 553, "link": "A3DYuEwrt1A", "hotspots": [0] },
+        { "name": "Basketball Shoes",                        "fav": true,  "length": 757, "link": "WbvTdkcSzsk", "hotspots": [0] }
+      ]
+    },
+    {
+      "name": "For the First Time",
+      "artist": "Black Country, New Road",
+      "released": "February 5, 2021",
+      "img": "first_time.webp",
+      "tracklist": [
+        { "name": "Instrumental",     "fav": true, "length": 327, "link": "1SkDLogU-O8", "hotspots": [0] },
+        { "name": "Athens, France",   "fav": true, "length": 382, "link": "cXvDeRbAHWo", "hotspots": [0] },
+        { "name": "Science Fair",     "fav": false, "length": 380, "link": "N9Icrc6KE8A", "hotspots": [0] },
+        { "name": "Sunglasses",       "fav": true, "length": 590, "link": "K2ZX0VONNIs", "hotspots": [0] },
+        { "name": "Track X",          "fav": true, "length": 284, "link": "tApRfkVkG-g", "hotspots": [0] },
+        { "name": "Opus",             "fav": true, "length": 481, "link": "Vw5BOo6nDoY", "hotspots": [0] }
+      ]
+    },
+    {
+      "name": "Trick",
+      "artist": "Alex G",
+      "released": "November 6, 2012",
+      "img": "trick.webp",
+      "tracklist": [
+        { "name": "Memory",    "fav": true,  "length": 173, "link": "L7Dk7-Bs4cc", "hotspots": [0] },
+        { "name": "Forever",   "fav": true,  "length": 150, "link": "LEgXYnCrbEo", "hotspots": [0] },
+        { "name": "Animals",   "fav": true,  "length": 174, "link": "T7eSsW6yazo", "hotspots": [0] },
+        { "name": "String",    "fav": false, "length": 295, "link": "MJQudqibCp4", "hotspots": [0] },
+        { "name": "Advice",    "fav": true,  "length": 158, "link": "nCvmgHYV5Us", "hotspots": [0] },
+        { "name": "People",    "fav": false, "length":  94, "link": "LEIxL58TFZ0", "hotspots": [0] },
+        { "name": "Whale",     "fav": false, "length":  82, "link": "iGEE006nDsc", "hotspots": [0] },
+        { "name": "Trick",     "fav": true,  "length":  73, "link": "95FA64-tO6I", "hotspots": [0] },
+        { "name": "Kute",      "fav": true,  "length":  75, "link": "_zAZBYwuq8c", "hotspots": [0] },
+        { "name": "So",        "fav": true,  "length": 155, "link": "m4KJEDYKFyg", "hotspots": [0] },
+        { "name": "Mary",      "fav": true,  "length": 198, "link": "INaXwbgvGVc", "hotspots": [0] },
+        { "name": "Change",    "fav": true,  "length": 125, "link": "jLWw7hvVRxk", "hotspots": [0] },
+        { "name": "Clouds",    "fav": true,  "length": 147, "link": "RMP7UdMkHps", "hotspots": [0] },
+        { "name": "Adam",      "fav": true,  "length": 109, "link": "VroAhNSHWOg", "hotspots": [0] },
+        { "name": "Sarah",     "fav": true,  "length": 177, "link": "wQSxzUvQY7k", "hotspots": [0] },
+        { "name": "16 Mirrors","fav": true,  "length":  88, "link": "HGQgF3fU00I", "hotspots": [0] }
+      ]
+    },
+    {
+      "name": "DSU",
+      "artist": "Alex G",
+      "released": "June 17, 2014",
+      "img": "dsu.webp",
+      "tracklist": [
+        { "name": "After Ur Gone",   "fav": true, "length": 141, "link": "GIZdK8JadoU" },
+        { "name": "Serpent Is Lord", "fav": true, "length": 226, "link": "h9nw8zbgJvc" },
+        { "name": "Harvey",          "fav": true, "length": 101, "link": "Gp7yEzcxBNk" },
+        { "name": "Rejoyce",         "fav": true, "length": 111, "link": "5tujev7oPVo" },
+        { "name": "Black Hair",      "fav": true, "length": 164, "link": "yBzy_WahaeI" },
+        { "name": "Skipper",         "fav": true,  "length": 85,  "link": "4026EuqKsik" },
+        { "name": "Axesteel",        "fav": true, "length": 106, "link": "oe3s7mOnauM" },
+        { "name": "Sorry",           "fav": true, "length": 162, "link": "GmKH6jvGRE0" }, 
+        { "name": "Promise",         "fav": true, "length": 211, "link": "9t4KVoGYCO8" },
+        { "name": "Icehead",         "fav": false, "length": 171, "link": "5w7Qt-dhmAE" },
+        { "name": "Hollow",          "fav": true, "length": 251, "link": "Zuu44Ka9TEY" },
+        { "name": "Tripper",         "fav": false, "length": 162, "link": "NoVrH6KGStU" },
+        { "name": "Boy",             "fav": true, "length": 191, "link": "wYCHUXv5DOE" },
+        { "name": "Soaker",          "fav": true, "length": 100, "link": "s8YuZCKxyAc" },
+        { "name": "Waiting for You", "fav": true, "length": 210, "link": "45mEO_-vBRo" }
+      ]
+    },
+    {
+      "name": "plastic death",
+      "artist": "glass beach",
+      "released": "January 19, 2024",
+      "img": "plastic_death.webp",
+      "tracklist": [
+        { "name": "coelacanth",           "fav": true, "length": 394, "link": "E7hGTQKHnrY",  "hotspots": [0] },
+        { "name": "motions",              "fav": true, "length": 212, "link": "-CLbvePFcN8",  "hotspots": [0] },
+        { "name": "slip under the door",  "fav": true, "length": 328, "link": "uykRfCBDdsc",  "hotspots": [0] },
+        { "name": "guitar song",          "fav": true, "length": 148, "link": "1KBrljjoMiU",  "hotspots": [0] },
+        { "name": "rare animal",          "fav": true, "length": 278, "link": "wEGGahiHL64",  "hotspots": [0] },
+        { "name": "cul-de-sac",           "fav": true, "length": 275, "link": "-Uj9LDpGhH8",  "hotspots": [0] },
+        { "name": "whalefall",            "fav": true, "length": 250, "link": "22Sp83lHwac",  "hotspots": [0] },
+        { "name": "puppy",                "fav": false, "length": 197, "link": "jI2yHN4I_WA",  "hotspots": [0] },
+        { "name": "the killer",           "fav": true, "length": 253, "link": "rc5EXAMpjvg",  "hotspots": [0] },
+        { "name": "the CIA",              "fav": true, "length": 282, "link": "iUGjzgSBdd8",  "hotspots": [0] },
+        { "name": "200",                  "fav": true, "length": 229, "link": "9PkHIgM4MPE",  "hotspots": [0] },
+        { "name": "commatose",            "fav": true, "length": 589, "link": "T4t1vYNY0mA",  "hotspots": [0] },
+        { "name": "abyss angel",          "fav": true, "length": 356, "link": "6UF_RrVJFPM",  "hotspots": [0] }
+      ]
+    },
+    {
+      "name": "What Burns Never Returns",
+      "artist": "Don Caballero",
+      "released": "June 9, 1998",
+      "img": "whatburns.webp",
+      "tracklist": [
+        { "name": "Don Caballero 3",                                                                                                              "fav": true, "length": 582, "link": "ed2hpoblBIs",  "hotspots": [0] },
+        { "name": "In the Absence of Strong Evidence to the Contrary, One May Step Out of the Way of the Charging Bull",                          "fav": true, "length": 275, "link": "eB15DiAkb6w",  "hotspots": [0] },
+        { "name": "Delivering the Groceries at 138 Beats Per Minute",                                                                              "fav": true, "length": 349, "link": "8Te5GacgqMo",  "hotspots": [0] },
+        { "name": "Slice Where You Live Like Pie",                                                                                                 "fav": true, "length": 309, "link": "WFEJYZnPw_c",  "hotspots": [0] },
+        { "name": "Room Temperature Suite",                                                                                                        "fav": true, "length": 331, "link": "URqnpzvbE7g",  "hotspots": [0] },
+        { "name": "The World in Perforated Lines",                                                                                                 "fav": true, "length": 232, "link": "hpK8B1dSCoU",  "hotspots": [0] },
+        { "name": "From the Desk of Elsewhere Go",                                                                                                 "fav": true, "length": 472, "link": "rVf-OcPaoRc",  "hotspots": [0] },
+        { "name": "June Is Finally Here",                                                                                                         "fav": true, "length": 297, "link": "23KKtTzMp7g",  "hotspots": [0] }
       ]
     }
   ]
