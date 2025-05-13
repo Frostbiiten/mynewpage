@@ -28,7 +28,6 @@
 		"embla-carousel-svelte": "^8.5.2",
 		"marked": "^15.0.11",
 		"svelte-fa": "^4.0.3",
-		"svelte-masonry": "^0.1.5",
 		"svelte-render-scan": "^1.1.0",
 		"svelte-scroll-tracker": "^1.0.7"
 	}
