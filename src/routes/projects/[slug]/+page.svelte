@@ -119,7 +119,7 @@
                 <iframe
                     id="unityIframe"
                     title="Game Embed"
-                    src="${base}/games/{project_data.embed}/index.html"
+                    src="{base}/games/{project_data.embed}/index.html"
                     style="width: 100%; height: 100%; border: none;"
                     scrolling="no"
                 ></iframe>
