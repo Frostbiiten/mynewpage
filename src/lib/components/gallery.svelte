@@ -4,6 +4,7 @@
   
   import Fa from 'svelte-fa'
   import { faArrowLeft, faArrowRight, faCirclePlay, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+  import { base } from '$app/paths';
 
   let {project, imgCount, vidCount }= $props();
   
@@ -11,7 +12,7 @@
   for (let i = 1; i <= imgCount; i++) {
     mediaItems.push({
       id: i,
-      src: `/gallery/${project}/${i}.webp`,
+      src: `${base}/gallery/${project}/${i}.webp`,
       alt: `Media ${i} from ${project}`,
       type: 'image'
     });
@@ -20,7 +21,7 @@
   for (let i = 1; i <= vidCount; i++) {
     mediaItems.push({
       id: i,
-      src: `/gallery/${project}/${i}.webm`,
+      src: `${base}/gallery/${project}/${i}.webm`,
       alt: `Media ${i} from ${project}`,
       type:  'video'
     });

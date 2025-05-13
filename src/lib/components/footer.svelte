@@ -4,7 +4,6 @@
     import Fa from 'svelte-fa';
     import { faAsterisk, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
     import { faGit, faGithub } from '@fortawesome/free-brands-svg-icons'
-    import svelteLogo from "$lib/img/sveltelogo.svg"
     /*
 
         <p class="font-mono text-4xl text-left scale-y-50 w-7xl text-slate-800/80">

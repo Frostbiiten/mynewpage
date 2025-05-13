@@ -3,8 +3,11 @@
     import cx from 'clsx';
     import Fa from 'svelte-fa';
     import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
+    import { base } from '$app/paths';
 
-    const images = import.meta.glob('/src/lib/assets/gallery/*.{jpg,png,webp}', {
+    console.log(base);
+
+    const images = import.meta.glob('$lib/assets/gallery/*.{jpg,png,webp}', {
         eager: true,
         import: 'default',
     });
@@ -26,27 +29,27 @@
         <div class="flex flex-row gap-6 items-center text-xl select-none text-blue-400/60">
             <Fa class="text-blue-400/80" icon={faAsterisk}></Fa>
             <a
-            href="/"
+            href={base + "/"}
             class={cx('transition-all duration-200',
                 page.url.pathname === '/' && 'text-slate-300 font-bold'
                 )}>Home</a>
             <a
-            href="/projects"
+            href={base + "/projects"}
             class={cx('transition-all duration-200',
                 page.url.pathname.startsWith('/projects') && 'text-slate-300 font-bold'
                 )}>Projects</a>
             <a
-            href="/blog"
+            href={base + "/blog"}
             class={cx('transition-all duration-200',
                 page.url.pathname.startsWith('/blog') && 'text-slate-300 font-bold'
                 )}>Blog</a>
             <a
-            href="/creative"
+            href={base + "/creative"}
             class={cx('transition-all duration-200',
                 page.url.pathname.startsWith('/creative') && 'text-slate-300 font-bold'
                 )}>Creative</a>
             <a
-            href="/ok"
+            href={base + "/ok"}
             class={cx('transition-all duration-200 font-mono translate-y-[0.8px] rotate-90 scale-70 -ml-2 font-bold',
                 page.url.pathname.startsWith('/ok') && 'text-slate-300 font-black'
                 )}>OK</a>

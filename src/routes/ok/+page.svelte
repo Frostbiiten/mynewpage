@@ -41,7 +41,7 @@
         if (images[`/src/lib/img/music/covers/${imgName}`]) {
             return {img: images[`/src/lib/img/music/covers/${imgName}`].default, found: true};
         }
-        return {img: images[`/src/lib/img/projects/null.png`].default, found: false};
+        return {img: images[`/src/lib/img/music/covers/null.png`].default, found: false};
     }
 
     import music_data from "$lib/data/music.json"
@@ -472,6 +472,7 @@
     })
 
     import emblaCarouselSvelte from 'embla-carousel-svelte';
+  import { base } from "$app/paths";
     let emblaApi = $state(null);
     let currentSlide = $state(-1)
     const carouselOptions = { loop: false };

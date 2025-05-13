@@ -7,7 +7,6 @@
     import bg from "$lib/img/bg.webp"
     import bgbokeh from "$lib/img/bgbokeh.webp"
 
-    import shadowoverlay from "$lib/img/shadowoverlay.webp"
     // import figure from "$lib/img/figure.webp"
     import figure from "$lib/img/figure/0.webp"
     import figure2 from "$lib/img/figure/1.webp"
@@ -16,14 +15,6 @@
     import blogImg from "$lib/img/categories/blog.webp"
     import projectImg from "$lib/img/categories/project.webp"
 
-    import figurebokeh from "$lib/img/figurebokeh.webp"
-    import xtape from "$lib/img/xtape.webp"
-    import textt from "$lib/img/textt.png"
-    import walkingfig from "$lib/img/fig1.png"
-    import bigsign from "$lib/img/signs.png"
-    import ramp from "$lib/img/highway.webp"
-    import typography from "$lib/img/typography.webp"
-    import sign from "$lib/img/crossing.png"
     import { onMount, onDestroy } from 'svelte';
     import { faGit, faGithub, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
     import Fa from "svelte-fa";
@@ -132,6 +123,7 @@
   let characterhover = $state(false);
   import talkSoundFile from '$lib/sound/talk.mp3'; 
   import talkSoundFile2 from '$lib/sound/boop.mp3'; 
+  import { base } from "$app/paths";
   let talkSound;
   let talkSound2;
 
@@ -781,7 +773,7 @@
           onmouseover={() => {setInfo("projects")}}
           onblur={clearInfo}
           onmouseleave={clearInfo}
-          href="/projects"
+          href={base + "/projects"}
           class="h-full relative group basis-1/3 transition-[flex-basis] duration-600 overflow-clip">
           <img
             alt="project bg"
@@ -804,7 +796,7 @@
           onmouseover={() => {setInfo("blog")}}
           onblur={clearInfo}
           onmouseleave={clearInfo}
-          href="/blog"
+          href={base + "/blog"}
           class="h-full relative group basis-1/3 transition-[flex-basis] duration-600 overflow-clip">
           <img
             alt="blog bg"
@@ -827,7 +819,7 @@
           onmouseover={() => {setInfo("creative")}}
           onblur={clearInfo}
           onmouseleave={clearInfo}
-          href="/creative"
+          href={base + "/creative"}
           class="h-full relative group basis-1/3 transition-[flex-basis] duration-600 overflow-clip">
           <img
             alt="creative bg"
