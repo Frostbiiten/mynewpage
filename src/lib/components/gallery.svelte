@@ -224,7 +224,7 @@
   <div class="flex flex-row">
 
     <button 
-      class="z-10 p-2 my-3 text-gray-600 border-2 shadow-md transition-all duration-150 cursor-pointer border-slate-900 hover:bg-slate-800/10 hover:border-slate-950"
+      class="z-10 p-2 px-4 text-gray-600 border-2 shadow-md transition-all duration-150 cursor-pointer md:px-2 md:my-3 border-slate-900 hover:bg-slate-800/10 hover:border-slate-950"
       onclick={scrollPrev}
     >
         <Fa icon={faArrowLeft}/>
@@ -236,10 +236,10 @@
     use:emblaCarouselSvelte={{options: thumbOptions}}
     onemblaInit={onThumbsInit}
   >
-    <div class="flex p-1 space-x-2">
+    <div class="flex p-[2px] space-x-2 md:p-1">
       {#each mediaItems as item, index}
         <button 
-          class="flex-[0_0_20%] min-w-0 transition-opacity duration-300 cursor-pointer p-1 rounded-md"
+          class="md:flex-[0_0_20%] flex-[0_0_50%] min-w-0 transition-opacity duration-300 cursor-pointer p-1 rounded-xs md:rounded-md"
           onclick={() => onThumbClick(index)}
         >
           <div class="flex relative justify-center items-center aspect-video">
@@ -248,7 +248,7 @@
                 src={item.src} 
                 alt={`Thumbnail ${item.alt}`} 
                 class={cx(
-                  "object-contain max-w-full max-h-full rounded-lg border-2 transition-all duration-200",
+                  "object-contain max-w-full max-h-full rounded-xs md:rounded-lg md:border-2 transition-all duration-200",
                   (!emblaApi || currentSlide !== index) && 'border-zinc-800/80 hover:border-zinc-400',
                   (emblaApi && currentSlide === index) && 'border-zinc-800/0 hover:border-zinc-400/0'
                   )}
@@ -274,7 +274,7 @@
   </div>
 
     <button 
-      class="z-10 p-2 my-3 text-gray-600 border-2 shadow-md transition-all duration-150 cursor-pointer border-slate-900 hover:bg-slate-800/10 hover:border-slate-950"
+      class="z-10 p-2 px-4 text-gray-600 border-2 shadow-md transition-all duration-150 cursor-pointer md:px-2 md:my-3 border-slate-900 hover:bg-slate-800/10 hover:border-slate-950"
       onclick={scrollNext}
     >
         <Fa icon={faArrowRight}/>

@@ -4,7 +4,7 @@
     import { faArrowLeft, faArrowRight, faChevronLeft, faChevronRight, faCircle, faPause, faPlug, faPlus, faSquareArrowUpRight, faStar, faLink } from "@fortawesome/free-solid-svg-icons";
     import { faGithub } from '@fortawesome/free-brands-svg-icons';
     import { fly, fade } from "svelte/transition";
-    import bg from "$lib/img/tengyart-eZT2tMvG8QQ-unsplash.jpg"
+    import bg from "$lib/img/cloudsbg.webp"
     import cx from "clsx";
     import { onMount } from 'svelte';
 
@@ -367,8 +367,8 @@
 
     $effect(() => {
         const interval = setInterval(() => {
-        baseFrequency = 0.002 + Math.random() * 0.002;
-        scale = 5 + Math.random() * 0.5;
+        baseFrequency = 0.006 + Math.random() * 0.006;
+        scale = 3 + Math.random();
         }, 400);
 
         return () => {clearInterval(interval); }
@@ -722,17 +722,16 @@ class="flex flex-row justify-center items-center w-full">
             </h1>
         </div>
 
-        <div class={cx("p-0 -mt-4 w-[calc(100%+14rem)]  flex items-start translate-x-[-14rem] ease-out transition-all duration-300",
-        (currentMenu === "music") && "translate-y-0 opacity-100 h-[calc(100vh+6rem)] ",
-        (currentMenu !== "music") && "translate-y-30 opacity-0 h-0")}
+        <div class={cx("p-0 md:scale-100 -mt-4 w-0 flex items-start min-[105rem]:translate-x-[-14rem] ease-[cubic-bezier(0,1,0,1)] transition-all duration-1000",
+        (currentMenu === "music") ? "translate-y-0 w-full max-sm:-translate-x-5 max-sm:w-[calc(100%+2rem)] min-[105rem]:w-[calc(100%+14rem)] opacity-100 h-[calc(100vh+6rem)] ": "translate-y-30 opacity-0 h-0")}
         >
-            <div class="flex flex-row justify-start rounded-2xl border-2 border-slate-700 bg-gray-900/20 h-50">
+            <div class="flex flex-row justify-start -mr-2 h-20 rounded-lg border-2 md:mr-0 md:rounded-2xl border-slate-700 bg-gray-900/20 md:h-50">
 
-                <div class="relative h-[calc(30vh+30rem)] w-50 self-center track-mask">
+                <div class="relative h-[calc(30vh+30rem)] w-20 md:w-50 self-center track-mask">
                     <div bind:this={scrollContainer}
                         style="scrollbar-width: none; scroll-snap-type: y mandatory;"
-                        class="flex overflow-y-scroll flex-col gap-5 items-start p-3 h-full scroll-smooth overflow-x-clip">
-                        <div class="w-full min-h-[calc(30vh)]"></div>
+                        class="flex overflow-y-scroll flex-col gap-5 items-start p-[0.1rem] h-full md:p-3 scroll-smooth overflow-x-clip">
+                        <div class="w-full min-h-[calc(30vh+10rem)]"></div>
                         {#each music_data.collections as collection, index (collection)}
                         <button
                             style="scroll-snap-align: center;"
@@ -748,7 +747,7 @@ class="flex flex-row justify-center items-center w-full">
                             )} src={getImage(collection.img).img} alt={collection.name}>
                         </button>
                         {/each}
-                        <div class="min-h-[calc(30vh)] w-full"></div>
+                        <div class="w-full min-h-[calc(30vh+10rem)]"></div>
                     </div>
                 </div>
 
@@ -756,11 +755,11 @@ class="flex flex-row justify-center items-center w-full">
 
             <div class="flex flex-col gap-3 pl-5 w-full font-mono">
                 {#if currentCollection !== null}
-                <div class="flex flex-col gap-2 p-5 px-7 w-full bg-gray-900 rounded-xl h-35">
-                    <p class="-mb-2 text-lg text-gray-500">
+                <div class="flex flex-col gap-2 p-5 px-7 w-full bg-gray-900 rounded-xl md:h-35">
+                    <p class="-mb-2 text-gray-500 md:text-lg">
                         {music_data.collections[currentCollection].artist}
                     </p>
-                    <h2 class="font-sans text-7xl font-bold text-slate-100">
+                    <h2 class="font-sans text-2xl font-bold sm:text-4xl md:text-7xl text-slate-100">
                         {music_data.collections[currentCollection].name}
                     </h2>
                 </div>
@@ -771,17 +770,18 @@ class="flex flex-row justify-center items-center w-full">
                     <div class="absolute hidden duration-400 left-0 top-0 w-full h-full bg-gradient-to-r ease-[cubic-bezier(0,1,0,1)] rounded-t-lg from-blue-950/40 via-50% via-blue-900/15 to-indigo-500/0"></div>
                     <div class="absolute duration-400 left-0 top-0 w-full h-full bg-gradient-to-r ease-[cubic-bezier(0,1,0,1)] rounded-t-lg bg-blue-950/15 border-2 border-b-0 border-slate-900"></div>
 
-                    <p class="text-lg">
+                    <p class="hidden text-lg sm:block">
                         #
                     </p>
-                    <p class="w-[28.85rem]">
+                    <p class="min-[105rem]:w-[27.85rem] w-[calc(100%-10rem)]">
                         Name
                     </p>
-                    <p class="">
+                    <div class="block w-3 sm:hidden"></div>
+                    <p class="opacity-0 duration-200 sm:opacity-100">
                         Fav
                     </p>
 
-                    <p class="ml-[0.35rem] ">
+                    <p class="ml-[0.35rem] hidden sm:block">
                         Len
                     </p>
                 </div>
@@ -791,7 +791,7 @@ class="flex flex-row justify-center items-center w-full">
 
                     <div bind:this={tracklistScrollbox}
                         style={`scrollbar-color: rgba(200, 200, 230, 0.4) transparent; --sw: ${scrollbarWidth}px`}
-                        class={cx("flex overflow-y-auto overflow-x-visible flex-col gap-2 pr-6 pb-2 pt-3 pl-3 leading-tight whitespace-normal duration-400 ease-[cubic-bezier(0.12,0.639,0.34,1)] min-h-110 max-h-[calc(100vh-31.25rem)] rounded-bl-xl border-slate-900 border-2 border-r-0 border-t-0 w-160", widenTracklist && "w-[calc(40rem+var(--sw))]" )}>
+                        class={cx("flex text-xs md:text-base overflow-y-auto overflow-x-visible flex-col md:gap-2 pr-6 pb-2 pt-3 pl-3 leading-tight whitespace-normal duration-400 ease-[cubic-bezier(0.12,0.639,0.34,1)] min-[105rem]:min-h-110 max-h-[calc(100vh-31.25rem)] rounded-bl-xl border-slate-900 border-2 border-r-0 border-t-0 w-full min-[105rem]:w-160", widenTracklist && "min-[105rem]:w-[calc(40rem+var(--sw))]" )}>
 
                         {#if currentCollection !== null}
 
@@ -805,21 +805,21 @@ class="flex flex-row justify-center items-center w-full">
                                 class={cx("flex group relative pl-[0.35rem] items-center flex-row gap-[1.2rem] py-[0.35rem] cursor-pointer")}>
                                     <div class={cx("absolute group-hover:scale-x-100 group-hover:opacity-90 transition-all origin-left scale-x-0 -left-1 top-0 w-full h-full bg-gradient-to-r ease-[cubic-bezier(0,1,0,1)] rounded-md from-blue-950/40 via-50% via-blue-900/15 to-indigo-500/0 opacity-0 duration-1000", (playingSong == index && playingCollection == currentCollection) && "scale-x-100 opacity-100")}></div>
 
-                                    <p class={cx("transition-all duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-600", (playingSong == index && playingCollection == currentCollection) && "text-slate-500")}>
+                                    <p class={cx("transition-all hidden sm:block duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-600", (playingSong == index && playingCollection == currentCollection) && "text-slate-500")}>
                                         {String(index).padStart(2, '0')}
                                     </p>
 
-                                    <p class={cx("transition-all overflow-ellipsis overflow-hidden max-w-110 text-nowrap text-left grow duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-300", (playingSong == index && playingCollection == currentCollection) && "text-blue-200 text-lg")}>
+                                    <p class={cx("transition-all overflow-ellipsis overflow-hidden min-[105rem]:max-w-110 md:text-nowrap text-left grow duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-300", (playingSong == index && playingCollection == currentCollection) && "text-blue-200 md:text-lg")}>
                                         {song.name}
                                     </p>
 
-                                    <div class={cx("flex justify-center items-center w-4 h-full text-blue-500 text-3xl")}>
+                                    <div class={cx("hidden sm:flex justify-center items-center w-4 h-full text-blue-500 text-3xl")}>
                                         {#if song.fav}
                                         <p class={cx("h-2  -translate-y-[1.00rem]", (playingSong == index && playingCollection == currentCollection) && "text-blue-400")}>+</p>
                                         {/if}
                                     </div>
 
-                                    <p class={cx("text-sm pl-2 text-gray-500", (playingSong == index && playingCollection == currentCollection) && "text-slate-200")}>
+                                    <p class={cx("text-sm pl-2 text-gray-500 hidden sm:block", (playingSong == index && playingCollection == currentCollection) && "text-slate-200")}>
                                         {`${Math.floor(song.length / 60)}:${String(song.length % 60).padStart(2, '0')}` }
                                     </p>
                                 </button>
@@ -827,7 +827,7 @@ class="flex flex-row justify-center items-center w-full">
                         {/if}
                     </div>
 
-                    <div class="overflow-clip relative rounded-br-xl border-r-2 border-b-2 border-slate-900 bg-slate-900/10 grow max-h-[calc(100vh-31rem)] min-h-110">
+                    <div class="overflow-clip relative rounded-br-xl border-r-2 border-b-2 border-slate-900 bg-slate-900/10 grow max-h-[calc(100vh-31rem)] min-[105rem]:min-h-110">
                         <div class="absolute right-0 top-80 w-full h-80 bg-gradient-to-t from-slate-900/15 to-slate-900/10">
                         </div>
                         <img src={sittingSketch} class="hidden absolute right-5 top-15 w-50 -scale-x-100" style="filter: url(#figsketch)" >
@@ -870,7 +870,6 @@ class="flex flex-row justify-center items-center w-full">
                                 <div
                                 style="width: 300%;"
                                 class="absolute top-0 left-0 h-full bg-gradient-to-tr to-sky-900/10 from-10% to-30% mix-blend-multiply from-sky-900/60"></div>
-                                <div class="grain"></div>
                             </div>
 
                         </div>
@@ -965,13 +964,24 @@ class="flex flex-row justify-center items-center w-full">
             <div id="yt-player" class="w-full h-[360px] hidden"></div>
         </div>
 
-        <div class={cx("p-0 -mt-4 w-full bg-zinc-950/50 rounded-md pointer-events-none flex items-start ease-out transition-all duration-300",
-        (currentMenu === "edits" || currentMenu === "games" || currentMenu === "anime") && "translate-y-0 opacity-100 h-[calc(100vh-15rem)] ",
-        (currentMenu !== "edits" && currentMenu !== "games" && currentMenu !== "anime") && "translate-y-30 opacity-0 h-0")}
+        <div class={cx("p-0 -mt-4 w-full bg-zinc-950/50 rounded-md select-none flex items-start transition-all duration-900 ease-[cubic-bezier(0,1,0,1)]",
+        (currentMenu === "edits" || currentMenu === "games" || currentMenu === "anime") ? "translate-y-0 opacity-100 h-[calc(100vh-15rem)]" : "translate-y-30 opacity-0 h-0")}
         >
-            <div class="rounded-md select-none text-slate-200">
-                <p class="font-mono -mt-25 px-9 text-[20rem] font-bold">WIP</p>
-                <p class="px-9 -mt-25">Check in later...</p>
+            <div class="w-full max-w-7xl h-full">
+                <div class="flex flex-col relative justify-center items-center w-full h-full border-2 border-gray-800 rounded-lg bg-radial-[at_50%_0%] to-150% from-blue-400/10 to-stone-950/70 ">
+                    <h2 class="font-mono text-8xl font-black">WIP</h2>
+                    <p class="-mt-2 -translate-x-8 text-zinc-600">coming soon...</p>
+                    <div class="absolute top-0 left-0 w-full h-full overflow-clip mix-blend-multiply opacity-4">
+                        <div class="overflow-hidden relative w-full h-full rounded-xl scale-300">
+                            <div class="absolute top-0 left-0 w-full h-full opacity-10 grain z-9999">
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick={() => { currentMenu = "main"; currentSection = ""; }} class="inline-flex absolute top-3 left-4 gap-2 items-center z-9999 text-slate-400 hover:text-slate-300">
+                        <Fa icon={faArrowLeft}></Fa>
+                        back
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -984,9 +994,9 @@ class="flex flex-row justify-center items-center w-full">
                         style="background-image: url({bg}); z-index: 0;">
                     </div>
 
-                    <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-2xl mix-blend-soft-light">
+                    <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-2xl opacity-50 mix-blend-soft-light">
                         <div class="overflow-hidden relative w-full h-full rounded-xl scale-140">
-                            <div class="absolute top-0 left-0 w-[110%] h-[110%] opacity-50 z-9999 grain">
+                            <div class="absolute top-0 left-0 w-[110%] h-[110%] z-9999 grain">
                             </div>
                         </div>
                     </div>
@@ -1043,12 +1053,13 @@ class="flex flex-row justify-center items-center w-full">
 </div>
 
 {#if currentMenu === "music"}
-<div class="flex sticky bottom-10 z-10 justify-center mb-5 w-full h-25">
+<div class="flex sticky bottom-5 z-10 justify-center mb-5 w-full md:bottom-10 h-25">
     <div class="px-8 space-y-5 w-screen max-w-7xl">
         <div class="flex relative flex-col gap-4 justify-center items-center px-5 w-full h-full rounded-lg border-2 bg-zinc-900 border-zinc-800">
 
             <div class="flex gap-4 justify-center items-center w-full">
-                <div class="flex gap-3 py-2 w-full text-zinc-500 basis-4/5 text-nowrap">
+                <div class="md:hidden basis-4/5"></div>
+                <div class="hidden gap-3 py-2 w-full md:flex text-zinc-500 basis-4/5 text-nowrap">
                     {#if playerReady && playingCollection !== null && playingSong != null}
                         Now playing:
                         <div class="w-full font-mono max-w-100 now-playing-mask">

@@ -91,7 +91,7 @@
 <a
     tabindex={id}
     href={`${base}/projects/${name}`}
-    class="grid h-64 overflow-clip bg-none rounded-md shadow-sm cursor-pointer group"> 
+    class="grid overflow-clip bg-none rounded-md shadow-sm cursor-pointer h-50 md:h-64 group"> 
     <div class='col-span-1 col-start-1 row-span-1 row-start-1 rounded-lg transition-all border-special outline-slate-300/0 group-hover:outline-blue-600/40'></div>
     <div class={cx(
         'col-start-1 row-start-1 col-span-1 row-span-1',

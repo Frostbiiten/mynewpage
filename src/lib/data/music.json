@@ -572,7 +572,7 @@
             "media":
             [
               {
-                "img": "kidatheory.webp.webp",
+                "img": "kidatheory.webp",
                 "link": "https://youtu.be/asjYgAMjfUU"
               },
               {
@@ -979,7 +979,7 @@
       "name": "Sentinel And Enterprise",
       "artist": "The Wicked Farleys",
       "released": "April 14, 1998",
-      "img": "sentinel_and_enterprise.jpg",
+      "img": "sentinel_and_enterprise.webp",
       "tracklist": [
         { "name": "That's Fine",              "fav": false, "length": 181, "hotspots": [0], "link": "BhK-5N-REj4" },
         { "name": "My Office",               "fav": true,  "length": 270, "hotspots": [0], "link": "OEX_Xg6osPI" },

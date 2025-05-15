@@ -276,119 +276,129 @@
 class="flex flex-row justify-center items-center w-full">
     <div class="px-8 space-y-5 max-w-7xl w-7xl">
 
-        <div class="relative -mt-3 w-full font-mono text-7xl fade-in text-slate-200">
 
-            <div 
-            class="w-full h-90 bg-[length:10%_auto] rounded-xl "
-            style="background-position: 0px {93 + -0.03 * scroll}%;">
+        <div class="relative -mt-3 w-full font-mono text-7xl h-fit md:h-90 fade-in text-slate-200">
 
-                <div class="absolute rounded-xl top-0 left-0 w-full h-full bg-radial-[at_20%_-40%] from-slate-950 to-black to-150%"></div>
+            <div class="absolute top-0 left-0 w-full h-full">
+                <div class="relative z-0 w-full h-full">
+                    <div 
+                    class="w-full h-full bg-[length:10%_auto] rounded-xl absolute "
+                    style="background-position: 0px {93 + -0.03 * scroll}%;">
 
-                <div class="absolute top-0 left-0 w-full h-full opacity-20 wipe-fade-in">
-                    <div class="absolute inset-0 w-full h-full animate-grid-shrink"></div>
-                </div>
+                        <div class="absolute rounded-xl top-0 left-0 w-full h-full bg-radial-[at_20%_-40%] from-slate-950 to-black to-150%"></div>
 
-            </div>
-
-            <div class="absolute top-0 left-0 p-1 w-full h-full overflow-clip rounded-xl">
-
-                <div class="relative w-full h-full">
-
-                    {#snippet window(height, duration, delay, extra, extra2)}
-                    <div
-                        style="height: {height}rem; animation-duration: {duration}s; animation-delay: {delay}s;"
-                        class={cx("absolute scaler-a backdrop-brightness-[2] backdrop-blur-[4px] bg-radial-[at_50%_-40%] to-150%",
-                            extra
-                        )}>
-                        <div class={cx("flex justify-end items-center w-full border-blue-900/20 bg-blue-900/10 border-b-1", extra2)}>
-                            <img class="h-full" src={windowIcons} alt="windowmanip"/>
+                        <div class="absolute top-0 left-0 w-full h-full opacity-20 wipe-fade-in">
+                            <div class="absolute inset-0 w-full h-full animate-grid-shrink"></div>
                         </div>
                     </div>
-                    {/snippet}
 
-                    <div class="hidden absolute bottom-0 w-full h-32 from-blue-900 opacity-20 bg-linear-to-t to-blue-950/0">
+                    <div class="absolute top-0 left-0 p-1 w-full h-full overflow-clip rounded-xl">
 
+                        <div class="relative w-full h-full">
+
+                            {#snippet window(height, duration, delay, extra, extra2)}
+                            <div
+                                style="height: {height}rem; animation-duration: {duration}s; animation-delay: {delay}s;"
+                                class={cx("absolute scaler-a backdrop-brightness-[2] backdrop-blur-[4px] bg-radial-[at_50%_-40%] to-150%",
+                                    extra
+                                )}>
+                                <div class={cx("flex justify-end items-center w-full border-blue-900/20 bg-blue-900/10 border-b-1", extra2)}>
+                                    <img class="h-full" src={windowIcons} alt="windowmanip"/>
+                                </div>
+                            </div>
+                            {/snippet}
+
+                            <div class="hidden absolute bottom-0 w-full h-32 from-blue-900 opacity-20 bg-linear-to-t to-blue-950/0">
+                            </div>
+
+                            <div class="absolute hidden left-[-50%] w-[200%] h-full -bottom-20 mix-blend-hard-light" style="mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 50%, black 100%); background-image: linear-gradient(rgba(200, 200, 200, 0.4), rgba(200, 200, 200, 0.4)), url({floor}); background-size: 8rem 8rem; transform: perspective(20rem) rotate3d(1, 0, 0, 75deg)">
+                            </div>
+
+
+                            <div class="absolute hidden text-indigo-900 text-[7.9rem] font-mono origin-bottom-left rotate-90 -left-10 bottom-50" style="transform: scaleX(1.5) perspective(11rem) rotate3d(-0.1, 0.3, 0.02, 40deg);">
+                                <span class="opacity-5">
+                                    <span class="animate-text-reveal-2" style="animation-delay: 0.0s;">OK</span><br/>
+                                </span>
+                                <span class="opacity-10">
+                                    <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.05s;">OK</span><br/>
+                                </span>
+                                <span class="opacity-20">
+                                    <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.1s;">OK</span><br/>
+                                </span>
+                                <span class="opacity-40">
+                                    <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.2s;">OK</span><br/>
+                                </span>
+                                <span class="opacity-80">
+                                    <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.3s;">OK</span><br/>
+                                </span>
+                                <span class="opacity-80">
+                                    <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.4s;">OK</span><br/>
+                                </span>
+                            </div>
+
+
+                            <div>
+
+                                {#each [28, 28, 28.5] as xOffset, i}
+                                    <div class="absolute h-full w-100 slide-a" style="left: {xOffset}rem; animation-duration: 90s; animation-delay: {-i * 30}s;">
+                                        {@render window(15, 90, -i * 30, "border-[2px] w-1/2 rounded-xs shadow-[inset_0_-40px_80px_rgba(2,2,6,0.6)] border-gray-100/5 from-[#050508]/60 to-[#050508]/70", "h-4 pr-[6px] pt-[4px] pb-[3px] bg-gray-900/30 border-zinc-700/5")}
+                                    </div>
+                                {/each}
+
+                                {#each [33.8, 33, 33.4] as xOffset, i}
+                                    <div class="absolute h-full w-130 slide-a" style="left: {xOffset}rem; animation-duration: 90s; animation-delay: {-10 + -i * 30}s;">
+                                        {@render window(15, 90, -10 + -i * 30, "border-[2px] w-1/2 rounded-sm border-blue-950 shadow-[inset_0_-40px_80px_rgba(0,0,12,0.4)] from-slate-950/60 to-slate-950/70 ", "h-6 pr-4 pt-[5%] pb-[4%]")}
+                                    </div>
+                                {/each}
+
+                                {#each [47.6, 49.2, 47.8] as xOffset, i}
+                                    <div class="absolute h-full w-190 slide-a" style="left: {xOffset}rem; animation-duration: 45s; animation-delay: {i * -15}s;">
+                                        {@render window(15, 45, -i * 15, "border-[3px] w-1/2 rounded-md border-blue-900 shadow-[inset_0_-40px_80px_rgba(0,0,30,0.6)] from-[#050508]/60 to-[#050508]/70  ", "h-10 pr-4 pt-[3%] pb-[2%]")}
+                                    </div>
+                                {/each}
+
+
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="absolute hidden left-[-50%] w-[200%] h-full -bottom-20 mix-blend-hard-light" style="mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 50%, black 100%); background-image: linear-gradient(rgba(200, 200, 200, 0.4), rgba(200, 200, 200, 0.4)), url({floor}); background-size: 8rem 8rem; transform: perspective(20rem) rotate3d(1, 0, 0, 75deg)">
+                    <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-2xl mix-blend-soft-light">
+                        <div class="overflow-hidden relative w-full h-full rounded-xl scale-140">
+                            <div class="absolute top-0 left-0 w-full h-full opacity-10 z-9999 grain">
+                            </div>
+                        </div>
                     </div>
 
-
-                    <div class="absolute hidden text-indigo-900 text-[7.9rem] font-mono origin-bottom-left rotate-90 -left-10 bottom-50" style="transform: scaleX(1.5) perspective(11rem) rotate3d(-0.1, 0.3, 0.02, 40deg);">
-                        <span class="opacity-5">
-                            <span class="animate-text-reveal-2" style="animation-delay: 0.0s;">OK</span><br/>
-                        </span>
-                        <span class="opacity-10">
-                            <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.05s;">OK</span><br/>
-                        </span>
-                        <span class="opacity-20">
-                            <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.1s;">OK</span><br/>
-                        </span>
-                        <span class="opacity-40">
-                            <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.2s;">OK</span><br/>
-                        </span>
-                        <span class="opacity-80">
-                            <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.3s;">OK</span><br/>
-                        </span>
-                        <span class="opacity-80">
-                            <span class="opacity-0 animate-text-reveal-2" style="animation-delay: 0.4s;">OK</span><br/>
-                        </span>
-                    </div>
-
-
-                    <div class="">
-
-                        {#each [28, 28, 28.5] as xOffset, i}
-                            <div class="absolute h-full w-100 slide-a" style="left: {xOffset}rem; animation-duration: 90s; animation-delay: {-i * 30}s;">
-                                {@render window(15, 90, -i * 30, "border-[2px] w-1/2 rounded-xs shadow-[inset_0_-40px_80px_rgba(2,2,6,0.6)] border-gray-100/5 from-[#050508]/60 to-[#050508]/70", "h-4 pr-[6px] pt-[4px] pb-[3px] bg-gray-900/30 border-zinc-700/5")}
-                            </div>
-                        {/each}
-
-                        {#each [33.8, 33, 33.4] as xOffset, i}
-                            <div class="absolute h-full w-130 slide-a" style="left: {xOffset}rem; animation-duration: 90s; animation-delay: {-10 + -i * 30}s;">
-                                {@render window(15, 90, -10 + -i * 30, "border-[2px] w-1/2 rounded-sm border-blue-950 shadow-[inset_0_-40px_80px_rgba(0,0,12,0.4)] from-slate-950/60 to-slate-950/70 ", "h-6 pr-4 pt-[5%] pb-[4%]")}
-                            </div>
-                        {/each}
-
-                        {#each [47.6, 49.2, 47.8] as xOffset, i}
-                            <div class="absolute h-full w-190 slide-a" style="left: {xOffset}rem; animation-duration: 45s; animation-delay: {i * -15}s;">
-                                {@render window(15, 45, -i * 15, "border-[3px] w-1/2 rounded-md border-blue-900 shadow-[inset_0_-40px_80px_rgba(0,0,30,0.6)] from-[#050508]/60 to-[#050508]/70  ", "h-10 pr-4 pt-[3%] pb-[2%]")}
-                            </div>
-                        {/each}
-
-
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t rounded-xl border-4 border-blue-400 opacity-90" style="
+                        border: 2px solid transparent;
+                        background: radial-gradient(circle at top left, #47546b, #1d293d) border-box;
+                        mask:
+                            linear-gradient(#000 0 0) padding-box, 
+                            linear-gradient(#000 0 0);
+                        mask-composite: exclude;">
                     </div>
                 </div>
             </div>
 
-
-            <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-2xl mix-blend-soft-light">
-                <div class="overflow-hidden relative w-full h-full rounded-xl scale-140">
-                    <div class="absolute top-0 left-0 w-full h-full opacity-10 z-9999 grain">
-                    </div>
-                </div>
-            </div>
-
-            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t rounded-xl border-4 border-blue-400" style="
-                border: 2px solid transparent;
-                background: radial-gradient(circle at top left, #47546b, #1d293d) border-box;
-                mask:
-                    linear-gradient(#000 0 0) padding-box, 
-                    linear-gradient(#000 0 0);
-                mask-composite: exclude;">
-
-            </div>
-
-            <h1 class="absolute top-0 p-10 space-y-7">
+            <h1 class="top-0 p-7 space-y-7 text-5xl h-22 md:h-fit md:p-10 md:text-7xl text-nowrap z-2">
                 {#each Array.from("Projects") as char, index}
                     <span
                     class="inline-block animate-text-reveal"
-                    style="animation-delay: {index * 0.05 - 0.5}s; animation-fill-mode: backwards;"
+                    style="animation-delay: {index * 0.05 - 0.5}s; animation-fill-mode: forwards;"
                     >
                     {@html char === ' ' ? '&nbsp;' : char}
                     </span>
                 {/each}
             </h1>
+
+            <p class="block p-7 text-sm md:hidden text-slate-400 fly-in md:p-0 md:text-base">
+                Click on a project to learn more or select a tag to filter.
+                All public sources are available on my 
+                <a class="inline-flex ease-out gap-x-1 items-center transition-all duration-150 translate-y-[0.1em] hover:-translate-y-0 text-slate-200 hover:text-sky-500" target="_blank" rel="noopener noreferrer" href="https://github.com/Frostbiiten">
+                    <span>GitHub</span>
+                    <Fa class="w-[1em] h-[1em] align-middle" icon={faSquareArrowUpRight}/>
+                </a> 
+            </p>
 
             <img
               class="hidden absolute right-0 opacity-0 pointer-events-none"
@@ -413,7 +423,7 @@ class="flex flex-row justify-center items-center w-full">
                 </filter>
               </svg> 
 
-            <div class="absolute right-0 bottom-0 origin-bottom-right scale-50 -translate-x-17 translate-y-21 -rotate-8" style="contain: layout; width: {figureWidth}px; height: {figureHeight}px; filter: url(#figsketch);">
+            <div class="hidden absolute right-0 bottom-0 origin-bottom-right scale-50 translate-x-4 translate-y-11 md:block md:-translate-x-17 md:translate-y-21 -rotate-8" style="contain: layout; width: {figureWidth}px; height: {figureHeight}px; filter: url(#figsketch);">
                 <div
                   class={cx("absolute top-0 left-0 z-20 w-full h-full")}
                   style="
@@ -451,7 +461,7 @@ class="flex flex-row justify-center items-center w-full">
         </div>
 
 
-        <p class="text-base text-slate-400 fly-in">
+        <p class="hidden text-base text-slate-400 fly-in md:block">
             Click on a project to learn more or select a tag to filter.
             All public sources are available on my 
             <a class="inline-flex ease-out gap-x-1 items-center transition-all duration-150 translate-y-[0.1em] hover:-translate-y-0 text-slate-200 hover:text-sky-500" target="_blank" rel="noopener noreferrer" href="https://github.com/Frostbiiten">

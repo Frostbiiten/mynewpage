@@ -72,6 +72,14 @@
         }
     ]
 
+    let isMd = $state(false)
+    $effect(() => {
+        const wQuery = window.matchMedia('(min-width: 768px)');
+        const check = () => isMd = wQuery.matches; check();
+        wQuery.addEventListener('change', check);
+        return () => wQuery.removeEventListener('change', check);
+    });
+
     let category = $state("");
     function setCategory(newCategory) {
         if (category === "")
@@ -90,14 +98,15 @@
     let [minColWidth, maxColWidth, gap] = [320, 450, 10]
 
     import { cubicOut, expoInOut, expoOut } from 'svelte/easing';
-  import { load } from "../projects/[slug]/+page";
+    import { load } from "../projects/[slug]/+page";
+  import { onMount } from "svelte";
 
     function scaleX(node, { delay = 0, duration = 400, easing = expoOut }) {
         return {
         delay,
         duration,
         easing,
-        css: t => `max-width: ${t * 25}%; overflow: hidden;`
+        css: t => isMd ? `max-width: ${t * 25}%; overflow: hidden;` : `max-height: ${t * 25}%; overflow: hidden;`
         };
     }
     
@@ -126,16 +135,35 @@
         //console.log("errmmmm: " + masonryRef.getBoundingClientRect().width);
         newWidth = masonryRef.getBoundingClientRect().width;
     }
+
+
+    let scrollbarWidth = $state(0);
+    // -> https://stackoverflow.com/a/13382873/17597356
+    function getScrollbarWidth()
+    {
+        const outer = document.createElement('div');
+        outer.style.visibility = 'hidden';
+        outer.style.overflow = 'scroll';
+        outer.style.msOverflowStyle = 'scrollbar';
+        document.body.appendChild(outer);
+        const inner = document.createElement('div');
+        outer.appendChild(inner);
+        scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+        outer.parentNode.removeChild(outer);
+    }
+    onMount(() => {
+        getScrollbarWidth();
+    })
 </script>
 
 <style>
 </style>
 
-<div class="flex flex-row justify-center -mt-4 -mb-8 w-full overflow-clip grow">
-    <div class="px-8 space-y-5 max-w-7xl min-h-full grow w-7xl">
-        <div class={cx("flex transition-all items-stretch w-full h-full justify-stretch duration-300", visibleCategories.length != 1 && "gap-2", visibleCategories.length == 1 && "gap-0")}>
+<div class="flex flex-row justify-center -mt-8 -mb-8 w-full overflow-clip md:-mt-4 grow">
+    <div class="px-8 space-y-5 min-h-full max-w-screen md:max-w-7xl grow w-7xl">
+        <div class={cx("flex flex-col md:flex-row transition-all items-stretch w-full h-full justify-stretch duration-300", visibleCategories.length != 1 && "gap-2", visibleCategories.length == 1 && "gap-0")}>
             {#if !category}
-            <div class="bg-[#d9d9d9] rounded-lg overflow-clip w-56 min-w-56"
+            <div class="bg-[#d9d9d9] rounded-lg overflow-clip md:w-56 md:min-w-56 hidden md:block"
                 in:meAnim={{ duration: 400}}
                 out:meAnim={{ duration: 400}}
             >
@@ -149,14 +177,14 @@
 
             {#each visibleCategories as cat, i (cat.name)}
             <button 
-                class="flex bg-slate-800 z-2 group rounded-lg group-hover:w-[30%] relative justify-start items-end overflow-clip cursor-pointer duration-80 border-zinc-600 grow"
+                class="flex bg-slate-800 z-2 group rounded-t-lg md:rounded-lg group-hover:w-[30%] relative justify-start items-end overflow-clip cursor-pointer duration-80 border-zinc-600 grow"
                 style="--pos: {cat.objectPosition ?? '50% 50%'}; --hover-pos: {cat.hoverObjectPosition ?? '35% 50%'}; --contr: {cat.contrast ?? '1.55'}"
                 onclick={() => setCategory(cat.name)}
                 out:scaleX={{ duration: 400, delay: (1+i) * 100 }}
                 in:scaleX={{ duration: 400, delay: (1+i) * 100 }}
                 >
                 <img 
-                    class={cx("object-cover opacity-0 rounded-lg contrast-[var(--contr)] pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-700 absolute top-0 left-0 h-full object-[var(--pos)] group-hover:object-[var(--hover-pos)]", cat.additionalImageClasses ?? '', loadedImg[cat.name] && "opacity-100")}
+                    class={cx("object-cover opacity-0 rounded-lg contrast-[var(--contr)] pointer-events-none ease-[cubic-bezier(0.233,0.001,0,1.166)] duration-700 absolute top-0 left-0 md:h-full object-[var(--pos)] group-hover:object-[var(--hover-pos)]", cat.additionalImageClasses ?? '', loadedImg[cat.name] && "opacity-100")}
                     alt={cat.name} 
                     src={cat.image}
                     onload={() => {loadedImg[cat.name] = true}}
@@ -170,20 +198,18 @@
                     />
                 {/if}
                 
-                <div class="hidden top-0 left-0 w-full h-full opacity-90 mix-blend-soft-light bg-gray-600/40"></div>
                 <div class={cx("absolute transition-colors mix-blend-hard-light duration-100 from-gray-950/80 top-0 left-0 w-full h-full bg-gradient-to-t to-60%", visibleCategories.length != 1 && "group-hover:from-[rgb(160,190,255)]", visibleCategories.length == 1 && "group-hover:from-rose-400/30")}></div>
                 
 
                 {#if visibleCategories.length == 1}
-                    <div class="flex absolute top-0 left-0 justify-center items-start w-full h-20">
+                    <div class="flex absolute top-0 left-0 justify-center items-start w-full h-5 md:h-20">
                         <h2 class="absolute hidden tracking-[0.15em] px-3 text-2xl text-gray-100 rounded-sm bg-gray-950">{visibleCategories[0].name}</h2>
-                        <div class="hidden absolute top-0 left-0 w-full h-20 bg-white"></div>
                         <h2 class="hidden absolute bg-[#d9d9d9] break-all pb-4 px-3 leading-8 text-[225%] text-gray-950 pt-4 text-left">{visibleCategories[0].name}</h2>
                     </div>
                 {/if}
 
-                <h3 class={cx("absolute flex items-center gap-3 text-lg tracking-widest group-hover:tracking-widest m-6 duration-300 ease-[cubic-bezier(0.0,1,0,1.0)] font-mono origin-bottom-left pointer-events-none group-hover:scale-[100%_300%] group-hover:translate-y-3 group-hover:uppercase group-hover:font-black ",
-                                visibleCategories.length != 1 && "group-hover:text-slate-900"
+                <h3 class={cx("absolute flex items-center gap-3 text-lg tracking-widest group-hover:tracking-widest m-2 md:m-6 duration-300 ease-[cubic-bezier(0.0,1,0,1.0)] font-mono origin-bottom-left pointer-events-none group-hover:scale-[100%_300%] group-hover:translate-y-3 group-hover:uppercase group-hover:font-black ",
+                                visibleCategories.length != 1 && "group-hover:text-slate-900 m-6"
 
                 )}>
                     {#if visibleCategories.length == 1}
@@ -195,14 +221,14 @@
             </button>
             {/each}
 
-            <div class={cx("w-0 relative overflow-y-visible ease-[cubic-bezier(1,0,0,1)] duration-600", visibleCategories.length == 1 && "w-6/7")}>
+            <div class={cx("md:w-0 h-0 md:h-full relative overflow-y-visible ease-[cubic-bezier(1,0,0,1)] duration-600", visibleCategories.length == 1 && "md:w-6/7 h-6/7")}>
                 {#if visibleCategories.length == 1}
                 <div
                     out:fade={{ delay: 100}}
-                    class="z-2 tracking-[0.05em] rounded-lg overflow-clip ml-4 mb-3 mr-2 px-4 text-[2.2rem] bg-gray-100 text-gray-900 py-2">
+                    class="z-2 tracking-[0.05em] rounded-b-lg md:rounded-lg overflow-clip md:ml-4 mb-3 md:mr-2 px-4 text-[2.2rem] bg-gray-100 text-gray-900 py-2">
                 <h2 
                     in:titleAnim={{ duration: 250, delay: 300}}
-                    class={cx("origin-left", visibleCategories.length == 1 && "scale-x-100", visibleCategories.length != 1 && "scale-x-400")}>{visibleCategories[0].name} </h2>
+                    class={cx("origin-top text-sm md:text-2xl md:origin-left", visibleCategories.length == 1 && "md:scale-x-100 scale-y-100", visibleCategories.length != 1 && "scale-y-400 md:scale-x-400")}>{visibleCategories[0].name} </h2>
                 </div>
 
                 <div
@@ -210,12 +236,12 @@
                     out:fade={{ duration: 100}}
                     bind:this={masonryRef}
                     ontransitionend={handleTransitionEnd}
-                    class="px-4 space-y-5 w-full max-h-[calc(100%-5rem)] h-full text-3xl font-bold">
+                    class="md:px-4 space-y-5 w-full max-h-[calc(100%-5rem)] h-full text-3xl font-bold">
                     <div
                         style="scrollbar-color: rgb(200, 200, 230, 0.4) transparent; max-width: {newWidth}px; min-width: {newWidth}px"
-                        class="overflow-y-scroll relative h-full rounded-lg">
+                        class="hidden overflow-y-scroll relative h-full rounded-lg md:block">
                         <Masonry
-                            class={cx("absolute pr-6 max-h-[100%] w-full")}
+                            class={cx("absolute max-h-[100%] w-full pr-6 ")}
                             items={currentImages}
                             {minColWidth}
                             {maxColWidth}
@@ -230,6 +256,23 @@
                                 {/if}
                             {/snippet}
                         </Masonry>
+                    </div>
+                    
+                    <div
+                        style="scrollbar-color: rgb(200, 200, 230, 0.4) transparent; max-width: {newWidth}px; min-width: {newWidth}px"
+                        class="block overflow-y-scroll relative h-full rounded-lg md:hidden">
+                        <div
+                            class={cx("absolute max-h-[100%] w-full")}
+                            >
+                            {#each currentImages as item}
+                                {#if ['.mov', '.mp4', '.webm'].some(end => item.endsWith(end)) }
+                                    {console.log(`boohooo ${item}`)}
+                                    <video class="overflow-clip rounded-lg" controls autoplay muted src={item}></video>
+                                {:else}
+                                    <ImgWrapper src={item}/>
+                                {/if}
+                            {/each}
+                        </div>
                     </div>
                 </div>
                 {/if}

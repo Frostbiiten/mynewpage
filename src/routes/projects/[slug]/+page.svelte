@@ -65,7 +65,7 @@
             <div class="py-1 pl-4 space-y-4 h-min">
              <div class="space-y-1">
                 <p class="px-1 text-sm text-slate-500"> {dateInfo[0]} {dateInfo[1]} </p>
-                <h1 style="view-transition-name: project-title" class="h-full font-mono text-6xl lg:text-7xl">
+                <h1 style="view-transition-name: project-title" class="h-full font-mono text-5xl md:text-6xl lg:text-7xl">
                     {#each Array.from(data.slug) as char, index}
                         <span
                         class="inline-block animate-text-reveal"
@@ -78,7 +78,8 @@
              </div>
 
                 <div
-                class="flex flex-row gap-2 w-full">
+                style="scrollbar-color: rgb(200, 200, 230, 0.4) transparent;"
+                class="flex overflow-x-scroll md:overflow-x-visible flex-row gap-2 w-full max-w-[calc(100vw-4rem)]">
                     {#each project_data.tags as tag, index (tag)}
                         <div
                         class={cx(
