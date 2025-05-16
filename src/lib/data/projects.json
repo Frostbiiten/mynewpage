@@ -3,7 +3,7 @@
     [
         {
             "name": "Fractal Renderer",
-            "desc": "Fractal renderer written in C++ using the 'chaos game' algorithm.",
+            "desc": "Fractal renderer written in C++ using the 'chaos game' algorithm to simultaneously render thousands of points.",
             "tags": [ "C++", "SFML"],
             "time": 1641686401000,
             "src:": "https://github.com/Frostbiiten/Chaos-Game",
@@ -21,9 +21,10 @@
         },
         {
             "name": "Rouge",
-            "desc": "No description provided.",
+            "desc": "Roguelite* dungeon shooter game in a world of procedurally-generated dungeons. Wrote a custom performant tileset renderer to handle thousands of tiles. Written in grade 11.",
             "tags": [
                 "Java",
+                "JavaFX",
                 "Game"
             ],
             "time": 1673433498000,
@@ -33,10 +34,11 @@
         },
         {
             "name": "FFF",
-            "desc": "Fire-Fighter (Fighter)",
+            "desc": "Fire-Fighter (Fighter). Your goal is to set the entire map ablaze while fighting firefighters.",
             "tags": [
                 "C#",
                 "Unity",
+                "Playable",
                 "Game"
             ],
             "time": 1688911200000,
@@ -46,7 +48,7 @@
         },
         {
             "name": "Aero",
-            "desc": "python project",
+            "desc": "Python project centered around flying as far as possible while avoiding obstacles. Authored every visual element and animation.",
             "tags": [
                 "Python",
                 "Game"
@@ -58,9 +60,9 @@
         },
         {
             "name": "Beyond Engine",
-            "desc": "Sonic Engine",
+            "desc": "Hobby Sonic Engine written when I was 12 to emulate SEGA's official Hedgehog Engine. Several assets are tweaked rips from official sonic games.",
             "tags": [
-                "C#", "Unity", "Game"
+                "C#", "Unity", "Game", "Reverse Engineering"
             ],
             "time": 1557257844000,
             "src": "https://github.com/Frostbiiten/Beyond",
@@ -69,7 +71,7 @@
         },
         {
             "name": "SuppressThePress",
-            "desc": "Ludum Dare 50",
+            "desc": "Game created in 48 hours for the Ludum Dare 50 game jam. Scored among the top 10% in several categories, created with only self-made assets.",
             "tags": [
                 "C#", "Unity", "Game"
             ],
@@ -80,7 +82,7 @@
         },
         {
             "name": "customInt",
-            "desc": "Custom integer class",
+            "desc": "Essentially a variable-width bitset equipped with arithmetic operations.",
             "src": "https://github.com/Frostbiiten/customInt",
             "tags": [
                 "C++"
@@ -90,7 +92,7 @@
         },
         {
             "name": "CivilAIzation",
-            "desc": "Hack The 6ix 2023 winner",
+            "desc": "Hack The 6ix 2023 winner - Defend, spectate, and support various world-leaders on a dynamic world stage! Negotiate intelligently to eventually achieve world-domination.",
             "tags": [
                 "C#", "Unity", "Game", "Won Hack The 6ix 2023"
             ],
@@ -100,7 +102,7 @@
         },
         {
             "name": "Storymation",
-            "desc": "Hack The North winner",
+            "desc": "Hack The North winner - Generates event driven animation with character interactions and plotline.",
             "tags": [
                 "React", "Js", "won HTN 2023"
             ],
@@ -110,13 +112,34 @@
         },
         {
             "name": "ReConstruct",
-            "desc": "3D FPS created with self-made assets and code. Won the 2022 DPCDSB Game-Making Competition.",
+            "desc": "3D First-Person-Shooter created with self-made assets and code. Won the 2022 DPCDSB Game-Making Competition.",
             "tags": [
                 "C#", "Unity", "Game", "Won DPCDSB 2023 Game-Making Competition"
             ],
             "time": 1654056900000,
             "src": "https://github.com/Frostbiiten/ReConstruct2",
             "img": "reconstruct.webp"
+        },
+        {
+            "name": "Sonic Reverse Engineering",
+            "desc": "A several day effort at recreating Classic Sonic installments 1:1 using the Sonic Physics guide and loading level data directly from official Sonic Mania binaries.",
+            "tags": [
+                "Java", "C++", "Reverse Engineering", "Game"
+            ],
+            "time": 1672407591000,
+            "img": "sonic.webp",
+            "galleryCount": [0, 5]
+        },
+        {
+            "name": "Polyglot",
+            "desc": "An interactive language learning app. Users can tap on any object to see and hear translations in a chosen language. Adding an item to a dictionary retains it for practice in quizzes.",
+            "tags": [
+                "C#", "Unity", "XR", "Education"
+            ],
+            "time": 1722556800000,
+            "img": "polyglot.webp",
+            "galleryCount": [0, 3]
         }
+
     ]
 }

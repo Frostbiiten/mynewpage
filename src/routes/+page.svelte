@@ -498,7 +498,7 @@
           </div>
 
           <div
-            class="absolute hidden md:block pointer-events-none top-0 left-0 z-[36] w-full h-full md:mix-blend-exclusion origin-right translate-x-40 translate-y-40 md:translate-x-0 md:translate-y-0"
+            class="absolute hidden md:block pointer-events-none top-0 left-0 z-[36] w-full h-full md:mix-blend-exclusion origin-right translate-x-40 translate-y-40 md:translate-x-[calc(55rem-70%)]   md:translate-y-0"
             style="filter: url(#warbleFilter) blur({easeInOutCubic(Math.abs(1 - dist01)) * 2}px); transform: scale({(1 + easeOutCubic(dist01) * -0.01)});"
           >
             <svg class="w-0 h-0">
@@ -544,9 +544,9 @@
           </div>
           
           <div
-            class="hidden absolute top-0 left-0 z-50 w-full h-full origin-bottom-right md:block scale-130"
+            class="hidden translate-x-[calc(41rem-50%)] absolute top-0 left-0 z-50 w-full h-full origin-bottom-right md:block scale-130"
             style="
-              transform: translateX(0.2%) translate3d({smoothX * -2.4}%, {smoothY * -13 + 30}px, 0) scale({0.3 * (1 - dist01 * 0.02)});
+              transform: translate3d({smoothX * -2.4}%, {smoothY * -13 + 30}px, 0) scale({0.3 * (1 - dist01 * 0.02)});
               filter: blur({easeInOutCubic(Math.max(0, (dist01 - 0.6)) * 2) * 5}px)"
           >
 
@@ -666,7 +666,7 @@
                     characterhover && "opacity-100 ease-out delay-300 ",
                     !characterhover && "opacity-0 ease-in delay-0",
                   )}>
-                    Hello, my name is...
+                    Hello! I also 
                     <span class="font-black text-blue-500">
                       {#each "Frostbiiten!" as char, i}
                         <span
@@ -835,7 +835,7 @@
 
         </div>
 
-          <div style="backface-visibility: hidden; perspective: 1000;" class="hidden absolute top-0 left-0 w-full h-full overflow-clip rounded-lg opacity-60 mix-blend-multiply md:block md:opacity-50">
+          <div style="backface-visibility: hidden; perspective: 1000;" class={cx("hidden absolute top-0 left-0 w-full h-full overflow-clip rounded-lg opacity-60 mix-blend-multiply md:opacity-50", characterhover ? "md:hidden" : "md:block")}>
             <div class="overflow-hidden relative w-full h-full rounded-xl scale-200 md:scale-140">
               <div class="absolute top-0 left-0 w-full h-full z-9999 grain">
               </div>
@@ -930,11 +930,11 @@
 </div>
 
 
-<div class="flex fixed right-10 bottom-10 flex-col gap-3">
+<div class="flex fixed right-10 bottom-10 flex-col gap-3 z-9999999">
 
   {#each messages as msg, index (msg.id)}
     <div
-    class="flex justify-center items-center font-mono overflow-clip rounded-md msg-appear w-50 bg-stone-900 text-stone-300 z-900">
+    class="flex justify-center items-center font-mono overflow-clip rounded-md msg-appear w-50 bg-stone-900 text-stone-300">
       <p class="">{msg.msg}</p>
     </div>
   {/each}

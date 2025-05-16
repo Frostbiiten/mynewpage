@@ -26,7 +26,7 @@
     import { fly, fade } from "svelte/transition";
     import { onMount } from "svelte";
     
-    import guy from "$lib/img/figure/sittingA.png"
+    import guy from "$lib/img/figure/sittingA.webp"
     import bg from "$lib/img/projects/null.png"
     import windowIcons from "$lib/img/projects/windowicons.svg"
     import { browser } from "$app/environment";

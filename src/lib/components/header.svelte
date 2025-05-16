@@ -30,7 +30,7 @@
     }
 </style>
 
-<div class="flex flex-col justify-center items-center mt-7 mb-8 md:mt-14" style="view-transition-name: header;">
+<div class="flex flex-col justify-center items-center mt-7 mb-8 md:mt-14 z-4" style="view-transition-name: header;">
     <div class="flex flex-col gap-2 items-stretch px-8 w-full max-w-7xl">
         <div class="flex flex-row gap-6 items-center text-xl select-none text-blue-400/60">
             <button aria-label="Page Navigation" class="cursor-pointer z-99998" onclick={() => {navMenu = true;}}>

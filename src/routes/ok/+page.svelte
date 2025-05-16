@@ -134,6 +134,7 @@
 		requestAnimationFrame(trackPerspective);
     }
 
+    let scrollTimeout;
     onMount(() => {
         if (typeof window === 'undefined') return;
 
@@ -143,6 +144,10 @@
                 closestToCenter();
                 //animatePerspective();
             });
+
+            scrollContainer.style.scrollSnapType = 'none';
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => { scrollContainer.style.scrollSnapType = 'y mandatory'; }, 100);
         });
 
         getScrollbarWidth();
@@ -628,6 +633,25 @@
         -webkit-mask-size: 100% 100%;
     }
 
+    .track-mask-2 {
+        --fade-gradient: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.0) 35%,
+            rgba(0, 0, 0, 0.2) 40%,
+            rgba(0, 0, 0, 0.9) 46%,
+            rgba(0, 0, 0, 0.9) 90%,
+            rgba(0, 0, 0, 0) 100%
+        );
+
+        mask-image: var(--fade-gradient);
+        -webkit-mask-image: var(--fade-gradient);
+
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+
+        mask-size: 100% 100%;
+        -webkit-mask-size: 100% 100%;
+    }
+
     .now-playing-mask {
         --mask-g: linear-gradient(to right,
             rgba(0, 0, 0, 0.0) 0%,
@@ -737,15 +761,17 @@ class="flex flex-row justify-center items-center w-full">
             </h1>
         </div>
 
-        <div class={cx("p-0 md:scale-100 max-h-[calc(100vh+20rem)]  min-[105rem]:max-h-[calc(100vh-20rem)] -mt-4 w-0 flex items-start min-[105rem]:translate-x-[-14rem] ease-[cubic-bezier(0,1,0,1)] transition-all duration-1000",
-        (currentMenu === "music") ? "translate-y-0 w-full max-sm:-translate-x-5 max-sm:w-[calc(100%+2rem)] min-[105rem]:w-[calc(100%+14rem)] opacity-100 h-[calc(100vh+6rem)] ": "translate-y-30 opacity-0 h-0")}
+        <div class={cx("p-0 md:scale-100 max-h-[calc(100vh+20rem)] min-[105rem]:max-h-[calc(100vh-20rem)] -mt-4 w-0 flex items-start min-[105rem]:translate-x-[-14rem] ease-[cubic-bezier(0,1,0,1)] transition-all duration-1000",
+        (currentMenu === "music") ? "translate-y-0 pointer-events-auto w-full max-sm:-translate-x-5 max-sm:w-[calc(100%+2rem)] min-[105rem]:w-[calc(100%+14rem)] opacity-100 h-[calc(100vh+6rem)] ": "translate-y-30 pointer-events-none opacity-0 h-0")}
         >
             <div class="flex flex-row justify-start -mr-2 h-20 rounded-lg border-2 md:mr-0 md:rounded-2xl border-slate-700 bg-gray-900/20 md:h-50">
 
-                <div class="relative h-[80vh] md:h-[calc(30vh+30rem)] w-20 md:w-50 self-center track-mask">
+                <div class="relative h-[80vh] md:h-[calc(30vh+30rem)] w-20 md:w-50 self-center ">
+                    <div class="absolute bottom-[65%] w-full h-40 min-[105rem]:hidden"></div>
+
                     <div bind:this={scrollContainer}
                         style="scrollbar-width: none; scroll-snap-type: y mandatory;"
-                        class="flex overflow-y-scroll flex-col gap-5 items-start p-[0.1rem] h-full md:p-3 scroll-smooth overflow-x-clip">
+                        class="flex track-mask-2 min-[105rem]:track-mask overflow-y-scroll flex-col gap-5 items-start p-[0.1rem] h-full md:p-3 scroll-smooth overflow-x-clip">
                         <div class="w-full min-h-[calc(30vh+10rem)]"></div>
                         {#each music_data.collections as collection, index (collection)}
                         <button
@@ -764,17 +790,22 @@ class="flex flex-row justify-center items-center w-full">
                         {/each}
                         <div class="w-full min-h-[calc(30vh+10rem)]"></div>
                     </div>
-                </div>
 
+                    <button onclick={() => { currentMenu = "main"; currentSection = ""; }} class="inline-flex absolute gap-2 justify-center items-center pr-3 w-full top-198 z-9999 text-slate-600 hover:text-slate-500">
+                        <Fa icon={faArrowLeft}></Fa>
+                        back
+                    </button>
+                </div>
             </div>
 
-            <div class="flex flex-col gap-3 pl-5 w-full font-mono">
+
+            <div class="flex flex-col gap-3 pl-5 w-full font-mono max-w-[calc(100%+15rem)] md:max-w-[calc(100%-13.5rem)] min-[100rem]:w-full ">
                 {#if currentCollection !== null}
-                <div class="flex flex-col gap-2 p-5 px-7 w-full bg-gray-900 rounded-xl md:h-35">
-                    <p class="-mb-2 text-gray-500 md:text-lg">
+                <div class="flex flex-col gap-2 p-5 pl-7 w-full bg-gray-900 rounded-xl md:h-35">
+                    <p class="-mb-2 text-gray-500 md:text-lg max-lg:mt-4  max-[105rem]:mt-3">
                         {music_data.collections[currentCollection].artist}
                     </p>
-                    <h2 class="font-sans text-2xl font-bold sm:text-4xl md:text-7xl text-slate-100">
+                    <h2 class="font-sans text-2xl font-bold sm:text-3xl md:text-[2.1rem] lg:md:text-[3rem] min-[105rem]:text-[4.25rem] text-slate-100">
                         {music_data.collections[currentCollection].name}
                     </h2>
                 </div>
@@ -806,7 +837,7 @@ class="flex flex-row justify-center items-center w-full">
 
                     <div bind:this={tracklistScrollbox}
                         style={`scrollbar-color: rgba(200, 200, 230, 0.4) transparent; --sw: ${scrollbarWidth}px`}
-                        class={cx("flex text-xs md:text-base overflow-y-auto overflow-x-visible flex-col md:gap-2 pr-6 pb-2 pt-3 pl-3 leading-tight whitespace-normal duration-400 ease-[cubic-bezier(0.12,0.639,0.34,1)] min-[105rem]:min-h-110 max-h-[calc(100vh-31.25rem)] rounded-bl-xl border-slate-900 border-2 border-r-0 border-t-0 w-full min-[105rem]:w-160", widenTracklist && "min-[105rem]:w-[calc(40rem+var(--sw))]" )}>
+                        class={cx("flex text-xs md:text-base max-w-full overflow-y-auto overflow-x-visible flex-col md:gap-2 pr-6 pb-2 pt-3 pl-3 leading-tight whitespace-normal duration-400 ease-[cubic-bezier(0.12,0.639,0.34,1)] min-[105rem]:min-h-110 max-h-[calc(100vh-31.25rem)] rounded-bl-xl border-slate-900 border-2 border-r-0 border-t-0 w-full min-[105rem]:w-160", widenTracklist && "pr-[calc(-var(--sw)*5)] mr-[calc(-var(--sw)*10)] min-[105rem]:w-[calc(40rem+var(--sw))]" )}>
 
                         {#if currentCollection !== null}
 
@@ -817,16 +848,20 @@ class="flex flex-row justify-center items-center w-full">
                                     playingCollection = currentCollection;
                                     playNewSong();
                                 }}
-                                class={cx("flex group relative pl-[0.35rem] items-center flex-row gap-[1.2rem] py-[0.35rem] cursor-pointer")}>
+                                class={cx("flex group relative pl-[0.35rem] items-center w-full flex-row gap-[1.2rem] py-[0.35rem] cursor-pointer")}>
                                     <div class={cx("absolute group-hover:scale-x-100 group-hover:opacity-90 transition-all origin-left scale-x-0 -left-1 top-0 w-full h-full bg-gradient-to-r ease-[cubic-bezier(0,1,0,1)] rounded-md from-blue-950/40 via-50% via-blue-900/15 to-indigo-500/0 opacity-0 duration-1000", (playingSong == index && playingCollection == currentCollection) && "scale-x-100 opacity-100")}></div>
 
                                     <p class={cx("transition-all hidden sm:block duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-600", (playingSong == index && playingCollection == currentCollection) && "text-slate-500")}>
                                         {String(index).padStart(2, '0')}
                                     </p>
 
-                                    <p class={cx("transition-all overflow-ellipsis overflow-hidden min-[105rem]:max-w-110 md:text-nowrap text-left grow duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-300", (playingSong == index && playingCollection == currentCollection) && "text-blue-200 md:text-lg")}>
+                                    <p class={cx("transition-all grow overflow-ellipsis overflow-hidden md:text-nowrap text-left duration-200 ease-[cubic-bezier(1,0,0,1)]", (playingSong != index || playingCollection != currentCollection) && "text-gray-300", (playingSong == index && playingCollection == currentCollection) && "text-blue-200 md:text-lg")}>
                                         {song.name}
                                     </p>
+
+                                    <div class="h-full">
+
+                                    </div>
 
                                     <div class={cx("hidden sm:flex justify-center items-center w-4 h-full text-blue-500 text-3xl")}>
                                         {#if song.fav}
@@ -1179,7 +1214,7 @@ class="flex flex-row justify-center items-center w-full">
 </div>
 
 {#if currentMenu === "music"}
-<div class="flex sticky bottom-5 z-10 justify-center mb-5 w-full md:bottom-10 h-25">
+<div class="flex sticky bottom-5 z-10 justify-center -mb-10 w-full mt-30 md:bottom-9 h-25">
     <div class="px-8 space-y-5 w-screen max-w-7xl">
         <div class="flex relative flex-col gap-4 justify-center items-center px-5 w-full h-full rounded-lg border-2 bg-zinc-900 border-zinc-800">
 
