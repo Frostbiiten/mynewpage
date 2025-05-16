@@ -42,11 +42,12 @@
       document.body.style.textAlign = "left";
     }
 
+    const base = "https://cdn.edem.ca/";
     createUnityInstance(document.querySelector("#unity-canvas"), {
       arguments: [],
-      dataUrl: "Build/c87a2634ae9decbfa7bb66cd8a96f0e4.data",
-      frameworkUrl: "Build/baa7d6344445f98ecc8745c42fa9634d.framework.js",
-      codeUrl: "Build/2f5fefa9ae368328ddaaf3a89ba38025.wasm",
+      dataUrl: base + "c87a2634ae9decbfa7bb66cd8a96f0e4.data",
+      frameworkUrl: base +"baa7d6344445f98ecc8745c42fa9634d.framework.js",
+      codeUrl: base + "2f5fefa9ae368328ddaaf3a89ba38025.wasm",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "Frostbiiten",
       productName: "SuppressThePress",

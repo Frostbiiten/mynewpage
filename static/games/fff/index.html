@@ -23,10 +23,12 @@
     }
   </style>
 </head>
+
 <body>
   <canvas id="unity-canvas" tabindex="-1"></canvas>
   <script src="Build/e4daf07a48c8ece48716380d589e22fb.loader.js"></script>
   <script>
+
     // Optional: For mobile-specific adjustments
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
       var meta = document.createElement('meta');
@@ -42,11 +44,12 @@
       document.body.style.textAlign = "left";
     }
 
+    const base = "https://cdn.edem.ca/";
     createUnityInstance(document.querySelector("#unity-canvas"), {
       arguments: [],
-      dataUrl: "Build/1acd126429731cfd69759259453ddcb1.data",
-      frameworkUrl: "Build/e73a5c8a4df7644e9dfd16073485315b.framework.js",
-      codeUrl: "Build/697a52eea97c059170660db347f3dbfe.wasm",
+      dataUrl: base + "1acd126429731cfd69759259453ddcb1.data",
+      frameworkUrl: base + "e73a5c8a4df7644e9dfd16073485315b.framework.js",
+      codeUrl: base + "697a52eea97c059170660db347f3dbfe.wasm",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "Frost",
       productName: "FFF",
