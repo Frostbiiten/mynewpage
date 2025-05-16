@@ -33,5 +33,6 @@
 	},
 	"optionalDependencies": {
 		"@rollup/rollup-linux-x64-gnu": "^4.40.2"
-	}
+	},
+	"postbuild": "cp static/_headers build/_headers"
 }
