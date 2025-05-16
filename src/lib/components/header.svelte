@@ -4,6 +4,7 @@
     import Fa from 'svelte-fa';
     import { faArrowLeft, faArrowRight, faAsterisk, faBold, faBook, faBrush, faDotCircle, faHome, faPalette, faPenToSquare, faSquarePen } from '@fortawesome/free-solid-svg-icons'
     import { base } from '$app/paths';
+    import { fade } from 'svelte/transition';
 
     const images = import.meta.glob('$lib/assets/gallery/*.{jpg,png,webp}', {
         eager: true,
@@ -32,7 +33,7 @@
 <div class="flex flex-col justify-center items-center mt-7 mb-8 md:mt-14" style="view-transition-name: header;">
     <div class="flex flex-col gap-2 items-stretch px-8 w-full max-w-7xl">
         <div class="flex flex-row gap-6 items-center text-xl select-none text-blue-400/60">
-            <button class="cursor-pointer z-99998" onclick={() => {navMenu = true;}}>
+            <button aria-label="Page Navigation" class="cursor-pointer z-99998" onclick={() => {navMenu = true;}}>
                 <Fa class="text-2xl text-blue-400/80 sm:text-xl" icon={faAsterisk}></Fa>
             </button>
             
@@ -91,25 +92,28 @@
     </div>
 </div>
 
-<div class={cx("absolute w-full h-full transition-all duration-300 z-99999 text-stone-500", navMenu ? "backdrop-blur-xs bg-zinc-950/95 block" : "pointer-events-none")}>
-    <div class="relative w-full h-full">
-        <button class="absolute w-full h-full z-1" onclick={() => {navMenu = false;}}>
-        </button>
-        <div class={cx("absolute z-2 transition-all duration-300 ease-[cubic-bezier(0,1,0,1)] p-3 px-7 space-y-5 w-48 h-full bg-zinc-900", navMenu ? "left-0" : "left-[-100%]")}>
-            <Fa class="mt-4 text-2xl text-stone-300" icon={faAsterisk}></Fa>
-            <div class="flex flex-col gap-2 font-mono text-lg">
-                {#snippet p(name, href)}
-                <a onclick={() => {navMenu = false;}} href={`${base}/${href}`} class={cx("w-full h-8", (page.url.pathname.startsWith(`${base}/${href}`) && (href !== "" || page.url.pathname.endsWith(`${base}/${href}`))) ? "font-bold text-stone-600" : "text-stone-400")}>
-                {name}
-                </a>
-                {/snippet}
+    <div
+    aria-hidden={navMenu ? "true": false}
+    
+    class={cx("absolute w-full h-full transition-all duration-300 z-99999 text-stone-500", navMenu ? "backdrop-blur-xs bg-zinc-950/95 block" : "pointer-events-none")}>
+        <div class="relative w-full h-full">
+            <button aria-label="Back to page" class="absolute w-full h-full z-1" onclick={() => {navMenu = false;}}>
+            </button>
+            <div class={cx("absolute z-2 transition-all duration-300 ease-[cubic-bezier(0,1,0,1)] p-3 px-7 space-y-5 w-48 h-full bg-zinc-900", navMenu ? "left-0" : "left-[-100%]")}>
+                <Fa class="mt-4 text-2xl text-stone-300" icon={faAsterisk}></Fa>
+                <div class="flex flex-col gap-2 font-mono text-lg">
+                    {#snippet p(name, href)}
+                    <a onclick={() => {navMenu = false;}} href={`${base}/${href}`} class={cx("w-full h-8", (page.url.pathname.startsWith(`${base}/${href}`) && (href !== "" || page.url.pathname.endsWith(`${base}/${href}`))) ? "font-bold text-stone-600" : "text-stone-400")}>
+                    {name}
+                    </a>
+                    {/snippet}
 
-                {@render p("home", "")}
-                {@render p("projects", "projects")}
-                {@render p("blog", "blog")}
-                {@render p("creative", "creative")}
-                {@render p("OK", "ok")}
+                    {@render p("home", "")}
+                    {@render p("projects", "projects")}
+                    {@render p("blog", "blog")}
+                    {@render p("creative", "creative")}
+                    {@render p("OK", "ok")}
+                </div>
             </div>
         </div>
     </div>
-</div>

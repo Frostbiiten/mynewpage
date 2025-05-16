@@ -89,7 +89,6 @@
 
 <!-- Full-width projects on mobile, otherwise, 2 in each ... grid should restrict this -->
 <a
-    tabindex={id}
     href={`${base}/projects/${name}`}
     class="grid overflow-clip bg-none rounded-md shadow-sm cursor-pointer h-50 md:h-64 group"> 
     <div class='col-span-1 col-start-1 row-span-1 row-start-1 rounded-lg transition-all border-special outline-slate-300/0 group-hover:outline-blue-600/40'></div>
@@ -138,7 +137,7 @@
                     {dateInfo[1]}
                     </p>
                 </div>
-                <h3 class="flex-grow px-3 py-1 text-2xl text-right duration-300 lg:text-3xl group-hover:font-bold">{name}</h3>
+                <h2 class="flex-grow px-3 py-1 text-2xl text-right duration-300 lg:text-3xl group-hover:font-bold">{name}</h2>
             </div>
 
             <p class="p-3 px-6 delay-0 duration-150 group-hover:delay-200 align-bottom group-hover:duration-400 -translate-x-1 group-hover:translate-x-0 ease-[cubic-bezier(0.16, 1, 0.3, 1)] opacity-0 group-hover:opacity-100">{desc}</p>
@@ -159,7 +158,7 @@
                         clickableTags[index] && 'cursor-default hover:text-stone-500 ',
                         'ease-[cubic-bezier(0.68, -0.6, 0.32, 1.6)] hover:border-2 ',
                         )}>
-                        <div class="grid grid-cols-1 grid-rows-1">
+                        <div class="grid grid-cols-1 grid-rows-1" aria-label={tag.toLowerCase().includes("won") && "Won"}>
                             {#if tag.toLowerCase().includes("won")}
                             <Fa class="col-span-1 col-start-1 row-span-1 row-start-1 text-amber-500 group-hover/tag:text-transparent" icon={faTrophy}/>
                             {:else}

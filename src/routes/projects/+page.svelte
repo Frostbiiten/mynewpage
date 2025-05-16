@@ -1,3 +1,22 @@
+<svelte:head>
+  <title>Edem's Projects</title>
+  <meta name="description" content="Check out all my software projects here!">
+  <meta name="keyword" content="portfolio, cs, se, c++, c#, java, python, game, developer">
+  <meta name="keywords" content="portfolio, cs, se, c++, c#, java, python, game, developer">
+  <meta name="author" content="Edem Hoggar">
+
+  <meta property="og:title" content="Edem's Projects"/>
+  <meta property="og:description" content="Check out all my software projects here!"/>
+  <meta property="og:image" content="https://edem.ca/cloudsbg.webp"/>
+  <meta property="og:url" content="https://edem.ca"/>
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Edem's Projects" />
+  <meta name="twitter:description" content="Check out all my software projects here!"/>
+  <meta name="twitter:image" content="https://edem.ca/cloudsbg.jpg"/>
+</svelte:head>
+
 <script>
 
     import Projectcontainer from "$lib/components/projectcontainer.svelte";

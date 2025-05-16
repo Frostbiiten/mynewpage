@@ -1,3 +1,22 @@
+<svelte:head>
+  <title>Creative Works</title>
+  <meta name="description" content="This page contains my attempts at creative pieces">
+  <meta name="keyword" content="sketches, digital, photos, edits, drawings, 3d models">
+  <meta name="keywords" content="sketches, digital, photos, edits, drawings, 3d models">
+  <meta name="author" content="Edem Hoggar">
+
+  <meta property="og:title" content="Edem's Work"/>
+  <meta property="og:description" content="This page contains my attempts at creative pieces"/>
+  <meta property="og:image" content="https://edem.ca/cloudsbg.webp"/>
+  <meta property="og:url" content="https://edem.ca"/>
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Edem's Work" />
+  <meta name="twitter:description" content="This page contains my attempts at creative pieces"/>
+  <meta name="twitter:image" content="https://edem.ca/cloudsbg.jpg"/>
+</svelte:head>
+
 <script>
     import ImgWrapper from "$lib/components/imgwrapper.svelte";
 

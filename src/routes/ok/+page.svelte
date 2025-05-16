@@ -1,3 +1,22 @@
+<svelte:head>
+  <title>Inspiration</title>
+  <meta name="description" content="This page contains some of my ramblings on media that has inspired me">
+  <meta name="keyword" content="music, games, edits, anime">
+  <meta name="keywords" content="music, games, edits, anime">
+  <meta name="author" content="Edem Hoggar">
+
+  <meta property="og:title" content="Edem's World"/>
+  <meta property="og:description" content="This page contains some of my ramblings on media that has inspired me"/>
+  <meta property="og:image" content="https://edem.ca/cloudsbg.webp"/>
+  <meta property="og:url" content="https://edem.ca"/>
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Edem's World" />
+  <meta name="twitter:description" content="This page contains some of my ramblings on media that has inspired me"/>
+  <meta name="twitter:image" content="https://edem.ca/cloudsbg.jpg"/>
+</svelte:head>
+
 <script>
     import Projectcontainer from "$lib/components/projectcontainer.svelte";
     import Fa from 'svelte-fa'
@@ -131,70 +150,69 @@
         //animatePerspective();
         trackPerspective();
 
-
-        const script = document.createElement('script');
-        script.src = 'https://www.youtube.com/iframe_api';
-        document.body.appendChild(script);
-
-        window.onYouTubeIframeAPIReady = () => {
+        function initPlayer() {
             player = new YT.Player('yt-player', {
                 videoId: '09EsZXrKEP4',
                 playerVars: {
-                autoplay: 1,
-                controls: 0,
-                modestbranding: 1,
-                rel: 0,
-                loop: 1,
-                playlist: '09EsZXrKEP4',
+                    autoplay: 1,
+                    controls: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                    loop: 1,
+                    playlist: '09EsZXrKEP4',
                 },
                 events: {
                     onReady: () => {
                         console.log('ready to play');
                         playerReady = true;
                         player.mute();
-                        
+
                         setInterval(() => {
                             if (playerReady && playerState === YT.PlayerState.PLAYING) {
                                 currentTime = player.getCurrentTime();
                             }
 
-                            if (playingCollection !== null || playingSong !== null)
-                            {
+                            if (playingCollection !== null || playingSong !== null) {
                                 updateSpeech(currentTime);
                             }
                         }, 250);
                     },
-                    onStateChange: (event) =>
-                    {
+                    onStateChange: (event) => {
                         playerState = event.data;
 
                         switch (event.data) {
-                            case YT.PlayerState.UNSTARTED:  // -1
+                            case YT.PlayerState.UNSTARTED:
                                 console.log('Unstarted');
                                 break;
-                            case YT.PlayerState.ENDED:      // 0
+                            case YT.PlayerState.ENDED:
                                 console.log('Ended');
-                                // continue to next
                                 playNext();
                                 break;
-                            case YT.PlayerState.PLAYING:    // 1
+                            case YT.PlayerState.PLAYING:
                                 console.log('Playing');
                                 break;
-                            case YT.PlayerState.PAUSED:     // 2
+                            case YT.PlayerState.PAUSED:
                                 console.log('Paused');
                                 break;
-                            case YT.PlayerState.BUFFERING:  // 3
+                            case YT.PlayerState.BUFFERING:
                                 console.log('Buffering');
                                 break;
-                            case YT.PlayerState.CUED:       // 5
+                            case YT.PlayerState.CUED:
                                 console.log('Video cued');
                                 break;
                         }
                     }
                 }
             });
-        };
+        }
 
+        if (!window.YT) {
+            const script = document.createElement('script');
+            script.src = 'https://www.youtube.com/iframe_api';
+            document.body.appendChild(script);
+
+            window.onYouTubeIframeAPIReady = () => { initPlayer(); };
+        } else if (window.YT && window.YT.Player) { initPlayer(); }
     });
 
     function playNewSong() {
@@ -259,10 +277,7 @@
         player?.seekTo(seconds, true);
     }
 
-
-
     let currentScrollAnimation = null;
-
 
     function getUntransformedRect(el) {
         const prevTransform = el.style.transform;
@@ -722,12 +737,12 @@ class="flex flex-row justify-center items-center w-full">
             </h1>
         </div>
 
-        <div class={cx("p-0 md:scale-100 -mt-4 w-0 flex items-start min-[105rem]:translate-x-[-14rem] ease-[cubic-bezier(0,1,0,1)] transition-all duration-1000",
+        <div class={cx("p-0 md:scale-100 max-h-[calc(100vh+20rem)]  min-[105rem]:max-h-[calc(100vh-20rem)] -mt-4 w-0 flex items-start min-[105rem]:translate-x-[-14rem] ease-[cubic-bezier(0,1,0,1)] transition-all duration-1000",
         (currentMenu === "music") ? "translate-y-0 w-full max-sm:-translate-x-5 max-sm:w-[calc(100%+2rem)] min-[105rem]:w-[calc(100%+14rem)] opacity-100 h-[calc(100vh+6rem)] ": "translate-y-30 opacity-0 h-0")}
         >
             <div class="flex flex-row justify-start -mr-2 h-20 rounded-lg border-2 md:mr-0 md:rounded-2xl border-slate-700 bg-gray-900/20 md:h-50">
 
-                <div class="relative h-[calc(30vh+30rem)] w-20 md:w-50 self-center track-mask">
+                <div class="relative h-[80vh] md:h-[calc(30vh+30rem)] w-20 md:w-50 self-center track-mask">
                     <div bind:this={scrollContainer}
                         style="scrollbar-width: none; scroll-snap-type: y mandatory;"
                         class="flex overflow-y-scroll flex-col gap-5 items-start p-[0.1rem] h-full md:p-3 scroll-smooth overflow-x-clip">
@@ -830,7 +845,6 @@ class="flex flex-row justify-center items-center w-full">
                     <div class="overflow-clip relative rounded-br-xl border-r-2 border-b-2 border-slate-900 bg-slate-900/10 grow max-h-[calc(100vh-31rem)] min-[105rem]:min-h-110">
                         <div class="absolute right-0 top-80 w-full h-80 bg-gradient-to-t from-slate-900/15 to-slate-900/10">
                         </div>
-                        <img src={sittingSketch} class="hidden absolute right-5 top-15 w-50 -scale-x-100" style="filter: url(#figsketch)" >
 
                         <img
                         class="hidden absolute right-0 opacity-0 pointer-events-none"
@@ -840,7 +854,7 @@ class="flex flex-row justify-center items-center w-full">
                         />
 
 
-                        <div class="absolute -right-5 top-30 -scale-x-100" style="contain: layout; width: {figureWidth/2.5}px; height: {figureHeight/2.5}px; filter: url(#figsketch);">
+                        <div class="absolute hidden min-[105rem]:block -right-5 top-30 -scale-x-100" style="contain: layout; width: {figureWidth/2.5}px; height: {figureHeight/2.5}px; filter: url(#figsketch);">
                             <div
                             class={cx("absolute top-0 left-0 z-20 w-full h-full")}
                             style="
@@ -874,8 +888,7 @@ class="flex flex-row justify-center items-center w-full">
 
                         </div>
 
-
-                        <div class="flex absolute top-0 left-0 items-center w-full min-h-110">
+                        <div class="hidden min-[105rem]:flex absolute top-0 left-0 items-center w-full min-h-110">
                             <div
                                 class={cx(
                                 "absolute origin-right right-38 transition-transform duration-700 ease-[cubic-bezier(0.054,0.564,0.23,1))]",
@@ -954,10 +967,123 @@ class="flex flex-row justify-center items-center w-full">
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
+                </div>
+            </div>
+
+
+            <div class="absolute block min-[105rem]:hidden -right-5 -bottom-2 -scale-x-100" style="contain: layout; width: {figureWidth/2.5}px; height: {figureHeight/2.5}px; filter: url(#figsketch);">
+                <div
+                class={cx("absolute top-0 left-0 z-20 w-full h-full")}
+                style="
+                    -webkit-mask-image: url({sittingSketch});
+                    mask-image: url({sittingSketch});
+
+                    -webkit-mask-size: cover;
+                    mask-size: cover;
+
+                    -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+
+                    -webkit-mask-position: center;
+                    mask-position: center;
+
+                    isolation: isolate;
+                "
+                >
+                <img
+                    src="{sittingSketch}"
+                    class="block object-cover absolute w-full h-full"
+                    alt="base bg"
+                />
+                    <div
+                    style="width: 300%;"
+                    class="absolute top-0 left-0 h-full bg-gradient-to-tr to-blue-200/10 from-0% to-70% from-slate-600 mix-blend-overlay"></div>
+                    <div
+                    style="width: 300%;"
+                    class="absolute top-0 left-0 h-full bg-gradient-to-tr to-sky-900/10 from-10% to-30% mix-blend-multiply from-sky-900/60"></div>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col min-[105rem]:hidden absolute bottom-33 right-35 items-center w-full min-h-110">
+                <div
+                    class={cx(
+                    "absolute origin-bottom right-0 bottom-0 transition-transform duration-700 ease-[cubic-bezier(0.054,0.564,0.23,1))]",
+                    characterhover && "sm:translate-y-20 translate-x-20 sm:-translate-x-5 -translate-y-20",
+                    !characterhover && ""
+                    )}
+                >
+                    <div
+                    class={cx(
+                        "w-10 h-5 bg-zinc-950/90 max-h-[25rem] overflow-clip transition-all rounded-[1rem] border-2 duration-300 ease-[cubic-bezier(1,0,0,1)]",
+                        characterhover && "w-[24rem] h-fit border-slate-600 font-sans",
+                    )}
+                    >
+                    <p class={cx("absolute mt-[-0.9rem] translate-x-[-0.1rem] h-full translate-y-1/2 w-full transition-[opacity] duration-300 text-xs align-middle text-center font-black", characterhover && "opacity-0")}>...</p>
+
+                    <div class={cx(
+                        "overflow-clip text-slate-200 pointer-events-auto space-y-4 rounded-4xl leading-relaxed text-sm transition-[opacity, font-size, line-height] duration-400 px-5 py-5",
+                        characterhover && "opacity-100 ease-out delay-300 ",
+                        !characterhover && "opacity-0 ease-in delay-0",
+                    )}>
+                        {#if currentDialogue !== null}
+                        {#if currentDialogue?.media?.length > 0}
+                            <div class="flex relative z-0 gap-1 mx-auto w-full h-40">
+                                <button
+                                    onclick={() => {
+                                        emblaApi?.scrollPrev();
+                                    }}
+                                    class={cx(
+                                        "flex justify-center delay-500 overflow-clip items-center h-full rounded-sm transition-all duration-400 cursor-pointer bg-slate-200/5 hover:bg-slate-200/2",
+                                        (emblaApi !== null && currentSlide !== 0) && "max-w-6 min-w-6 pl-1",
+                                        (emblaApi === null || currentSlide === 0) && "max-w-0 min-w-0")}
+                                >
+                                    <Fa icon={faChevronLeft}></Fa>
+                                </button>
+
+                                <div
+                                    class="flex overflow-hidden items-start bg-gradient-to-b rounded-sm grow"
+                                    use:emblaCarouselSvelte={{options: carouselOptions}}
+                                    onemblaInit={onCarouselInit}
+                                >
+                                    <div class="flex items-start w-full h-full">
+                                        {#each currentDialogue.media as src, index}
+                                        <div class="flex-[0_0_100%] h-full min-w-0 relative w-full">
+                                            <div class={cx(
+                                                "flex justify-center h-full w-full ",
+                                                (emblaApi && currentSlide === index) && 'scale-0',
+                                                (!emblaApi || currentSlide === index) && 'scale-100',
+                                            )}>
+                                                <a href={src.link} target="_blank" rel="noopener noreferrer" class="w-full h-full group">
+                                                    <img src={concertsMap[src.img]} alt={name} class="object-cover w-full h-full duration-200 group-hover:opacity-80" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {/each}
+                                    </div>
+                                </div>
+
+                                <button
+                                    onclick={() => {
+                                        emblaApi?.scrollNext();
+                                    }}
+                                    class={cx(
+                                        "flex justify-center delay-500 overflow-clip items-center h-full rounded-sm transition-all duration-400 cursor-pointer bg-slate-200/5 hover:bg-slate-200/2",
+                                        (emblaApi !== null && (emblaApi.selectedScrollSnap() !== currentDialogue.media.length - 1)) && "max-w-6 min-w-6",
+                                        (emblaApi === null || (emblaApi.selectedScrollSnap() === currentDialogue.media.length - 1)) && "max-w-0 min-w-0")}
+                                >
+                                    <Fa icon={faChevronRight}></Fa>
+                                </button>
+                            </div>
+                        {/if}
+                        <div class="relative z-10 markdown">
+                        {@html currentDialogueMD}
+                        </div>
+                        {/if}
+                    </div>
+                    </div>
                 </div>
             </div>
 

@@ -40,6 +40,25 @@
     import Gallery from '$lib/components/gallery.svelte';
 </script>
 
+<svelte:head>
+  <title>{data.slug}</title>
+  <meta name="description" content={`${data.slug} from ${getDateInfo(project_data?.time)}`}>
+  <meta name="keyword" content={`'${project_data?.tags.join(', ')}'`}>
+  <meta name="keywords" content={`'${project_data?.tags.join(', ')}'`}>
+  <meta name="author" content="Edem Hoggar">
+
+  <meta property="og:title" content={data.slug}/>
+  <meta property="og:description" content="This page contains my attempts at creative pieces"/>
+  <meta property="og:image" content="https://edem.ca/cloudsbg.webp"/>
+  <meta property="og:url" content="https://edem.ca"/>
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={data.slug} />
+  <meta name="twitter:description" content="This page contains my attempts at creative pieces"/>
+  <meta name="twitter:image" content="https://edem.ca/cloudsbg.jpg"/>
+</svelte:head>
+
 <style>
     @keyframes text-reveal {
         0% {

@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Edem Hoggar | Software Developer</title>
+  <title>Edem's World</title>
   <meta name="description" content="Welcome to my site! Visit the projects page to view my past works.">
   <meta name="keyword" content="portfolio, cs, se, c++, c#, java, python, game, developer">
   <meta name="keywords" content="portfolio, cs, se, c++, c#, java, python, game, developer">
@@ -36,10 +36,10 @@
     import windowIcons from "$lib/img/projects/windowicons.svg"
 
     import { onMount, onDestroy } from 'svelte';
-    import { faGit, faGithub, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
+    import { faDiscord, faGit, faGithub, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
     import Fa from "svelte-fa";
     import { faAt, faEnvelope, faPaperPlane, faSquareArrowUpRight } from "@fortawesome/free-solid-svg-icons";
-    import { cubicInOut } from "svelte/easing";
+    import { cubicInOut, expoOut } from "svelte/easing";
     import Loader from "$lib/components/loader.svelte"
     import cx from "clsx"
 
@@ -214,6 +214,26 @@
 
     rafId = requestAnimationFrame(animate);
   });
+
+  let msgCount = 0;
+  let messages = $state([])
+  function scaleYAnim(node, { duration = 300, easing = cubicOut }) {
+    return {
+      duration,
+      easing,
+      css: t => `transform: scaleY(${t}); transform-origin: bottom;`
+    };
+  }
+
+  function addMsg(msg)
+  {
+    const id = ++msgCount;
+    messages.push({ id, msg });
+
+    setTimeout(() => {
+      messages = messages.filter(msg => msg.id !== id);
+    }, 3500);
+  }
 </script>
 
 <svelte:window bind:scrollY={scroll}/>
@@ -349,6 +369,17 @@
     transform-origin: left;
     animation: text-reveal 1.2s cubic-bezier(1, 0, 0, 1) 20s forwards;
   }
+
+  @keyframes msg-appear {
+    0% { height: 0rem }
+    20% { height: 3rem}
+    84% { height: 3rem}
+    100% { height: 0rem}
+  }
+
+  .msg-appear{
+    animation: msg-appear 2.5s cubic-bezier(0,1,0,1) forwards;
+  }
 </style>
 
 
@@ -433,33 +464,22 @@
               !characterhover && "brightness-100",
               characterhover && "brightness-10"
               )}
-            style="transform: translate3d({smoothX * 10}px, {smoothY * -5 - 610}px, 0) scale({1 + dist01 * 0.01});"
+            style="transform: translate3d({smoothX * 10}px, {smoothY * -5 - 610}px, 0) scale({1 + dist01 * 0.01}); backface-visibility: hidden; perspective: 1000;"
           >
             <img
-              class="absolute top-0 left-0 min-w-7xl"
+              class="absolute top-0 left-0 z-0 min-w-7xl"
               src={bg}
               alt="Parallax"
               style="filter: blur({easeInOutCubic(1-dist01) * 8}px)"
             />
             <img
-              class="absolute top-0 left-0 min-w-7xl"
+              class="absolute top-0 left-0 z-1 min-w-7xl"
               src={bgbokeh}
               alt="Parallax"
               style="opacity: {easeInOutCubic(1-dist01)};"
             />
 
-            <div class="absolute top-0 left-0 w-full h-full">
-              <div
-              style="width: 300%;"
-              class="absolute top-0 left-0 h-full bg-gradient-to-tr to-amber-400 from-0% to-80% mix-blend-soft-light  from-sky-900"></div>
-              <div
-              style="width: 300%;"
-              class="absolute top-0 left-0 h-full bg-gradient-to-tr to-amber-300 from-0% to-70% mix-blend-overlay  from-indigo-900"></div>
-            </div>
-
-            <div class="absolute top-0 left-0 w-screen h-screen bg-blue-400/0 z-[10] mix-blend-multiply">
-            </div>
-          </div>
+           hidden</div>
 
           <div class={cx("absolute hidden md:block top-0 left-0 z-10 w-full h-full duration-700 transition-transform ease-[cubic-bezier(1, 0, 0, 1)]", characterhover && "-translate-1/8 opacity-20")} style="filter: blur({easeInOutCubic(Math.abs(1- dist01)) * 4}px);">
             {#each { length: 12 }, i}
@@ -779,29 +799,43 @@
             </div>
           </div>
 
-          <div class={cx("text-xl gap-6 hidden md:flex flex-row absolute bottom-0 left-0 z-40 duration-200 md:gap-4 items-end md:p-10 md:px-16 p-11 py-5 w-full md:text-lg text-stone-300 md:text-gray-500", !characterhover && "opacity-100", characterhover && "opacity-0")}>
+          <div class={cx("text-xl gap-3 hidden md:flex flex-row absolute bottom-0 left-0 z-40 duration-200 md:gap-2 items-end md:p-8 md:px-16 p-11 py-5 w-full md:text-xl text-stone-300 md:text-gray-500", !characterhover && "opacity-100", characterhover && "opacity-0")}>
             <a
-            href="https://github.com/Frostbiiten" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-sky-100">
+            aria-label="Visit my Github"
+            href="https://github.com/Frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
             <Fa icon={faGithub}/>
             </a>
             
             <a
-            href="https://www.linkedin.com/in/edem-hoggar/" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-sky-100">
+            aria-label="Visit my LinkedIn"
+            href="https://www.linkedin.com/in/edem-hoggar/" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
               <Fa icon={faLinkedinIn}/>
             </a>
 
-            <a href="https://www.linkedin.com/in/edem-hoggar/" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-sky-100">
-              <Fa icon={faAt}/>
-            </a>
-
-            <a href="https://x.com/frostbiiten" target="_blank" rel="noopener noreferrer" class="transition-all duration-200 hover:text-sky-100">
+            <a
+            aria-label="Visit my Twitter"
+            href="https://x.com/frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
               <Fa icon={faTwitter}/>
             </a>
+
+            <button
+            aria-label="Copy Discord"
+            onclick={() => {addMsg("Discord Copied"); navigator.clipboard.writeText("edemh")}}
+            class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
+              <Fa icon={faDiscord}/>
+            </button>
+
+            <button
+            aria-label="Copy Email"
+            onclick={() => {addMsg("Email Copied"); navigator.clipboard.writeText("edemkhoggar@gmail.com")}}
+            class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
+              <Fa icon={faAt}/>
+            </button>
           </div>
 
         </div>
 
-          <div class="hidden absolute top-0 left-0 w-full h-full overflow-clip rounded-lg opacity-60 md:block md:opacity-100 md:mix-blend-soft-light">
+          <div style="backface-visibility: hidden; perspective: 1000;" class="hidden absolute top-0 left-0 w-full h-full overflow-clip rounded-lg opacity-60 mix-blend-multiply md:block md:opacity-50">
             <div class="overflow-hidden relative w-full h-full rounded-xl scale-200 md:scale-140">
               <div class="absolute top-0 left-0 w-full h-full z-9999 grain">
               </div>
@@ -831,7 +865,7 @@
             bg-[linear-gradient(-30deg,_#09080F_-106%,_#182D97_95.51%)]
             ">
           </div>
-          <h4 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Projects</h4>
+          <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Projects</h2>
         </a>
 
         <a
@@ -854,7 +888,7 @@
             bg-[linear-gradient(52.89deg,_#09080F_-20%,_#1f3980_51%)]
             ">
           </div>
-          <h4 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Blog</h4>
+          <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Blog</h2>
         </a>
 
         <a
@@ -877,7 +911,7 @@
             bg-[linear-gradient(52.89deg,_#09080F_-20%,_#182D97_95.51%)]
             ">
           </div>
-          <h4 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Creative</h4>
+          <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Creative</h2>
         </a>
 
       </div>
@@ -895,3 +929,14 @@
     </div>
 </div>
 
+
+<div class="flex fixed right-10 bottom-10 flex-col gap-3">
+
+  {#each messages as msg, index (msg.id)}
+    <div
+    class="flex justify-center items-center font-mono overflow-clip rounded-md msg-appear w-50 bg-stone-900 text-stone-300 z-900">
+      <p class="">{msg.msg}</p>
+    </div>
+  {/each}
+
+</div>

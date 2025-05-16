@@ -1,3 +1,22 @@
+<svelte:head>
+  <title>Blog</title>
+  <meta name="description" content="Welcome to my (not yet functional) blog">
+  <meta name="keyword" content="programming, cs, music, games, edits, anime">
+  <meta name="keywords" content="programming, cs, music, games, edits, anime">
+  <meta name="author" content="Edem Hoggar">
+
+  <meta property="og:title" content="Edem's Blog"/>
+  <meta property="og:description" content="Welcome to my (not yet functional) blog"/>
+  <meta property="og:image" content="https://edem.ca/cloudsbg.webp"/>
+  <meta property="og:url" content="https://edem.ca"/>
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Edem's Blog" />
+  <meta name="twitter:description" content="Welcome to my (not yet functional) blog"/>
+  <meta name="twitter:image" content="https://edem.ca/cloudsbg.jpg"/>
+</svelte:head>
+
 <style>
     .grain {
         content: "";
@@ -28,8 +47,8 @@
     }
 </style>
 
-<div class="flex flex-col gap-7 justify-center items-center px-8 -mt-4 w-full h-[calc(100vh-15rem)] -mb-10">
-    <div class="w-full max-w-7xl h-full">
+<div class="flex flex-col gap-7 justify-center items-center -mt-4 w-full h-[calc(100vh-15rem)] -mb-10">
+    <div class="px-8 w-full max-w-7xl h-full">
         <div class="flex flex-col relative justify-center items-center w-full h-full border-2 border-gray-800 rounded-lg bg-radial-[at_50%_0%] to-150% from-blue-400/10 to-stone-950/70 ">
             <h2 class="font-mono text-8xl font-black">WIP</h2>
             <p class="-mt-2 -translate-x-8 text-zinc-600">coming soon...</p>
