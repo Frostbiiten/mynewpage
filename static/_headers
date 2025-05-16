@@ -10,6 +10,23 @@
   Content-Encoding: br
   Content-Type: application/octet-stream
 
-/games/stp/Build/*.framework.js.br
+/games/stp/Build/Build.framework.js.br
+  Content-Encoding: br
+  Content-Type: application/javascript
+
+
+/games/fff/Build/*.js.br
+  Content-Encoding: br
+  Content-Type: application/javascript
+
+/games/fff/Build/*.wasm.br
+  Content-Encoding: br
+  Content-Type: application/wasm
+
+/games/fff/Build/*.data.br
+  Content-Encoding: br
+  Content-Type: application/octet-stream
+
+/games/fff/Build/Build.framework.js.br
   Content-Encoding: br
   Content-Type: application/javascript
