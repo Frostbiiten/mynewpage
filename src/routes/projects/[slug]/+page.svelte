@@ -131,6 +131,7 @@
 
     {#if 'galleryCount' in project_data}
     <Gallery project={data.slug} imgCount={project_data.galleryCount[0]} vidCount={project_data.galleryCount[1]}></Gallery>
+    <div class="h-30"></div>
     {/if}
     </div>
 </div>

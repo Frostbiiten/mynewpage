@@ -49,15 +49,27 @@
   function scrollPrev() {
     splideInst?.go('<');
   }
+
+  let loadedMedia = $state(0)
+
+  $effect(() => {
+    const currentLoaded = loadedMedia;
+    if (currentLoaded == mediaItems.length)
+    {
+      scrollNext();
+      scrollPrev();
+    }
+  })
   
   // Debug media loading
   function handleMediaError(e, index) {
     console.error(`Failed to load media at index ${index}:`, e.target.src);
+    loadedMedia++;
   }
   
   function handleMediaLoad(index) {
     console.log(`Successfully loaded media at index ${index}`);
-    //refreshSplide();
+    loadedMedia++;
   }
 
   function videosUpdate()
@@ -102,7 +114,9 @@
   };
 
   const thumbsOptions = {
-    type: 'loop',
+    type: 'slide',
+    trimSpace: false,
+    loop: true,
     fixedWidth: 110,
     fixedHeight: 110,
     gap: 12,
@@ -209,11 +223,11 @@
     {options}
     on:move={(e) => onMoveStart(e.detail)}
     on:moved={(e) => onMoveEnd(e.detail)}
-    hasTrack={ false } aria-label="Project Media" class="h-[calc(100vh-15rem)] relative rounded-2xl"
+    hasTrack={ false } aria-label="Project Media" class="h-[min(calc(100vh-15rem),45rem)] relative rounded-2xl"
   >
     <SplideTrack>
       {#each mediaItems as item, index}
-        <SplideSlide data-real-index={index} class={cx(`h-[calc(100vh-20rem)] p-10  min-w-0 relative video-slide-${index} max-h-full transition-all`)}>
+        <SplideSlide data-real-index={index} class={cx(`h-[min(calc(100vh-20rem),45rem)] p-10 min-w-0 relative video-slide-${index} max-h-full transition-all`)}>
           <div class={cx("flex justify-center h-full max-h-full duration-550 slide-content ease-[cubic-bezier(0.8,0,0,0.8)]")}>
             {#if item.type === 'image'}
               <img 
@@ -244,16 +258,16 @@
     </SplideTrack>
 
     <div class="flex absolute top-0 left-0 flex-col justify-end px-1 w-full h-full pointer-events-auto splide__arrows">
-      <div class="relative w-full bg-gradient-to-r rounded-2xl translate-y-8 h-35 from-black/70 to-black/70">
+      <div class="relative w-full bg-gradient-to-r rounded-2xl translate-y-30 h-35 from-black/70 to-black/70">
         <button class="absolute !left-[1rem] !bg-slate-950/20 hover:!bg-slate-900/30 !backdrop-blur-lg !border-1 !border-slate-800/80 !transition-all !opacity-100 z-10 !rounded-lg !w-13 !h-28 splide__arrow splide__arrow--prev">
           <Fa class="text-slate-400" icon={faArrowRight}></Fa>
         </button>
         <div class="flex w-full max-w-full h-full track-mask">
-          <Splide class="flex items-center w-full h-full thumbnail-carousel" options={thumbsOptions} bind:this={thumbs}>
+          <Splide class="flex justify-center items-center w-full h-full thumbnail-carousel" options={thumbsOptions} bind:this={thumbs}>
             {#each mediaItems as item, index}
-              <SplideSlide data-real-index={index} class={cx("overflow-clip rounded-lg", currentSlide === index && "ring-2")}>
+              <SplideSlide data-real-index={index} class={cx("w-full rounded-lg", currentSlide === index && "ring-2")}>
                 {#if item.type === 'image'}
-                <img alt="thumbnail preview" src={item.src} class="object-cover transition-all cursor-pointer brightness-70 aspect-square hover:!brightness-100"/>
+                <img alt="thumbnail preview" src={item.src} class="object-cover w-full h-full transition-all cursor-pointer brightness-70 aspect-square hover:!brightness-100"/>
                 {:else}
                 <div class="flex justify-center items-center rounded-lg border-2 backdrop-blur-2xl transition-opacity cursor-pointer aspect-square border-slate-800/40 hover:opacity-100 bg-black/30"><Fa class="w-full text-3xl text-slate-300" icon={faPlayCircle}></Fa></div>
                 {/if}
