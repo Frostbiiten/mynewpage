@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FFF</title>
+  <style>
+    /* Make the HTML body and canvas fill the iframe */
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Prevent scrollbars if you want the game to fill */
+      background: #231F20;
+    }
+
+    /* The canvas should fill its containing element */
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      display: block; /* Remove any inline gaps */
+      background: #231F20;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="unity-canvas" tabindex="-1"></canvas>
+  <script src="Build/e4daf07a48c8ece48716380d589e22fb.loader.js"></script>
+  <script>
+
+    // Optional: For mobile-specific adjustments
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+
+      var canvas = document.querySelector("#unity-canvas");
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      canvas.style.position = "fixed";
+
+      document.body.style.textAlign = "left";
+    }
+
+    const base = "https://cdn.edem.ca/";
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      arguments: [],
+      dataUrl: base + "1acd126429731cfd69759259453ddcb1.data",
+      frameworkUrl: base + "e73a5c8a4df7644e9dfd16073485315b.framework.js",
+      codeUrl: base + "697a52eea97c059170660db347f3dbfe.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "Frost",
+      productName: "FFF",
+      productVersion: "1.0",
+      matchWebGLToCanvasSize: true,
+    });
+  </script>
+</body>
+</html>

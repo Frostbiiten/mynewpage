@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SuppressThePress</title>
+  <style>
+    /* Make the HTML body and canvas fill the iframe */
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Prevent scrollbars if you want the game to fill */
+      background: #231F20;
+    }
+
+    /* The canvas should fill its containing element */
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      display: block; /* Remove any inline gaps */
+      background: #231F20;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="unity-canvas" tabindex="-1"></canvas>
+  <script src="Build/5a79468a7b7ab2c922694ab418197132.loader.js"></script>
+  <script>
+    // Optional: For mobile-specific adjustments
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+
+      var canvas = document.querySelector("#unity-canvas");
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      canvas.style.position = "fixed";
+
+      document.body.style.textAlign = "left";
+    }
+
+    const base = "https://cdn.edem.ca/";
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      arguments: [],
+      dataUrl: base + "c87a2634ae9decbfa7bb66cd8a96f0e4.data",
+      frameworkUrl: base +"baa7d6344445f98ecc8745c42fa9634d.framework.js",
+      codeUrl: base + "2f5fefa9ae368328ddaaf3a89ba38025.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "Frostbiiten",
+      productName: "SuppressThePress",
+      productVersion: "1.1",
+      // Turn this on if you want Unity's WebGL to automatically adapt
+      // to changes in the canvas size.
+      matchWebGLToCanvasSize: true,
+    });
+  </script>
+</body>
+</html>

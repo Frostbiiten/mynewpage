@@ -1,0 +1,15 @@
+/games/*/Build/*.js.br
+  Content-Type: application/javascript
+  Content-Encoding: br
+
+/games/*/Build/*.wasm.br
+  Content-Type: application/wasm
+  Content-Encoding: br
+
+/games/*/Build/*.data.br
+  Content-Type: application/octet-stream
+  Content-Encoding: br
+
+/games/*/Build/Build.framework.js.br
+  Content-Type: application/javascript
+  Content-Encoding: br
