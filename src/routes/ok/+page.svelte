@@ -489,7 +489,6 @@
         }
     })
 
-    import emblaCarouselSvelte from 'embla-carousel-svelte';
   import { base } from "$app/paths";
     let emblaApi = $state(null);
     let currentSlide = $state(-1)
