@@ -1152,7 +1152,7 @@ class="flex flex-row justify-center items-center w-full">
                         style="background-image: url({bg}); z-index: 0;">
                     </div>
 
-                    <p class="absolute right-10 bottom-20 text-sm text-right text-white">creative works <br/>i've been inspired by.</p>
+                    <p class="hidden absolute right-10 bottom-20 text-sm text-right text-white md:block">creative works <br/>i've been inspired by.</p>
 
                     <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-2xl opacity-50 mix-blend-soft-light">
                         <div class="overflow-hidden relative w-full h-full rounded-xl scale-140">

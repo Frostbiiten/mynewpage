@@ -1,2 +1,1 @@
-## SvelteKit Porfolio Site
-work in progress
+## Porfolio Site
