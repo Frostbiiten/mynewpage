@@ -136,10 +136,26 @@
     animation: load-spin 1.8s cubic-bezier(0.506, -0.109, 0, 1) infinite;
   }
 
+  @keyframes load-override {
+    0% {
+      opacity: 100;
+      display: flex;
+    }
+
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  .override {
+    animation: load-override 1s 3.5s both
+  }
+
 </style>
 
   {#if !done}
-<div class="fixed inset-0 flex items-center justify-center z-[100] p-8 font-mono">
+<div class="fixed inset-0 flex items-center justify-center z-[100] p-8 font-mono override">
 
   <div class="absolute top-0 left-0 w-full h-full select-none">
 
