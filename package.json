@@ -17,7 +17,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"postbuild": "npx svelte-sitemap --domain https://edem.ca"
 	},
 	"type": "module",
 	"dependencies": {
@@ -35,5 +36,4 @@
 	"optionalDependencies": {
 		"@rollup/rollup-linux-x64-gnu": "^4.40.2"
 	},
-	"postbuild": "cp static/_headers build/_headers && npx svelte-sitemap --domain https://edem.ca"
 }
