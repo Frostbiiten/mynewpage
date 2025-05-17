@@ -834,77 +834,111 @@
       </div>
 
 
-      <div class="z-2 flex bg-zinc-950 gap-3 border-0 md:gap-0 relative duration-200 transition-[border-color] flex-col md:flex-row w-full max-w-7xl h-[39vh] md:h-72 md:overflow-clip rounded-xl md:border-2 select-none border-blue-950/50 hover:border-blue-700/40">
-        <a
-          onfocus={() => {setInfo("projects")}}
-          onmouseover={() => {setInfo("projects")}}
-          onblur={clearInfo}
-          onmouseleave={clearInfo}
-          href={base + "/projects"}
-          class="md:h-full h-1/4 border-stone-800 border-2 md:border-0 rounded-md md:rounded-none relative group basis-1/3 transition-[flex-basis] duration-600 overflow-clip">
-          <img
-            alt="project bg"
-            class="
-              object-cover w-full h-full origin-top-left
-              transition-[transform, opacity]
-              scale-140 translate-x-[-30%] group-hover:translate-x-[-25%] group-focus:translate-x-[-25%] opacity-10 group-hover:opacity-100 group-focus:opacity-100
-              duration-500 ease-[cubic-bezier(0.45,0,0,1)]"
-            src={projectImg}/>
-          <div class="
-            absolute hidden md:block top-0 left-0 w-full h-full mix-blend-hard-light z-[2] transition-colors duration-400 
-            bg-[linear-gradient(-30deg,_#09080F_-106%,_#182D97_95.51%)]
-            ">
-          </div>
-          <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Projects</h2>
-        </a>
-
-        <a
-          onfocus={() => {setInfo("blog")}}
-          onmouseover={() => {setInfo("blog")}}
-          onblur={clearInfo}
-          onmouseleave={clearInfo}
-          href={base + "/blog"}
+    <div class="z-2 flex bg-zinc-950 gap-3 border-0 md:gap-0 relative duration-200 transition-[border-color] flex-col md:flex-row w-full max-w-7xl h-[39vh] md:h-72 md:overflow-clip rounded-xl md:border-2 select-none border-blue-950/50 hover:border-blue-700/40">
+      <a
+        onfocus={() => {setInfo("projects")}}
+        onmouseover={() => {setInfo("projects")}}
+        onblur={clearInfo}
+        onmouseleave={clearInfo}
+        href={base + "/projects"}
         class="md:h-full h-1/4 border-stone-800 border-2 md:border-0 rounded-md md:rounded-none relative group basis-1/3 transition-[flex-basis] duration-600 overflow-clip">
-          <img
-            alt="blog bg"
-            class="
-              object-cover w-full h-full origin-top-left
-              transition-[transform, opacity]
-              scale-145 translate-x-[-5%] group-hover:translate-x-0 group-focus:translate-x-0 opacity-10 group-hover:opacity-100 group-focus:opacity-100
-              duration-500 ease-[cubic-bezier(0.45,0,0,1)]"
-            src={blogImg}/>
-          <div class="
-            absolute hidden md:block  top-0 left-0 w-full h-full mix-blend-hard-light z-[2] transition-colors duration-400
-            bg-[linear-gradient(52.89deg,_#09080F_-20%,_#1f3980_51%)]
-            ">
-          </div>
-          <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Blog</h2>
-        </a>
+        <img
+          alt="project bg"
+          class="
+            object-cover w-full h-full origin-top-left
+            transition-[transform, opacity]
+            scale-140 translate-x-[-30%] group-hover:translate-x-[-25%] group-focus:translate-x-[-25%] opacity-10 group-hover:opacity-100 group-focus:opacity-100
+            duration-500 ease-[cubic-bezier(0.45,0,0,1)]"
+          src={projectImg}/>
+        <div class="
+          absolute hidden md:block top-0 left-0 w-full h-full mix-blend-hard-light z-[2] transition-colors duration-400 
+          bg-[linear-gradient(-30deg,_#09080F_-106%,_#182D97_95.51%)]
+          ">
+        </div>
+        <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Projects</h2>
+      </a>
 
-        <a
-          onfocus={() => {setInfo("creative")}}
-          onmouseover={() => {setInfo("creative")}}
-          onblur={clearInfo}
-          onmouseleave={clearInfo}
-          href={base + "/creative"}
-          class="md:h-full h-1/4 border-stone-800 border-2 md:border-0 rounded-md md:rounded-none relative group basis-1/3 transition-[flex-basis] duration-600 overflow-clip">
-          <img
-            alt="creative bg"
-            class="
-              object-cover w-full h-full origin-top-left
-              transition-[transform, opacity]
-              scale-140 translate-x-[-5%] group-hover:translate-x-0 group-focus:translate-x-0 opacity-10 group-hover:opacity-100 group-focus:opacity-100
-              duration-500 ease-[cubic-bezier(0.45,0,0,1)]"
-            src={creativeImg}/>
-          <div class="
-            absolute hidden md:block top-0 left-0 w-full h-full mix-blend-hard-light z-[2] transition-colors duration-400
-            bg-[linear-gradient(52.89deg,_#09080F_-20%,_#182D97_95.51%)]
-            ">
-          </div>
-          <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Creative</h2>
-        </a>
+      <a
+        onfocus={() => {setInfo("blog")}}
+        onmouseover={() => {setInfo("blog")}}
+        onblur={clearInfo}
+        onmouseleave={clearInfo}
+        href={base + "/blog"}
+      class="md:h-full h-1/4 border-stone-800 border-2 md:border-0 rounded-md md:rounded-none relative group basis-1/3 transition-[flex-basis] duration-600 overflow-clip">
+        <img
+          alt="blog bg"
+          class="
+            object-cover w-full h-full origin-top-left
+            transition-[transform, opacity]
+            scale-145 translate-x-[-5%] group-hover:translate-x-0 group-focus:translate-x-0 opacity-10 group-hover:opacity-100 group-focus:opacity-100
+            duration-500 ease-[cubic-bezier(0.45,0,0,1)]"
+          src={blogImg}/>
+        <div class="
+          absolute hidden md:block  top-0 left-0 w-full h-full mix-blend-hard-light z-[2] transition-colors duration-400
+          bg-[linear-gradient(52.89deg,_#09080F_-20%,_#1f3980_51%)]
+          ">
+        </div>
+        <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Blog</h2>
+      </a>
 
-      </div>
+      <a
+        onfocus={() => {setInfo("creative")}}
+        onmouseover={() => {setInfo("creative")}}
+        onblur={clearInfo}
+        onmouseleave={clearInfo}
+        href={base + "/creative"}
+        class="md:h-full h-1/4 border-stone-800 border-2 md:border-0 rounded-md md:rounded-none relative group basis-1/3 transition-[flex-basis] duration-600 overflow-clip">
+        <img
+          alt="creative bg"
+          class="
+            object-cover w-full h-full origin-top-left
+            transition-[transform, opacity]
+            scale-140 translate-x-[-5%] group-hover:translate-x-0 group-focus:translate-x-0 opacity-10 group-hover:opacity-100 group-focus:opacity-100
+            duration-500 ease-[cubic-bezier(0.45,0,0,1)]"
+          src={creativeImg}/>
+        <div class="
+          absolute hidden md:block top-0 left-0 w-full h-full mix-blend-hard-light z-[2] transition-colors duration-400
+          bg-[linear-gradient(52.89deg,_#09080F_-20%,_#182D97_95.51%)]
+          ">
+        </div>
+        <h2 class="absolute transition-[font-size, color] font-mono text-stone-200/50 md:text-indigo-400/50 md:group-hover:text-blue-600 group-focus:text-blue-600 z-[2] duration-600 top-4 left-6 text-[1.7rem]">Creative</h2>
+      </a>
+
+    </div>
+
+    <div class={cx("gap-3 flex md:hidden flex-row z-40 duration-200 md:gap-2  items-end w-full text-sm text-zinc-500", !characterhover && "opacity-100", characterhover && "opacity-0")}>
+      <a
+      aria-label="Visit my Github"
+      href="https://github.com/Frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+      <Fa icon={faGithub}/>
+      </a>
+      
+      <a
+      aria-label="Visit my LinkedIn"
+      href="https://www.linkedin.com/in/edem-hoggar/" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+        <Fa icon={faLinkedinIn}/>
+      </a>
+
+      <a
+      aria-label="Visit my Twitter"
+      href="https://x.com/frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+        <Fa icon={faTwitter}/>
+      </a>
+
+      <button
+      aria-label="Copy Discord"
+      onclick={() => {addMsg("Discord Copied"); navigator.clipboard.writeText("edemh")}}
+      class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
+        <Fa icon={faDiscord}/>
+      </button>
+
+      <button
+      aria-label="Copy Email"
+      onclick={() => {addMsg("Email Copied"); navigator.clipboard.writeText("edemkhoggar@gmail.com")}}
+      class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
+        <Fa icon={faAt}/>
+      </button>
+    </div>
 
     <div class="flex relative flex-row gap-2 items-center w-full max-w-7xl select-none">
     <img src={smile} alt="smile" class="hidden object-cover h-5 opacity-25 saturate-50 hue-rotate-210" style="image-rendering: pixelated;">
