@@ -1212,9 +1212,9 @@ class="flex flex-row justify-center items-center w-full">
             </div>
 
         </div>
-        {/if}
 
             <p class="left-10 bottom-20 pt-4 pl-1 text-sm text-left text-slate-800 hover:text-slate-600 transition-color duration-400">Please note, the music player simply streams using official youtube music embeds. I do NOT host copyrighted material.</p>
+        {/if}
 
     </div>
 </div>
