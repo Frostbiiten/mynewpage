@@ -1,7 +1,7 @@
 <script>
-    //export let data;
     let { data } = $props();
 
+    import { base } from '$app/paths';
     import Fa from 'svelte-fa'
     import { goto } from '$app/navigation';
     import { faArrowRotateRight, faArrowLeft, faSquareArrowUpRight, faTrophy } from '@fortawesome/free-solid-svg-icons';
@@ -9,34 +9,16 @@
 
     import project_data_raw from "$lib/data/projects.json"
     let project_data = $state(project_data_raw.projects.find(el => el.name === data.slug))
-    //$inspect(project_data)
-
-    import { base } from '$app/paths';
-
-
     function getDateInfo(timestamp)
     {
         let date = new Date(timestamp);
         let month = date.toLocaleString('default', {month: 'long' });
         return [month, date.getFullYear()];
     }
+    let dateInfo = $derived(getDateInfo(project_data.time));
 
     import cx from 'clsx';
 
-    let dateInfo = $derived(getDateInfo(project_data.time));
-    //let dataInfo = ["what ever"]
-    // <h1 class="h-full font-mono text-xl text-center pointer-events-none select-none text-zinc-700 bg-zinc-700/25" style="writing-mode: vertical-rl">DEMO</h1>
-
-    import emblaCarouselSvelte from 'embla-carousel-svelte';
-    let emblaApi 
-    let options = { loop: false }
-    function onInit(event)
-    {
-        emblaApi = event.detail
-        console.log(emblaApi.slideNodes())
-        emblaApi.scrollNext(true);
-    }
-    
     import Gallery from '$lib/components/gallery.svelte';
 </script>
 
@@ -151,6 +133,4 @@
     <Gallery project={data.slug} imgCount={project_data.galleryCount[0]} vidCount={project_data.galleryCount[1]}></Gallery>
     {/if}
     </div>
-
-
 </div>

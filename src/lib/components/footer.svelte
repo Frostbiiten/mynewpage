@@ -19,7 +19,7 @@
 
 <div class="flex flex-col justify-center items-center mt-7 mb-8 text-xs h-18 md:text-base md:mt-14" style="view-transition-name: footer;">
     <div class="flex flex-col gap-2 items-stretch px-8 w-full max-w-7xl h-full">
-        <div class="px-4 h-full rounded-lg border-2 md:px-8 bg-zinc-950/85 border-slate-900/50" >
+        <div class="px-4 h-full rounded-lg border-2 md:px-8 bg-zinc-950/85 border-slate-900/50">
             <div class="flex flex-row gap-6 items-center px-3 h-full select-none text-blue-200/60 text-nowrap">
                 <p>© {new Date().getFullYear()} <span class="text-slate-400/85">Edem Hoggar</span></p>
                 <div class="grow"></div>

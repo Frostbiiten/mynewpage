@@ -47,9 +47,9 @@
     }
 </style>
 
-<div class="flex flex-col gap-7 justify-center items-center -mt-4 w-full h-[calc(100vh-15rem)] -mb-10">
+<div class="flex flex-col gap-7 justify-center items-center -mt-5 w-full h-[calc(100vh-15rem)] -mb-10">
     <div class="px-8 w-full max-w-7xl h-full">
-        <div class="flex flex-col relative justify-center items-center w-full h-full border-2 border-gray-800 rounded-lg bg-radial-[at_50%_0%] to-150% from-blue-400/10 to-stone-950/70 ">
+        <div class="flex flex-col relative justify-center items-center w-full h-full border-2 border-gray-800 rounded-lg bg-radial-[at_50%_0%] to-150% from-[#141b27] to-[#0e1114]">
             <h2 class="font-mono text-8xl font-black">WIP</h2>
             <p class="-mt-2 -translate-x-8 text-zinc-600">coming soon...</p>
             <div class="absolute top-0 left-0 w-full h-full overflow-clip mix-blend-multiply opacity-4">

@@ -1,5 +1,4 @@
 <script>
-  import emblaCarouselSvelte from 'embla-carousel-svelte';
   import { onMount } from 'svelte';
   
   import Fa from 'svelte-fa'
@@ -29,90 +28,6 @@
 
   import cx from 'clsx';
   
-  // Main carousel API
-  let emblaApi = $state();
-
-  // Thumbnail carousel API
-  let thumbsApi;
-  
-  // Options for main carousel
-  const mainOptions = { 
-    loop: true,
-    draggable: true,
-  };
-  
-  // Options for thumbnails carousel
-  const thumbOptions = {
-    containScroll: 'keepSnaps',
-    dragFree: true,
-  };
-
-  let currentSlide = $state()
-
-  // Video playback control
-  function handleSlideChange() {
-    if (!emblaApi) return;
-    
-    // Pause all videos when changing slides
-    const allVideos = document.querySelectorAll('.carousel-video');
-    allVideos.forEach(video => {
-      video.pause();
-    });
-    
-    // Optionally autoplay the current video
-    // const
-    currentSlide = emblaApi.selectedScrollSnap();
-    const currentMedia = mediaItems[currentSlide];
-    
-    if (currentMedia && currentMedia.type === 'video') {
-      // Get the current video and play it
-      setTimeout(() => {
-        const currentVideo = document.querySelector(`.video-slide-${currentSlide} video`);
-        if (currentVideo) {
-          currentVideo.play().catch(e => {
-            console.log('Video autoplay prevented:', e);
-            // Autoplay might be prevented by browser policy
-          });
-        }
-      }, 50);
-    }
-  }
-  
-  // Update thumbnail selection when main carousel changes
-  function onMainCarouselSelect() {
-    if (!emblaApi || !thumbsApi) return;
-    
-    thumbsApi.scrollTo(emblaApi.selectedScrollSnap());
-    updateSelectedThumb();
-    handleSlideChange();
-  }
-  
-  // Highlight the selected thumbnail
-  function updateSelectedThumb() {
-    if (!emblaApi || !thumbsApi) return;
-    
-    const selected = emblaApi.selectedScrollSnap();
-    const thumbs = thumbsApi.slideNodes();
-    
-    thumbs.forEach((thumb, index) => {
-      thumb.classList.toggle('ring-2', index === selected);
-      thumb.classList.toggle('ring-blue-500', index === selected);
-      thumb.classList.toggle('opacity-50', index !== selected);
-      thumb.classList.toggle('opacity-100', index === selected);
-    });
-  }
-  
-  // Initialize main carousel
-  function onMainInit(event) {
-    emblaApi = event.detail;
-    
-    // Set up event listeners once API is available
-    emblaApi.on("select", onMainCarouselSelect);
-    
-    // Initial setup
-    handleSlideChange();
-  }
-  
   // Initialize thumbnail carousel
   function onThumbsInit(event) {
     thumbsApi = event.detail;
@@ -128,11 +43,11 @@
   
   // Navigation functions
   function scrollNext() {
-    if (emblaApi) emblaApi.scrollNext();
+    splideInst?.go('>');
   }
   
   function scrollPrev() {
-    if (emblaApi) emblaApi.scrollPrev();
+    splideInst?.go('<');
   }
   
   // Debug media loading
@@ -142,144 +57,215 @@
   
   function handleMediaLoad(index) {
     console.log(`Successfully loaded media at index ${index}`);
+    //refreshSplide();
   }
-  
-  // Toggle video play/pause
-  function toggleVideo(event, index) {
-    const video = event.target;
-    if (video.paused) {
-      video.play();
-    } else {
+
+  function videosUpdate()
+  {
+    const allVideos = document.querySelectorAll('.carousel-video');
+    allVideos.forEach(video => {
       video.pause();
+    });
+
+    const currentMedia = mediaItems[currentSlide];
+    
+    if (currentMedia && currentMedia.type === 'video') {
+      // Get the current video and play it
+      setTimeout(() => {
+        const currentVideo = document.querySelector(
+          `.splide__slide[data-real-index="${currentSlide}"]:not(.splide__slide--clone).is-current video`
+        );
+
+        if (currentVideo) {
+          currentVideo.play().catch(e => {
+            console.log('Video autoplay prevented:', e);
+            // Autoplay might be prevented by browser policy
+          });
+        }
+      }, 50);
     }
   }
-  
-  // Ensure thumbnails are properly selected after component is mounted
+  import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
+  import '@splidejs/svelte-splide/css';
+
+  let splideInst;
+  let thumbs;
+  const options = {
+    type: 'loop',
+    gap: '1rem',
+    autoWidth: true,
+    speed: 750,
+    easing: 'cubic-bezier(0.792,0.006,0,0.995)',
+    pagination: false,
+    arrows: true,
+    focus: 'center'
+  };
+
+  const thumbsOptions = {
+    type: 'loop',
+    fixedWidth: 110,
+    fixedHeight: 110,
+    gap: 12,
+    rewind: true,
+    pagination: false,
+    isNavigation: true,
+    focus: 'center',
+    arrows: false,
+  };
+
   onMount(() => {
-    // Force an update after the component is fully mounted
-    setTimeout(() => {
-      if (emblaApi && thumbsApi) {
-        updateSelectedThumb();
-        handleSlideChange();
+    videosUpdate();
+    setTimeout(() => { scrollNext(); scrollPrev(); }, 500)
+    if (splideInst && thumbs) {
+      splideInst.sync(thumbs.splide);
+    }
+  })
+
+  function refreshSplide() {
+    if (splideInst?.splide) {
+      splideInst.splide.refresh();
+      splideInst?.go('>');
+    }
+  }
+
+  function markCurrent(index) {
+    const allSlides = document.querySelectorAll('.splide__slide');
+    allSlides.forEach(slide => {
+      const realIndex = slide.getAttribute('data-real-index');
+      if (parseInt(realIndex) === index) {
+        slide.classList.add('is-current');
+      } else {
+        slide.classList.remove('is-current');
       }
-    }, 100);
-  });
-    //<h3 class="pt-5 w-full font-mono text-3xl font-black text-slate-500">Gallery</h3>
+    });
+  }
+
+  let currentSlide = $state()
+  let currentSlideDelayed = $state()
+  function onMoveStart(splide) {
+    currentSlide = splide.index;
+    markCurrent(currentSlide);
+  }
+
+  function onMoveEnd(splide) {
+    currentSlideDelayed = splide.index;
+    videosUpdate();
+  }
+
 </script>
+
+<style>
+  /* default vars on every slide */
+  :global(.splide__slide) {
+    --s: 0.9;
+    --b: 0.3;
+    --blur: 2px;
+  }
+
+  :global(.splide__slide.is-current) {
+    --s: 1;
+    --b: 1;
+    --blur: 0px;
+  }
+
+  /* 3) apply transform & filter (and transition) only on your inner wrapper */
+  :global(.splide__slide > .slide-content) {
+    transform: scale(var(--s));
+    filter:    brightness(var(--b)) blur(var(--blur));
+    transition:
+      transform 0.55s cubic-bezier(0.8,0,0,0.8),
+      filter    0.55s cubic-bezier(0.8,0,0,0.8);
+  }
+
+  video::-webkit-media-controls {
+  }
+
+  .track-mask {
+      --fade-gradient: linear-gradient(to right,
+          rgba(0, 0, 0, 0.0) 5%,
+          rgba(0, 0, 0, 1.0) 30%,
+          rgba(0, 0, 0, 1.0) 70%,
+          rgba(0, 0, 0, 0.0) 95%
+      );
+
+      mask-image: var(--fade-gradient);
+      -webkit-mask-image: var(--fade-gradient);
+
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+  }
+
+</style>
 
 <div class="flex flex-col px-3 pb-4 rounded-lg">
 
 
 {#if mediaItems.length > 0}
-
-
-
-
-  <!-- Main Carousel -->
-  <div class="relative mx-auto w-full max-w-screen">
-    <div 
-      class="flex overflow-hidden flex-col bg-gradient-to-b rounded-2xl embla"
-      use:emblaCarouselSvelte={{options: mainOptions}}
-      onemblaInit={onMainInit}
-    >
-      <div class="flex items-start">
-        {#each mediaItems as item, index}
-          <div class="flex-[0_0_100%] min-w-0 relative video-slide-{index}">
-            <div class={cx(
-                "flex justify-center p-3 w-full",
-                (emblaApi && emblaApi.selectedScrollSnap() === index) && 'scale-0',
-                (!emblaApi || emblaApi.selectedScrollSnap() === index) && 'scale-100',
-                )}>
-              {#if item.type === 'image'}
-                <img 
-                  src={item.src} 
-                  alt={item.alt} 
-                  class="object-fill h-full rounded-sm shadow-md"
-                  onerror={(e) => handleMediaError(e, index)}
-                  onload={() => handleMediaLoad(index)}
-                />
-              {:else if item.type === 'video'}
-                <video 
-                  src={item.src}
-                  autoplay
-                  muted
-                  class="object-contain max-w-full rounded-sm shadow-md pointer-events-none carousel-video autoplay muted loop"
-                  controls="false"
-                  preload="metadata"
-                  onerror={(e) => handleMediaError(e, index)}
-                  onclick={(e) => toggleVideo(e, index)}
-                  onended={(e) => scrollNext()}
-                >
-                  Your browser does not support the video tag.
-                </video>
-              {/if}
-            </div>
-          </div>
-        {/each}
-      </div>
-    </div>
-    
-    <!-- Navigation Buttons -->
-  </div>
-  <div class="flex flex-row">
-
-    <button 
-      class="z-10 p-2 px-4 text-gray-600 border-2 shadow-md transition-all duration-150 cursor-pointer md:px-2 md:my-3 border-slate-900 hover:bg-slate-800/10 hover:border-slate-950"
-      onclick={scrollPrev}
-    >
-        <Fa icon={faArrowLeft}/>
-    </button>
-
-  <!-- Thumbnails Carousel -->
-  <div 
-    class="overflow-hidden mx-4 w-full"
-    use:emblaCarouselSvelte={{options: thumbOptions}}
-    onemblaInit={onThumbsInit}
+  <Splide
+    bind:this={splideInst}
+    {options}
+    on:move={(e) => onMoveStart(e.detail)}
+    on:moved={(e) => onMoveEnd(e.detail)}
+    hasTrack={ false } aria-label="Project Media" class="h-[calc(100vh-15rem)] relative rounded-2xl"
   >
-    <div class="flex p-[2px] space-x-2 md:p-1">
+    <SplideTrack>
       {#each mediaItems as item, index}
-        <button 
-          class="md:flex-[0_0_20%] flex-[0_0_50%] min-w-0 transition-opacity duration-300 cursor-pointer p-1 rounded-xs md:rounded-md"
-          onclick={() => onThumbClick(index)}
-        >
-          <div class="flex relative justify-center items-center aspect-video">
+        <SplideSlide data-real-index={index} class={cx(`h-[calc(100vh-20rem)] p-10  min-w-0 relative video-slide-${index} max-h-full transition-all`)}>
+          <div class={cx("flex justify-center h-full max-h-full duration-550 slide-content ease-[cubic-bezier(0.8,0,0,0.8)]")}>
             {#if item.type === 'image'}
               <img 
                 src={item.src} 
-                alt={`Thumbnail ${item.alt}`} 
-                class={cx(
-                  "object-contain max-w-full max-h-full rounded-xs md:rounded-lg md:border-2 transition-all duration-200",
-                  (!emblaApi || currentSlide !== index) && 'border-zinc-800/80 hover:border-zinc-400',
-                  (emblaApi && currentSlide === index) && 'border-zinc-800/0 hover:border-zinc-400/0'
-                  )}
+                alt={item.alt} 
+                class="object-contain max-h-full rounded-sm shadow-md object-fit"
                 onerror={(e) => handleMediaError(e, index)}
+                onload={() => handleMediaLoad(index)}
+
               />
             {:else if item.type === 'video'}
-              <div 
-                class={cx(
-                  "flex relative justify-center items-center w-full h-full rounded-lg border-2 bg-gray-800/10",
-                  (!emblaApi || currentSlide !== index) && 'border-zinc-600/80 hover:border-zinc-400',
-                  (emblaApi && currentSlide === index) && 'border-zinc-800/0 hover:border-zinc-400/0'
-                  )}
+              <video 
+                src={item.src}
+                autoplay
+                muted
+                class="object-contain w-auto max-h-full rounded-sm shadow-md carousel-video autoplay muted loop"
+                controls="false"
+                preload="metadata"
+                onerror={(e) => handleMediaError(e, index)}
+                onended={(e) => scrollNext()}
               >
-                <Fa icon={faPlayCircle} class="text-3xl"/>
-              </div>
+                Your browser does not support the video tag.
+              </video>
             {/if}
           </div>
-        </button>
+        </SplideSlide>
       {/each}
+    </SplideTrack>
 
+    <div class="flex absolute top-0 left-0 flex-col justify-end px-1 w-full h-full pointer-events-auto splide__arrows">
+      <div class="relative w-full bg-gradient-to-r rounded-2xl translate-y-8 h-35 from-black/70 to-black/70">
+        <button class="absolute !left-[1rem] !bg-slate-950/20 hover:!bg-slate-900/30 !backdrop-blur-lg !border-1 !border-slate-800/80 !transition-all !opacity-100 z-10 !rounded-lg !w-13 !h-28 splide__arrow splide__arrow--prev">
+          <Fa class="text-slate-400" icon={faArrowRight}></Fa>
+        </button>
+        <div class="flex w-full max-w-full h-full track-mask">
+          <Splide class="flex items-center w-full h-full thumbnail-carousel" options={thumbsOptions} bind:this={thumbs}>
+            {#each mediaItems as item, index}
+              <SplideSlide data-real-index={index} class={cx("overflow-clip rounded-lg", currentSlide === index && "ring-2")}>
+                {#if item.type === 'image'}
+                <img alt="thumbnail preview" src={item.src} class="object-cover transition-all cursor-pointer brightness-70 aspect-square hover:!brightness-100"/>
+                {:else}
+                <div class="flex justify-center items-center rounded-lg border-2 backdrop-blur-2xl transition-opacity cursor-pointer aspect-square border-slate-800/40 hover:opacity-100 bg-black/30"><Fa class="w-full text-3xl text-slate-300" icon={faPlayCircle}></Fa></div>
+                {/if}
+              </SplideSlide>
+            {/each}
+          </Splide>
+        </div>
+        <button class="absolute !right-[1rem] !bg-slate-950/20 hover:!bg-slate-900/30 !backdrop-blur-lg !border-1 !border-slate-800/80 !transition-all !opacity-100 z-10 !rounded-lg !w-13 !h-28 splide__arrow splide__arrow--next">
+          <Fa class="text-slate-400" icon={faArrowRight}></Fa>
+        </button>
+      </div>
     </div>
-
-  </div>
-
-    <button 
-      class="z-10 p-2 px-4 text-gray-600 border-2 shadow-md transition-all duration-150 cursor-pointer md:px-2 md:my-3 border-slate-900 hover:bg-slate-800/10 hover:border-slate-950"
-      onclick={scrollNext}
-    >
-        <Fa icon={faArrowRight}/>
-    </button>
-
-    </div>
+  </Splide>
 {/if}
 </div>

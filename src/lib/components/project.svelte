@@ -29,10 +29,9 @@
     // currently selected project with a callback in the parent
 
     // to print when these values are updated ..
-    $inspect(name, desc, tags, img);
+    // $inspect(name, desc, tags, img);
 
     function onImageDimensionsLoaded(event) {
-        console.log("hello")
         if (event.target.naturalWidth > 0 && event.target.naturalHeight > 0) {
             dimensionsLoaded = true;
         }

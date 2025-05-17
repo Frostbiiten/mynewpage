@@ -6,7 +6,7 @@
             "desc": "Fractal renderer written in C++ using the 'chaos game' algorithm to simultaneously render thousands of points.",
             "tags": [ "C++", "SFML"],
             "time": 1641686401000,
-            "src:": "https://github.com/Frostbiiten/Chaos-Game",
+            "src": "https://github.com/Frostbiiten/Chaos-Game",
             "img": "frac.webp",
             "galleryCount": [3, 2]
         },
@@ -34,11 +34,11 @@
         },
         {
             "name": "FFF",
-            "desc": "Fire-Fighter (Fighter). Your goal is to set the entire map ablaze while fighting firefighters.",
+            "desc": "Fire-Fighter (Fighter). Your goal is to set the entire map ablaze while fighting firefighters, created for the GMTK 2023 Jam.",
             "tags": [
                 "C#",
                 "Unity",
-                "Playable",
+                "Demo",
                 "Game"
             ],
             "time": 1688911200000,
@@ -60,7 +60,7 @@
         },
         {
             "name": "Beyond Engine",
-            "desc": "Hobby Sonic Engine written when I was 12 to emulate SEGA's official Hedgehog Engine. Several assets are tweaked rips from official sonic games.",
+            "desc": "Hobby Sonic Engine written when I was 12 to emulate SEGA's official Hedgehog Engine. Several assets are modified rips from official Sonic titles.",
             "tags": [
                 "C#", "Unity", "Game", "Reverse Engineering"
             ],
@@ -73,7 +73,7 @@
             "name": "SuppressThePress",
             "desc": "Game created in 48 hours for the Ludum Dare 50 game jam. Scored among the top 10% in several categories, created with only self-made assets.",
             "tags": [
-                "C#", "Unity", "Game"
+                "C#", "Unity", "Game", "Demo"
             ],
             "time": 1649046270000,
             "src": "https://github.com/Frostbiiten/SuppressThePress",
@@ -104,7 +104,7 @@
             "name": "Storymation",
             "desc": "Hack The North winner - Generates event driven animation with character interactions and plotline.",
             "tags": [
-                "React", "Js", "won HTN 2023"
+                "React", "Js", "Won HTN 2023"
             ],
             "time": 1694884800000,
             "src": "https://github.com/willi-li-am/storymation",
@@ -114,7 +114,7 @@
             "name": "ReConstruct",
             "desc": "3D First-Person-Shooter created with self-made assets and code. Won the 2022 DPCDSB Game-Making Competition.",
             "tags": [
-                "C#", "Unity", "Game", "Won DPCDSB 2023 Game-Making Competition"
+                "C#", "Unity", "Game", "Won DPCDSB 2022 Game-Making Competition"
             ],
             "time": 1654056900000,
             "src": "https://github.com/Frostbiiten/ReConstruct2",

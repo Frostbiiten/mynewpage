@@ -28,7 +28,7 @@
     import { onMount } from 'svelte';
 
     import { faPlay, faForwardStep, faBackwardStep } from "@fortawesome/free-solid-svg-icons";
-    import sittingSketch from "$lib/img/figure/sittingSketch.png"
+    import sittingSketch from "$lib/img/figure/sittingSketch.webp"
 
     let currentMenu = $state("main");
     let figureWidth = $state(0);
@@ -399,12 +399,10 @@
 
     function figureTalk()
     {
-        console.log("talking")
         characterhover = true;
     }
     function figureTalkEnd()
     {
-        console.log("talking end")
         //characterhover = false;
     }
 
@@ -753,7 +751,7 @@
 
 <div
 class="flex flex-row justify-center items-center w-full">
-    <div class="px-8 space-y-5 w-screen max-w-7xl">
+    <div class="px-8 w-screen max-w-7xl pace-y-5">
 
         <div class="hidden relative w-40 h-70">
             <h1 class="absolute top-0 left-[100%] text-[12rem] font-bold leading-none text-slate-200 rotate-90 align-text-top origin-top-left">
@@ -761,7 +759,7 @@ class="flex flex-row justify-center items-center w-full">
             </h1>
         </div>
 
-        <div class={cx("p-0 md:scale-100 max-h-[calc(100vh+20rem)] min-[105rem]:max-h-[calc(100vh-20rem)] -mt-4 w-0 flex items-start min-[105rem]:translate-x-[-14rem] ease-[cubic-bezier(0,1,0,1)] transition-all duration-1000",
+        <div class={cx("p-0 md:scale-100 max-h-[calc(100vh+20rem)] min-[105rem]:max-h-[calc(100vh-20rem)] mt-3 w-0 flex items-start min-[105rem]:translate-x-[-14rem] ease-[cubic-bezier(0,1,0,1)] transition-all duration-1000",
         (currentMenu === "music") ? "translate-y-0 pointer-events-auto w-full max-sm:-translate-x-5 max-sm:w-[calc(100%+2rem)] min-[105rem]:w-[calc(100%+14rem)] opacity-100 h-[calc(100vh+6rem)] ": "translate-y-30 pointer-events-none opacity-0 h-0")}
         >
             <div class="flex flex-row justify-start -mr-2 h-20 rounded-lg border-2 md:mr-0 md:rounded-2xl border-slate-700 bg-gray-900/20 md:h-50">
@@ -1155,6 +1153,8 @@ class="flex flex-row justify-center items-center w-full">
                         style="background-image: url({bg}); z-index: 0;">
                     </div>
 
+                    <p class="absolute right-10 bottom-20 text-sm text-right text-white">creative works <br/>i've been inspired by.</p>
+
                     <div class="absolute top-0 left-0 w-full h-full overflow-clip rounded-2xl opacity-50 mix-blend-soft-light">
                         <div class="overflow-hidden relative w-full h-full rounded-xl scale-140">
                             <div class="absolute top-0 left-0 w-[110%] h-[110%] z-9999 grain">
@@ -1162,7 +1162,7 @@ class="flex flex-row justify-center items-center w-full">
                         </div>
                     </div>
 
-                    {#snippet section(text, extra, delay)}
+                    {#snippet section(text, extra, delay, desc)}
                     <button
                         onclick={()=> {
                             if (currentSection === "")
@@ -1177,7 +1177,7 @@ class="flex flex-row justify-center items-center w-full">
                             "flex relative flex-col justify-center items-start w-full h-1/4 cursor-pointer group grow hover:mix-blend-darken",
                                 (currentSection == text) && "z-50 mix-blend-darken"
                         )}>
-                        <div
+                            <div
                             class={cx(
                                 "absolute h-full transition-all  bg-zinc-950 ease-[cubic-bezier(0,1,0,1)]",
                                 (currentSection != text) && "w-0 duration-200 group-hover:w-full",
@@ -1197,6 +1197,10 @@ class="flex flex-row justify-center items-center w-full">
                             >{text}
                         </h1>
 
+                        <p class="absolute right-10">
+                            {desc}
+                        </p>
+
                         <div style={`animation-delay: ${delay}ms`} class={cx("absolute bg-zinc-950 h-full block-anim z-11")}>
                             </div>
                     </button>
@@ -1207,8 +1211,11 @@ class="flex flex-row justify-center items-center w-full">
                     {@render section("edits", "", 700)}
                     {@render section("anime", "mb-80", 800)}
             </div>
+
         </div>
         {/if}
+
+            <p class="left-10 bottom-20 pt-4 pl-1 text-sm text-left text-slate-800 hover:text-slate-600 transition-color duration-400">Please note, the music player simply streams using official youtube music embeds. I do NOT host copyrighted material.</p>
 
     </div>
 </div>

@@ -94,17 +94,17 @@
             "media": [
               {
                 "img": "pinkpop96_01.webp",
-                "link": "https://youtu.be/sVpQ9B2-riw?si=xpUKdO_AYBWEZEkL&t=2241"
+                "link": "https://youtu.be/sVpQ9B2-riw?"
               }
             ]
           },
           {
             "time": 165,
-            "link": "https://youtu.be/3VIIxdwC_PY?t=189",
+            "text": "Check out the ['95 Black Sessions](https://youtu.be/3VIIxdwC_PY?t=189) recording... Thom holds this note for quite a while. I really love the screams he does here for buildup too.",
             "media": [
               {
                 "img": "black_01.webp",
-                "text": "Check out the ['95 Black Sessions](https://youtu.be/3VIIxdwC_PY?t=189) recording... Thom holds this note for quite a while. I really love the screams he does here for buildup too."
+                "link": "https://youtu.be/3VIIxdwC_PY?t=189"
               }
             ]
           },
@@ -264,7 +264,7 @@
           },
           {
             "time": 10,
-            "text": "Notably, the studio version is identical to their [Astoria '94](https://youtu.be/RjQZd8p-eBM?t=1342) performance, except with replaced vocals. I think both sound great.",
+            "text": "Notably, the studio version is just the [Astoria '94](https://youtu.be/RjQZd8p-eBM?t=1342) performance with replaced vocals. I think both sound great.",
             "media": [
               {
                 "img": "astoria94_01.webp",
@@ -356,10 +356,10 @@
       "released": "-",
       "img": "the_bends_bsides.webp",
       "tracklist": [
-        { "name": "Maquilodora",                "fav": true,  "length": 207, "link": "paAvvE6vWXs", "hotspots": [
+        { "name": "Maquiladora",                "fav": true,  "length": 207, "link": "paAvvE6vWXs", "hotspots": [
           {
             "time": 0,
-            "text": "Honestly, just listen to the [Astoria '94](https://youtu.be/RjQZd8p-eBM?t=1780). It is WAY better.",
+            "text": "Honestly, just listen to the [Astoria '94](https://youtu.be/RjQZd8p-eBM?t=1780) version, which is miles better.",
             "media":[
               {
                 "img": "astoria94_01.webp",
@@ -390,7 +390,7 @@
         { "name": "Airbag",                       "fav": true,  "length": 287, "link": "jNY_wLukVW0", "hotspots": [
           {
             "time": 0,
-            "text": "Check out the opening on an [early airbag](https://youtu.be/6Z-0mcY2TME). Fits nicely between The Bends and OK Computer."
+            "text": "Check out [early Airbag](https://youtu.be/6Z-0mcY2TME)'s intro. Fits nicely between The Bends and OK Computer."
           },
           {
             "time": 86,
@@ -417,8 +417,8 @@
             "text": "The screech Thom does at the [10Spot](https://youtu.be/kmsB1FF34BY?t=240) is really wonderful. I think this is my favourite live version.",
             "media": [
               {
-                "img": "jh97_01.webp",
-                "link": "https://youtu.be/BAbprjVHbYA?t=208"
+                "img": "10spot97_01.webp",
+                "link": "https://youtu.be/kmsB1FF34BY?t=240"
               }
             ]
           }
@@ -436,7 +436,7 @@
           },
           {
             "time": 351,
-            "text": "I really would have loved if the screeches present in [Jools Holland '97](https://youtu.be/NzPtr_n-m8A?t=348) were on studio. Either way, I think that performance is by far the best live version of this song.",
+            "text": "I really would have loved if the screeches present in [Jools Holland '97](https://youtu.be/NzPtr_n-m8A?t=348) were on the studio recording. Either way, I think that performance is by far the best live version of this song.",
             "media": [
               {
                 "img": "jh97_02.webp",
@@ -469,7 +469,7 @@
             "media": []
           }
         ] },
-        { "name": "Let Down",                     "fav": true,  "length": 299, "link": "EgkI1zI61bQ", "hotspots": [0] },
+        { "name": "Let Down",                     "fav": true,  "length": 299, "link": "EgkI1zI61bQ", "hotspots": [] },
         { "name": "Karma Police",                 "fav": true,  "length": 264, "link": "4IJI6soiQhI", "hotspots": [
           {
             "time": 0,
@@ -508,7 +508,7 @@
         }
         
         ] },
-        { "name": "No Surprises",                 "fav": true,  "length": 229, "link": "LBt60dfwEBY", "hotspots": [{}] },
+        { "name": "No Surprises",                 "fav": true,  "length": 229, "link": "LBt60dfwEBY", "hotspots": [] },
         { "name": "Lucky",                        "fav": true,  "length": 258, "link": "yuZYQvvLXVY", "hotspots": [
         {
           "time": 0,
@@ -677,7 +677,7 @@
         ] },
         { "name": "Kid A",                         "fav": true,  "length": 284, "link": "MXNbfU0Ww_E", "hotspots": [{
           "time": 0,
-          "text": "one of my favourite songs of all time. it is difficult to describe how this felt when it clicked for me, but it really changed me."
+          "text": "one of my favourite songs of all time. It is difficult to describe how this felt when it clicked for me, but it really changed me."
         },
         {
           "time": 30,
@@ -720,7 +720,7 @@
           },
           {
             "time": 115,
-            "text": "I feel like they always perform well at [Nulle Part Ailleurs](https://youtu.be/3Y5hrM_qQAI?t=2129). Awful well in France for an Enlish band.",
+            "text": "I feel like they always perform well at [Nulle Part Ailleurs](https://youtu.be/3Y5hrM_qQAI?t=2129). Awfully well in France for an English band.",
             "media":[
               {
                 "img": "npa01_01.webp",
@@ -747,14 +747,14 @@
             ]
           }
         ] },
-        { "name": "How to Dissapear Completely",   "fav": true,  "length": 356, "link": "6W6HhdqA95w", "hotspots": [
+        { "name": "How to Disappear Completely",   "fav": true,  "length": 356, "link": "6W6HhdqA95w", "hotspots": [
         {
           "time": 0,
           "text": "It lingers. I think the tense strings embody that feeling excellently."
         },
         {
           "time": 134,
-          "text": "I love the Ondes Martenot here, done especially well at [Bonaroo '06](https://youtu.be/DhhWWGEzRL0?&t=190) I consider it the same \"voice\" as the one in Where I End and You Begin.",
+          "text": "I love the Ondes Martenot here, done especially well at [Bonnaroo '06](https://youtu.be/DhhWWGEzRL0?&t=190) I consider it the same \"voice\" as the one in Where I End and You Begin.",
           "media": [
             {
               "img": "bonnaroo06_01.webp",
@@ -764,7 +764,7 @@
         },
         {
           "time": 150,
-          "text": "Check out the amazing performance at [Nulle part Ailleurs '01](https://youtu.be/3Y5hrM_qQAI?t=1486).",
+          "text": "Check out the amazing performance at [Nulle Part Ailleurs '01](https://youtu.be/3Y5hrM_qQAI?t=1486).",
           "media": [
             {
               "img": "npa01_01.webp",
@@ -852,7 +852,7 @@
         },
         {
           "time": 180,
-          "text": "This part sounds absolutely insane at [Nulle Part Ailleurs](https://youtu.be/Z9Zh1MrgBvQ?t=177). Apparently Jonny's synth got sabotaged and Thom chipped his tooth on the mic. This is by far my favourite live version but I wonder how it would have sound if not for these mishaps.",
+          "text": "This part sounds absolutely insane at [Nulle Part Ailleurs](https://youtu.be/Z9Zh1MrgBvQ?t=177). Apparently Jonny's synth got sabotaged and Thom chipped his tooth on the mic. This is by far my favourite live version but I wonder how it would have sounded without these mishaps.",
           "media":[
             {
               "img": "idioteque02.webp",
@@ -907,7 +907,7 @@
         },
         {
           "time": 60,
-          "text": "Check out the the [Minidisc](https://youtu.be/Vapo21HsyaI) version if you want more. This one feels like something off The Bends."
+          "text": "Check out the [Minidisc](https://youtu.be/Vapo21HsyaI) version if you want more. This one feels like something off The Bends."
         }
         ] },
         { "name": "Untitled",                      "fav": true,  "length": 52, "link": "L_PvBLtvZto", "hotspots": [{
@@ -941,20 +941,20 @@
       "released": "June 9, 2003",
       "img": "hail_to_the_thief.webp",
       "tracklist": [
-        { "name": "2 + 2 = 5",                "fav": true,  "length": 199, "hotspots": [0], "link": "2w6kHS_IRrE" },
-        { "name": "Sit Down. Stand Up",       "fav": true,  "length": 259, "hotspots": [0], "link": "CVf_HGoY-1E" },
-        { "name": "Sail To The Moon",         "fav": true,  "length": 258, "hotspots": [0], "link": "INvrv9ppxvQ" },
-        { "name": "Backdrifts",               "fav": true,  "length": 322, "hotspots": [0], "link": "X0r4_QKYKsc" },
-        { "name": "Go To Sleep",              "fav": true,  "length": 201, "hotspots": [0], "link": "6qn5SfmkbKE" },
-        { "name": "Where I End and You Begin","fav": true,  "length": 269, "hotspots": [0], "link": "Gp5b-q1GE-c" },
-        { "name": "We Suck Young Blood",      "fav": false, "length": 296, "hotspots": [0], "link": "SHSoLdrdnV4" },
-        { "name": "The Gloaming",             "fav": false, "length": 212, "hotspots": [0], "link": "yQMdPwXVVlw" },
-        { "name": "There, There",             "fav": true,  "length": 323, "hotspots": [0], "link": "7AQSLozK7aA" },
-        { "name": "I Will",                   "fav": true,  "length": 119, "hotspots": [0], "link": "zBe6pJ4THnc" },
-        { "name": "A Punch Up at a Wedding",  "fav": true,  "length": 297, "hotspots": [0], "link": "2DWP6a25iJI" },
-        { "name": "Myxomatosis",              "fav": true,  "length": 232, "hotspots": [0], "link": "0h65VcadjhI" },
-        { "name": "Scatterbrain",             "fav": true,  "length": 201, "hotspots": [0], "link": "r7mN9BLr4jU" },
-        { "name": "A Wolf At the Door",       "fav": true,  "length": 201, "hotspots": [0], "link": "6isz01iv8Ls" }
+        { "name": "2 + 2 = 5",                "fav": true,  "length": 199, "link": "2w6kHS_IRrE", "hotspots": [] },
+        { "name": "Sit Down. Stand Up",       "fav": true,  "length": 259, "link": "CVf_HGoY-1E", "hotspots": [] },
+        { "name": "Sail To The Moon",         "fav": true,  "length": 258, "link": "INvrv9ppxvQ", "hotspots": [] },
+        { "name": "Backdrifts",               "fav": true,  "length": 322, "link": "X0r4_QKYKsc", "hotspots": [] },
+        { "name": "Go To Sleep",              "fav": true,  "length": 201, "link": "6qn5SfmkbKE", "hotspots": [] },
+        { "name": "Where I End and You Begin","fav": true,  "length": 269, "link": "Gp5b-q1GE-c", "hotspots": [] },
+        { "name": "We Suck Young Blood",      "fav": false, "length": 296, "link": "SHSoLdrdnV4", "hotspots": [] },
+        { "name": "The Gloaming",             "fav": false, "length": 212, "link": "yQMdPwXVVlw", "hotspots": [] },
+        { "name": "There, There",             "fav": true,  "length": 323, "link": "7AQSLozK7aA", "hotspots": [] },
+        { "name": "I Will",                   "fav": true,  "length": 119, "link": "zBe6pJ4THnc", "hotspots": [] },
+        { "name": "A Punch Up at a Wedding",  "fav": true,  "length": 297, "link": "2DWP6a25iJI", "hotspots": [] },
+        { "name": "Myxomatosis",              "fav": true,  "length": 232, "link": "0h65VcadjhI", "hotspots": [] },
+        { "name": "Scatterbrain",             "fav": true,  "length": 201, "link": "r7mN9BLr4jU", "hotspots": [] },
+        { "name": "A Wolf At the Door",       "fav": true,  "length": 201, "link": "6isz01iv8Ls", "hotspots": [] }
       ]
     },
     {

@@ -168,9 +168,9 @@
 
   const infoStatements =
   {
-    "projects": "here are some cool projects i have been working on !",
-    "blog": "wip coming soon",
-    "creative": "wip coming soon",
+    "projects": "check out the cool projects i have been working on !",
+    "blog": "wip (coming soon)",
+    "creative": "check out my non-programming creative works !",
   }
 
   let infoText = $state("")
@@ -351,7 +351,7 @@
   }
 
   .animate-wave {
-    animation: wave 0.25s infinite alternate ease-in-out;
+    animation: wave 0.4s infinite alternate ease-in-out;
   }
 
   @keyframes text-reveal {
@@ -461,8 +461,7 @@
           <div
             class={cx(
               "absolute hidden md:block left-0 top-0 min-w-7xl scale-[1.2] image duration-200 transition-all",
-              !characterhover && "brightness-100",
-              characterhover && "brightness-10"
+              characterhover ? "brightness-10" : "brightness-100"
               )}
             style="transform: translate3d({smoothX * 10}px, {smoothY * -5 - 610}px, 0) scale({1 + dist01 * 0.01}); backface-visibility: hidden; perspective: 1000;"
           >
@@ -609,7 +608,7 @@
                 </div>
 
                 <div
-                  class={cx("absolute top-0 left-0 z-20 w-full h-full", !characterhover && "hidden")}
+                  class={cx("absolute top-0 left-0 z-20 w-full h-full pointer-events-none", characterhover ? "opacity-100" : "opacity-0")}
                   style="
                     -webkit-mask-image: url({figure2});
                     mask-image: url({figure2});
@@ -666,7 +665,13 @@
                     characterhover && "opacity-100 ease-out delay-300 ",
                     !characterhover && "opacity-0 ease-in delay-0",
                   )}>
-                    Hello! I also 
+                    Welcome to my world of interesting projects! Please feel free to look around.
+                      
+                    <br/>
+                    <br/>
+
+                    This website is in a rather early state, so please report any bugs you come across to @edemh on discord.
+                    Please note I also go by 
                     <span class="font-black text-blue-500">
                       {#each "Frostbiiten!" as char, i}
                         <span
@@ -677,27 +682,12 @@
                         </span>
                       {/each}
                     </span>
-                    <br/>
-                    <br/>
-
-                    Most people gaze neither into the past nor the future; they explore neither truth nor lies. They gaze at the television.
-                    <br/>
-                    <span class="italic text-slate-700">-the ok computer</span>
+                    in some circles.
 
                     <br/>
                     <br/>
 
-                    <span class="italic text-slate-500">
-                    sob sob sob sob sob
-                    sob sob sob sob sob
-                    </span>
-                    <br/>
-                    <span class="italic text-slate-700">- <strong>me</strong> on a sunday night, probably.</span>
-
-                    <br/>
-                    <br/>
-                    Then the four angels who had been prepared for this hour and day and month and year were turned loose to kill one-third of all the people on earth. 16 I heard the size of their army, which was 200 million mounted troops.
-
+                    I'm working on a graphics programming project in <strong>C++</strong> right now. It'll be added to the projects page soon!
 
                   </div>
 
@@ -787,7 +777,7 @@
             <div class="py-3 hidden md:block tracking-[0.02em] leading-10 font-mono  px-4 mt-6 w-90 text-sm md:text-[1rem] md:w-130 text-slate-300 rounded-sm bg-zinc-950/[0.0] h-60">
 
               <p class="flex flex-row flex-wrap items-center">
-                Studying <strong class="pl-2"> CS</strong>
+                Studying Year <strong class="pl-2"> CS</strong>
                 <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noopener noreferrer"
                   class="flex z-40 flex-row gap-2 items-center px-1 pl-3 w-56 font-bold transition-all md:text-sky-600 md:group-hover:text-sky-500 group">
                   <span class="tracking-widest duration-200 text-nowrap transition-color md:group-hover:text-sky-500">@ University of Waterloo</span> <Fa class="duration-200 scale-90 group-hover:scale-100" icon={faSquareArrowUpRight}></Fa>

@@ -28,11 +28,11 @@
     import Masonry from 'svelte-bricks'
 
     import me from "$lib/img/categories/me.png"
-    import sketches from "$lib/img/categories/20240105_005455 3.png"
-    import digital from "$lib/img/categories/digital.png"
-    import photos from "$lib/img/categories/photos.png"
-    import misc from "$lib/img/categories/misc.png"
-    import misc2 from "$lib/img/categories/misc2.png"
+    import sketches from "$lib/img/categories/sketch.webp"
+    import digital from "$lib/img/categories/digital.webp"
+    import photos from "$lib/img/categories/photos.webp"
+    import misc from "$lib/img/categories/misc.webp"
+    import misc2 from "$lib/img/categories/misc2.webp"
 
     import CreativeCategory from "$lib/components/creativecategory.svelte";
     import { fly, fade } from "svelte/transition";
@@ -178,7 +178,7 @@
 <style>
 </style>
 
-<div class="flex flex-row justify-center -mt-8 -mb-8 w-full overflow-clip md:-mt-4 grow">
+<div class="flex flex-row justify-center -mt-8 -mb-8 w-full overflow-clip md:-mt-5 grow">
     <div class="px-8 space-y-5 min-h-full max-w-screen md:max-w-7xl grow w-7xl">
         <div class={cx("flex flex-col md:flex-row transition-all items-stretch w-full h-full justify-stretch duration-300", visibleCategories.length != 1 && "gap-2", visibleCategories.length == 1 && "gap-0")}>
             {#if !category}
@@ -268,7 +268,6 @@
                             >
                             {#snippet children({ item })}
                                 {#if ['.mov', '.mp4', '.webm'].some(end => item.endsWith(end)) }
-                                    {console.log(`boohooo ${item}`)}
                                     <video class="overflow-clip rounded-lg" controls autoplay muted src={item}></video>
                                 {:else}
                                     <ImgWrapper src={item}/>
@@ -285,7 +284,6 @@
                             >
                             {#each currentImages as item}
                                 {#if ['.mov', '.mp4', '.webm'].some(end => item.endsWith(end)) }
-                                    {console.log(`boohooo ${item}`)}
                                     <video class="overflow-clip rounded-lg" controls autoplay muted src={item}></video>
                                 {:else}
                                     <ImgWrapper src={item}/>

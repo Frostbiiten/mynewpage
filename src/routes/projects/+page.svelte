@@ -294,10 +294,7 @@
 <div
 class="flex flex-row justify-center items-center w-full">
     <div class="px-8 space-y-5 max-w-7xl w-7xl">
-
-
-        <div class="relative -mt-3 w-full font-mono text-7xl h-fit md:h-90 fade-in text-slate-200">
-
+        <div class="relative -mt-5 w-full font-mono text-7xl h-fit md:h-90 fade-in text-slate-200">
             <div class="absolute top-0 left-0 w-full h-full">
                 <div class="relative z-0 w-full h-full">
                     <div 
@@ -329,10 +326,6 @@ class="flex flex-row justify-center items-center w-full">
 
                             <div class="hidden absolute bottom-0 w-full h-32 from-blue-900 opacity-20 bg-linear-to-t to-blue-950/0">
                             </div>
-
-                            <div class="absolute hidden left-[-50%] w-[200%] h-full -bottom-20 mix-blend-hard-light" style="mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 50%, black 100%); background-image: linear-gradient(rgba(200, 200, 200, 0.4), rgba(200, 200, 200, 0.4)), url({floor}); background-size: 8rem 8rem; transform: perspective(20rem) rotate3d(1, 0, 0, 75deg)">
-                            </div>
-
 
                             <div class="absolute hidden text-indigo-900 text-[7.9rem] font-mono origin-bottom-left rotate-90 -left-10 bottom-50" style="transform: scaleX(1.5) perspective(11rem) rotate3d(-0.1, 0.3, 0.02, 40deg);">
                                 <span class="opacity-5">
@@ -388,9 +381,9 @@ class="flex flex-row justify-center items-center w-full">
                         </div>
                     </div>
 
-                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t rounded-xl border-4 border-blue-400 opacity-90" style="
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t rounded-xl border-4 border-blue-400" style="
                         border: 2px solid transparent;
-                        background: radial-gradient(circle at top left, #47546b, #1d293d) border-box;
+                        background: radial-gradient(circle at top left, #0f1724, #142238) border-box;
                         mask:
                             linear-gradient(#000 0 0) padding-box, 
                             linear-gradient(#000 0 0);
