@@ -105,7 +105,7 @@
                     {/each}
                 
                 {#if 'src' in project_data}
-                <a href={project_data.src} class="flex flex-row gap-2 items-center px-3 w-min text-sm font-bold align-middle rounded-lg transition-all duration-200 text-zinc-950 bg-slate-300 hover:bg-slate-500">
+                <a href={project_data.src} target="_blank" rel="noopener noreferrer" class="flex flex-row gap-2 items-center px-3 w-min text-sm font-bold align-middle rounded-lg transition-all duration-200 text-zinc-950 bg-slate-300 hover:bg-slate-500">
                     Source
                     <Fa class="justify-center h-full translate-y-[-0.05rem] text-md" icon={faSquareArrowUpRight}/>
                 </a>

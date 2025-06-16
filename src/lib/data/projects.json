@@ -139,7 +139,18 @@
             "time": 1722556800000,
             "img": "polyglot.webp",
             "galleryCount": [0, 3]
+        },
+        {
+            "name": "SkyRenderer",
+            "desc": "Accelerated cross-platform C++20 Software Renderer",
+            "tags": [
+                "C++", "Graphics", "Demo"
+            ],
+            "time": 1750081362904,
+            "img": "sky.webp",
+            "src": "https://github.com/Frostbiiten/SkyRenderer",
+            "galleryCount": [4, 0],
+            "embed": "sky"
         }
-
     ]
 }

@@ -93,7 +93,7 @@
     <div class='col-span-1 col-start-1 row-span-1 row-start-1 rounded-lg transition-all border-special outline-slate-300/0 group-hover:outline-blue-600/40'></div>
     <div class={cx(
         'col-start-1 row-start-1 col-span-1 row-span-1',
-        "transition-all duration-800 ease-[cubic-bezier(0.12,1.8,0.0,1.0)] grid overflow-clip rounded-sm will-change-transform bg-slate-900/20 bg-clip-content group-hover:m-3")}>
+        "transition-all duration-800 ease-[cubic-bezier(0.12,1.8,0.0,1.0)] grid overflow-clip rounded-sm will-change-transform bg-slate-900/20 bg-clip-content group-hover:m-[0.6rem]")}>
         {#if img.found}
             <img
             onload={onImageDimensionsLoaded} 
