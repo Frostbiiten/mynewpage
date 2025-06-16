@@ -52,24 +52,29 @@
 
   let loadedMedia = $state(0)
 
-  $effect(() => {
-    const currentLoaded = loadedMedia;
-    if (currentLoaded == mediaItems.length)
-    {
-      scrollNext();
-      scrollPrev();
-    }
-  })
-  
   // Debug media loading
   function handleMediaError(e, index) {
     console.error(`Failed to load media at index ${index}:`, e.target.src);
     loadedMedia++;
+
+    if (loadedMedia === mediaItems.length) {
+      setTimeout(() => { // defer...
+        scrollNext();
+        scrollPrev();
+      }, 0);
+    }
   }
   
   function handleMediaLoad(index) {
     console.log(`Successfully loaded media at index ${index}`);
     loadedMedia++;
+
+    if (loadedMedia === mediaItems.length) {
+      setTimeout(() => { // defer...
+        scrollNext();
+        scrollPrev();
+      }, 0);
+    }
   }
 
   function videosUpdate()
