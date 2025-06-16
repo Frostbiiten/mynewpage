@@ -100,8 +100,8 @@
                 <div class=spinner id=spinner></div>
                 <div hidden class=emscripten id=status>Downloading...</div>
                 <div hidden class=emscripten><progress id=progress max=100 value=0></progress></div>
-                <p style="display: absolute; padding-left: 1rem; color: #787878;">WASD to navigate, I toggles z-buffer, O increments scene, P increments shader</p>
-                <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+                <p style="display: absolute; padding-left: 1rem; color: #787878;">WASD+Space/Shift: navigation. Right Click + Drag: look. I: view z-buffer O: increment scene P: increment shader</p>
+                <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex="0"></canvas>
             </div>
             <textarea hidden id=output rows=8></textarea>
             <script>
@@ -114,7 +114,6 @@
                 }
 
                 window.addEventListener("resize", rescaleUI);
-                window.addEventListener("load", rescaleUI);
 
                 var statusElement = document.getElementById("status"),
                     progressElement = document.getElementById("progress"),
@@ -123,13 +122,23 @@
                     outputElement = document.getElementById("output");
                 outputElement && (outputElement.value = ""),
 
-                    canvasElement.addEventListener(
-                        "webglcontextlost",
-                        (e) => {
-                            alert("WebGL context lost. You will need to reload the page."), e.preventDefault();
-                        },
-                        !1
-                    );
+                canvasElement.addEventListener(
+                    "webglcontextlost",
+                    (e) => {
+                        alert("WebGL context lost. You will need to reload the page."), e.preventDefault();
+                    },
+                    !1
+                );
+
+                // eat input
+                window.addEventListener("click", () => {
+                    canvasElement.focus();
+                });
+                window.addEventListener("keydown", (e) => {
+                    if (e.code === "Space" && document.activeElement === canvas) {
+                        e.preventDefault();
+                    }
+                }, { passive: false });
 
                 const cdnBase = "https://cdn.edem.ca/";
                 var Module = {
@@ -180,6 +189,7 @@
                             : "All downloads complete.");
                     }
                 };
+                Module.postRun = [rescaleUI];
 
                 Module.setStatus("Downloading..."),
                     (window.onerror = (e) => {
