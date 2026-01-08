@@ -8,7 +8,6 @@ import sourceClamp from './kawase-blur-clamp.wgsl?raw';
 
 import type { FilterSystem, PointData, RenderSurface, Texture } from 'pixi.js';
 
-/** Options for the KawaseBlurFilter constructor. */
 export interface KawaseBlurFilterOptions
 {
     /**
@@ -87,7 +86,6 @@ export class KawaseBlurFilter extends Filter
 
         if (typeof options === 'number' || Array.isArray(options))
         {
-            // eslint-disable-next-line max-len
             deprecation('6.0.0', 'KawaseBlurFilter constructor params are now options object. See params: { strength, quality, clamp, pixelSize }');
 
             options = { strength: options as number | [number, number] };
@@ -147,11 +145,6 @@ export class KawaseBlurFilter extends Filter
         this._clamp = !!options.clamp;
     }
 
-    /**
-     * Override existing apply method in `Filter`
-     * @override
-     * @ignore
-     */
     public override apply(
         filterManager: FilterSystem,
         input: Texture,

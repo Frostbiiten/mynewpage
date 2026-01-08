@@ -45,5 +45,4 @@ fn mainFragment(
   color *= 0.25;
 
   return toGammaPremul(color, invGamma);
-
 }

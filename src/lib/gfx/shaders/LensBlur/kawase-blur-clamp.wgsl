@@ -25,16 +25,11 @@ fn mainFragment(
   let uOffset = kawaseBlurUniforms.uOffset;
   var color: vec4<f32> = vec4(0.0);
 
-  // Sample top left pixel
   color += textureSample(uTexture, uSampler, clamp(vec2<f32>(uv.x - uOffset.x, uv.y + uOffset.y), gfu.uInputClamp.xy, gfu.uInputClamp.zw));
-  // Sample top right pixel
   color += textureSample(uTexture, uSampler, clamp(vec2<f32>(uv.x + uOffset.x, uv.y + uOffset.y), gfu.uInputClamp.xy, gfu.uInputClamp.zw));
-  // Sample bottom right pixel
   color += textureSample(uTexture, uSampler, clamp(vec2<f32>(uv.x + uOffset.x, uv.y - uOffset.y), gfu.uInputClamp.xy, gfu.uInputClamp.zw));
-  // Sample bottom left pixel
   color += textureSample(uTexture, uSampler, clamp(vec2<f32>(uv.x - uOffset.x, uv.y - uOffset.y), gfu.uInputClamp.xy, gfu.uInputClamp.zw));
-  // Average
+  
   color *= 0.25;
-    
   return color;
 }

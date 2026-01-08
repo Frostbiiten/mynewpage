@@ -751,103 +751,192 @@
                 style="animation-delay: {index * 0.05 - 0.5}s; animation-fill-mode: backwards;"
                 >
                 {@html char === ' ' ? '&nbsp;' : char}
-                </span>
-            {/each}
-          </h1>
-          <h2 class="z-40  px-1 text-lg md:text-2xl transition-all tracking-[0.2em] md:tracking-[0.3em] text-stone-300 md:text-slate-500">Hoggar</h2>
+                  </span>
+              {/each}
+            </h1>
+            <h2 class="z-40  px-1 text-lg md:text-2xl transition-all tracking-[0.2em] md:tracking-[0.3em] text-stone-300 md:text-slate-500">Hoggar</h2>
 
-          <div class="h-full md:h-5"></div>
+            <div class="h-full md:h-5"></div>
 
 
-          <div class="w-[calc(100%+1rem)] -mx-2 mt-7 font-mono rounded-md backdrop-blur-[5px] bg-slate-900/70 backdrop-saturate-130 backdrop-brightness-200 md:hidden shadow-[inset_0px_1px_4px_rgba(230,200,250,0.8),inset_0px_20px_20px_rgba(0,0,30,0.3)]">
-            <div class="flex items-center p-[0.6rem] px-4 w-full border-blue-900/20 bg-slate-900/40 rounded-t-md border-b-1">
-              <a
-                href="https://cs.uwaterloo.ca/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center transition-all text-stone-200"
-              >
-                CS @ UW
-              </a>
-                <div class="grow"></div>
-              <img class="h-full opacity-70 saturate-0 brightness-500" src={windowIcons} alt="windowmanip"/>
+            <div class="w-[calc(100%+1rem)] -mx-2 mt-7 font-mono rounded-md backdrop-blur-[5px] bg-slate-900/70 backdrop-saturate-130 backdrop-brightness-200 md:hidden shadow-[inset_0px_1px_4px_rgba(230,200,250,0.8),inset_0px_20px_20px_rgba(0,0,30,0.3)]">
+              <div class="flex items-center p-[0.6rem] px-4 w-full border-blue-900/20 bg-slate-900/40 rounded-t-md border-b-1">
+                <a
+                  href="https://cs.uwaterloo.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center transition-all text-stone-200"
+                >
+                  CS @ UW
+                </a>
+                  <div class="grow"></div>
+                <img class="h-full opacity-70 saturate-0 brightness-500" src={windowIcons} alt="windowmanip"/>
+              </div>
+              <p class="text-[0.9rem] leading-loose text-stone-100 p-4 py-3">
+                <strong class="inline"></strong>
+                Seeking Fall 2025 Software Dev roles. Find contacts below for any inquiries.
+              </p>
             </div>
-            <p class="text-[0.9rem] leading-loose text-stone-100 p-4 py-3">
-              <strong class="inline"></strong>
-              Seeking Fall 2025 Software Dev roles. Find contacts below for any inquiries.
-            </p>
+
+
+            <div class="py-3 hidden md:block tracking-[0.02em] leading-10 font-mono  px-4 mt-6 w-90 text-sm md:text-[1rem] md:w-130 text-slate-300 rounded-sm bg-zinc-950/[0.0] h-60">
+
+              <p class="flex flex-row flex-wrap items-center">
+                Studying Year <strong class="pl-2"> CS</strong>
+                <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noopener noreferrer"
+                  class="flex z-40 flex-row gap-2 items-center px-1 pl-3 w-56 font-bold transition-all md:text-sky-600 md:group-hover:text-sky-500 group">
+                  <span class="tracking-widest duration-200 text-nowrap transition-color md:group-hover:text-sky-500">@ University of Waterloo</span> <Fa class="duration-200 scale-90 group-hover:scale-100" icon={faSquareArrowUpRight}></Fa>
+                </a>
+
+                Seeking Fall 2025 Software Development roles.
+                Check out my contacts below for any inquiries.
+              </p>
+            </div>
           </div>
 
+          <div class={cx("text-xl gap-3 hidden md:flex flex-row absolute bottom-0 left-0 z-40 duration-200 md:gap-2 items-end md:p-8 md:px-16 p-11 py-5 w-full md:text-xl text-stone-300 md:text-gray-500", !characterhover && "opacity-100", characterhover && "opacity-0")}>
+            <a
+            aria-label="Visit my Github"
+            href="https://github.com/Frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+            <Fa icon={faGithub}/>
+            </a>
+            
+            <a
+            aria-label="Visit my LinkedIn"
+            href="https://www.linkedin.com/in/edem-hoggar/" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+              <Fa icon={faLinkedinIn}/>
+            </a>
 
-          <div class="py-3 hidden md:block tracking-[0.02em] leading-10 font-mono  px-4 mt-6 w-90 text-sm md:text-[1rem] md:w-130 text-slate-300 rounded-sm bg-zinc-950/[0.0] h-60">
+            <a
+            aria-label="Visit my Twitter"
+            href="https://x.com/frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+              <Fa icon={faTwitter}/>
+            </a>
 
-            <p class="flex flex-row flex-wrap items-center">
-              Studying Year <strong class="pl-2"> CS</strong>
-              <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noopener noreferrer"
-                class="flex z-40 flex-row gap-2 items-center px-1 pl-3 w-56 font-bold transition-all md:text-sky-600 md:group-hover:text-sky-500 group">
-                <span class="tracking-widest duration-200 text-nowrap transition-color md:group-hover:text-sky-500">@ University of Waterloo</span> <Fa class="duration-200 scale-90 group-hover:scale-100" icon={faSquareArrowUpRight}></Fa>
-              </a>
+            <button
+            aria-label="Copy Discord"
+            onclick={() => {addMsg("Discord Copied"); navigator.clipboard.writeText("edemh")}}
+            class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
+              <Fa icon={faDiscord}/>
+            </button>
 
-              Seeking Fall 2025 Software Development roles.
-              Check out my contacts below for any inquiries.
-            </p>
+            <button
+            aria-label="Copy Email"
+            onclick={() => {addMsg("Email Copied"); navigator.clipboard.writeText("edemkhoggar@gmail.com")}}
+            class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
+              <Fa icon={faAt}/>
+            </button>
           </div>
+
         </div>
 
-        <div class={cx("text-xl gap-3 hidden md:flex flex-row absolute bottom-0 left-0 z-40 duration-200 md:gap-2 items-end md:p-8 md:px-16 p-11 py-5 w-full md:text-xl text-stone-300 md:text-gray-500", !characterhover && "opacity-100", characterhover && "opacity-0")}>
-          <a
-          aria-label="Visit my Github"
-          href="https://github.com/Frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
-          <Fa icon={faGithub}/>
-          </a>
-          
-          <a
-          aria-label="Visit my LinkedIn"
-          href="https://www.linkedin.com/in/edem-hoggar/" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
-            <Fa icon={faLinkedinIn}/>
-          </a>
-
-          <a
-          aria-label="Visit my Twitter"
-          href="https://x.com/frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
-            <Fa icon={faTwitter}/>
-          </a>
-
-          <button
-          aria-label="Copy Discord"
-          onclick={() => {addMsg("Discord Copied"); navigator.clipboard.writeText("edemh")}}
-          class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
-            <Fa icon={faDiscord}/>
-          </button>
-
-          <button
-          aria-label="Copy Email"
-          onclick={() => {addMsg("Email Copied"); navigator.clipboard.writeText("edemkhoggar@gmail.com")}}
-          class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
-            <Fa icon={faAt}/>
-          </button>
-        </div>
-
-      </div>
-
-      <div style="backface-visibility: hidden; perspective: 1000;" class={cx("hidden absolute top-0 left-0 w-full h-full overflow-clip rounded-lg opacity-60 mix-blend-multiply md:opacity-50", characterhover ? "md:hidden" : "md:block")}>
-        <div class="overflow-hidden relative w-full h-full rounded-xl scale-200 md:scale-140">
-          <div class="absolute top-0 left-0 w-full h-full z-9999 grain">
+        <div style="backface-visibility: hidden; perspective: 1000;" class={cx("hidden absolute top-0 left-0 w-full h-full overflow-clip rounded-lg opacity-60 mix-blend-multiply md:opacity-50", characterhover ? "md:hidden" : "md:block")}>
+          <div class="overflow-hidden relative w-full h-full rounded-xl scale-200 md:scale-140">
+            <div class="absolute top-0 left-0 w-full h-full z-9999 grain">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="z-2 img relative w-full md:h-[40rem] rounded-md md:rounded-xl select-none border-2 border-slate-800/40 overflow-clip bg-clip-padding">
+      <div class="z-2 img relative w-full md:h-[40rem] rounded-md md:rounded-xl select-none border-2 border-slate-800/40 overflow-clip bg-clip-padding">
 
-      <div class="w-full h-screen bg-slate-900">
-        <PixiCanvas 
-            onReady={(app) => mountBunnyScene(app)} 
-        />
-      </div>
+        <div class="w-full h-screen bg-slate-900">
+          <PixiCanvas 
+              onReady={(app) => mountBunnyScene(app)} 
+          />
+        </div>
 
-      <div class="absolute top-0 left-0 w-full h-full">
-          <div class="relative z-0 w-full h-full">
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="relative z-0 w-full h-full">
+
+
+              <div class="top-0 left-0 p-7 w-full h-full md:absolute md:p-12">
+              <div class={cx("font-mono h-fit flex flex-col relative z-[30] select-none transition-all duration-200", !characterhover && "opacity-100", characterhover && "opacity-0")}>
+                <h1 class="z-40 text-7xl font-bold md:text-8xl">
+                  {#each Array.from("Edem") as char, index}
+                      <span
+                      class="inline-block animate-text-reveal"
+                      style="animation-delay: {index * 0.05 - 0.5}s; animation-fill-mode: backwards;"
+                      >
+                      {@html char === ' ' ? '&nbsp;' : char}
+                      </span>
+                  {/each}
+                </h1>
+                <h2 class="z-40  px-1 text-lg md:text-2xl transition-all tracking-[0.2em] md:tracking-[0.3em] text-stone-300 md:text-slate-500">Hoggar</h2>
+
+                <div class="h-full md:h-5"></div>
+
+
+                <div class="w-[calc(100%+1rem)] -mx-2 mt-7 font-mono rounded-md backdrop-blur-[5px] bg-slate-900/70 backdrop-saturate-130 backdrop-brightness-200 md:hidden shadow-[inset_0px_1px_4px_rgba(230,200,250,0.8),inset_0px_20px_20px_rgba(0,0,30,0.3)]">
+                  <div class="flex items-center p-[0.6rem] px-4 w-full border-blue-900/20 bg-slate-900/40 rounded-t-md border-b-1">
+                    <a
+                      href="https://cs.uwaterloo.ca/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center transition-all text-stone-200"
+                    >
+                      CS @ UW
+                    </a>
+                      <div class="grow"></div>
+                    <img class="h-full opacity-70 saturate-0 brightness-500" src={windowIcons} alt="windowmanip"/>
+                  </div>
+                  <p class="text-[0.9rem] leading-loose text-stone-100 p-4 py-3">
+                    <strong class="inline"></strong>
+                    Seeking Fall 2025 Software Dev roles. Find contacts below for any inquiries.
+                  </p>
+                </div>
+
+
+                <div class="py-3 hidden md:block tracking-[0.02em] leading-10 font-mono  px-4 mt-6 w-90 text-sm md:text-[1rem] md:w-130 text-slate-300 rounded-sm bg-zinc-950/[0.0] h-60">
+
+                  <p class="flex flex-row flex-wrap items-center">
+                    Studying Year <strong class="pl-2"> CS</strong>
+                    <a href="https://cs.uwaterloo.ca/" target="_blank" rel="noopener noreferrer"
+                      class="flex z-40 flex-row gap-2 items-center px-1 pl-3 w-56 font-bold transition-all md:text-sky-600 md:group-hover:text-sky-500 group">
+                      <span class="tracking-widest duration-200 text-nowrap transition-color md:group-hover:text-sky-500">@ University of Waterloo</span> <Fa class="duration-200 scale-90 group-hover:scale-100" icon={faSquareArrowUpRight}></Fa>
+                    </a>
+
+                    Seeking Fall 2025 Software Development roles.
+                    Check out my contacts below for any inquiries.
+                  </p>
+                </div>
+              </div>
+
+              <div class={cx("text-xl gap-3 hidden md:flex flex-row absolute bottom-0 left-0 z-40 duration-200 md:gap-2 items-end md:p-8 md:px-16 p-11 py-5 w-full md:text-xl text-stone-200 md:text-gray-400", !characterhover && "opacity-100", characterhover && "opacity-0")}>
+                <a
+                aria-label="Visit my Github"
+                href="https://github.com/Frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+                <Fa icon={faGithub}/>
+                </a>
+                
+                <a
+                aria-label="Visit my LinkedIn"
+                href="https://www.linkedin.com/in/edem-hoggar/" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+                  <Fa icon={faLinkedinIn}/>
+                </a>
+
+                <a
+                aria-label="Visit my Twitter"
+                href="https://x.com/frostbiiten" target="_blank" rel="noopener noreferrer" class="p-2 transition-all duration-200 hover:text-sky-100">
+                  <Fa icon={faTwitter}/>
+                </a>
+
+                <button
+                aria-label="Copy Discord"
+                onclick={() => {addMsg("Discord Copied"); navigator.clipboard.writeText("edemh")}}
+                class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
+                  <Fa icon={faDiscord}/>
+                </button>
+
+                <button
+                aria-label="Copy Email"
+                onclick={() => {addMsg("Email Copied"); navigator.clipboard.writeText("edemkhoggar@gmail.com")}}
+                class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100">
+                  <Fa icon={faAt}/>
+                </button>
+
+              </div>
+            </div>
           </div>
       </div>
 
