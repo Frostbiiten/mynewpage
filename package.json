@@ -1,41 +1,43 @@
 {
-	"name": "portfolio",
-	"version": "0.0.1",
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.3.1",
-		"@sveltejs/kit": "^2.17.2",
-		"@sveltejs/vite-plugin-svelte": "^4.0.4",
-		"@tailwindcss/postcss": "^4.0.7",
-		"postcss": "^8.5.3",
-		"svelte": "^5.20.2",
-		"svelte-bricks": "^0.3.1",
-		"svelte-sitemap": "^2.7.0",
-		"tailwindcss": "^4.0.7",
-		"vite": "^5.4.14"
-	},
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"postbuild": "npx svelte-sitemap --domain https://edem.ca"
-	},
-	"type": "module",
-	"dependencies": {
-		"@fortawesome/free-brands-svg-icons": "^6.7.2",
-		"@fortawesome/free-solid-svg-icons": "^6.7.2",
-		"@splidejs/svelte-splide": "^0.2.9",
-		"@sveltejs/adapter-static": "^3.0.8",
-		"bricks.js": "^1.8.0",
-		"clsx": "^2.1.1",
-		"marked": "^15.0.11",
-		"pixi-filters": "^6.1.5",
-		"pixi.js": "^8.14.3",
-		"svelte-fa": "^4.0.3",
-		"svelte-render-scan": "^1.1.0",
-		"svelte-scroll-tracker": "^1.0.7"
-	},
-	"optionalDependencies": {
-		"@rollup/rollup-linux-x64-gnu": "^4.40.2"
-	}
+  "name": "portfolio",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^3.3.1",
+    "@sveltejs/kit": "^2.17.2",
+    "@sveltejs/vite-plugin-svelte": "^4.0.4",
+    "@tailwindcss/postcss": "^4.0.7",
+    "postcss": "^8.5.3",
+    "svelte": "^5.20.2",
+    "svelte-bricks": "^0.3.1",
+    "svelte-sitemap": "^2.7.0",
+    "tailwindcss": "^4.0.7",
+    "vite": "^5.4.14"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "postbuild": "npx svelte-sitemap --domain https://edem.ca"
+  },
+  "type": "module",
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@splidejs/svelte-splide": "^0.2.9",
+    "@sveltejs/adapter-static": "^3.0.8",
+    "bricks.js": "^1.8.0",
+    "clsx": "^2.1.1",
+    "marked": "^15.0.11",
+    "pixi-filters": "^6.1.5",
+    "pixi.js": "^8.14.3",
+    "prettier": "^3.7.4",
+    "prettier-plugin-svelte": "^3.4.1",
+    "svelte-fa": "^4.0.3",
+    "svelte-render-scan": "^1.1.0",
+    "svelte-scroll-tracker": "^1.0.7"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.40.2"
+  }
 }

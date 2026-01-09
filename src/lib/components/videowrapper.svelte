@@ -30,18 +30,18 @@
   class={cx(
     "video-wrapper rounded-lg overflow-clip",
     loaded && "loaded",
-    error && "error"
+    error && "error",
   )}
 >
   <div
     class={cx(
       "top-0 duration-600 left-0 w-full h-full",
-      !loaded && "blur-xs opacity-5 scale-130"
+      !loaded && "blur-xs opacity-5 scale-130",
     )}
   >
     <video
       {...restProps}
-      src={src}
+      {src}
       onloadeddata={onLoadedData}
       onerror={onError}
       onloadedmetadata={onVideoDimensionsLoaded}
@@ -53,7 +53,9 @@
 
   {#if !loaded && !error}
     <div class="border-2 loading-indicator border-slate-900/40 bg-slate-950/10">
-      <div class="absolute w-full h-full animate-pulse bg-blue-400/2 loading-indicator">
+      <div
+        class="absolute w-full h-full animate-pulse bg-blue-400/2 loading-indicator"
+      >
         {#if dimensionsLoaded}
           Loading...
         {/if}

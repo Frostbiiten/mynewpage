@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --font-sans: Space Grotesk, sans-serif;
@@ -23,7 +23,8 @@
   }
 }
 
-html, body {
+html,
+body {
   @apply bg-zinc-950 text-white; /* Tailwind utility classes */
   min-height: 100vh;
   margin: 0;

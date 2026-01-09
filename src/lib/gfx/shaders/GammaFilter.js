@@ -1,4 +1,4 @@
-import { Filter, GlProgram } from 'pixi.js';
+import { Filter, GlProgram } from "pixi.js";
 
 const vertex = `
   in vec2 aPosition;
@@ -55,11 +55,11 @@ export class GammaFilter extends Filter {
       glProgram: new GlProgram({
         vertex,
         fragment,
-        name: 'gamma-filter',
+        name: "gamma-filter",
       }),
       resources: {
         gammaUniforms: {
-          uGamma: { value: gamma, type: 'f32' },
+          uGamma: { value: gamma, type: "f32" },
         },
       },
     });
