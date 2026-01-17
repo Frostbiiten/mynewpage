@@ -40,6 +40,9 @@
 
     sessionStorage.setItem("visitedHome", "true");
 
+    // TODO: add a proper fix for this
+    const minTimePromise = new Promise((resolve) => setTimeout(resolve, 1900));
+
     const loadBreak = setTimeout(() => {
       doneLoading = true;
     }, 3500);
@@ -75,7 +78,7 @@
     ]);
 
     try {
-      await Promise.all([Promise.all(imgPromises), pixiPromise]);
+      await Promise.all([Promise.all(imgPromises), pixiPromise, minTimePromise]);
 
       await new Promise(requestAnimationFrame);
     } catch (e) {
