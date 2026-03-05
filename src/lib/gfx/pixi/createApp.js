@@ -5,10 +5,12 @@ export async function createPixiApp({ canvas, resizeTo }) {
 
   const app = new Application();
 
+  const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
+
   await app.init({
     canvas,
     resizeTo,
-    preference: "webgpu",
+    preference: isFirefox ? "webgl" : "webgpu",
     backgroundAlpha: 0,
     antialias: false,
     powerPreference: "high-performance",
