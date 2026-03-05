@@ -10,6 +10,10 @@
   import Footer from "$lib/components/footer.svelte";
   import Loader from "$lib/components/loader.svelte";
 
+  import bg from "$lib/img/bg.webp";
+  import fig0 from "$lib/img/figure/0.webp";
+  import fig1 from "$lib/img/figure/1.webp";
+
   let { children } = $props();
 
   // import { RenderScan } from "svelte-render-scan";
@@ -41,7 +45,7 @@
     sessionStorage.setItem("visitedHome", "true");
 
     // TODO: add a proper fix for this
-    const minTimePromise = new Promise((resolve) => setTimeout(resolve, 1900));
+    const minTimePromise = new Promise((resolve) => setTimeout(resolve, 1200));
 
     const loadBreak = setTimeout(() => {
       doneLoading = true;
@@ -71,11 +75,7 @@
       },
     );
 
-    const pixiPromise = Assets.load([
-      "/img/bg.webp",
-      "/img/figure/0.webp",
-      "/img/figure/1.webp",
-    ]);
+    const pixiPromise = Assets.load([bg, fig0, fig1]);
 
     try {
       await Promise.all([

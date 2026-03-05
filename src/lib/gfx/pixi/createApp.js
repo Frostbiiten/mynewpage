@@ -1,6 +1,6 @@
 import { Application, RendererType } from "pixi.js";
 
-export async function createPixiApp({ canvas, resizeTo }) {
+export async function createPixiApp({ canvas, resizeTo, transparent = true }) {
   if (typeof window === "undefined") return;
 
   const app = new Application();
@@ -11,7 +11,8 @@ export async function createPixiApp({ canvas, resizeTo }) {
     canvas,
     resizeTo,
     preference: isFirefox ? "webgl" : "webgpu",
-    backgroundAlpha: 0,
+    alpha: transparent,
+    backgroundAlpha: transparent ? 0 : 1,
     antialias: false,
     powerPreference: "high-performance",
     useBackBuffer: true,

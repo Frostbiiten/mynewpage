@@ -17,6 +17,14 @@ const easeInOutCubic = (x) => {
   return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 };
 
+const easeOutCubic = (x) => {
+  return 1 - Math.pow(1 - x, 3);
+};
+
+const easeOutExpo = (x) => {
+  return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+};
+
 function createBlendFilter() {
   const glVertex = `
   in vec2 aPosition;
@@ -236,6 +244,10 @@ export function mountHeroFigure(app, mouseState, characterHover) {
 
   const baseSpriteContainer = new Container();
   preblurContainer.addChild(baseSpriteContainer);
+  baseSpriteContainer.alpha = 0;
+
+  let fadeT = 0;
+  let fading = false;
 
   let spriteBase0, spriteBase1;
   const blendFilter = createBlendFilter();
@@ -285,6 +297,11 @@ export function mountHeroFigure(app, mouseState, characterHover) {
 
     baseSpriteContainer.filters = [blendFilter, sketchFilter];
     baseSpriteContainer.displacementMap = displacementSprite;
+
+    await new Promise(requestAnimationFrame);
+
+    fading = true;
+    fadeT = 0;
   };
 
   setupFigure();
@@ -298,6 +315,14 @@ export function mountHeroFigure(app, mouseState, characterHover) {
   let jitterTimer = 0;
 
   const tick = (time) => {
+    if (fading && baseSpriteContainer.alpha < 1) {
+      fadeT += time.deltaTime;
+      const x = Math.min(fadeT / 30, 1);
+      const eased = easeOutExpo(x);
+      baseSpriteContainer.alpha = eased;
+      baseSpriteContainer.scale.set(1, 0.95 + 0.05 * eased)
+    }
+
     updateParallax();
 
     const d = mouseState.dist01;

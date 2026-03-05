@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from "svelte";
   import { createPixiApp } from "$lib/gfx/pixi/createApp";
 
-  let { className = "", onReady = () => {} } = $props();
+  let { className = "", onReady = () => {}, transparent = true } = $props();
 
   let canvas = $state();
   let host = $state();
@@ -13,6 +13,7 @@
   onMount(async () => {
     const result = await createPixiApp({
       canvas,
+      transparent: transparent,
     });
 
     app = result.app;

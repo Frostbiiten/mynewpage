@@ -113,6 +113,11 @@ export function mountHeroBackground(app, mouseState) {
 
   // Background layer
   const backgroundLayer = new Container();
+  backgroundLayer.alpha = 0;
+
+  let fadeT = 0;
+  let fading = false;
+  const fadeDuration = 55;
 
   const ringGraphics = new Graphics();
   app.stage.addChild(backgroundLayer);
@@ -245,6 +250,11 @@ export function mountHeroBackground(app, mouseState) {
           }
         },
       );
+
+      requestAnimationFrame(() => {
+        fading = true;
+        fadeT = 0;
+      });
     });
 
     // ensure right order
@@ -356,8 +366,15 @@ export function mountHeroBackground(app, mouseState) {
   let curScale = 0.5;
   const jitterInterval = 13;
   let jitterTimer = 0;
+  let f = 0;
 
   const tick = (time) => {
+    if (fading && f < 1) {
+      fadeT += time.deltaTime;
+      const x = Math.min(fadeT / fadeDuration, 1);
+      backgroundLayer.alpha = easeOut(x);
+    }
+
     updateMouse();
 
     const blurFactor = 1 - mouseState.dist01;

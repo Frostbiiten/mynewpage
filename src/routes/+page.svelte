@@ -285,6 +285,7 @@
     >
       <div class="w-full h-full bg-zinc-950/90">
         <PixiCanvas
+          transparent={false}
           onReady={(app) => {
             heroBackground = mountHeroBackground(app, mouseState);
           }}
