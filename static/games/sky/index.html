@@ -1,207 +1,228 @@
-<!doctypehtml>
-    <html lang=en-us>
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>SkyRenderer</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-    <head>
-        <meta charset=utf-8>
-        <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
-        <title>SkyRenderer</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+      .emscripten {
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-            .emscripten {
-                padding-right: 0;
-                margin-left: auto;
-                margin-right: auto;
-            }
+      div.emscripten {
+        text-align: center;
+      }
 
-            div.emscripten {
-                text-align: center
-            }
+      div.emscripten_border {
+        border: 0px solid #000;
+      }
 
-            div.emscripten_border {
-                border: 0px solid #000
-            }
+      canvas.emscripten {
+        border: 0 none;
+        background-color: #000;
+      }
 
-            canvas.emscripten {
-                border: 0 none;
-                background-color: #000
-            }
+      #emscripten_logo {
+        display: none;
+        margin: 0;
+        padding: 6px;
+        width: 265px;
+      }
 
-            #emscripten_logo {
-                display: none;
-                margin: 0;
-                padding: 6px;
-                width: 265px
-            }
+      .spinner {
+        height: 0px;
+        width: 0px;
+        margin: 0;
+        margin-top: 0px;
+        margin-left: 0px;
+        display: none;
+        vertical-align: top;
+        opacity: 0;
+      }
 
-            .spinner {
-                height: 0px;
-                width: 0px;
-                margin: 0;
-                margin-top: 0px;
-                margin-left: 0px;
-                display: none;
-                vertical-align: top;
-                opacity: 0;
-            }
+      #status {
+        vertical-align: top;
+        margin-top: 30px;
+        margin-left: 20px;
+        font-weight: 700;
+        color: #787878;
+      }
 
-            #status {
-                vertical-align: top;
-                margin-top: 30px;
-                margin-left: 20px;
-                font-weight: 700;
-                color: #787878
-            }
+      #progress {
+        height: 20px;
+        width: 300px;
+      }
 
-            #progress {
-                height: 20px;
-                width: 300px
-            }
+      #controls {
+        display: none;
+        float: right;
+        vertical-align: top;
+        margin-top: 30px;
+        margin-right: 20px;
+      }
 
-            #controls {
-                display: none;
-                float: right;
-                vertical-align: top;
-                margin-top: 30px;
-                margin-right: 20px
-            }
+      #output {
+        width: 100%;
+        height: 0px;
+        margin: 0 auto;
+        border-left: 0;
+        border-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
+        display: none;
+        background-color: #000;
+        color: #fff;
+        font-family: "Lucida Console", Monaco, monospace;
+        outline: 0;
+      }
 
-            #output {
-                width: 100%;
-                height: 0px;
-                margin: 0 auto;
-                border-left: 0;
-                border-right: 0px;
-                padding-left: 0;
-                padding-right: 0;
-                display: none;
-                background-color: #000;
-                color: #fff;
-                font-family: 'Lucida Console', Monaco, monospace;
-                outline: 0
-            }
+      #scaler {
+        transform-origin: top left;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
 
-            #scaler {
-                transform-origin: top left;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
+      body {
+        background-color: #000;
+      }
+    </style>
+  </head>
 
-            body {
-                background-color: #000;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div style="font-family: Space Mono;" id="scaler">
-            <div class=emscripten_border>
-                <div class=spinner id=spinner></div>
-                <div hidden class=emscripten id=status>Downloading...</div>
-                <div hidden class=emscripten><progress id=progress max=100 value=0></progress></div>
-                <p style="display: absolute; padding-left: 1rem; color: #787878;">WASD+Space/Shift: navigation. Right Click + Drag: look. I: view z-buffer O: increment scene P: increment shader</p>
-                <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex="0"></canvas>
-            </div>
-            <textarea hidden id=output rows=8></textarea>
-            <script>
-                function rescaleUI() {
-                    const scaler = document.getElementById("scaler");
-                    const baseWidth = 1280;
-                    const baseHeight = 720;
-                    const scale = Math.min(window.innerWidth / baseWidth, window.innerHeight / baseHeight);
-                    scaler.style.transform = `scale(${scale})`;
-                }
-
-                window.addEventListener("resize", rescaleUI);
-
-                var statusElement = document.getElementById("status"),
-                    progressElement = document.getElementById("progress"),
-                    spinnerElement = document.getElementById("spinner"),
-                    canvasElement = document.getElementById("canvas"),
-                    outputElement = document.getElementById("output");
-                outputElement && (outputElement.value = ""),
-
-                canvasElement.addEventListener(
-                    "webglcontextlost",
-                    (e) => {
-                        alert("WebGL context lost. You will need to reload the page."), e.preventDefault();
-                    },
-                    !1
-                );
-
-                // eat input
-                window.addEventListener("click", () => {
-                    canvasElement.focus();
-                });
-                window.addEventListener("keydown", (e) => {
-                    if (e.code === "Space" && document.activeElement === canvas) {
-                        e.preventDefault();
-                    }
-                }, { passive: false });
-
-                const cdnBase = "https://cdn.edem.ca/";
-                var Module = {
-                    print: (...args) => {
-                        console.log(...args);
-                        if (outputElement) {
-                            outputElement.value += args.join(" ") + "\n";
-                            outputElement.scrollTop = outputElement.scrollHeight;
-                        }
-                    },
-                    canvas: canvasElement,
-                    locateFile: function (path)
-                    {
-                        // Redirect .wasm and .data to CDN !!
-                        if (path.endsWith(".wasm") || path.endsWith(".data")) {
-                            return cdnBase + path;
-                        }
-                        return path;
-                    },
-
-                    setStatus: function (text) {
-                        if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: "" };
-                        if (text === Module.setStatus.last.text) return;
-                        var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
-                        var now = Date.now();
-                        if (m && now - Module.setStatus.last.time < 30) return; // skip updating
-                        Module.setStatus.last.time = now;
-                        Module.setStatus.last.text = text;
-                        if (m) {
-                            text = m[1];
-                            progressElement.value = parseInt(m[2]) * 100;
-                            progressElement.max = parseInt(m[4]) * 100;
-                            progressElement.hidden = false;
-                            spinnerElement.hidden = false;
-                        } else {
-                            progressElement.value = null;
-                            progressElement.max = null;
-                            progressElement.hidden = true;
-                            if (!text) spinnerElement.style.display = "none";
-                        }
-                        statusElement.innerHTML = text;
-                    },
-                    totalDependencies: 0,
-                    monitorRunDependencies: function (left) {
-                        this.totalDependencies = Math.max(this.totalDependencies, left);
-                        Module.setStatus(left
-                            ? "Preparing... (" + (this.totalDependencies - left) + "/" + this.totalDependencies + ")"
-                            : "All downloads complete.");
-                    }
-                };
-                Module.postRun = [rescaleUI];
-
-                Module.setStatus("Downloading..."),
-                    (window.onerror = (e) => {
-                        Module.setStatus("Exception thrown, see JavaScript console"),
-                            (spinnerElement.style.display = "none"),
-                            (Module.setStatus = (e) => {
-                                e && console.error("[post-exception status] " + e);
-                            });
-                    });
-
-            </script>
-            <script async src=SkyRenderer.js></script>
+  <body>
+    <div style="font-family: Space Mono" id="scaler">
+      <div class="emscripten_border">
+        <div class="spinner" id="spinner"></div>
+        <div hidden class="emscripten" id="status">Downloading...</div>
+        <div hidden class="emscripten">
+          <progress id="progress" max="100" value="0"></progress>
         </div>
-    </body>
+        <p style="display: absolute; padding-left: 1rem; color: #787878">
+          WASD+Space/Shift: navigation. Right Click + Drag: look. I: view
+          z-buffer O: increment scene P: increment shader
+        </p>
+        <canvas
+          class="emscripten"
+          id="canvas"
+          oncontextmenu="event.preventDefault()"
+          tabindex="0"
+        ></canvas>
+      </div>
+      <textarea hidden id="output" rows="8"></textarea>
+      <script>
+        function rescaleUI() {
+          const scaler = document.getElementById("scaler");
+          const baseWidth = 1280;
+          const baseHeight = 720;
+          const scale = Math.min(
+            window.innerWidth / baseWidth,
+            window.innerHeight / baseHeight,
+          );
+          scaler.style.transform = `scale(${scale})`;
+        }
+
+        window.addEventListener("resize", rescaleUI);
+
+        var statusElement = document.getElementById("status"),
+          progressElement = document.getElementById("progress"),
+          spinnerElement = document.getElementById("spinner"),
+          canvasElement = document.getElementById("canvas"),
+          outputElement = document.getElementById("output");
+        (outputElement && (outputElement.value = ""),
+          canvasElement.addEventListener(
+            "webglcontextlost",
+            (e) => {
+              (alert("WebGL context lost. You will need to reload the page."),
+                e.preventDefault());
+            },
+            !1,
+          ));
+
+        // eat input
+        window.addEventListener("click", () => {
+          canvasElement.focus();
+        });
+        window.addEventListener(
+          "keydown",
+          (e) => {
+            if (e.code === "Space" && document.activeElement === canvas) {
+              e.preventDefault();
+            }
+          },
+          { passive: false },
+        );
+
+        const cdnBase = "https://cdn.edem.ca/";
+        var Module = {
+          print: (...args) => {
+            console.log(...args);
+            if (outputElement) {
+              outputElement.value += args.join(" ") + "\n";
+              outputElement.scrollTop = outputElement.scrollHeight;
+            }
+          },
+          canvas: canvasElement,
+          locateFile: function (path) {
+            // Redirect .wasm and .data to CDN !!
+            if (path.endsWith(".wasm") || path.endsWith(".data")) {
+              return cdnBase + path;
+            }
+            return path;
+          },
+
+          setStatus: function (text) {
+            if (!Module.setStatus.last)
+              Module.setStatus.last = { time: Date.now(), text: "" };
+            if (text === Module.setStatus.last.text) return;
+            var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+            var now = Date.now();
+            if (m && now - Module.setStatus.last.time < 30) return; // skip updating
+            Module.setStatus.last.time = now;
+            Module.setStatus.last.text = text;
+            if (m) {
+              text = m[1];
+              progressElement.value = parseInt(m[2]) * 100;
+              progressElement.max = parseInt(m[4]) * 100;
+              progressElement.hidden = false;
+              spinnerElement.hidden = false;
+            } else {
+              progressElement.value = null;
+              progressElement.max = null;
+              progressElement.hidden = true;
+              if (!text) spinnerElement.style.display = "none";
+            }
+            statusElement.innerHTML = text;
+          },
+          totalDependencies: 0,
+          monitorRunDependencies: function (left) {
+            this.totalDependencies = Math.max(this.totalDependencies, left);
+            Module.setStatus(
+              left
+                ? "Preparing... (" +
+                    (this.totalDependencies - left) +
+                    "/" +
+                    this.totalDependencies +
+                    ")"
+                : "All downloads complete.",
+            );
+          },
+        };
+        Module.postRun = [rescaleUI];
+
+        (Module.setStatus("Downloading..."),
+          (window.onerror = (e) => {
+            (Module.setStatus("Exception thrown, see JavaScript console"),
+              (spinnerElement.style.display = "none"),
+              (Module.setStatus = (e) => {
+                e && console.error("[post-exception status] " + e);
+              }));
+          }));
+      </script>
+      <script async src="SkyRenderer.js"></script>
+    </div>
+  </body>
 </html>

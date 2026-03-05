@@ -78,7 +78,11 @@
     ]);
 
     try {
-      await Promise.all([Promise.all(imgPromises), pixiPromise, minTimePromise]);
+      await Promise.all([
+        Promise.all(imgPromises),
+        pixiPromise,
+        minTimePromise,
+      ]);
 
       await new Promise(requestAnimationFrame);
     } catch (e) {

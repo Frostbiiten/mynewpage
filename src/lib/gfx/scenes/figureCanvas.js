@@ -264,7 +264,8 @@ export function mountHeroFigure(app, mouseState, characterHover) {
                           %3C/svg%3E`;
 
     const noiseAsset = await Assets.load(multiNoiseSVG);
-    const noiseTex = noiseAsset instanceof Texture ? noiseAsset : Texture.from(noiseAsset);
+    const noiseTex =
+      noiseAsset instanceof Texture ? noiseAsset : Texture.from(noiseAsset);
 
     const s = noiseTex.source;
     if (s && s.style) {
@@ -308,12 +309,15 @@ export function mountHeroFigure(app, mouseState, characterHover) {
     p[1] = alphaOvr;
 
     blur.gamma = 2;
-    blur.strength = easeInOutCubic(Math.max(0, mouseState.dist01 - 0.6) * 2) * 5;
+    blur.strength =
+      easeInOutCubic(Math.max(0, mouseState.dist01 - 0.6) * 2) * 5;
 
     if (jitterTimer > jitterInterval && baseSpriteContainer.displacementMap) {
       const step = 4;
-      baseSpriteContainer.displacementMap.x = Math.floor((Math.random() * 600) / step) * step;
-      baseSpriteContainer.displacementMap.y = Math.floor((Math.random() * 600) / step) * step;
+      baseSpriteContainer.displacementMap.x =
+        Math.floor((Math.random() * 600) / step) * step;
+      baseSpriteContainer.displacementMap.y =
+        Math.floor((Math.random() * 600) / step) * step;
       jitterTimer %= jitterInterval;
     }
 
