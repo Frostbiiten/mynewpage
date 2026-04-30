@@ -461,7 +461,7 @@
                 </div>
                 <p class="text-[0.9rem] leading-loose text-stone-100 p-4 py-3">
                   <strong class="inline"></strong>
-                  Seeking Fall 2025 Software Dev roles. Find contacts below for any
+                  Seeking Summer 2027 Software Dev roles. Find contacts below for any
                   inquiries.
                 </p>
               </div>

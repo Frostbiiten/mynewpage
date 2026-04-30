@@ -48,42 +48,15 @@
 <!-- Full-width projects on mobile, otherwise, 2 in each ... grid should restrict this -->
 <a
   href={`${base}/projects/${name}`}
-  class="flex flex-col gap-2 px-6 py-5 overflow-clip bg-none rounded-md border-2 shadow-sm transition-colors duration-200 cursor-pointer h-50 md:h-140 group border-slate-800 hover:bg-blue-500/3"
+  class="grid overflow-clip bg-none rounded-md shadow-sm cursor-pointer h-50 md:h-64 group"
 >
-  <div class="flex flex-col gap-2 justify-end w-full">
-    <div class="flex justify-end w-full">
-      <div class="flex flex-col">
-        <p class="text-xs text-slate-200/70">
-          {dateInfo[0]}
-        </p>
-        <p class="font-bold tracking-wide">
-          {dateInfo[1]}
-        </p>
-      </div>
-      <h2
-        class="flex-grow px-3 py-1 text-2xl text-right duration-300 lg:text-3xl group-hover:font-bold"
-      >
-        {name}
-      </h2>
-    </div>
-    <div
-      class="w-full  grid grid-rows-[0fr] group-hover:grid-rows-[1fr]
-            transition-[grid-template-rows] duration-400
-            ease-[cubic-bezier(0.87,0,0.13,1)] overflow-hidden"
-    >
-      <div class="overflow-hidden mr-3">
-        <p class="pt-2 w-full border-t-1 text-slate-300 border-slate-800/80">
-          {desc}
-        </p>
-      </div>
-    </div>
-  </div>
-
-
+  <div
+    class="col-span-1 col-start-1 row-span-1 row-start-1 rounded-lg transition-all border-special outline-slate-300/0 group-hover:outline-blue-600/40"
+  ></div>
   <div
     class={cx(
-      "h-full mt-0 transition-all duration-150 group-hover:mt-[0.4rem]",
-      "transition-all duration-800 ease-[cubic-bezier(0.12,1.8,0.0,1.0)] grid overflow-clip rounded-sm will-change-transform bg-slate-900/20",
+      "col-start-1 row-start-1 col-span-1 row-span-1",
+      "transition-all duration-800 ease-[cubic-bezier(0.12,1.8,0.0,1.0)] grid overflow-clip rounded-sm will-change-transform bg-slate-900/20 bg-clip-content group-hover:m-[0.6rem]",
     )}
   >
     {#if img.found}
@@ -96,7 +69,7 @@
           dimensionsLoaded && "opacity-80",
           !dimensionsLoaded && "opacity-0 blur-xs",
           "col-start-1 row-start-1 col-span-1 row-span-1 opacity-0",
-          "ease-[cubic-bezier(0.06, 1, 0.3, 1)] duration-400 group-hover:brightness-[0.9]",
+          "ease-[cubic-bezier(0.06, 1, 0.3, 1)] duration-400 group-hover:scale-120 group-hover:blur-sm group-hover:saturate-0 group-hover:brightness-[0.4]",
         )}
         alt=""
         src={img.img}
@@ -126,6 +99,34 @@
     <div
       class="flex z-10 flex-col flex-grow col-span-1 col-start-1 row-span-1 row-start-1 w-full"
     >
+      <div
+        class={cx(
+          "flex justify-end p-3 w-full backdrop-saturate-40",
+          img.found && "bg-zinc-950/90",
+          !img.found &&
+            "bg-zinc-950/80 backdrop-saturate-100 backdrop-blur-none",
+        )}
+      >
+        <div class="flex flex-col">
+          <p class="text-xs text-slate-200/70">
+            {dateInfo[0]}
+          </p>
+          <p class="font-bold tracking-wide">
+            {dateInfo[1]}
+          </p>
+        </div>
+        <h2
+          class="flex-grow px-3 py-1 text-2xl text-right duration-300 lg:text-3xl group-hover:font-bold"
+        >
+          {name}
+        </h2>
+      </div>
+
+      <p
+        class="p-3 px-6 delay-0 duration-150 group-hover:delay-200 align-bottom group-hover:duration-400 -translate-x-1 group-hover:translate-x-0 ease-[cubic-bezier(0.16, 1, 0.3, 1)] opacity-0 group-hover:opacity-100"
+      >
+        {desc}
+      </p>
 
       <div class="flex flex-col flex-grow justify-end">
         <div class="flex gap-2 p-3 h-12 lg:h-14">
