@@ -48,7 +48,7 @@
 <!-- Full-width projects on mobile, otherwise, 2 in each ... grid should restrict this -->
 <a
   href={`${base}/projects/${name}`}
-  class="flex flex-col gap-2 px-6 py-5 overflow-clip bg-none rounded-md border-2 shadow-sm transition-colors duration-200 cursor-pointer h-50 md:h-140 group border-slate-800 hover:bg-blue-500/3"
+  class="flex flex-col gap-2 px-6 py-5 h-80 overflow-clip bg-none rounded-md border-2 shadow-sm transition-colors duration-200 cursor-pointer md:h-140 group border-slate-800 hover:bg-blue-500/3"
 >
   <div class="flex flex-col gap-2 justify-end w-full">
     <div class="flex justify-end w-full">
