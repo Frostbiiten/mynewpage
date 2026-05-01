@@ -20,6 +20,10 @@
   import projectImg from "$lib/img/categories/project.webp";
   import windowIcons from "$lib/img/projects/windowicons.svg";
 
+  // logos
+  import psLogo from "$lib/img/playstation.svg";
+  import eaLogo from "$lib/img/ea.svg";
+
   const images = import.meta.glob("$lib/img/projects/*", { eager: true });
 
   // mouse (will update later to merge with bg mouseState)
@@ -203,73 +207,68 @@
 >
   <div class="relative h-250 w-7xl">
     <div
-      class="absolute left-0 opacity-10 h-50 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:48px_48px]"
+      class="absolute left-0 opacity-10 h-50 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:48px_48px] will-change-transform"
       style="transform: translate3d({smoothX * -30 - 400}px, {smoothY * -30 +
         180}px, 0);"
     ></div>
 
     <div
-      class="absolute left-0 opacity-15 h-24 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:52px_52px] blur-sm"
+      class="absolute left-0 opacity-15 h-24 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:52px_52px] blur-sm will-change-transform"
       style="transform: translate3d({smoothX * -100 - 500}px, {smoothY * -100 +
         480}px, 0);"
     ></div>
 
     <div
-      class="absolute left-0 opacity-15 h-24 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:48px_48px] blur-xs"
+      class="absolute left-0 opacity-15 h-24 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:48px_48px] blur-xs will-change-transform"
       style="transform: translate3d({smoothX * -35 - 800}px, {smoothY * -35 +
         280}px, 0);"
     ></div>
 
     <div
-      class="absolute left-0 opacity-15 h-20 w-20 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:52px_52px] blur-md"
+      class="absolute left-0 opacity-15 h-20 w-20 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:52px_52px] blur-md will-change-transform"
       style="transform: translate3d({smoothX * -30 - 700}px, {smoothY * -30 +
         580}px, 0);"
     ></div>
 
     <div
-      class="absolute left-0 opacity-5 h-50 w-80 bg-[radial-gradient(#e5e7eb_2px,transparent_1px)] [background-size:36px_36px]"
+      class="absolute left-0 opacity-5 h-50 w-80 bg-[radial-gradient(#e5e7eb_2px,transparent_1px)] [background-size:36px_36px] will-change-transform"
       style="transform: translate3d({smoothX * -9 - 580}px, {smoothY * -9 +
         280}px, 0);"
     ></div>
 
     <div
-      class="absolute left-0 opacity-15 h-130 w-120 bg-[radial-gradient(#6a707d_2px,transparent_1px)] [background-size:38px_38px] blur-xs"
+      class="absolute left-0 opacity-15 h-130 w-120 bg-[radial-gradient(#6a707d_2px,transparent_1px)] [background-size:38px_38px] blur-xs will-change-transform"
       style="transform: translate3d({smoothX * -6 - 400}px, {smoothY * -6 +
         280}px, 0);"
     ></div>
 
-    <div
-      class="absolute left-0 opacity-10 h-50 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:48px_48px]"
-      style="transform: translate3d({smoothX * -30 - 400}px, {smoothY * -30 +
-        180}px, 0);"
-    ></div>
 
     <div
-      class="absolute right-0 opacity-15 h-24 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:52px_52px] blur-sm"
+      class="absolute right-0 opacity-15 h-24 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:52px_52px] blur-sm will-change-transform"
       style="transform: translate3d({smoothX * -100 + 400}px, {smoothY * -100 +
         280}px, 0);"
     ></div>
 
     <div
-      class="absolute right-0 opacity-15 h-24 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:48px_48px] blur-xs"
+      class="absolute right-0 opacity-15 h-24 w-50 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:48px_48px] blur-xs will-change-transform"
       style="transform: translate3d({smoothX * -35 + 400}px, {smoothY * -35 +
         480}px, 0);"
     ></div>
 
     <div
-      class="absolute right-0 opacity-15 h-20 w-20 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:52px_52px] blur-md"
+      class="absolute right-0 opacity-15 h-20 w-20 bg-[radial-gradient(#e5e7eb_4px,transparent_1px)] [background-size:52px_52px] blur-md will-change-transform"
       style="transform: translate3d({smoothX * -30 + 700}px, {smoothY * -30 +
         380}px, 0);"
     ></div>
 
     <div
-      class="absolute right-0 opacity-5 h-50 w-80 bg-[radial-gradient(#e5e7eb_2px,transparent_1px)] [background-size:36px_36px]"
+      class="absolute right-0 opacity-5 h-50 w-80 bg-[radial-gradient(#e5e7eb_2px,transparent_1px)] [background-size:36px_36px] will-change-transform"
       style="transform: translate3d({smoothX * -9 + 580}px, {smoothY * -9 +
         380}px, 0);"
     ></div>
 
     <div
-      class="absolute right-0 opacity-15 h-130 w-120 bg-[radial-gradient(#6a707d_2px,transparent_1px)] [background-size:38px_38px] blur-xs"
+      class="absolute right-0 opacity-15 h-130 w-120 bg-[radial-gradient(#6a707d_2px,transparent_1px)] [background-size:38px_38px] blur-xs will-change-transform"
       style="transform: translate3d({smoothX * -6 + 400}px, {smoothY * -6 +
         280}px, 0);"
     ></div>
@@ -393,8 +392,8 @@
                 <br />
                 <br />
 
-                I'm working on a graphics programming project in
-                <strong>C++</strong> right now. It'll be added to the projects page
+                I'm currently working on some 
+                <strong>C++</strong> projects. They'll be added to the projects page
                 soon!
               </div>
             </div>
@@ -462,7 +461,7 @@
                 </div>
                 <p class="text-[0.9rem] leading-loose text-stone-100 p-4 py-3">
                   <strong class="inline"></strong>
-                  Seeking Fall 2025 Software Dev roles. Find contacts below for any
+                  Seeking Summer 2027 Software Dev roles. Find contacts below for any
                   inquiries.
                 </p>
               </div>
@@ -470,43 +469,133 @@
               <div
                 class="py-3 hidden md:block tracking-[0.02em] leading-10 font-mono px-4 mt-6 w-90 text-sm md:text-[1rem] md:w-130 text-slate-300 rounded-sm bg-zinc-950/[0.0] h-60"
               >
-                <p class="flex flex-row flex-wrap items-center">
-                  Second Year <strong class="pl-2"> CS</strong>
-                  <a
-                    href="https://cs.uwaterloo.ca/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex z-40 flex-row gap-2 items-center px-1 pl-3 w-56 font-bold transition-all md:text-sky-600 md:group-hover:text-sky-500 group"
-                  >
-                    <span
-                      class="tracking-widest duration-200 text-nowrap transition-color md:group-hover:text-sky-500"
-                      >@ University of Waterloo</span
+                <div class="space-y-1">
+                  <p class="flex flex-row flex-wrap items-center">
+                    Third Year <strong class="pl-2">CS </strong>&nbsp;@
+                    <a
+                      href="https://cs.uwaterloo.ca/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex z-40 flex-row gap-2 items-center px-1 pl-3 font-bold transition-all md:text-sky-600 md:group-hover:text-sky-500 group"
                     >
-                    <Fa
-                      class="duration-200 scale-90 group-hover:scale-100"
-                      icon={faSquareArrowUpRight}
-                    ></Fa>
-                  </a>
-                  Prev. SWE on PVZ 3
-                  <a
-                    href="https://www.ea.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex z-40 flex-row gap-2 items-center px-1 pl-3 w-56 font-bold transition-all md:text-sky-600 md:group-hover:text-sky-500 group"
-                  >
-                    <span
-                      class="tracking-widest duration-200 text-nowrap transition-color md:group-hover:text-sky-500"
-                      >@ Electronic Arts</span
-                    >
-                    <Fa
-                      class="duration-200 scale-90 group-hover:scale-100"
-                      icon={faSquareArrowUpRight}
-                    ></Fa>
-                  </a>
+                      <span class="tracking-widest duration-200 text-nowrap transition-color md:group-hover:text-sky-500">
+                        University of Waterloo
+                      </span>
 
-                  Seeking Summer 2026 Software Development roles. Check out my
-                  contacts below for any inquiries.
-                </p>
+                      <Fa
+                        class="-mx-0.5 ease-[cubic-bezier(0.1,2.2,0.1,1)] duration-300 scale-90 group-hover:scale-105 md:group-hover:text-blue-300"
+                        icon={faSquareArrowUpRight}
+                      />
+                    </a>
+                  </p>
+
+                  {#snippet experience({ time, role, company, href, logo })}
+                    <div class="flex flex-row flex-wrap items-center">
+                      <div class="leading-none text-slate-500 h-min">
+                        {time}
+                      </div>
+
+                      <span class="mr-3 ml-2 border-3 border-l-0 border-b-0 border-gray-400 [transform:rotate(45deg)] size-2"></span>
+
+                      <span class="mr-2 text-slate-100">{role}</span>@
+
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex z-40 flex-row gap-2 items-center px-1 pl-3 font-bold transition-all md:text-sky-600 md:group-hover:text-sky-500 group"
+                      >
+                        <span class="flex flex-row gap-2 items-center tracking-widest duration-200 text-nowrap transition-color md:group-hover:text-sky-500">
+                          {@render logo()}
+                          {company}
+                        </span>
+
+                        <Fa
+                          class="-mx-0.5 ease-[cubic-bezier(0.1,2.2,0.1,1)] duration-300 scale-90 group-hover:scale-105 md:group-hover:text-blue-300"
+                          icon={faSquareArrowUpRight}
+                        />
+                      </a>
+                    </div>
+                  {/snippet}
+
+                  {#snippet microsoftLogo()}
+                    <div
+                      class="size-[1rem] shrink-0"
+                      aria-label="Microsoft logo"
+                      title="Microsoft"
+                    >
+                      <svg
+                        viewBox="0 0 21 21"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="block size-full"
+                        role="img"
+                      >
+                        <rect x="0" y="0" width="10" height="10" fill="#f25022" />
+                        <rect x="11" y="0" width="10" height="10" fill="#7fba00" />
+                        <rect x="0" y="11" width="10" height="10" fill="#00a4ef" />
+                        <rect x="11" y="11" width="10" height="10" fill="#ffb900" />
+                      </svg>
+                    </div>
+                  {/snippet}
+
+                  {#snippet playStationLogo()}
+                    <div
+                      class="size-[1.05rem] mx-[-0.03rem]"
+                      aria-label="PlayStation Studios logo"
+                      title="PlayStation Studios"
+                    >
+                      <img
+                        src={psLogo}
+                        alt="PlayStation Studios"
+                        class="block object-contain pb-1 w-6 h-5"
+                      />
+                    </div> 
+                  {/snippet}
+
+                  {#snippet electronicArtsLogo()}
+                    <div
+                      class="size-[1.05rem] mx-[-0.03rem]"
+                      aria-label="PlayStation Studios logo"
+                      title="PlayStation Studios"
+                    >
+                      <img
+                        src={eaLogo}
+                        alt="Electronic Arts"
+                        class="block object-contain pb-1 w-6 h-5"
+                      />
+                    </div> 
+                  {/snippet}
+
+                  {@render experience({
+                    time: "F26",
+                    role: "SWE",
+                    company: "Microsoft",
+                    href: "https://www.microsoft.com/",
+                    logo: microsoftLogo
+                  })}
+
+                  {@render experience({
+                    time: "S26",
+                    role: "SWE",
+                    company: "PlayStation",
+                    href: "https://www.playstation.com/",
+                    logo: playStationLogo
+                  })}
+
+                  {@render experience({
+                    time: "F26",
+                    role: "SWE",
+                    company: "Electronic Arts",
+                    href: "https://www.ea.com/",
+                    logo: electronicArtsLogo
+                  })}
+
+
+
+                  <p>
+                    Seeking <span class="font-sans font-bold text-slate-100">Summer 2027</span> Software Engineering roles. Check out my contacts below for any inquiries.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -516,7 +605,7 @@
       <div class="absolute bottom-0 left-0 w-full md:h-min z-100">
         <div
           class={cx(
-            "text-xl z-40 gap-3 flex flex-row relative bottom-0 md:bg-none bg-linear-to-t from-zinc-950 left-0 duration-200 md:gap-2 items-start md:items-end md:p-8 md:px-16 px-5 py-3 w-full md:text-xl text-stone-200 md:text-gray-400",
+            "text-xl z-40 gap-3 flex flex-row relative bottom-0 md:bg-none bg-linear-to-t from-zinc-950 left-0 duration-200 md:gap-[0.35rem] items-start md:items-end md:p-8 md:px-[3.95rem] px-5 py-3 w-full md:text-xl text-stone-200 md:text-gray-400",
             !characterhover && "opacity-100",
             characterhover && "opacity-0",
           )}
@@ -546,7 +635,7 @@
             href="https://x.com/frostbiiten"
             target="_blank"
             rel="noopener noreferrer"
-            class="p-2 transition-all duration-200 hover:text-sky-100"
+            class="px-[0.28rem] py-2 transition-all duration-200 hover:text-sky-100"
           >
             <Fa icon={faTwitter} />
           </a>
@@ -557,7 +646,7 @@
               addMsg("Discord Copied");
               navigator.clipboard.writeText("edemh");
             }}
-            class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100"
+            class="px-2 py-2 transition-all duration-200 cursor-pointer hover:text-sky-100"
           >
             <Fa icon={faDiscord} />
           </button>
@@ -568,7 +657,7 @@
               addMsg("Email Copied");
               navigator.clipboard.writeText("edemkhoggar@gmail.com");
             }}
-            class="p-2 transition-all duration-200 cursor-pointer hover:text-sky-100"
+            class="px-1 py-2 transition-all duration-200 cursor-pointer hover:text-sky-100"
           >
             <Fa icon={faAt} />
           </button>
